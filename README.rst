@@ -4,8 +4,8 @@ Bede Documentation
 
 This is a collection of useful pieces of documentation for Bede. User contributions are encouraged.
 
-.. image:: https://readthedocs.org/projects/bede/badge/?version=latest
-  :target: https://bede.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/bede-documentation/badge/?version=latest
+  :target: https://bede-documentation.readthedocs.io/en/latest/?badge=latest
   :alt: Documentation Status
 
 
