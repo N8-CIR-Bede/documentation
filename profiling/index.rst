@@ -1,7 +1,8 @@
-.. _NVIDIA_Profiling_Tools:
+Profiling
+=========
 
 NVIDIA Profiling Tools
-======================
+----------------------
 
 HPC systems typically favour batch jobs rather than interactive jobs for improved utilsation of resources. 
 The Nvidia profiling tools can all be used to capture all required via the command line, which can then be interrogated using the GUI tools locally.
@@ -12,7 +13,7 @@ The NVIDIA Visual Profiler is the legacy profiling tool, with full support for G
 
 
 Compiler settings for profiling
--------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Applications compiled with ``nvcc`` should pass ``-lineinfo`` (or ``--generate-line-info``) to include source-level profile information. 
 
@@ -20,7 +21,7 @@ Additionally, `NVIDIA Tools Extension SDK <https://docs.nvidia.com/gameworks/ind
 
 
 Nsight Systems and Nsight Compute
----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note:: 
     * Nsight Systems supports Pascal and above (SM 60+)
@@ -80,30 +81,24 @@ Once the ``.ncu-rep`` file has been downloaded locally, it can be imported into 
    Older versions of Nsight Compute generated ``.nsight-cuprof-report`` files, instead of ``.ncu-rep`` files.
 
 
-Documentation
-^^^^^^^^^^^^^
+More info
+^^^^^^^^^
 
 + `Nsight Systems <https://docs.nvidia.com/nsight-systems/>`_
 + `Nsight Compute <https://docs.nvidia.com/nsight-compute/>`_
-
-Training Material
-^^^^^^^^^^^^^^^^^
-* `OLCF: Nsight Systems Tutorial <https://vimeo.com/398838139>`_
-* `OLCF: Nsight Compute Tutorial <https://vimeo.com/398929189>`_
++ `OLCF: Nsight Systems Tutorial <https://vimeo.com/398838139>`_
++ `OLCF: Nsight Compute Tutorial <https://vimeo.com/398929189>`_
 
 Use the following `Nsight report files <https://drive.google.com/open?id=133a90SIupysHfbO3mlyfXfaEivCyV1EP>`_ to follow the tutorial.
 
 
 Cluster Modules
 ^^^^^^^^^^^^^^^
-* :ref:`raplab-hackathon<hackathon_facility>`: 
-   * ``module load nvcompilers/2020``
-* :ref:`bede<bede_facility>`: 
-   * ``module load nvidia/20.5``
+* ``module load nvidia/20.5``
 
 
 Visual Profiler (legacy)
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 .. note::
    * Nvprof does not support CUDA kernel profiling for Turing GPUs (SM75)
    * Nvprof does not support Ampere GPUs (SM80+)
@@ -140,10 +135,38 @@ Documentation
 
 Cluster Modules
 ^^^^^^^^^^^^^^^
-* :ref:`raplab-hackathon<hackathon_facility>`: 
-   * ``module load cuda/10.1``
-   * ``module load nvcompilers/2020``
-* :ref:`bede<bede_facility>`: 
    * ``module load cuda/10.1``
    * ``module load cuda/10.2``
    * ``module load nvidia/20.5``
+
+NVIDIA Tools Extension
+----------------------
+
+NVIDIA Tools Extension (NVTX) is a C-based API for annotating events and ranges in applications.
+These markers and ranges can be used to increase the usability of the NVIDIA profiling tools.
+
+
+* For CUDA ``>= 10.0``, NVTX version 3 is distributed as a header only library.
+* For CUDA ``<  10.0``, NVTX is distributed as a shared library.
+
+The location of the headers and shared libraries may vary between Operating Systems, and CUDA installation (i.e. CUDA toolkit, PGI compilers or HPC SDK).
+
+
+
+The NVIDIA Developer blog contains several posts on using NVTX:
+
+* `Generate Custom Application Profile Timelines with NVTX (Jiri Kraus) <https://developer.nvidia.com/blog/cuda-pro-tip-generate-custom-application-profile-timelines-nvtx/>`_ 
+* `Track MPI Calls In The NVIDIA Visual Profiler (Jeff Larkin) <https://developer.nvidia.com/blog/gpu-pro-tip-track-mpi-calls-nvidia-visual-profiler/>`_ 
+* `Customize CUDA Fortran Profiling with NVTX (Massimiliano Fatica) <https://developer.nvidia.com/blog/customize-cuda-fortran-profiling-nvtx/>`_
+
+
+
+Custom CMake ``find_package`` modules can be written to enable use within Cmake e.g. `ptheywood/cuda-cmake-NVTX on GitHub <https://github.com/ptheywood/cuda-cmake-nvtx>`_
+
+
+
+Documentation
+~~~~~~~~~~~~~
+
++ `NVTX Documentation <https://docs.nvidia.com/gameworks/index.html#gameworkslibrary/nvtx/nvidia_tools_extension_library_nvtx.htm>`_
++ `NVTX 3 on GitHub <https://github.com/NVIDIA/NVTX>`_

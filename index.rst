@@ -1,35 +1,21 @@
-Sheffield GPU Hackathon
-#######################
+Bede Documentation
+##################
 
-.. image:: images/TUOS.png
-   :width: 50%
-   :align: right
-   :alt: University of Sheffield
-   
-.. image:: images/NVIDIA.png
-   :width: 50%
-   :align: right
-   :alt: NVIDIA
-   
-.. image:: images/OpenACC.jpg
-   :width: 50%
-   :align: right
-   :alt: OpenACC
-   
+Bede is a supercomputer (otherwise known as an HPC system) run by the N8 group of research intensive universities in the north of England, on behalf of EPSRC, and hosted at Durham University.
 
-This is the documentation for the `Sheffield Virtual GPU Hackathon 2020 <https://gpuhack.shef.ac.uk/>`_.
+The system has a specialist architecture, optimised for large memory problems on GPUs and for multi-node multi-gpu programs. This has a range of applications in Machine Learning and Imaging.
 
-You may find it useful to read the helpful `GPU Hackathon Attendee Guide <https://docs.google.com/document/d/1M7vacg0GLg38gsJYHOg2tM_M0QArOSCrPiLaQER9hzg/edit>`_. 
+The site encourages user contributions via `GitHub <https://github.com/DurhamARC/bede>`_.
+Feel free to add items of concern to the Github issues section.
 
-The site encourages user contributions via `GitHub <https://github.com/GPUHackSheffield/Documentation>`_ and has useful information for how to access the GPU systems used for the Hackathon event.
-
+Please note that the system is still under active development, and so some functionality may temporarily break.
 
 .. toctree::
    :maxdepth: -1
    :hidden:
 
-   nvidia-system/index
-   bede/index
+   hardware/index
+   usage/index
+   software/index
+   profiling/index
    training/index
-   tools/nvidia-profiling-tools
-   tools/nvidia-tools-extension

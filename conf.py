@@ -9,7 +9,7 @@ import sys
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = []
+extensions = ['recommonmark']
 
 # Add any paths that contain templates here, relative to this directory.
 # templates_path = ['_templates']
@@ -17,16 +17,16 @@ extensions = []
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
-# source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+source_suffix = ['.rst', '.md']
+#source_suffix = '.rst'
 
 # The master toctree document.
 master_doc = 'index'
 
 # General information about the project.
-project = u'GPUHackSheffield'
-copyright = u'2020, Sheffield GPU Hackathon'
-author = u'University of Sheffield'
+project = u'Bede Documentation'
+copyright = u'2020, N8 CIR'
+author = u'N8 CIR'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -79,7 +79,7 @@ if on_rtd:
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'GPUHackdoc'
+htmlhelp_basename = 'BedeDoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -106,7 +106,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'GPUHackShef.tex', u'GPUHackShef Documentation',
+    (master_doc, 'BedeDoc.tex', u'BedeDoc Documentation',
      u'Mozhgan K. Chimeh', 'manual'),
 ]
 
@@ -116,7 +116,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'GPUHackShef', u'GPUHackShef Documentation',
+    (master_doc, 'BedeDoc', u'BedeDoc Documentation',
      [author], 1)
 ]
 
@@ -127,8 +127,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'GPUHackShef', u'GPUHackShef Documentation',
-     author, 'GPUHackShef', 'One line description of project.',
+    (master_doc, 'BedeDoc', u'BedeDoc Documentation',
+     author, 'BedeDoc', 'One line description of project.',
      'Miscellaneous'),
 ]
 
