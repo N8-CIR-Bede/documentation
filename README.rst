@@ -1,11 +1,11 @@
-#####################################
-Sheffield GPU Hackathon Documentation
-#####################################
+##################
+Bede Documentation
+##################
 
-This is a collection of useful pieces of documentation for the Sheffield GPU Hackathon. User contributions are encouraged.
+This is a collection of useful pieces of documentation for Bede. User contributions are encouraged.
 
-.. image:: https://readthedocs.org/projects/gpuhackshef/badge/?version=latest
-  :target: https://gpuhackshef.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/bede/badge/?version=latest
+  :target: https://bede.readthedocs.io/en/latest/?badge=latest
   :alt: Documentation Status
 
 
@@ -35,8 +35,8 @@ Using a python ``venv``
 ::
 
     mkdir -m 700 -p ~/.venvs
-    python3 -m venv ~/.venvs/gpuhacksheffield
-    source ~/.venvs/gpuhacksheffield/bin/activate
+    python3 -m venv ~/.venvs/bede
+    source ~/.venvs/bede/bin/activate
     pip install -r requirements.txt
 
 
@@ -47,8 +47,8 @@ From a conda-enabled terminal:
 
 ::
 
-    conda create --name gpuhacksheffield python=3
-    conda activate gpuhacksheffield
+    conda create --name bede python=3
+    conda activate bede
     pip install -r requirements.txt
 
 
@@ -56,7 +56,7 @@ From a conda-enabled terminal:
 Building the documentation
 **************************
 
-To build the HTML documentation run the following from a shell with the ``gpuhacksheffield`` environment enabled: ::
+To build the HTML documentation run the following from a shell with the ``bede`` environment enabled: ::
 
     make html
 
@@ -71,7 +71,7 @@ Continuous build and serve
 
 The package `sphinx-autobuild <https://github.com/GaretJax/sphinx-autobuild>`_ provides a watcher that automatically rebuilds the site as files are modified.
 
-To start the autobuild process, from a shell with the ``gpuhacksheffield`` environment enabled run: ::
+To start the autobuild process, from a shell with the ``bede`` environment enabled run: ::
 
     make livehtml
 
