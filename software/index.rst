@@ -45,7 +45,23 @@ one built against it:
    $ which mpirun
    /opt/software/builder/developers/libraries/openmpi/4.0.5/1/gcc-8.4.0-cuda-10.2.89/bin/mpirun
 
-Logs of these builds can be found under ``/opt/software/builder/logs/``.
+Modules follow certain conventions:
+
+-  Logs of software builds can be found under ``/opt/software/builder/logs/``.
+-  Installation recipes for modules can be found under directory ``/home/builder/builder/``.
+-  Although modules do their best to configure your environment so
+   that you can use the software, it is sometimes useful to know where the
+   software is installed on disk. This is provided by the ``<NAME>_HOME``
+   environment variable, e.g. if the ``gcc/8.4.0`` module is loaded,
+   environment variable ``GCC_HOME`` points to the directory containing
+   its files.
+-  Software provided by modules sometimes use other modules for their
+   functionality. It is not normally required to explicitly load
+   these prerequisites but it can be useful, for example to mirror R's
+   buld environment when installing an R library. Where this occurs,
+   a list of modules is provided by the ``<NAME>_BUILD_MODULES``
+   environment variable, e.g. the ``r`` module sets environment variable
+   ``R_BUILD_MODULES``.
 
 Software can be built on top of these modules in the following ways:
 
@@ -172,12 +188,6 @@ Project Easybuild installations can be created using a similar method.
 In this case, a central module to add the project’s modules to a user’s
 environment is helpful, and can be done on request.
 
-MPI
----
-
-The main supported MPI on the system is OpenMPI.
-
-For access to a cuda-enabled MPI: ``module load gcc cuda openmpi``
 
 GCC
 ---
@@ -194,6 +204,55 @@ offload support:
 ::
 
    module load gcc/10.2.0
+
+LLVM
+----
+
+LLVM has been provided for use on the system by the ``llvm`` module.
+It has been built with CUDA GPU offloading support, allowing OpenMP
+regions to run on a GPU using the ``target`` directive.
+
+Note that, as from LLVM 11.0.0, it provides a Fortran compiler called
+``flang``. Although this has been compiled and can be used for
+experimentation, it is still immature and ultimately relies on
+``gfortran`` for its code generation. The ``lvm/11.0.0`` module therefore
+defaults to using the operating system provided ``gfortran``, instead.
+
+
+MPI
+---
+
+The main supported MPI on the system is OpenMPI.
+
+For access to a cuda-enabled MPI: ``module load gcc cuda openmpi``
+
+
+HDF5
+----
+
+When loaded in conjunction with an MPI module such as ``openmpi``, the
+``hdf5`` module provides both the serial and parallel versions of the
+library. The parallel functionality relies on a technology called MPI-IO,
+which is currently subject to the following known issue on Bede:
+
+- HDF5 does not pass all of its parallel tests with OpenMPI 4.x. If
+  you are using this MPI and your application continues to run but does
+  not return from a call to the HDF5 library, you may have hit a similar
+  issue. The current workaround is to instruct OpenMPI to use an alternative
+  MPI-IO implementation with the command: ``export OMPI_MCA_io=ompio``
+  The trade off is that, in some arease, this alternative is extremely slow.
+
+
+NetCDF
+------
+
+The ``netcdf`` module provides the C, C++ and Fortran bindings for this
+file format library. When an MPI module is loaded, parallel support is
+enabled through the PnetCDF and HDF5 libraries.
+
+Use of NetCDF's parallel functionality can use HDF5, and so is subject
+to its known issues on Bede (see above).
+
 
 IBM PowerAI and Watson Machine Learning Community Edition (wmlce)
 -----------------------------------------------------------------
