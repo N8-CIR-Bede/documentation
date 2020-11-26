@@ -189,8 +189,20 @@ In this case, a central module to add the project’s modules to a user’s
 environment is helpful, and can be done on request.
 
 
+Compilers
+---------
+
+All compiler modules set the ``CC``, ``CXX``, ``FC``, ``F90`` environment variables to appropriate values. These are commonly used by tools such as cmake and autoconf, so that by loading a compiler module its compilers are used by default.
+
+This can also be done in your own build scripts and make files. e.g.
+
+::
+
+  module load gcc
+  $CC -o myprog myprog.c
+
 GCC
----
+~~~
 
 Note that the default GCC provided by Red Hat Enterprise Linux 7 (4.8.5)
 is quite old, will not optimise for the POWER9 processor (either use
@@ -206,7 +218,7 @@ offload support:
    module load gcc/10.2.0
 
 LLVM
-----
+~~~~
 
 LLVM has been provided for use on the system by the ``llvm`` module.
 It has been built with CUDA GPU offloading support, allowing OpenMP
@@ -219,12 +231,34 @@ experimentation, it is still immature and ultimately relies on
 defaults to using the operating system provided ``gfortran``, instead.
 
 
+BLAS/LAPACK
+-----------
+
+The following numerical libraries provide optimised CPU implementations of BLAS and LAPACK on the system:
+
+- ESSL (IBM Engineering and Scientific Subroutine Library)
+- OpenBLAS
+
+The modules for each of these libraries provide some convenience environment variables: ``N8CIR_LINALG_CFLAGS`` contains the compiler arguments to link BLAS and LAPACK to C code; ``N8CIR_LINALG_FFLAGS`` contains the same to link to Fortran. When used with variables such as ``CC``, commands to build software can become entirely independent of what compilers and numerical libraries you have loaded, e.g.
+
+::
+
+   module load gcc essl/6.2
+   $CC -o myprog myprog.c $N8CIR_LINALG_CFLAGS
+
+
 MPI
 ---
 
 The main supported MPI on the system is OpenMPI.
 
 For access to a cuda-enabled MPI: ``module load gcc cuda openmpi``
+
+We commit to the following convention for all MPIs we provide as modules:
+
+- The wrapper to compile C programs is called ``mpicc``
+- The wrapper to compile C++ programs is called ``mpicxx``
+- The wrapper to compile Fortran programs is called ``mpif90``
 
 
 HDF5
@@ -240,7 +274,8 @@ which is currently subject to the following known issue on Bede:
   not return from a call to the HDF5 library, you may have hit a similar
   issue. The current workaround is to instruct OpenMPI to use an alternative
   MPI-IO implementation with the command: ``export OMPI_MCA_io=ompio``
-  The trade off is that, in some arease, this alternative is extremely slow.
+  The trade off is that, in some areas, this alternative is extremely slow
+  and so should be used with caution.
 
 
 NetCDF
