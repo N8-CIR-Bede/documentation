@@ -74,10 +74,17 @@ In addition, each user has:
 Please note that, as access to Bede is driven by project use, no
 personal data should be stored on the system.
 
-Current utilisation of a user’s home directory can be found by running
-the ``quota`` command. Unfortunately, there is currently no equivalent
-for the project areas: please use ``du -sh /projects/<project>`` for
-now.
+Current utilisation and limits of a user’s home directory can be found
+by running the ``quota`` command. Similar information can be found for the
+project home directory using the ``df -h /projects/<project>`` command.
+
+To examine how much space is occupied by a project's Lustre directory,
+a command of the form ``du -csh /nobackup/projects/<project>`` is
+required. As ``du`` will check each and every file under the specified
+directory, this may take a long time to complete. We plan to develop
+the service and provide this information in a more responsive format in
+the future.
+
 
 Running Jobs
 ------------
