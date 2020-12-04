@@ -2,6 +2,8 @@
 #
 import os
 import sys
+
+import sphinx_bootstrap_theme
 # sys.path.insert(0, os.path.abspath('.'))
 
 # -- General configuration ------------------------------------------------
@@ -57,18 +59,49 @@ todo_include_todos = False
 
 # -- Options for HTML output ----------------------------------------------
 
-html_theme = 'sphinx_rtd_theme'
-#html_theme_path = ['themes'] 
+#html_theme = 'sphinx_rtd_theme'
+html_theme = 'bootstrap'
+html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+html_theme_options = {
+    'navbar_title': "Documentation",
+    'navbar_site_name': "Contents",
+    # 'navbar_links': [
+    #     ("Hardware", "hardware/index"),
+    #     ("Software", "software/index"),
+    #     ("Usage", "usage/index"),
+    #     ("Profiling", "profiling/index"),
+    #     ("Training Material", "training/index"),
+    # ],
 
-# On RTD The custom theme is ignored so we must manually load all css files  
-on_rtd = os.environ.get('READTHEDOCS', None) == 'True'                              
-if on_rtd:                                                                           
-    html_context = {                                                             
-        'css_files': [                                                           
-            'https://media.readthedocs.org/css/sphinx_rtd_theme.css',            
-            'https://media.readthedocs.org/css/readthedocs-doc-embed.css',       
-            '_static/customtheme.css',                                       
-        ],                                                                       
+    # Render the next and previous page links in navbar. (Default: true)
+    'navbar_sidebarrel': False,
+
+    # Render the current pages TOC in the navbar. (Default: true)
+    'navbar_pagenav': False,
+    'source_link_position': "footer",
+    'bootswatch_theme': "flatly",
+}
+html_static_path = ['_static']
+html_logo = '_static/images/logo.svg'
+html_sidebars = {
+    'software/index': ['localtoc.html'],
+    'usage/index': ['localtoc.html']
+}
+html_css_files = [
+    'css/custom.css',
+]
+
+#html_theme_path = ['themes']
+
+# On RTD The custom theme is ignored so we must manually load all css files
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+if on_rtd:
+    html_context = {
+        'css_files': [
+            'https://media.readthedocs.org/css/sphinx_rtd_theme.css',
+            'https://media.readthedocs.org/css/readthedocs-doc-embed.css',
+            '_static/customtheme.css',
+        ],
     }
 
 # (Optional) Logo. Should be small enough to fit the navbar (ideally 24x24).

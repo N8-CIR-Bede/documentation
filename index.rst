@@ -10,9 +10,11 @@ Feel free to add items of concern to the Github issues section.
 
 Please note that the system is still under active development, and so some functionality may temporarily break.
 
+Site Contents
+=============
+
 .. toctree::
    :maxdepth: -1
-   :hidden:
 
    hardware/index
    usage/index

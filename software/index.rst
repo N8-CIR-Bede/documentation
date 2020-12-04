@@ -333,4 +333,3 @@ launched with the ``python`` command.
 If a single node with 4 GPUs and 512GB RAM isn’t enough, the Distributed
 Deep Learning feature of PowerAI should allow you to write code that can
 take advantage of multiple nodes.
-

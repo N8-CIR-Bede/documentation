@@ -4,7 +4,7 @@ Profiling
 NVIDIA Profiling Tools
 ----------------------
 
-HPC systems typically favour batch jobs rather than interactive jobs for improved utilsation of resources. 
+HPC systems typically favour batch jobs rather than interactive jobs for improved utilsation of resources.
 The Nvidia profiling tools can all be used to capture all required via the command line, which can then be interrogated using the GUI tools locally.
 
 Nsight Systems and Nsight Compute are the modern Nvidia profiling tools, introduced with CUDA 10.0 supporting Pascal+ and Volta+ respectivley.
@@ -15,7 +15,7 @@ The NVIDIA Visual Profiler is the legacy profiling tool, with full support for G
 Compiler settings for profiling
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Applications compiled with ``nvcc`` should pass ``-lineinfo`` (or ``--generate-line-info``) to include source-level profile information. 
+Applications compiled with ``nvcc`` should pass ``-lineinfo`` (or ``--generate-line-info``) to include source-level profile information.
 
 Additionally, `NVIDIA Tools Extension SDK <https://docs.nvidia.com/gameworks/index.html#gameworkslibrary/nvtx/nvidia_tools_extension_library_nvtx.htm>`_ can be used to enhance these profiling tools.
 
@@ -23,7 +23,7 @@ Additionally, `NVIDIA Tools Extension SDK <https://docs.nvidia.com/gameworks/ind
 Nsight Systems and Nsight Compute
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. note:: 
+.. note::
     * Nsight Systems supports Pascal and above (SM 60+)
     * Nsight Compute supports Volta and aboce (SM 70+)
 
@@ -33,7 +33,7 @@ Generate an application timeline with Nsight Systems CLI (``nsys``):
 
    nsys profile -o timeline ./myapplication
 
-Use the ``--trace`` argument to specify which APIs should be traced. 
+Use the ``--trace`` argument to specify which APIs should be traced.
 See the `nsys profiling command switch options <https://docs.nvidia.com/nsight-systems/profiling/index.html#cli-profile-command-switch-options>`_ for further information.
 
 .. code-block:: bash
@@ -41,17 +41,17 @@ See the `nsys profiling command switch options <https://docs.nvidia.com/nsight-s
    nsys profile -o timeline --trace cuda,nvtx,osrt,openacc ./myapplication <arguments>
 
 
-.. note:: 
-   On :ref:`Bede <bede_facility>` (Power9) the ``--trace`` option ``osrt`` can lead to ``SIGILL`` errors. As this is a default, consider passing ``--trace cuda,nvtx`` as an alternative minimum.
+.. note::
+   On Bede (Power9) the ``--trace`` option ``osrt`` can lead to ``SIGILL`` errors. As this is a default, consider passing ``--trace cuda,nvtx`` as an alternative minimum.
 
 
-Once this file has been downloaded to your local machine, it can be opened in ``nsys-ui``/``nsight-sys`` via ``File > Open > timeline.qdrep``: 
+Once this file has been downloaded to your local machine, it can be opened in ``nsys-ui``/``nsight-sys`` via ``File > Open > timeline.qdrep``:
 
 
 Fine-grained kernel profile information can be captured using remote Nsight Compute CLI (``ncu``/``nv-nsight-cu-cli``):
 
 .. code-block:: bash
-   
+
    ncu -o profile --set full ./myapplication <arguments>
 
 .. note::
@@ -65,7 +65,7 @@ For long running applications, it may be favourable to capture a smaller set of 
 The scope of the section being profiled can also be reduced using `NVTX Filtering <https://docs.nvidia.com/nsight-compute/NsightComputeCli/index.html#nvtx-filtering>`_; or by targetting specific kernels using ``--kernel-id``, ``--kernel-regex`` and/or ``--launch-skip`` see the `CLI docs for more information <https://docs.nvidia.com/nsight-compute/NsightComputeCli/index.html#command-line-options-profile>`_).
 
 
-Once the ``.ncu-rep`` file has been downloaded locally, it can be imported into local Nsight CUDA GUI ``ncu-ui``/``nv-nsight-cu`` via: 
+Once the ``.ncu-rep`` file has been downloaded locally, it can be imported into local Nsight CUDA GUI ``ncu-ui``/``nv-nsight-cu`` via:
 
 .. code-block:: bash
 
@@ -77,7 +77,7 @@ Once the ``.ncu-rep`` file has been downloaded locally, it can be imported into 
 .. note::
    Older versions of Nsight Compute (CUDA < ``11.0.194``) used ``nv-nsight-cu`` rather than ``ncu-ui``.
 
-.. note:: 
+.. note::
    Older versions of Nsight Compute generated ``.nsight-cuprof-report`` files, instead of ``.ncu-rep`` files.
 
 
@@ -116,7 +116,7 @@ Fine-grained kernel profile information can be genereted remotely using ``nvprof
 
    nvprof --analysis-metrics -o analysis.nvprof ./myapplication
 
-This captuires the full set of metrics required to complete the guided analysis, and may take a (very long) while. 
+This captuires the full set of metrics required to complete the guided analysis, and may take a (very long) while.
 Large applications request fewer metrics (via ``--metrics``), fewer events (via ``--events``) or target specific kernels (via ``--kernels``). See the `nvprof command line options <https://docs.nvidia.com/cuda/profiler-users-guide/index.html>`_ for further information.
 
 Once these files are downloaded to your local machine, Import them into the Visual Profiler GUI (``nvvp``)
@@ -155,8 +155,8 @@ The location of the headers and shared libraries may vary between Operating Syst
 
 The NVIDIA Developer blog contains several posts on using NVTX:
 
-* `Generate Custom Application Profile Timelines with NVTX (Jiri Kraus) <https://developer.nvidia.com/blog/cuda-pro-tip-generate-custom-application-profile-timelines-nvtx/>`_ 
-* `Track MPI Calls In The NVIDIA Visual Profiler (Jeff Larkin) <https://developer.nvidia.com/blog/gpu-pro-tip-track-mpi-calls-nvidia-visual-profiler/>`_ 
+* `Generate Custom Application Profile Timelines with NVTX (Jiri Kraus) <https://developer.nvidia.com/blog/cuda-pro-tip-generate-custom-application-profile-timelines-nvtx/>`_
+* `Track MPI Calls In The NVIDIA Visual Profiler (Jeff Larkin) <https://developer.nvidia.com/blog/gpu-pro-tip-track-mpi-calls-nvidia-visual-profiler/>`_
 * `Customize CUDA Fortran Profiling with NVTX (Massimiliano Fatica) <https://developer.nvidia.com/blog/customize-cuda-fortran-profiling-nvtx/>`_
 
 

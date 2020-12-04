@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+    font-family: "Montserrat";
+}
+
+a, a:hover, a:focus, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus, .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    color: #F95423;
+}
+
+.navbar-brand {
+  height: 120px;
+}
+
+.navbar-nav, .navbar-right {
+  padding: 30px 15px;
+}
+
+.navbar-default, .navbar-default
+.navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus,
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+  background-color: #054C91;
+}
+
+.row {
+  margin-top: 60px;
+}
