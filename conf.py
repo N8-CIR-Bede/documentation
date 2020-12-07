@@ -65,13 +65,13 @@ html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 html_theme_options = {
     'navbar_title': "Documentation",
     'navbar_site_name': "Contents",
-    # 'navbar_links': [
-    #     ("Hardware", "hardware/index"),
-    #     ("Software", "software/index"),
-    #     ("Usage", "usage/index"),
-    #     ("Profiling", "profiling/index"),
-    #     ("Training Material", "training/index"),
-    # ],
+    'navbar_links': [
+        ("Hardware", "hardware/index"),
+        ("Software", "software/index"),
+        ("Usage", "usage/index"),
+        ("Profiling", "profiling/index"),
+        ("Training Material", "training/index"),
+    ],
 
     # Render the next and previous page links in navbar. (Default: true)
     'navbar_sidebarrel': False,
@@ -82,10 +82,11 @@ html_theme_options = {
     'bootswatch_theme': "flatly",
 }
 html_static_path = ['_static']
-html_logo = '_static/images/logo.svg'
+html_logo = '_static/images/logo.png'
 html_sidebars = {
     'software/index': ['localtoc.html'],
-    'usage/index': ['localtoc.html']
+    'usage/index': ['localtoc.html'],
+    'profiling/index': ['localtoc.html']
 }
 html_css_files = [
     'css/custom.css',
