@@ -4,8 +4,13 @@ body {
     font-family: "Montserrat";
 }
 
-a, a:hover, a:focus, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus, .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+a, a:hover, a:focus, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus,
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus, code {
     color: #F95423;
+}
+
+.navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a {
+    color: #054C91;
 }
 
 .navbar-brand {
@@ -34,11 +39,24 @@ a, a:hover, a:focus, .navbar-default .navbar-brand:hover, .navbar-default .navba
 .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus,
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus,
 .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
-  background-color: #054C91;
+  background-color: #D0D0CE;
 }
 
 .row {
   margin-top: 60px;
+}
+
+.bs-sidenav {
+  background-color: rgba(208, 208, 206, 0.3);
+  text-shadow: none;
+}
+
+.bs-sidenav .nav > li > a {
+  color: #054C91;
+}
+
+.bs-sidenav .nav > li > a:hover, .bs-sidenav .nav > li > a:focus {
+    background-color: rgba(208, 208, 206, 0.5);
 }
 
 @media (max-width: 1024px) {

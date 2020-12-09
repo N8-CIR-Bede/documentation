@@ -82,7 +82,7 @@ html_theme_options = {
     'bootswatch_theme': "flatly",
 }
 html_static_path = ['_static']
-html_logo = '_static/images/logo.png'
+html_logo = '_static/images/logo-cmyk.png'
 html_sidebars = {
     'software/index': ['localtoc.html'],
     'usage/index': ['localtoc.html'],
