@@ -84,6 +84,10 @@ html_static_path = ['_static']
 html_css_files = [
     'css/custom.css',
 ]
+html_js_files = [
+    'https://use.fontawesome.com/c79ff27dd1.js',
+    'js/rtd-versions.js',
+]
 
 # On RTD The custom theme is ignored so we must manually load all css files
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
@@ -91,6 +95,7 @@ if on_rtd:
     html_context = {
         'css_files': [
             '_static/css/custom.css',
+            '_static/css/fontawesome.min.css',
         ],
     }
 

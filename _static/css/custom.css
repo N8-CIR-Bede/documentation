@@ -71,8 +71,12 @@ a, a:hover, a:focus, .navbar-default .navbar-brand:hover, .navbar-default .navba
     background-color: var(--cool-grey-2-lighter-color);
 }
 
-.form-control {
-  border-color: var(--cool-grey-2-lighter-color);
+.form-control, input {
+  border-top-color: var(--cool-grey-2-lighter-color);
+  border-bottom-color: var(--cool-grey-2-lighter-color);
+  border-left-color: var(--cool-grey-2-lighter-color);
+  border-right-color: var(--cool-grey-2-lighter-color);
+  border-radius: 4px;
   color: var(--cool-grey-10-color);
 }
 
@@ -122,6 +126,52 @@ code {
     border-color: var(--deep-blue-color);
 }
 
+/* Style versioning info added by RTD */
+.injected {
+  position: relative;
+  top: -30px;
+  left: 50%;
+  width: 50%;
+  padding-right: calc(50vw - 580px);
+  text-align: right;
+}
+
+.rst-other-versions {
+  display: none;
+  position: absolute;
+  background: white;
+  border: 1px solid var(--cool-grey-2-lighter-color);
+  border-radius: 4px;
+  height: 310px;
+  width: 300px;
+  top: -320px;
+  left: 275px;
+  text-align: left;
+  padding: 10px;
+  font-size: small;
+}
+
+.rst-other-versions dl {
+  margin-bottom: 0;
+}
+
+.rst-other-versions dd {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.rst-other-versions dt::after {
+  content: ":"
+}
+
+.rst-other-versions dd:last-child::after {
+  content: ""
+}
+
+.rst-other-versions hr {
+  margin: 5px 0;
+}
+
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -139,6 +189,7 @@ select:-webkit-autofill:focus {
   background-color: #FFFFFF;
 }
 
+/* Change width at which menus collapse */
 @media (max-width: 1024px) {
   .navbar-header {
       float: none;
