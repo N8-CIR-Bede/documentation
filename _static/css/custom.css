@@ -99,6 +99,24 @@ code {
   background-color: var(--burnt-orange-lightest-color);
 }
 
+/* Previous and next links in sidebar are not inside a <ul> for some
+   reason. This lets us identify them but could be a bit flaky. */
+:not(ul) > li {
+  list-style: none;
+  display: inline-block;
+  width: 49%;
+  padding: 10px 10px;
+  white-space: nowrap;
+}
+
+:not(ul) > li a {
+  display: block;
+}
+
+:not(ul) > li a[title^=Next] {
+  text-align: right;
+}
+
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
