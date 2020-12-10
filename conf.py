@@ -94,9 +94,12 @@ on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 if on_rtd:
     html_context = {
         'css_files': [
-            '_static/css/custom.css',
-            '_static/css/fontawesome.min.css',
+            '_static/css/custom.css'
         ],
+        'js_files': [
+            'https://use.fontawesome.com/c79ff27dd1.js',
+            'js/rtd-versions.js'
+        ]
     }
 
 # (Optional) Logo. Should be small enough to fit the navbar (ideally 24x24).
