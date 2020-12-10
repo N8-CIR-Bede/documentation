@@ -14,7 +14,7 @@ import sphinx_bootstrap_theme
 extensions = []
 
 # Add any paths that contain templates here, relative to this directory.
-# templates_path = ['_templates']
+templates_path = ['_templates']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -83,6 +83,9 @@ html_theme_options = {
 html_static_path = ['_static']
 html_css_files = [
     'css/custom.css',
+]
+html_js_files = [
+    'js/rtd-theme.js',
 ]
 
 # On RTD The custom theme is ignored so we must manually load all css files
