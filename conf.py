@@ -84,6 +84,10 @@ html_static_path = ['_static']
 html_css_files = [
     'css/custom.css',
 ]
+html_js_files = [
+    'https://use.fontawesome.com/c79ff27dd1.js',
+    'js/rtd-versions.js',
+]
 
 # On RTD The custom theme is ignored so we must manually load all css files
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
@@ -158,5 +162,7 @@ texinfo_documents = [
 html_sidebars = { '**': ['localtoc.html', 'relations.html'], }
 
 def setup(app):
-    app.add_js_file('https://use.fontawesome.com/c79ff27dd1.js')
-    app.add_js_file('js/rtd-versions.js')
+    on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+    if on_rtd:
+        app.add_javascript('https://use.fontawesome.com/c79ff27dd1.js')
+        app.add_javascript('js/rtd-versions.js')
