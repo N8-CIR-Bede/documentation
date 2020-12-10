@@ -303,8 +303,8 @@ Machine Learning Community Edition (wmlce) or the catchier name PowerAI.
 Documentation on wmlce can be found here:
 https://www.ibm.com/support/pages/get-started-ibm-wml-ce
 
-Installation is via the IBM channel of the anaconda package management tool. Note:
-if you do not use this channel you will not find all of the available packages.
+Installation is via the IBM channel of the anaconda package management tool. **Note:
+if you do not use this channel you will not find all of the available packages.**
 First install anaconda (can be quite large - so using the /nobackup area):
 
 ::
