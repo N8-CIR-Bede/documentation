@@ -1,16 +1,32 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+/* Define N8 theme colours (and lighter versions) */
+:root {
+  --burnt-orange-color: #F95423;
+  --deep-blue-color: #054C91;
+  --cool-grey-10-color: #63666A;
+  --cool-grey-6-color: #A7A8AA;
+  --cool-grey-2-color: #D0D0CE;
+  --cool-grey-2-lighter-color: #E1E1E0; /* equivalent of Cool grey 2 with alpha 0.5 */
+  --cool-grey-2-lightest-color: #F1F1F0; /* equivalent of Cool grey 2 with alpha 0.3 */
+  --burnt-orange-lightest-color: #FFF6F5; /* equivalent of burnt orange with alpha 0.05 */
+}
 
 body {
-    font-family: "Montserrat";
+    font-family: "Montserrat", "Arial";
+    color: var(--cool-grey-10-color);
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    color: var(--deep-blue-color);
 }
 
 a, a:hover, a:focus, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus,
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus, code {
-    color: #F95423;
+    color: var(--burnt-orange-color);
 }
 
-.navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a {
-    color: #054C91;
+.navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a, .bs-sidenav .nav > li > a {
+    color: var(--deep-blue-color);
 }
 
 .navbar-brand {
@@ -39,24 +55,65 @@ a, a:hover, a:focus, .navbar-default .navbar-brand:hover, .navbar-default .navba
 .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus,
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus,
 .dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
-  background-color: #D0D0CE;
+  background-color: var(--cool-grey-2-color);
 }
 
 .row {
   margin-top: 60px;
 }
 
-.bs-sidenav {
-  background-color: rgba(208, 208, 206, 0.3);
+.bs-sidenav, pre {
   text-shadow: none;
-}
-
-.bs-sidenav .nav > li > a {
-  color: #054C91;
+  background-color: var(--cool-grey-2-lightest-color);
 }
 
 .bs-sidenav .nav > li > a:hover, .bs-sidenav .nav > li > a:focus {
-    background-color: rgba(208, 208, 206, 0.5);
+    background-color: var(--cool-grey-2-lighter-color);
+}
+
+.form-control {
+  border-color: var(--cool-grey-2-lighter-color);
+  color: var(--cool-grey-10-color);
+}
+
+.form-control:focus {
+  border-color: var(--cool-grey-6-color);
+}
+
+.btn-default {
+    background-color: var(--cool-grey-10-color);
+    border-color: var(--cool-grey-10-color);
+}
+
+.btn-default:hover {
+    background-color: var(--cool-grey-6-color);
+    border-color: var(--cool-grey-6-color);
+}
+
+pre {
+  background-color: var(--cool-grey-2-lightest-color);
+  border-color: var(--cool-grey-2-color);
+}
+
+code {
+  background-color: var(--burnt-orange-lightest-color);
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid var(--cool-grey-2-lighter-color);
+  -webkit-text-fill-color: var(--cool-grey-10-color);
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  font-family: "Montserrat", "Arial" !important;
+  background-color: #FFFFFF;
 }
 
 @media (max-width: 1024px) {
