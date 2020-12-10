@@ -59,7 +59,6 @@ todo_include_todos = False
 
 # -- Options for HTML output ----------------------------------------------
 
-#html_theme = 'sphinx_rtd_theme'
 html_theme = 'bootstrap'
 html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 html_theme_options = {
@@ -82,17 +81,9 @@ html_theme_options = {
     'bootswatch_theme': "flatly",
 }
 html_static_path = ['_static']
-html_logo = '_static/images/logo-cmyk.png'
-html_sidebars = {
-    'software/index': ['localtoc.html'],
-    'usage/index': ['localtoc.html'],
-    'profiling/index': ['localtoc.html']
-}
 html_css_files = [
     'css/custom.css',
 ]
-
-#html_theme_path = ['themes']
 
 # On RTD The custom theme is ignored so we must manually load all css files
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
@@ -105,7 +96,7 @@ if on_rtd:
 
 # (Optional) Logo. Should be small enough to fit the navbar (ideally 24x24).
 # Path should be relative to the ``_static`` files directory.
-#html_logo = 'images/logo_small.png'
+html_logo = '_static/images/logo-cmyk.png'
 
 # -- Options for HTMLHelp output ------------------------------------------
 
@@ -164,4 +155,4 @@ texinfo_documents = [
 ]
 
 
-#html_sidebars = { '**': ['globaltoc.html', 'localtoc.html', 'relations.html'], }
+html_sidebars = { '**': ['localtoc.html', 'relations.html'], }
