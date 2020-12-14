@@ -289,8 +289,8 @@ Use of NetCDF's parallel functionality can use HDF5, and so is subject
 to its known issues on Bede (see above).
 
 
-IBM PowerAI and Watson Machine Learning Community Edition (wmlce)
------------------------------------------------------------------
+PyTorch and TensorFlow: IBM PowerAI and Watson Machine Learning Community Edition (wmlce)
+-----------------------------------------------------------------------------------------
 
 IBM have done a lot of work to port common Machine Learning tools to the
 POWER9 system, and to take advantage of the GPUs abililty to directly
@@ -303,8 +303,9 @@ Machine Learning Community Edition (wmlce) or the catchier name PowerAI.
 Documentation on wmlce can be found here:
 https://www.ibm.com/support/pages/get-started-ibm-wml-ce
 
-Installation is via the anaconda package management tool. First install
-anaconda (can be quite large - so using the /nobackup area):
+Installation is via the IBM channel of the anaconda package management tool. **Note:
+if you do not use this channel you will not find all of the available packages.**
+First install anaconda (can be quite large - so using the /nobackup area):
 
 ::
 
