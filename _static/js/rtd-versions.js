@@ -4,7 +4,7 @@ var observer = new MutationObserver(function (mutations, me) {
   // `me` is the MutationObserver instance
   var rst_current_version = $('.rst-current-version');
   if (rst_current_version.length > 0) {
-    $('.rst-current-version .fa-caret-down').toggleClass(['fa-caret-up', 'fa-caret-down'])
+    $('.rst-current-version .fa-caret-down').removeClass('fa-caret-down').addClass('fa-caret-up');
 
     $('.rst-current-version').click(function() {
       if ($('.rst-current-version .fa-caret-down').length > 0) {
