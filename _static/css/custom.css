@@ -58,6 +58,27 @@ a, a:hover, a:focus, .navbar-default .navbar-brand:hover, .navbar-default .navba
   background-color: var(--cool-grey-2-color);
 }
 
+.navbar-default .navbar-toggle {
+    border-color: var(--deep-blue-color);
+    margin: 30px 0;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: var(--deep-blue-color);
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: var(--deep-blue-color);
+}
+
+.navbar-default .navbar-toggle:hover .icon-bar, .navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: white;
+}
+
+.collapsing {
+  overflow: hidden;
+}
+
 .row {
   margin-top: 60px;
 }
@@ -199,12 +220,24 @@ select:-webkit-autofill:focus {
 }
 
 /* Change width at which menus collapse */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
+  .navbar .container {
+    width: 100%;
+    padding: 0 30px;
+  }
+
+  :not(ul) > li {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 1120px) {
   .navbar-header {
       float: none;
   }
   .navbar-left,.navbar-right {
       float: none !important;
+      margin-right: 0;
   }
   .navbar-toggle {
       display: block;
