@@ -3,7 +3,7 @@ var observer = new MutationObserver(function (mutations, me) {
   // `mutations` is an array of mutations that occurred
   // `me` is the MutationObserver instance
   var rst_current_version = $('.rst-current-version');
-  if (rst_current_version) {
+  if (rst_current_version.length > 0) {
     $('.rst-current-version .fa-caret-down').toggleClass(['fa-caret-up', 'fa-caret-down'])
 
     $('.rst-current-version').click(function() {
