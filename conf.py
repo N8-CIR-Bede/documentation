@@ -81,22 +81,22 @@ html_theme_options = {
     'bootswatch_theme': "flatly",
 }
 html_static_path = ['_static']
+
+# Belt and braces: use both old and new sphinx syntax for custom CSS to make sure it loads
 html_css_files = [
     'css/custom.css',
 ]
+html_context = {
+    'css_files': [
+        '_static/css/custom.css'
+    ]
+}
+
 html_js_files = [
     'https://use.fontawesome.com/c79ff27dd1.js',
     'js/rtd-versions.js',
 ]
 
-# On RTD The custom theme is ignored so we must manually load all css files
-on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
-if on_rtd:
-    html_context = {
-        'css_files': [
-            '_static/css/custom.css'
-        ]
-    }
 
 # (Optional) Logo. Should be small enough to fit the navbar (ideally 24x24).
 # Path should be relative to the ``_static`` files directory.
