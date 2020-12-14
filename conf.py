@@ -159,7 +159,11 @@ texinfo_documents = [
 ]
 
 
-html_sidebars = { '**': ['localtoc.html', 'relations.html'], }
+html_sidebars = {
+    '**': ['localtoc.html', 'relations.html'],
+    'index': [],
+    'search': []
+}
 
 def setup(app):
     on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
