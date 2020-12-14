@@ -136,6 +136,10 @@ code {
   text-align: right;
 }
 
+.rst-current-version {
+  cursor: pointer;
+}
+
 .rst-other-versions {
   display: none;
   position: absolute;
