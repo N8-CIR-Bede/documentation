@@ -7,8 +7,11 @@ var observer = new MutationObserver(function (mutations, me) {
     $('.rst-current-version .fa-caret-down').toggleClass(['fa-caret-up', 'fa-caret-down'])
 
     $('.rst-current-version').click(function() {
-      $('.rst-current-version .fa-caret-down, .rst-current-version .fa-caret-up')
-        .toggleClass(['fa-caret-up', 'fa-caret-down']);
+      if ($('.rst-current-version .fa-caret-down').length > 0) {
+        $('.rst-current-version .fa-caret-down').removeClass('fa-caret-down').addClass('fa-caret-up');
+      } else {
+        $('.rst-current-version .fa-caret-up').removeClass('fa-caret-up').addClass('fa-caret-down');
+      }
       $('.rst-other-versions').toggle();
     });
 
