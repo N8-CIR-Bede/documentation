@@ -55,7 +55,7 @@ Fine-grained kernel profile information can be captured using remote Nsight Comp
    ncu -o profile --set full ./myapplication <arguments>
 
 .. note::
-   ``ncu`` is available since CUDA ``11.0.194``, and Nsight Compute ``2020.1.1``. For older versions of CUDA use ``nv-nsight-cu-cli`` (if Nsight Compute is installed).
+   ``ncu`` is available since CUDA v11.0.194, and Nsight Compute v2020.1.1. For older versions of CUDA use ``nv-nsight-cu-cli`` (if Nsight Compute is installed).
 
 
 This will capture the full set of available metrics, to populate all sections of the Nsight Compute GUI, however this can lead to very long run times to capture all the information.
@@ -75,7 +75,7 @@ Once the ``.ncu-rep`` file has been downloaded locally, it can be imported into 
 **Or** ``File > Open > profile.ncu-rep``, **or** Drag ``profile.ncu-rep`` into the ``nv-nsight-cu`` window.
 
 .. note::
-   Older versions of Nsight Compute (CUDA < ``11.0.194``) used ``nv-nsight-cu`` rather than ``ncu-ui``.
+   Older versions of Nsight Compute (CUDA < v11.0.194) used ``nv-nsight-cu`` rather than ``ncu-ui``.
 
 .. note::
    Older versions of Nsight Compute generated ``.nsight-cuprof-report`` files, instead of ``.ncu-rep`` files.

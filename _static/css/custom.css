@@ -147,6 +147,11 @@ code {
     border-color: var(--deep-blue-color);
 }
 
+.alert-info code {
+  background-color: var(--cool-grey-10-color);
+  color: white;
+}
+
 /* Style versioning info and ads added by RTD */
 .injected {
   position: relative;
