@@ -1,3 +1,3 @@
 sphinx==1.5.3  # should be same version as currently used by ReadTheDocs
-sphinx_rtd_theme>=0.2.4
+sphinx-bootstrap-theme>=0.7.1
 sphinx-autobuild

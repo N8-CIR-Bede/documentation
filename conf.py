@@ -2,6 +2,8 @@
 #
 import os
 import sys
+
+import sphinx_bootstrap_theme
 # sys.path.insert(0, os.path.abspath('.'))
 
 # -- General configuration ------------------------------------------------
@@ -12,7 +14,7 @@ import sys
 extensions = []
 
 # Add any paths that contain templates here, relative to this directory.
-# templates_path = ['_templates']
+templates_path = ['_templates']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -57,23 +59,48 @@ todo_include_todos = False
 
 # -- Options for HTML output ----------------------------------------------
 
-html_theme = 'sphinx_rtd_theme'
-#html_theme_path = ['themes'] 
+html_theme = 'bootstrap'
+html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+html_theme_options = {
+    'navbar_title': "Documentation",
+    'navbar_site_name': "Contents",
+    'navbar_links': [
+        ("Hardware", "hardware/index"),
+        ("Software", "software/index"),
+        ("Usage", "usage/index"),
+        ("Profiling", "profiling/index"),
+        ("Training Material", "training/index"),
+    ],
 
-# On RTD The custom theme is ignored so we must manually load all css files  
-on_rtd = os.environ.get('READTHEDOCS', None) == 'True'                              
-if on_rtd:                                                                           
-    html_context = {                                                             
-        'css_files': [                                                           
-            'https://media.readthedocs.org/css/sphinx_rtd_theme.css',            
-            'https://media.readthedocs.org/css/readthedocs-doc-embed.css',       
-            '_static/customtheme.css',                                       
-        ],                                                                       
-    }
+    # Render the next and previous page links in navbar. (Default: true)
+    'navbar_sidebarrel': False,
+
+    # Render the current pages TOC in the navbar. (Default: true)
+    'navbar_pagenav': False,
+    'source_link_position': "footer",
+    'bootswatch_theme': "flatly",
+}
+html_static_path = ['_static']
+
+# Belt and braces: use both old and new sphinx syntax for custom CSS to make sure it loads
+html_css_files = [
+    'css/custom.css',
+]
+html_context = {
+    'css_files': [
+        '_static/css/custom.css'
+    ]
+}
+
+html_js_files = [
+    'https://use.fontawesome.com/c79ff27dd1.js',
+    'js/rtd-versions.js',
+]
+
 
 # (Optional) Logo. Should be small enough to fit the navbar (ideally 24x24).
 # Path should be relative to the ``_static`` files directory.
-#html_logo = 'images/logo_small.png'
+html_logo = '_static/images/logo-cmyk.png'
 
 # -- Options for HTMLHelp output ------------------------------------------
 
@@ -132,4 +159,14 @@ texinfo_documents = [
 ]
 
 
-#html_sidebars = { '**': ['globaltoc.html', 'localtoc.html', 'relations.html'], }
+html_sidebars = {
+    '**': ['localtoc.html', 'relations.html'],
+    'index': [],
+    'search': []
+}
+
+def setup(app):
+    on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+    if on_rtd:
+        app.add_javascript('https://use.fontawesome.com/c79ff27dd1.js')
+        app.add_javascript('js/rtd-versions.js')
