@@ -288,8 +288,39 @@ enabled through the PnetCDF and HDF5 libraries.
 Use of NetCDF's parallel functionality can use HDF5, and so is subject
 to its known issues on Bede (see above).
 
+PyTorch Quickstart
+------------------
+The following should get you set up with a working conda environment (replacing <project> with your project code):
 
-PyTorch and TensorFlow: IBM PowerAI and Watson Machine Learning Community Edition (wmlce)
+::
+
+    rm -rf ~/.conda .condarc
+    export DIR=/nobackup/projects/<project>/$USER
+    rm -rf $DIR
+    mkdir $DIR
+    pushd $DIR
+
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-ppc64le.sh
+
+    sh Miniconda3-latest-Linux-ppc64le.sh -b -p $DIR/miniconda
+    source miniconda/bin/activate
+    conda update conda -y
+    conda config --set channel_priority strict
+
+    conda config --prepend channels \
+            https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda/
+
+    conda config --prepend channels \
+            https://opence.mit.edu
+
+    conda create --name opence pytorch=1.7.1 -y
+    conda activate opence
+
+
+This has some limitations such as not supporting large model support. If you require this you can try the instructions below, these provide an older version of PyTorch however.
+
+
+PyTorch and TensorFlow: IBM PowerAI and Watson Machine Learning Community Edition (wmlce) [Possibly Out of Date]
 -----------------------------------------------------------------------------------------
 
 IBM have done a lot of work to port common Machine Learning tools to the
@@ -334,3 +365,5 @@ launched with the ``python`` command.
 If a single node with 4 GPUs and 512GB RAM isn’t enough, the Distributed
 Deep Learning feature of PowerAI should allow you to write code that can
 take advantage of multiple nodes.
+
+
