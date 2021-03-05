@@ -40,3 +40,8 @@ jobs:
           LANGUAGE: ${{ env.LANGUAGE }}
           RTD_HTML_SINGLE: false
           RTD_HTML_EXT: false
+      - name: Archive built docs
+        uses: actions/upload-artifact@v2
+        with:
+          name: docs
+          path: $GITHUB_WORKSPACE
