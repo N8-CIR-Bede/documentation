@@ -13,7 +13,7 @@ Please note that the system is still under active development, and so some funct
 Site Contents
 =============
 
-.. toctree::
+.. toctreee::
    :maxdepth: -1
 
    hardware/index
