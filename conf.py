@@ -56,6 +56,11 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
 
+## Added by CA to get MathJax rendering loaded
+extensions = ['sphinx.ext.mathjax']
+mathjax_path='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+
+
 
 # -- Options for HTML output ----------------------------------------------
 

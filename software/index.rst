@@ -366,4 +366,19 @@ If a single node with 4 GPUs and 512GB RAM isn’t enough, the Distributed
 Deep Learning feature of PowerAI should allow you to write code that can
 take advantage of multiple nodes.
 
+Using Tensorflow, wmlre and ddlrun to do the resnet50 benchmark on multiple nodes [Possibly out of date]
+---------------------------------------------------------------------------------
 
+This is described in the resnet50 folder.
+
+Initial investigations with CUDA (under development)
+----------------------------------------------------
+
+This is described in two articles with sample codes in the wanderings folder. 
+
+.. toctree::
+   :maxdepth: -1
+
+   resnet50/bede-README-sbatch
+   wanderings/wanderings-in-CUDALand
+   wanderings/Estimating-pi-in-CUDALand
