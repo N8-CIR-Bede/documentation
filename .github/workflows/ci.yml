@@ -28,10 +28,9 @@ jobs:
         run: |
           echo "Base branch is: ${BASE_BRANCH}; head branch is ${HEAD_BRANCH}; ref is ${REF}"
         env:
-          env:
-            BASE_BRANCH: ${{ github.base_ref }}
-            HEAD_BRANCH: ${{ github.head_ref }}
-            REF: ${{ github.ref }}
+          BASE_BRANCH: ${{ github.base_ref }}
+          HEAD_BRANCH: ${{ github.head_ref }}
+          REF: ${{ github.ref }}
         if: github.event_name == 'pull_request'
       - name: sets environment
         run: |
