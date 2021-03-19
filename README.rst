@@ -62,7 +62,7 @@ To build the HTML documentation run the following from a shell with the ``bede``
 
 Or if you don't have the ``make`` utility installed on your machine then build with *sphinx* directly: ::
 
-    sphinx-build . ./html
+    sphinx-build -W . ./html
 
 
 
