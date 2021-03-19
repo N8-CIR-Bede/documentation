@@ -2,7 +2,7 @@
 
 name: CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
@@ -24,7 +24,13 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: sets environment 
+      - name: check PR details
+        run: |
+          echo "Pull request's base branch is: ${BASE_BRANCH}"
+        env:
+          BASE_BRANCH: ${{ github.base_ref }}
+        if: github.event_name == 'pull_request'
+      - name: sets environment
         run: |
           echo "GIT_TAG=${GITHUB_REF##*/}" >> $GITHUB_ENV
           echo "VERSION=${GITHUB_REF##*/}" >> $GITHUB_ENV
@@ -32,7 +38,7 @@ jobs:
       - name: Sphinx Docs build with ReadTheDocs Docker
         uses: DavidLeoni/readthedocs-to-actions@v1.2
         with:
-          RTD_PRJ_NAME: bede-documentation        
+          RTD_PRJ_NAME: bede-documentation
           GIT_URL: https://github.com/${{ github.repository }}.git
           GIT_TAG: ${{ env.GIT_TAG }}
           VERSION: ${{ env.VERSION }}
@@ -41,7 +47,7 @@ jobs:
           RTD_HTML_SINGLE: false
           RTD_HTML_EXT: false
       - name: Show workspace output
-        run: |        
+        run: |
           tree -aC $GITHUB_WORKSPACE
       - name: Archive built docs
         uses: actions/upload-artifact@v2
