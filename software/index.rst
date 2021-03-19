@@ -321,7 +321,7 @@ This has some limitations such as not supporting large model support. If you req
 
 
 PyTorch and TensorFlow: IBM PowerAI and Watson Machine Learning Community Edition (wmlce) [Possibly Out of Date]
------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 
 IBM have done a lot of work to port common Machine Learning tools to the
 POWER9 system, and to take advantage of the GPUs abililty to directly
