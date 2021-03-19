@@ -1,15 +1,15 @@
 ********************************************************************
-Watson Machine Learning Community Environment renet50 benchmark
+Watson Machine Learning Community Environment resnet50 benchmark
 ********************************************************************
 
 
-This Bede specific README file is based upon options laid out in the README.MD file in the WMLCE 
+This Bede specific README file is based upon options laid out in the README.MD file in the WMLCE
 resnet50 benchmark directory. The necessary data from ImageNet has been downloaded and processed.
 It is stored in /nobackup/datasets/resnet50/TFRecords and is universally readable.
 
 NOTE: As written, the associated sbatch script must be run in a directory that is writable
 by the user. It creates a directory with the default name run_results into which it will write
-the results of the computation. The results data will use up to 1.2GB of space. The run 
+the results of the computation. The results data will use up to 1.2GB of space. The run
 directory must also be accessible by the compute nodes, so using /tmp on a login node is not
 suitable.
 
@@ -27,11 +27,11 @@ The main WMLCE README.MD file suggests the following parameters are appropriate 
  --use_xla --precision=fp16  --loss_scale=1024 --use_static_loss_scaling
 
 ddlrun by itself is not integrated with Slurm and will not run directly on Bede. A wrapper-script
-called bede-ddlrun is available and that is what is used in the following. 
+called bede-ddlrun is available and that is what is used in the following.
 
-It is easy to define a single GPU run based on the above set of parameters (basically 
+It is easy to define a single GPU run based on the above set of parameters (basically
 remove the ddlrun command at the front and specify the correct paths). The associated run
-takes about 16 hours to complete. 
+takes about 16 hours to complete.
 
 The related sbatch script (sbatch_renet50base.sh) is configured to use 4 GPUs on one node.
 Changing the script to use 4 nodes, 16 GPUs, requires changing one line.
@@ -44,7 +44,7 @@ The sbatch script specifies:
  ...
  #SBATCH -p gpu
  #SBATCH --gres=gpu:4
- #SBATCH -N1 
+ #SBATCH -N1
  ...
 
  module load slurm/dflt
@@ -69,7 +69,7 @@ The first few lines of output should look similar to:
 ::
 
  [WARN DDL-2-17] Not performing connection tests. Cannot find 'mpitool' executabl
- e. This could be because you are using a version of mpi that does not ship with 
+ e. This could be because you are using a version of mpi that does not ship with
  mpitool.
  Please see /tmp/DDLRUN/DDLRUN.j9SmSKzaKGEL/ddlrun.log for detailed log.
  + /opt/software/apps/anaconda3/envs/wmlce_env/bin/mpirun -x PATH -x LD_LIBRARY_P
@@ -78,16 +78,16 @@ The first few lines of output should look similar to:
  .dur.ac.uk:0,1,2,3" -x "DDL_OPTIONS=-mode p:4x1x1x1 " bash -c 'source /opt/softw
  are/apps/anaconda3/etc/profile.d/conda.sh && conda activate /opt/software/apps/a
  naconda3/envs/wmlce_env > /dev/null 2>&1 && python /opt/software/apps/anaconda3/
- envs/wmlce_env/tensorflow-benchmarks/resnet50/main.py --mode=train_and_evaluate 
+ envs/wmlce_env/tensorflow-benchmarks/resnet50/main.py --mode=train_and_evaluate
  --iter_unit=epoch --num_iter=50 --batch_size=256 --warmup_steps=100 --use_cosine
- _lr --label_smoothing 0.1 --lr_init=0.256 --lr_warmup_epochs=8 --momentum=0.875 
+ _lr --label_smoothing 0.1 --lr_init=0.256 --lr_warmup_epochs=8 --momentum=0.875
  --weight_decay=3.0517578125e-05 --data_dir=/nobackup/datasets/resnet50/TFRecords
  / --results_dir=run_results --use_xla --precision=fp16 --loss_scale=1024 --use_s
  tatic_loss_scaling'
  2020-11-17 15:39:49.410620: I tensorflow/stream_executor/platform/default/dso_lo
  ader.cc:44] Successfully opened dynamic library libcudart.so.10.2
 
-There are a number of configuration / compiler type messages and then you should 
+There are a number of configuration / compiler type messages and then you should
 start to see messages like:
 
 ::
@@ -108,12 +108,12 @@ start to see messages like:
   4526.812526349517
  :::NVLOGv0.2.3 resnet 1605627671.807682991 (training_hooks.py:102) cross_entropy
  : 8.204719543457031
- 
+
 The most relevant line is the value after imgs_per_sec:
- 
-Once things start running, you should see something like 4500 images per second as 
+
+Once things start running, you should see something like 4500 images per second as
 the rate on 4 GPUs.
- 
+
 After about 4 hours, the training has converged and you should see the last few lines like:
 
 ::
@@ -124,7 +124,7 @@ After about 4 hours, the training has converged and you should see the last few 
  :::NVLOGv0.2.3 resnet 1605641981.783382177 (runner.py:630) Ending Model Evaluation ...
 
 It is easy to modify the script to use 4 nodes and hence 16 GPUs. The run time will
-be a just over an hour and during the 16 GPU run, about 18000 images per second will 
+be a just over an hour and during the 16 GPU run, about 18000 images per second will
 be processed.
 
 Unfortunately, the basic parameters used with the resnet50 run do not allow this
