@@ -12,7 +12,7 @@ parallelism on the GPU, a logical question is how well similar efforts run on a 
 One approach is to use a form of Monte-Carlo estimation on a quarter of a unit circle. This can be highly parallel, but not efficient.
 
 
-The general idea is to generate a large number N of random pairs :math:`(x_i,y_i)` in [0,1]. 
+The general idea is to generate a large number N of random pairs :math:`(x_i,y_i)` in [0,1]x[0,1]. 
 
 Count the cases M when :math:`x_i^2 + y_i^2 \le 1` 
 Then :math:`{M \over N} \approx {\pi \over 4}`
@@ -197,3 +197,8 @@ This change appears to have improved accuracy and the cost has gone up 8.5 (rath
 more accurate solution, but it is considerably slower than the composite mid-point rules and is really only appropriate for demonstration
 purposes.
 
+Follow-up work
+--------------
+
+It would be sensible to have OpenACC and OpenMP versions of the compostite mid-point rule example to show the relative ease with which GPU parallelism
+can be expressed in these higher level environments. The basic loop involved in each case is trivial.

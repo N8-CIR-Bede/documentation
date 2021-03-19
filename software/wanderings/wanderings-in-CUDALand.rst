@@ -14,20 +14,22 @@ the GPU with its memory and processor is distinct from the conventional computer
 memory attached directly to the CPUs and connections to storage devices and external connections. In other words, data
 stored in the GPU memory is not normally accessible from the CPU and conversely, data in the CPU memory is not
 normally accessible from the GPU. Until recently, users were responsible for the explicit copying of data to / from 
-the GPU memory. Therefore, the reader should understand that the term CPU is shorthand for the the compute performed by
+the GPU memory. Therefore, the reader should understand that the term CPU is shorthand for the compute performed by
 the CPU using data in memory that is addressable (accessible) from that CPU. GPU refers to the GPU-specific domain. One profound
-differnce among the two domains, which is critical for this note, is that the way parallel computation is expressed and 
+difference among the two domains, which is critical for this note, is that the way parallel computation is expressed and 
 performed in the CPU and GPU domains is fundamentally different. 
 
 Finally, in some of the comments of the accompanying codes, reference is often made to "the device". In this context, the device always refers to
 the active GPU.
 
-In order to make compuations on the GPU more accessible. NVidia, via its CUDA products,  has provided an extensive programming environment and set of libraries for 
+In order to make compuations on the GPU more accessible. NVIDIA, via its CUDA products, has provided an extensive programming environment and set of 
+libraries for 
 different functionalities that are invoked on
 the CPU to perform on the GPU using data already on the GPU. These libraries include FFTs (libcufft.so), operations on sparse matrices (libcusparse.so) and
 Basic Linear Algebra operations on dense vectors and matrices (libcublas.so). Some of our examples exploit routines in the libcublas.
 
-Nvidia also provides a C++ compatible compiler wrapper to make compiling some of CUDA-based codes easier called nvcc. nvcc performs extensive preprocessing on C/C++ 
+NVIDIA also provides a C++ compatible compiler wrapper to make compiling some of CUDA-based codes easier, called nvcc. nvcc performs extensive 
+preprocessing on C/C++ 
 codes with the extension .cu. It also hides the linkage to basic CUDA support libraries.
 
 A getting started example
@@ -36,13 +38,20 @@ A getting started example
 
 The first code is a traditional CPU-GPU call of the float Level 3 BLAS matrix-matrix
 multiplication, sgemm. The workflow in this program can be broken down as follows:
-1. Create or read-in matrics on the CPU side
-2. Create companion matrices on the GPU 
-3. Create a handle for the CUBLAS context on the GPU
-4. Copy data from CPU to GPU
-5. Perform computations on the GPU
-6. Copy results back to CPU for output and final processing
-7. Free up the storage used on both CPU and GPU side
+
+\1.  Create or read-in matrics on the CPU side.
+
+\2.  Create companion matrices on the GPU. 
+
+\3.  Create a handle for the CUBLAS context on the GPU.
+
+\4.  Copy data from CPU to GPU. 
+
+\5.  Perform computations on the GPU.
+
+\6.  Copy results back to CPU for output and final processing.
+
+\7.  Free up the storage used on both CPU and GPU side.
 
 The matrices are initialised on the CPU, copied to 
 similarly sized arrays on the GPU, the sgemm call is made on the GPU and then
@@ -64,7 +73,7 @@ to determine whether pages are physically located in the CPU or GPU memory (or o
 CUDA C/C++ programming that is worth reading at https://developer.nvidia.com/blog/even-easier-introduction-cuda/. 
  
 
-Now, rather than creating creating shadow arrays on the GPU side that mirror those on the CPU with explicit copying between them, 
+Now, rather than creating shadow arrays on the GPU side that mirror those on the CPU with explicit copying between them, 
 arrays are declared once via commands like ``cudaMallocManaged``. Such arrays can be accessed on both the CPU and GPU easily, but there
 can be a significant performance hit if access patterns between the two domains are not managed intelligently.
 
@@ -89,7 +98,7 @@ Quoting from Harris,
 "CUDA GPUs have many parallel processors grouped into Streaming Multiprocessors, or SMs. Each SM can run multiple concurrent thread blocks. 
 As an example, a Tesla P100 GPU based on the Pascal GPU Architecture has 56 SMs, each capable of supporting up to 2048 active threads."
 
-Without direction, all threads execute precisely the same code, effective serial performance. Parallel performance requires tying particular pieces of work to 
+Without direction, all threads execute precisely the same code, effectivly serial performance. Parallel performance requires tying particular pieces of work to 
 a specific thread id and doing this concurrently across all threads. 
 
 Again, from Harris: "CUDA C++ provides keywords that let kernels get the indices of the running threads.  
@@ -144,7 +153,7 @@ is analogous to loop partitioning with OpenMP.
 One important comment about kernel functions. The kernel functions are asynchronous with the CPU. It is therefore essential to impose a synchronisation between the
 GPU and CPU via the command ``cudaDeviceSynchronize()`` before results are accessed from the CPU side.
 
-This example akso exploits another feature of unified memory. By default, entities are created in the CPU memory and migrated on demand to GPU memory. This can be
+This example also exploits another feature of unified memory. By default, entities are created in the CPU memory and migrated on demand to GPU memory. This can be
 inefficient if we know in advance that the entities are going to be initialised and manipulated on the GPU. The command ``cudaMemPrefetchAsync`` can be used to specify
 that a data area is to created on a particular GPU.
 
@@ -179,7 +188,7 @@ Notice in the kernel function ``initmatrix`` we have  redundant calculation, but
 	  x[index] = rk*__sinf((float)(i+1)*(float)(j+1)*pi*rkplus1);
         }
 
-
+The full code is below:
 
 
 .. literalinclude:: sgemm-unifiedorthogV2a.cu
