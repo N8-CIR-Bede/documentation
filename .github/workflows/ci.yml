@@ -24,28 +24,15 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: check PR details
-        run: |
-          echo "Base branch is: ${BASE_BRANCH}; head branch is ${HEAD_BRANCH}; ref is ${REF}"
-        env:
-          BASE_BRANCH: ${{ github.base_ref }}
-          HEAD_BRANCH: ${{ github.head_ref }}
-          REF: ${{ github.ref }}
-        if: github.event_name == 'pull_request'
-      - name: sets environment
-        run: |
-          echo "GIT_TAG=${GITHUB_REF##*/}" >> $GITHUB_ENV
-          echo "VERSION=${GITHUB_REF##*/}" >> $GITHUB_ENV
-          echo "LANGUAGE=en" >> $GITHUB_ENV
       - name: Sphinx Docs build with ReadTheDocs Docker
         uses: DavidLeoni/readthedocs-to-actions@v1.2
         with:
           RTD_PRJ_NAME: bede-documentation
           GIT_URL: https://github.com/${{ github.repository }}.git
-          GIT_TAG: ${{ env.GIT_TAG }}
-          VERSION: ${{ env.VERSION }}
+          GIT_TAG: ${{ github.ref }}
+          VERSION: ${{ github.ref }}
           REQUIREMENTS: requirements.txt
-          LANGUAGE: ${{ env.LANGUAGE }}
+          LANGUAGE: 'en'
           RTD_HTML_SINGLE: false
           RTD_HTML_EXT: false
       - name: Show workspace output
