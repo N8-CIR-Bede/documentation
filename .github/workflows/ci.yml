@@ -24,17 +24,26 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: Sphinx Docs build with ReadTheDocs Docker
-        uses: DavidLeoni/readthedocs-to-actions@v1.2
+      - uses: "actions/setup-python@v2"
         with:
-          RTD_PRJ_NAME: bede-documentation
-          GIT_URL: https://github.com/${{ github.repository }}.git
-          GIT_TAG: ${{ github.ref }}
-          VERSION: ${{ github.ref }}
-          REQUIREMENTS: requirements.txt
-          LANGUAGE: 'en'
-          RTD_HTML_SINGLE: false
-          RTD_HTML_EXT: false
+          python-version: "3.8"
+      - name: "Install dependencies"
+        run: |
+          pip install -r requirements.txt
+      - name: "Build docs"
+        run: |
+          sphinx-build . ./html
+      # - name: Sphinx Docs build with ReadTheDocs Docker
+      #   uses: DavidLeoni/readthedocs-to-actions@v1.2
+      #   with:
+      #     RTD_PRJ_NAME: bede-documentation
+      #     GIT_URL: https://github.com/${{ github.repository }}.git
+      #     GIT_TAG: ${{ github.ref }}
+      #     VERSION: ${{ github.ref }}
+      #     REQUIREMENTS: requirements.txt
+      #     LANGUAGE: 'en'
+      #     RTD_HTML_SINGLE: false
+      #     RTD_HTML_EXT: false
       - name: Show workspace output
         run: |
           tree -aC $GITHUB_WORKSPACE
