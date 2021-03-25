@@ -9,12 +9,7 @@ Registering
 
 Access to the machine is based around projects:
 
--  To register a new project:
-
-   -  Principle Investigators at an N8 institution should see the advice
-      <here>
-   -  Principle Investigators at other institutions should see the
-      advice <here>
+-  To information on how to register a new project, please see https://n8cir.org.uk/supporting-research/facilities/bede/docs/bede_registrations/
 
 -  To create an account to use the system:
 
