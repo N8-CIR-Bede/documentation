@@ -9,7 +9,7 @@ Registering
 
 Access to the machine is based around projects:
 
--  To information on how to register a new project, please see https://n8cir.org.uk/supporting-research/facilities/bede/docs/bede_registrations/
+-  For information on how to register a new project, please see https://n8cir.org.uk/supporting-research/facilities/bede/docs/bede_registrations/
 
 -  To create an account to use the system:
 
