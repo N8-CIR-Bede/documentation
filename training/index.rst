@@ -10,6 +10,12 @@ A list of useful training material is also available on the gpuhackathons site:
 * `GPUHackathon Resources webapge <https://www.gpuhackathons.org/technical-resources>`_
 
 
+N8 CIR Training Events and Resources
+------------------------------------
+
+Keep an eye on the The `N8 CIR training website <https://n8cir.org.uk/events/>`_ for Bede-related training events, and `sign up <https://n8cir.org.uk/contact/>`_ for relevant updates. On the `Event Resources <https://n8cir.org.uk/events/event-resource/>`_ page you will find slides and video from previous events, such as the `Bede Introduction event <https://n8cir.org.uk/events/event-resource/bede-intro-21/>`_ and various `IBM training events <https://n8cir.org.uk/events/event-resource/ibm-training-bede/>`_. 
+
+
 Profiling Material
 ------------------
 
@@ -27,6 +33,7 @@ General Training Material
 * `CUDA training at Oakridge (slides and lecture recording) <https://www.olcf.ornl.gov/cuda-training-series/>`_
 * Sheffield `One <http://gpucomputing.shef.ac.uk/education/sheffield_onedaycuda/>`_ or `Two <http://gpucomputing.shef.ac.uk/education/cuda/>`_ Day Introduction to CUDA Course (slides and labs)
 * `Sheffield Parallel Computing with GPUs taught module (slides, labs, lecture recordings) <https://paulrichmond.shef.ac.uk/teaching/COM4521/>`_ 
+* The `Power AI User Group Slack workspace <https://www.poweraiug.org/join/>`_ is very helpful for all sorts of questions about Power AI.
 
 
 
