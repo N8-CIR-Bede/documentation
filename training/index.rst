@@ -3,6 +3,8 @@
 Useful Training Material
 ========================
 
+Information on support available for Bede Users can be found `on this website <https://n8cir.org.uk/supporting-research/facilities/bede/rse-support-bede/>`_ .
+
 The following list is a useful catalogue of training material.
 
 A list of useful training material is also available on the gpuhackathons site:
