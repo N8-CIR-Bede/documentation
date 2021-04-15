@@ -69,7 +69,8 @@ html_theme_options = {
         ("Software", "software/index"),
         ("Usage", "usage/index"),
         ("Profiling", "profiling/index"),
-        ("Training Material", "training/index"),
+        ("Training", "training/index"),
+        ("User Group", "bug/index"),
     ],
 
     # Render the next and previous page links in navbar. (Default: true)
