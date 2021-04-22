@@ -22,5 +22,5 @@ The Bede User Group meets once per term. Below is a list of issues raised at pre
      - Advise given in meeting re HECBioSim installation, further followed up per email. Documentation will be extended.
    * - 
      - Test queues for faster turnaround of test multi-node jobs needed. Multi-node jobs take a long time in the queue, makes development hard.
-     - Recommended to use inferences nodes, which are currently idle.
+     - Recommended to use inference nodes, which are currently idle.
         
