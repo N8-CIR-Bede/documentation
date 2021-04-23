@@ -365,7 +365,7 @@ If a single node with 4 GPUs and 512GB RAM isn’t enough, the Distributed
 Deep Learning feature of PowerAI should allow you to write code that can
 take advantage of multiple nodes.
 
-Using Tensorflow, wmlre and ddlrun to do the resnet50 benchmark on multiple nodes [Possibly out of date]
+WMLCE resnet50 benchmark 
 --------------------------------------------------------------------------------------------------------
 
 .. toctree::

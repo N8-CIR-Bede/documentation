@@ -1,6 +1,6 @@
-********************************************************************
-Watson Machine Learning Community Environment resnet50 benchmark
-********************************************************************
+************************************************************
+Watson Machine Learning Community Edition resnet50 benchmark
+************************************************************
 
 
 This Bede specific README file is based upon options laid out in the README.MD file in the WMLCE
