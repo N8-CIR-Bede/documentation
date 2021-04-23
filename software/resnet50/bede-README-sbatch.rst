@@ -33,7 +33,7 @@ It is easy to define a single GPU run based on the above set of parameters (basi
 remove the ddlrun command at the front and specify the correct paths). The associated run
 takes about 16 hours to complete.
 
-The related sbatch script (sbatch_renet50base.sh) is configured to use 4 GPUs on one node.
+The related sbatch script ( `sbatch_resnet50base.sh <../../../../software/resnet50/sbatch_resnet50base.sh>`_ ) is configured to use 4 GPUs on one node.
 Changing the script to use 4 nodes, 16 GPUs, requires changing one line.
 
 
