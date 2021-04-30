@@ -370,3 +370,8 @@ Cryo-EM Software Environment
 
 Documentation on the the Cryo-EM Software Environment for Life Sciences is available :download:`here <Cryo-EM_Bede.pdf>`. Note that this document is mainly based on the installation on `Satori <https://mit-satori.github.io>`_ and might have some inconsistencies with the Bede installation.
 
+The modules can be loaded using
+
+::
+
+   module load ibm-collaboration
