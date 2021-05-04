@@ -374,7 +374,6 @@ To use the modules, execute
 
 ::
 
-   module load ibm-collaboration
    conda activate /projects/bddir04/ibm-lfsapp/CryoEM
    
 with a working conda installation.   
