@@ -37,6 +37,23 @@ Most of the computational power of the system is accessed through the
 batch scheduler, and so demanding applications should be submitted to it
 (see “Running Jobs”).
 
+Acknowledging Bede
+------------------
+
+All work that makes use of the Bede should properly acknowledge the facility
+wherever the work is presented.
+
+We provide the following acknowledgement text, and strongly encourage its use:
+
+*"This work made use of the facilities of the N8 Centre of Excellence in
+Computationally Intensive Research (N8 CIR) provided and funded by the N8
+research partnership and EPSRC (Grant No. EP/T022167/1). The Centre is
+co-ordinated by the Universities of Durham, Manchester and York."*
+
+Acknowledgement of Bede provides data that can be used to assess the facility's
+success and influences future funding decisions, so please ensure that you are
+acknowledging where appropriate.
+
 File Storage
 ------------
 
