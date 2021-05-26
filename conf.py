@@ -76,6 +76,7 @@ html_theme_options = {
         ("Profiling", "profiling/index"),
         ("Training", "training/index"),
         ("User Group", "bug/index"),
+        ("FAQ", "faq/index"),
     ],
 
     # Render the next and previous page links in navbar. (Default: true)
