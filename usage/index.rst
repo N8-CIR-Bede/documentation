@@ -259,12 +259,6 @@ requested:
   * - gpu
     - 01:00:00
     - 2-00:00:00
-  * - login
-    - 01:00:00
-    - 2-00:00:00
-  * - vis
-    - 41-15:00:00
-    - UNLIMITED
 
 Where, for example, `2-00:00:00` means 'two days, zero hours, zero minutes,
 and zero seconds'. These job time limits affect what will and won't be accepted
