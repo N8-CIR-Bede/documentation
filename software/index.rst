@@ -364,7 +364,7 @@ with this feature using an interactive copy of Python and the GPUs on
 the login node. Demanding work should be packaged into a job and
 launched with the ``python`` command.
 
-If a single node with 4 GPUs and 512GB RAM isn’t enough, the Distributed
+If a single node with 4 GPUs and 512GB RAM isn't enough, the Distributed
 Deep Learning feature of PowerAI should allow you to write code that can
 take advantage of multiple nodes.
 
@@ -391,3 +391,13 @@ Cryo-EM Software Environment
 ----------------------------
 
 Documentation on the the Cryo-EM Software Environment for Life Sciences is available :download:`here <Cryo-EM_Bede.pdf>`. Note that this document is mainly based on the installation on `Satori <https://mit-satori.github.io>`_ and might have some inconsistencies with the Bede installation.
+
+=======
+
+To use the modules, execute
+
+::
+
+   conda activate /projects/bddir04/ibm-lfsapp/CryoEM
+   
+with a working conda installation.   
