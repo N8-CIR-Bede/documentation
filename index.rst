@@ -21,3 +21,4 @@ Site Contents
    software/index
    profiling/index
    training/index
+   bug/index

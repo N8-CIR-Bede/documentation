@@ -288,8 +288,11 @@ enabled through the PnetCDF and HDF5 libraries.
 Use of NetCDF's parallel functionality can use HDF5, and so is subject
 to its known issues on Bede (see above).
 
+Python
+------
+
 PyTorch Quickstart
-------------------
+~~~~~~~~~~~~~~~~~~
 The following should get you set up with a working conda environment (replacing <project> with your project code):
 
 ::
@@ -319,8 +322,8 @@ The following should get you set up with a working conda environment (replacing 
 This has some limitations such as not supporting large model support. If you require this you can try the instructions below, these provide an older version of PyTorch however.
 
 
-PyTorch and TensorFlow: IBM PowerAI and Watson Machine Learning Community Edition (wmlce) [Possibly Out of Date]
-----------------------------------------------------------------------------------------------------------------
+PyTorch and TensorFlow: IBM PowerAI and wmlce [Possibly Out of Date]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 IBM have done a lot of work to port common Machine Learning tools to the
 POWER9 system, and to take advantage of the GPUs abililty to directly
@@ -365,8 +368,10 @@ If a single node with 4 GPUs and 512GB RAM isn’t enough, the Distributed
 Deep Learning feature of PowerAI should allow you to write code that can
 take advantage of multiple nodes.
 
+
 WMLCE resnet50 benchmark 
---------------------------------------------------------------------------------------------------------
+************************
+
 
 .. toctree::
    :maxdepth: -1
@@ -381,3 +386,8 @@ Initial investigations with CUDA (under development)
 
    wanderings/wanderings-in-CUDALand
    wanderings/Estimating-pi-in-CUDALand
+
+Cryo-EM Software Environment
+----------------------------
+
+Documentation on the the Cryo-EM Software Environment for Life Sciences is available :download:`here <Cryo-EM_Bede.pdf>`. Note that this document is mainly based on the installation on `Satori <https://mit-satori.github.io>`_ and might have some inconsistencies with the Bede installation.
