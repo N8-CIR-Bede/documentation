@@ -369,8 +369,8 @@ Deep Learning feature of PowerAI should allow you to write code that can
 take advantage of multiple nodes.
 
 
-WMLCE resnet50 benchmark 
-************************
+WMLCE resnet50 benchmark [Possibly out of date]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 .. toctree::
