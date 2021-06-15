@@ -67,7 +67,7 @@ mathjax_path='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
 html_theme = 'bootstrap'
 html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 html_theme_options = {
-    'navbar_title': "Documentation",
+    'navbar_title': " ",
     'navbar_site_name': "Contents",
     'navbar_links': [
         ("Hardware", "hardware/index"),
@@ -76,6 +76,7 @@ html_theme_options = {
         ("Profiling", "profiling/index"),
         ("Training", "training/index"),
         ("User Group", "bug/index"),
+        ("FAQ", "faq/index"),
     ],
 
     # Render the next and previous page links in navbar. (Default: true)
