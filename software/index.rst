@@ -322,7 +322,7 @@ The following should get you set up with a working conda environment (replacing 
 This has some limitations such as not supporting large model support. If you require this you can try the instructions below, these provide an older version of PyTorch however.
 
 TensorFlow Quickstart
-~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 The following should get you set up with a working conda environment (replacing <project> with your project code):
 
 
