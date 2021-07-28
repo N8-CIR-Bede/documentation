@@ -235,6 +235,20 @@ defaults to using the operating system provided ``gfortran``, instead.
    module load llvm/11.0.0
 
 
+NVIDIA HPC SDK
+~~~~~~~~~~~~~~
+
+The `NVIDIA HPC SDK <https://developer.nvidia.com/hpc-sdk>`__, otherwise referred to as `nvhpc`, is a suite of compilers, libraries and tools for HPC.
+It provides C, C++ and Fortran compilers, which include features enabling GPU acceleration through standard C++ and Fortran, OpenACC directives and CUDA.
+
+It is provided for use on the system by the ``nvhpc`` module(s), such as ``nvhpc/20.9``, and provides the ``nvc``, ``nvc++`` and ``nvfortran`` compilers.   
+
+For further information please see the `NVIDIA HPC SDK Documentation Archive <https://docs.nvidia.com/hpc-sdk/archive/>`__.
+
+::
+
+   module load nvhpc/20.9
+
 BLAS/LAPACK
 -----------
 
