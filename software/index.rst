@@ -246,6 +246,8 @@ It provides C, C++ and Fortran compilers, which include features enabling GPU ac
 
 It is provided for use on the system by the ``nvhpc`` module(s), such as ``nvhpc/20.9``, and provides the ``nvc``, ``nvc++`` and ``nvfortran`` compilers.   
 
+This module also provides the `NCCL <https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/index.html>`__ and `NVSHMEM <https://docs.nvidia.com/hpc-sdk/nvshmem/index.html>`__ libraries, as well as the suite of math libraries typically included with the CUDA Toolkit, such as ``cublas``, ``cufft`` and ``nvblas``.
+
 ::
 
    module load nvhpc/20.9
