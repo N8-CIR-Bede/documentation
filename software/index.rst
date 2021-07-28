@@ -249,6 +249,21 @@ For further information please see the `NVIDIA HPC SDK Documentation Archive <ht
 
    module load nvhpc/20.9
 
+
+CUDA / NVCC
+~~~~~~~~~~~
+
+`CUDA <https://developer.nvidia.com/cuda-zone>`__ and the ``nvcc`` CUDA/C++ compiler are provided for use on the system by the `cuda` modules.
+
+Unlike other compiler modules, the cuda modules do not set ``CC`` or ``CXX`` environment variables. This is because ``nvcc`` can be used to compile device CUDA code in conjunction with a range of host compilers, such as GCC or LLVM clang.
+
+For further information please see the `CUDA Toolkit Archive <https://developer.nvidia.com/cuda-toolkit-archive>`__.
+
+::
+
+   module load cuda/10.2.89
+   module load cuda/10.1.243
+   
 BLAS/LAPACK
 -----------
 
