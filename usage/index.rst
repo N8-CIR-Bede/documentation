@@ -1,5 +1,5 @@
-Usage
-=====
+Using Bede
+==========
 
 Bede is running Red Hat Enterprise Linux 7 and access to its
 computational resources is mediated by the Slurm batch scheduler.

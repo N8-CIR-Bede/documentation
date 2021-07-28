@@ -70,9 +70,9 @@ html_theme_options = {
     'navbar_title': " ",
     'navbar_site_name': "Contents",
     'navbar_links': [
+        ("Usage", "usage/index"),
         ("Hardware", "hardware/index"),
         ("Software", "software/index"),
-        ("Usage", "usage/index"),
         ("Profiling", "profiling/index"),
         ("Training", "training/index"),
         ("User Group", "bug/index"),
