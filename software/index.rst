@@ -379,6 +379,18 @@ WMLCE resnet50 benchmark [Possibly out of date]
 
    resnet50/bede-README-sbatch
 
+R
+-
+
+`R <https://www.r-project.org/>`__ is a free software environment for statistical computing and graphics.
+It is provided on the system by the `r` module(s), which make ``R`` and ``Rscript`` available for use.
+
+::
+
+   module load r/4.0.3
+
+For more information, run ``man R``, ``man RScript`` or see the `R Manuals <https://cran.r-project.org/manuals.html>`__ online. 
+
 Initial investigations with CUDA (under development)
 ----------------------------------------------------
 
