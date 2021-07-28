@@ -192,7 +192,7 @@ environment is helpful, and can be done on request.
 Compilers
 ---------
 
-All compiler modules set the ``CC``, ``CXX``, ``FC``, ``F90`` environment variables to appropriate values. These are commonly used by tools such as cmake and autoconf, so that by loading a compiler module its compilers are used by default.
+Most compiler modules set the ``CC``, ``CXX``, ``FC``, ``F90`` environment variables to appropriate values. These are commonly used by tools such as CMake and autoconf, so that by loading a compiler module its compilers are used by default.
 
 This can also be done in your own build scripts and make files. e.g.
 
@@ -229,6 +229,10 @@ Note that, as from LLVM 11.0.0, it provides a Fortran compiler called
 experimentation, it is still immature and ultimately relies on
 ``gfortran`` for its code generation. The ``lvm/11.0.0`` module therefore
 defaults to using the operating system provided ``gfortran``, instead.
+
+::
+
+   module load llvm/11.0.0
 
 
 BLAS/LAPACK
