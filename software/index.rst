@@ -217,6 +217,8 @@ offload support:
 
    module load gcc/10.2.0
 
+For further information please see the `GCC online documentation <https://gcc.gnu.org/onlinedocs/>`__.
+
 LLVM
 ~~~~
 
@@ -234,6 +236,7 @@ defaults to using the operating system provided ``gfortran``, instead.
 
    module load llvm/11.0.0
 
+For further information please see the `LLVM Releases <https://releases.llvm.org/>`__ for versioned documentation.
 
 NVIDIA HPC SDK
 ~~~~~~~~~~~~~~
@@ -243,12 +246,11 @@ It provides C, C++ and Fortran compilers, which include features enabling GPU ac
 
 It is provided for use on the system by the ``nvhpc`` module(s), such as ``nvhpc/20.9``, and provides the ``nvc``, ``nvc++`` and ``nvfortran`` compilers.   
 
-For further information please see the `NVIDIA HPC SDK Documentation Archive <https://docs.nvidia.com/hpc-sdk/archive/>`__.
-
 ::
 
    module load nvhpc/20.9
 
+For further information please see the `NVIDIA HPC SDK Documentation Archive <https://docs.nvidia.com/hpc-sdk/archive/>`__.
 
 CUDA / NVCC
 ~~~~~~~~~~~
@@ -257,12 +259,12 @@ CUDA / NVCC
 
 Unlike other compiler modules, the cuda modules do not set ``CC`` or ``CXX`` environment variables. This is because ``nvcc`` can be used to compile device CUDA code in conjunction with a range of host compilers, such as GCC or LLVM clang.
 
-For further information please see the `CUDA Toolkit Archive <https://developer.nvidia.com/cuda-toolkit-archive>`__.
-
 ::
 
    module load cuda/10.2.89
    module load cuda/10.1.243
+
+For further information please see the `CUDA Toolkit Archive <https://developer.nvidia.com/cuda-toolkit-archive>`__.
    
 BLAS/LAPACK
 -----------
