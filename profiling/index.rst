@@ -1,40 +1,46 @@
-Profiling
-=========
+:tocdepth: 3
+
+Profiling Tools
+===============
 
 NVIDIA Profiling Tools
 ----------------------
 
-HPC systems typically favour batch jobs rather than interactive jobs for improved utilsation of resources.
-The Nvidia profiling tools can all be used to capture all required via the command line, which can then be interrogated using the GUI tools locally.
+Nvidia provide a suite of profiling tools which can be used to profile applications running on the Volta and Turing architecture Nvidia GPUs within Bede. 
 
-Nsight Systems and Nsight Compute are the modern Nvidia profiling tools, introduced with CUDA 10.0 supporting Pascal+ and Volta+ respectivley.
+`Nsight Systems <https://developer.nvidia.com/nsight-systems>`__ and `Nsight Compute <https://developer.nvidia.com/nsight-compute>`__ are the modern profiling tools introduced with CUDA 10.0, and available for use on Bede.
+The `NVIDIA Visual Profiler <https://developer.nvidia.com/nvidia-visual-profiler>`_ is the legacy Nvidia profiling tool. It is recommended to use the newer tools where possible.
 
-The NVIDIA Visual Profiler is the legacy profiling tool, with full support for GPUs up to pascal (SM < 75), partial support for Turing (SM 75 and no support for Ampere (SM80).
+Preparing your Application
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To improve the effectiveness of the Nvidia profiling tools, several steps can be taken.
+
+Applications compiled with ``nvcc`` should pass ``-lineinfo`` (or ``--generate-line-info``) to embed line-level profile information in the generated binary files (for Nsight Compute).
+
+Applications compiled with the `NVIDIA HPC SDK
+<https://developer.nvidia.com/hpc-sdk>`__ family of compilers should use ``-gpu=lineinfo`` to embed line-level information for use in profiling.
+
+The :ref:` NVIDIA Tools Extension` can be used to mark regions of code. This can improve usability of the timeline view, or can be used to allow more specific profiling of applications.
 
 
-Compiler settings for profiling
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Nsight Systems
+~~~~~~~~~~~~~~
 
-Applications compiled with ``nvcc`` should pass ``-lineinfo`` (or ``--generate-line-info``) to include source-level profile information.
+Nsight Systems is a system-wide performance analysis tool designed to visualize an application’s algorithms and identify the largest opportunities to optimize.
+It supports Pascal (SM 60) and newer GPUs.
 
-Additionally, `NVIDIA Tools Extension SDK <https://docs.nvidia.com/gameworks/index.html#gameworkslibrary/nvtx/nvidia_tools_extension_library_nvtx.htm>`_ can be used to enhance these profiling tools.
+A common use-case for Nsight Systems is to generate application timelines via the command line, which can later be visualised on a local computer using the GUI component.
 
-
-Nsight Systems and Nsight Compute
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. note::
-    * Nsight Systems supports Pascal and above (SM 60+)
-    * Nsight Compute supports Volta and aboce (SM 70+)
-
-Generate an application timeline with Nsight Systems CLI (``nsys``):
+To generate an application timeline with Nsight Systems CLI (``nsys``):
 
 .. code-block:: bash
 
-   nsys profile -o timeline ./myapplication
+   nsys profile -o timeline ./myapplication <arguments>
 
-Use the ``--trace`` argument to specify which APIs should be traced.
-See the `nsys profiling command switch options <https://docs.nvidia.com/nsight-systems/profiling/index.html#cli-profile-command-switch-options>`_ for further information.
+Nsight systems can trace mulitple APIs, such as CUDA and OpenACC. 
+The ``--trace`` argument to specify which APIs should be traced.
+See the `nsys profiling command switch options <https://docs.nvidia.com/nsight-systems/profiling/index.html#cli-profile-command-switch-options>`__ for further information.
 
 .. code-block:: bash
 
@@ -42,116 +48,133 @@ See the `nsys profiling command switch options <https://docs.nvidia.com/nsight-s
 
 
 .. note::
-   On Bede (Power9) the ``--trace`` option ``osrt`` can lead to ``SIGILL`` errors. As this is a default, consider passing ``--trace cuda,nvtx`` as an alternative minimum.
+   On Power9 systems such as Bede the ``--trace`` option ``osrt`` can lead to ``SIGILL`` errors with some versions of ``nsys``. As this is part of the default set default, consider passing ``--trace cuda,nvtx`` instead.
 
 
-Once this file has been downloaded to your local machine, it can be opened in ``nsys-ui``/``nsight-sys`` via ``File > Open > timeline.qdrep``:
+Once this file has been downloaded to your local machine, it can be opened in ``nsys-ui``/``nsight-sys`` via ``File > Open > timeline.qdrep``
 
 
-Fine-grained kernel profile information can be captured using remote Nsight Compute CLI (``ncu``/``nv-nsight-cu-cli``):
+Cluster Modules
+^^^^^^^^^^^^^^^
+
+``nsys`` is available through the following Bede modules:
+
+* ``nsight-systems/2020.3.1``
+* ``nvhpc/20.9``
+
+More Information
+^^^^^^^^^^^^^^^^
+
+* `Nsight Systems <https://docs.nvidia.com/nsight-systems/>`_
+* `OLCF: Nsight Systems Tutorial <https://vimeo.com/398838139>`_
+  
+  * Use the following `Nsight report files <https://drive.google.com/open?id=133a90SIupysHfbO3mlyfXfaEivCyV1EP>`_ to follow the tutorial.
+
+Nsight Compute
+~~~~~~~~~~~~~~
+
+Nsight Compute is a kernel profiler for CUDA applications, which can also be used for API debugging.
+It supports Volta architecture GPUs and newer (SM 70+).
+
+A common use-case for using Nsight Compute on HPC systems is to capture all available profiling metrics for a run of a target application, storing the information to a file on disk. This file can then be interrogated on a local machine using the Nsight Compute GUI.
+
+For example, the following command captures the full set of metrics for an application using using the command line tool `ncu`.
 
 .. code-block:: bash
 
    ncu -o profile --set full ./myapplication <arguments>
 
-.. note::
-   ``ncu`` is available since CUDA v11.0.194, and Nsight Compute v2020.1.1. For older versions of CUDA use ``nv-nsight-cu-cli`` (if Nsight Compute is installed).
 
-
-This will capture the full set of available metrics, to populate all sections of the Nsight Compute GUI, however this can lead to very long run times to capture all the information.
-
-For long running applications, it may be favourable to capture a smaller set of metrics using the ``--set``, ``--section`` and ``--metrics`` flags as described in the `Nsight Comptue Profile Command Line Options table <https://docs.nvidia.com/nsight-compute/NsightComputeCli/index.html#command-line-options-profile>`_.
+Capturing the full set of metrics can lead to very long run times, as each kernel is replayed many times.
+Rather than capturing the full set of metrics, a subset may be captured using the ``--set``, ``--section`` and ``--metrics`` flags as described in the `Nsight Comptue Profile Command Line Options table <https://docs.nvidia.com/nsight-compute/NsightComputeCli/index.html#command-line-options-profile>`_.
 
 The scope of the section being profiled can also be reduced using `NVTX Filtering <https://docs.nvidia.com/nsight-compute/NsightComputeCli/index.html#nvtx-filtering>`_; or by targetting specific kernels using ``--kernel-id``, ``--kernel-regex`` and/or ``--launch-skip`` see the `CLI docs for more information <https://docs.nvidia.com/nsight-compute/NsightComputeCli/index.html#command-line-options-profile>`_).
 
 
-Once the ``.ncu-rep`` file has been downloaded locally, it can be imported into local Nsight CUDA GUI ``ncu-ui``/``nv-nsight-cu`` via:
-
-.. code-block:: bash
-
-   ncu-ui profile.ncu-rep
-
-
-**Or** ``File > Open > profile.ncu-rep``, **or** Drag ``profile.ncu-rep`` into the ``nv-nsight-cu`` window.
+Once the ``.ncu-rep`` file has been downloaded locally, it can be imported into local Nsight CUDA GUI ``ncu-ui`` via ``ncu-ui profile.ncu-rep`` **or**  ``File > Open > profile.ncu-rep`` in the GUI.
 
 .. note::
-   Older versions of Nsight Compute (CUDA < v11.0.194) used ``nv-nsight-cu`` rather than ``ncu-ui``.
+   Older versions of Nsight Compute (CUDA < v11.0.194) provided ``nv-nsight-cu-cli`` ``nv-nsight-cu`` rather than ``ncu`` and ``ncu-ui`` respectively.
 
-.. note::
-   Older versions of Nsight Compute generated ``.nsight-cuprof-report`` files, instead of ``.ncu-rep`` files.
-
-
-More info
-^^^^^^^^^
-
-+ `Nsight Systems <https://docs.nvidia.com/nsight-systems/>`_
-+ `Nsight Compute <https://docs.nvidia.com/nsight-compute/>`_
-+ `OLCF: Nsight Systems Tutorial <https://vimeo.com/398838139>`_
-+ `OLCF: Nsight Compute Tutorial <https://vimeo.com/398929189>`_
-
-Use the following `Nsight report files <https://drive.google.com/open?id=133a90SIupysHfbO3mlyfXfaEivCyV1EP>`_ to follow the tutorial.
+   The generated report file used the ``.nsight-cuprof-report`` extension rather than ``.ncu-rep``.
 
 
 Cluster Modules
 ^^^^^^^^^^^^^^^
-* ``module load nvidia/20.5``
+
+``ncu`` is available through the following Bede modules:
+
+* ``nsight-compute/2020.2.1``
+* ``nvhpc/20.9``
 
 
-Visual Profiler (legacy)
-~~~~~~~~~~~~~~~~~~~~~~~~
-.. note::
-   * Nvprof does not support CUDA kernel profiling for Turing GPUs (SM75)
-   * Nvprof does not support Ampere GPUs (SM80+)
+More Information
+^^^^^^^^^^^^^^^^
+
+* `Nsight Compute <https://docs.nvidia.com/nsight-compute/>`_
+* `OLCF: Nsight Compute Tutorial <https://vimeo.com/398929189>`_
+
+  * Use the following `Nsight report files <https://drive.google.com/open?id=133a90SIupysHfbO3mlyfXfaEivCyV1EP>`_ to follow the tutorial.
+
+
+Nvidia Visual Profiler (legacy)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Visual Profiler is NVIDIA's legacy profiler, which fills some of the roles of bother Nsight Systems and Nsight Compute, but is no longer actively developed.
+It is still provided to enable profiling of older GPU architectures not supported by the newer tools.
+All features are supported by the Volta architecture GPUs in Bede, but kernel profiling is **not** supported for the Turing architecture GPUs.
+It is recommended to use the newer Nsight Systems and Nsight Compute tools.
+
 
 Application timelines can be generated using ``nvprof``:
 
 .. code-block:: bash
 
-   nvprof -o timeline.nvprof ./myapplication
+   nvprof -o timeline.nvprof ./myapplication <arguments>
 
 
 Fine-grained kernel profile information can be genereted remotely using ``nvprof``:
 
 .. code-block:: bash
 
-   nvprof --analysis-metrics -o analysis.nvprof ./myapplication
+   nvprof --analysis-metrics -o analysis.nvprof ./myapplication <arguments>
 
-This captuires the full set of metrics required to complete the guided analysis, and may take a (very long) while.
+This captures the full set of metrics required to complete the guided analysis, and may take a (very long) while.
 Large applications request fewer metrics (via ``--metrics``), fewer events (via ``--events``) or target specific kernels (via ``--kernels``). See the `nvprof command line options <https://docs.nvidia.com/cuda/profiler-users-guide/index.html>`_ for further information.
 
 Once these files are downloaded to your local machine, Import them into the Visual Profiler GUI (``nvvp``)
 
-+ ``File > Import``
-+ Select ``Nvprof``
-+ Select ``Single process``
-+ Select ``timeline.nvvp`` for ``Timeline data file``
-+ Add ``analysis.nvprof`` to ``Event/Metric data files``
+* ``File > Import``
+* Select ``Nvprof``
+* Select ``Single process``
+* Select ``timeline.nvvp`` for ``Timeline data file``
+* Add ``analysis.nvprof`` to ``Event/Metric data files``
 
+Cluster Modules
+^^^^^^^^^^^^^^^
+``nvprof`` is available through the following Bede modules:
+
+* ``cuda/10.1.243``
+* ``cuda/10.2.89``
+* ``nvhpc/20.9``
 
 Documentation
 ^^^^^^^^^^^^^
 
 + `Nvprof Documentation <https://docs.nvidia.com/cuda/profiler-users-guide/index.html>`_
 
-Cluster Modules
-^^^^^^^^^^^^^^^
-   * ``module load cuda/10.1``
-   * ``module load cuda/10.2``
-   * ``module load nvidia/20.5``
 
 NVIDIA Tools Extension
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
-NVIDIA Tools Extension (NVTX) is a C-based API for annotating events and ranges in applications.
+`NVIDIA Tools Extension (NVTX) <https://docs.nvidia.com/gameworks/index.html#gameworkslibrary/nvtx/nvidia_tools_extension_library_nvtx.htm>`__ is a C-based API for annotating events and ranges in applications.
 These markers and ranges can be used to increase the usability of the NVIDIA profiling tools.
 
 
-* For CUDA ``>= 10.0``, NVTX version 3 is distributed as a header only library.
+* For CUDA ``>= 10.0``, NVTX version ``3`` is distributed as a header only library.
 * For CUDA ``<  10.0``, NVTX is distributed as a shared library.
 
 The location of the headers and shared libraries may vary between Operating Systems, and CUDA installation (i.e. CUDA toolkit, PGI compilers or HPC SDK).
-
-
 
 The NVIDIA Developer blog contains several posts on using NVTX:
 
@@ -160,13 +183,15 @@ The NVIDIA Developer blog contains several posts on using NVTX:
 * `Customize CUDA Fortran Profiling with NVTX (Massimiliano Fatica) <https://developer.nvidia.com/blog/customize-cuda-fortran-profiling-nvtx/>`_
 
 
+CMake support
+^^^^^^^^^^^^^
 
-Custom CMake ``find_package`` modules can be written to enable use within Cmake e.g. `ptheywood/cuda-cmake-NVTX on GitHub <https://github.com/ptheywood/cuda-cmake-nvtx>`_
-
+From CMake 3.17, the ```FindCUDAToolkit <https://cmake.org/cmake/help/git-stage/module/FindCUDAToolkit.html>`_`` can be used to find the tools extension and select the appropriate include directory.
+If support for older CMake versions is required custom ``find_package`` modules can be used, e.g. `ptheywood/cuda-cmake-NVTX on GitHub <https://github.com/ptheywood/cuda-cmake-nvtx>`_.
 
 
 Documentation
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
-+ `NVTX Documentation <https://docs.nvidia.com/gameworks/index.html#gameworkslibrary/nvtx/nvidia_tools_extension_library_nvtx.htm>`_
-+ `NVTX 3 on GitHub <https://github.com/NVIDIA/NVTX>`_
+* `NVTX Documentation <https://docs.nvidia.com/gameworks/index.html#gameworkslibrary/nvtx/nvidia_tools_extension_library_nvtx.htm>`_
+* `NVTX 3 on GitHub <https://github.com/NVIDIA/NVTX>`_
