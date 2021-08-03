@@ -23,3 +23,4 @@ Site Contents
    training/index
    faq/index
    bug/index
+   glossary/index
