@@ -16,8 +16,8 @@ Site Contents
 .. toctree::
    :maxdepth: 2
 
-   hardware/index
    usage/index
+   hardware/index
    software/index
    profiling/index
    training/index
