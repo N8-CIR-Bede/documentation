@@ -192,7 +192,7 @@ environment is helpful, and can be done on request.
 Compilers
 ---------
 
-All compiler modules set the ``CC``, ``CXX``, ``FC``, ``F90`` environment variables to appropriate values. These are commonly used by tools such as cmake and autoconf, so that by loading a compiler module its compilers are used by default.
+Most compiler modules set the ``CC``, ``CXX``, ``FC``, ``F90`` environment variables to appropriate values. These are commonly used by tools such as CMake and autoconf, so that by loading a compiler module its compilers are used by default.
 
 This can also be done in your own build scripts and make files. e.g.
 
@@ -217,6 +217,8 @@ offload support:
 
    module load gcc/10.2.0
 
+For further information please see the `GCC online documentation <https://gcc.gnu.org/onlinedocs/>`__.
+
 LLVM
 ~~~~
 
@@ -230,7 +232,42 @@ experimentation, it is still immature and ultimately relies on
 ``gfortran`` for its code generation. The ``lvm/11.0.0`` module therefore
 defaults to using the operating system provided ``gfortran``, instead.
 
+::
 
+   module load llvm/11.0.0
+
+For further information please see the `LLVM Releases <https://releases.llvm.org/>`__ for versioned documentation.
+
+NVIDIA HPC SDK
+~~~~~~~~~~~~~~
+
+The `NVIDIA HPC SDK <https://developer.nvidia.com/hpc-sdk>`__, otherwise referred to as `nvhpc`, is a suite of compilers, libraries and tools for HPC.
+It provides C, C++ and Fortran compilers, which include features enabling GPU acceleration through standard C++ and Fortran, OpenACC directives and CUDA.
+
+It is provided for use on the system by the ``nvhpc`` module(s), such as ``nvhpc/20.9``, and provides the ``nvc``, ``nvc++`` and ``nvfortran`` compilers.   
+
+This module also provides the `NCCL <https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/index.html>`__ and `NVSHMEM <https://docs.nvidia.com/hpc-sdk/nvshmem/index.html>`__ libraries, as well as the suite of math libraries typically included with the CUDA Toolkit, such as ``cublas``, ``cufft`` and ``nvblas``.
+
+::
+
+   module load nvhpc/20.9
+
+For further information please see the `NVIDIA HPC SDK Documentation Archive <https://docs.nvidia.com/hpc-sdk/archive/>`__.
+
+CUDA / NVCC
+~~~~~~~~~~~
+
+`CUDA <https://developer.nvidia.com/cuda-zone>`__ and the ``nvcc`` CUDA/C++ compiler are provided for use on the system by the `cuda` modules.
+
+Unlike other compiler modules, the cuda modules do not set ``CC`` or ``CXX`` environment variables. This is because ``nvcc`` can be used to compile device CUDA code in conjunction with a range of host compilers, such as GCC or LLVM clang.
+
+::
+
+   module load cuda/10.2.89
+   module load cuda/10.1.243
+
+For further information please see the `CUDA Toolkit Archive <https://developer.nvidia.com/cuda-toolkit-archive>`__.
+   
 BLAS/LAPACK
 -----------
 
@@ -407,6 +444,18 @@ WMLCE resnet50 benchmark [Possibly out of date]
    :maxdepth: -1
 
    resnet50/bede-README-sbatch
+
+R
+-
+
+`R <https://www.r-project.org/>`__ is a free software environment for statistical computing and graphics.
+It is provided on the system by the `r` module(s), which make ``R`` and ``Rscript`` available for use.
+
+::
+
+   module load r/4.0.3
+
+For more information, run ``man R``, ``man RScript`` or see the `R Manuals <https://cran.r-project.org/manuals.html>`__ online. 
 
 Initial investigations with CUDA (under development)
 ----------------------------------------------------

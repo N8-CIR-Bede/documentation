@@ -14,10 +14,10 @@ Site Contents
 =============
 
 .. toctree::
-   :maxdepth: -1
+   :maxdepth: 2
 
-   hardware/index
    usage/index
+   hardware/index
    software/index
    profiling/index
    training/index

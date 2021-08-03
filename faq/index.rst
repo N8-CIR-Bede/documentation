@@ -48,3 +48,8 @@ to recompute, should be store in the :code:`/projects/<project>` directory.
 
 .. note::
   Backups are **NOT** currently implemented on the :code:`/projects` filesystem!
+
+Is MATLAB available on Bede?
+----------------------------
+
+Unfortunately MATLAB is not available on Bede. MATLAB is not currently supported on IBM systems with a Power architecture.

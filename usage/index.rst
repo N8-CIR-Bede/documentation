@@ -1,5 +1,5 @@
-Usage
-=====
+Using Bede
+==========
 
 Bede is running Red Hat Enterprise Linux 7 and access to its
 computational resources is mediated by the Slurm batch scheduler.
@@ -239,3 +239,28 @@ GPUs in more than one node to perform calculations. Example job script:
    bede-ddlrun python $CONDA_PREFIX/ddl-tensorflow/examples/keras/mnist-tf-keras-adv.py
 
    echo "end of job"
+
+Maximum Job Runtime
+~~~~~~~~~~~~~~~~~~~
+
+Partitions on Bede have default job times, and maximum job times that can be
+requested:
+
+.. list-table:: 
+  :widths: 1 1 1
+  :header-rows: 1
+
+  * - Partition Name
+    - Default Job Time
+    - Maximum Job Time
+  * - infer
+    - 01:00:00
+    - 2-00:00:00
+  * - gpu
+    - 01:00:00
+    - 2-00:00:00
+
+Where, for example, `2-00:00:00` means 'two days, zero hours, zero minutes,
+and zero seconds'. These job time limits affect what will and won't be accepted
+in the `--time` field of your job script: `--time` values above the partition
+maximum will result in your job submission being rejected.
