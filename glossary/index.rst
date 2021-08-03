@@ -1,3 +1,6 @@
+Glossary
+--------
+
 .. glossary::
 
     Central Processing Unit (CPU)
