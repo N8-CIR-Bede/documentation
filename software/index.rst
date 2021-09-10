@@ -4,14 +4,14 @@ Software
 Environments
 ------------
 
-The default software environment on Bede is called “builder”. This uses
+The default software environment on Bede is called "builder". This uses
 the modules system normally used on HPC systems, but provides a system
 of intelligent modules. To see a list of what is available, executing
 the command ``module avail``.
 
 In this scheme, modules providing access to compilers and libraries
 examine other modules that are also loaded and make the most appropriate
-copy (or “flavour”) of the software available. This minimises the
+copy (or "flavour") of the software available. This minimises the
 problem of knowing what modules to choose whilst providing access to all
 the combinations of how a library can be built.
 
@@ -259,6 +259,24 @@ We commit to the following convention for all MPIs we provide as modules:
 - The wrapper to compile C programs is called ``mpicc``
 - The wrapper to compile C++ programs is called ``mpicxx``
 - The wrapper to compile Fortran programs is called ``mpif90``
+
+NVIDIA Jacobi MPI example
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. toctree::
+   :maxdepth: -1
+
+   jacobi/jacobi-mpi.rst
+
+Shallow Water Fortran code with do concurrent and MPI
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. toctree::
+   :maxdepth: -1
+
+   shallow/shallow-ISO-MPI.rst
+
 
 
 HDF5
