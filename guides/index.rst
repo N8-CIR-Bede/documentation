@@ -15,4 +15,6 @@ If you notice any omissions, errors or have any suggested changes to the documen
     :glob:
 
     nvidia-profiling-tools.rst
+    jacobi/jacobi-mpi.rst
+    shallow/shallow-ISO-MPI.rst
     ./*
