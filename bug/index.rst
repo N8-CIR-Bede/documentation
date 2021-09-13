@@ -26,7 +26,7 @@ The Bede User Group meets once per term. Below is a list of issues raised at pre
    * - 13.9.2021
      - It is hard to get enough resources on Bede for large scaling jobs (sometimes a week waiting time).
      - Two options discussed: Preemptive scheduling (would make checkpointing crucial in codes to avoid data loss when jobs are cancelled) and resource reservation. The latter seems to be the best way forward - implementation (email address or webform, frequency of available slots etc.) is put on the agenda for the next         BSG meeting.
-    * -
-      - Per-default write permissions on folders of project members can lead to data loss and other issues.
-      - Different levels of permissions on different storage areas explained. Discussion about changing the default added to the agenda of next BSG meeting.
+   * -
+     - Per-default write permissions on folders of project members can lead to data loss and other issues.
+     - Different levels of permissions on different storage areas explained. Discussion about changing the default added to the agenda of next BSG meeting.
 
