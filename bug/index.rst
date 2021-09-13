@@ -29,5 +29,3 @@ The Bede User Group meets once per term. Below is a list of issues raised at pre
     * -
       - Per-default write permissions on folders of project members can lead to data loss and other issues.
       - Different levels of permissions on different storage areas explained. Discussion about changing the default added to the agenda of next BSG meeting.
-     
-        
