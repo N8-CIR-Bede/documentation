@@ -335,7 +335,7 @@ The following should get you set up with a working conda environment (replacing 
 ::
 
     export DIR=/nobackup/projects/<project>/$USER
-    # rm -rf ~/.conda .condarc $DIR/miniconda # Uncomment if you want to remove old env
+    # rm -rf ~/.conda ~/.condarc $DIR/miniconda # Uncomment if you want to remove old env
     mkdir $DIR
     pushd $DIR
 
