@@ -1,6 +1,9 @@
 Software
 ========
 
+.. include:: ../common/rhel8-status.rst
+
+
 Environments
 ------------
 
@@ -91,6 +94,8 @@ which are not currently recommended:
 
 In both cases, executing ``rm ~/.application_environment`` and login
 again will return you to the default software environment.
+
+.. _software-spack:
 
 Spack
 ~~~~~

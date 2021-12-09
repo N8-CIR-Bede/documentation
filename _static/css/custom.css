@@ -236,11 +236,25 @@ select:-webkit-autofill:focus {
   }
 }
 
+/* Tone down the alert warning background colour a little. Not trivial to get a separate title/body background colour with the bootstrap theme.*/
+.alert-warning {
+  background: #f4af25;
+  color: #2c3e50;
+}
+
+.alert-warning a, 
+.alert-warning a:hover, 
+.alert-warning a:focus, 
+.alert-warning code {
+    color: #9e0000;  /* A dark red which provides good contrast against the orange background) */
+}
+
+
 @media (max-width: 1160px) {
   .navbar-header {
       float: none;
   }
-  .navbar-left,.navbar-right {
+.navbar-left, .navbar-right {
       float: none !important;
       margin-right: 0;
   }
