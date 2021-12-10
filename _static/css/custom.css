@@ -126,19 +126,19 @@ code {
 }
 
 /* Previous and next links in sidebar are not inside a <ul> for some
-   reason. This lets us identify them but could be a bit flaky. */
-:not(ul) > li {
+   reason. */
+.bs-sidenav > li {
   list-style: none;
   display: inline-block;
   width: 49%;
   padding: 10px 10px;
 }
 
-:not(ul) > li a {
+.bs-sidenav > li a {
   display: block;
 }
 
-:not(ul) > li a[title^=Next] {
+.bs-sidenav > li a[title^=Next] {
   text-align: right;
 }
 
