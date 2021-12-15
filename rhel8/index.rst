@@ -4,8 +4,7 @@ RHEL8 Migration
 ===============
 
 Bede is in the process of an Operating System upgrade from Red Hat Enterprise Linux 7 (RHEL 7) to Red Hat Enterprise Linux 8 (RHEL 8).
-
-This upgrade will improve system security and enable the use of newer software versions, such as CUDA 11.
+This upgrade will enable the use of newer software versions, such as CUDA 11.
 
 However, it may impact your use of Bede:
 
