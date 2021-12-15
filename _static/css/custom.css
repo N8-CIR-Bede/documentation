@@ -126,19 +126,19 @@ code {
 }
 
 /* Previous and next links in sidebar are not inside a <ul> for some
-   reason. This lets us identify them but could be a bit flaky. */
-:not(ul) > li {
+   reason. */
+.bs-sidenav > li {
   list-style: none;
   display: inline-block;
   width: 49%;
   padding: 10px 10px;
 }
 
-:not(ul) > li a {
+.bs-sidenav > li a {
   display: block;
 }
 
-:not(ul) > li a[title^=Next] {
+.bs-sidenav > li a[title^=Next] {
   text-align: right;
 }
 
@@ -236,11 +236,25 @@ select:-webkit-autofill:focus {
   }
 }
 
+/* Tone down the alert warning background colour a little. Not trivial to get a separate title/body background colour with the bootstrap theme.*/
+.alert-warning {
+  background: #f4af25;
+  color: #2c3e50;
+}
+
+.alert-warning a, 
+.alert-warning a:hover, 
+.alert-warning a:focus, 
+.alert-warning code {
+    color: #9e0000;  /* A dark red which provides good contrast against the orange background) */
+}
+
+
 @media (max-width: 1160px) {
   .navbar-header {
       float: none;
   }
-  .navbar-left,.navbar-right {
+.navbar-left, .navbar-right {
       float: none !important;
       margin-right: 0;
   }

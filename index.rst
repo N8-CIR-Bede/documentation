@@ -10,6 +10,8 @@ Feel free to add items of concern to the Github issues section.
 
 Please note that the system is still under active development, and so some functionality may temporarily break.
 
+.. include:: common/rhel8-status.rst
+
 Site Contents
 =============
 
@@ -24,3 +26,4 @@ Site Contents
    faq/index
    bug/index
    glossary/index
+   rhel8/index
