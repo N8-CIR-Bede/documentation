@@ -1,7 +1,7 @@
 .. _RHEL8-migration:
 
-RHEL8 Migration
-===============
+RHEL 8 Migration
+================
 
 Bede is in the process of an Operating System upgrade from Red Hat Enterprise Linux 7 (RHEL 7) to Red Hat Enterprise Linux 8 (RHEL 8).
 This upgrade will enable the use of newer software versions, such as CUDA 11.
@@ -27,7 +27,8 @@ Two new commands have been added to Bede for the duration of the OS migration: `
 * ``login8`` will connect you to a RHEL 8 interactive session
 * ``login7`` will connect you to a RHEL 7 interactive session
 
-Jobs will run on the same RHEL version from which they were submit via ``sbatch``. 
+The RHEL version used to execute batch jobs will be the version in use at job submission time.
+I.e. Jobs submit from a login node using RHEL 8 will execute on RHEL 8 worker node(s). 
 
 User Testing
 ^^^^^^^^^^^^
@@ -48,11 +49,11 @@ and will likely need to recompile your codes for use on RHEL 8 (particularly MPI
 Login Node Migration
 ^^^^^^^^^^^^^^^^^^^^
 
-Once the period of time for users to opt-in to using RHEL 8 to ensure there are no issues for their workflows has ended, Bede's two login nodes will be migrated to RHEL8.
+Once the period of time for users to opt-in to using RHEL 8 to ensure there are no issues for their workflows has ended, Bede's two login nodes will be migrated to RHEL 8.
 
 From this time, when you connect to Bede you will immediately be connected to RHEL 8 sessions on the login nodes, and the ``login8`` command will no longer be required.
 
-If you have not yet migrated your workflows to RHEL8, the ``login7`` command can be used to connect to an interactive session on a RHEL 7 login node.
+The ``login7`` command will be usable to connect to an interactive session on a RHEL 7 login node for a limited period of time.
 
 Compute Node Migration
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -70,7 +71,7 @@ This will likely impact queue time for your jobs, and may prevent multi-node job
 Module Changes
 --------------
 
-Most existing modules from the RHEL7 installation are available on RHEL8, with newer versions of some modules (CUDA, NVHPC, IBM XL) also available.
+Most existing modules from the RHEL 7 installation are available on RHEL 8, with newer versions of some modules (CUDA, NVHPC, IBM XL) also available.
 
 There are however a few exceptions:
 
@@ -84,7 +85,7 @@ There are however a few exceptions:
 Checking Node Availability
 --------------------------
 
-As compute nodes are migrated from RHEL 7 to RHEL 8, the capacity for jobs using each images will vary, impacting queue time and the maximum size of multi-node jobs.
+As compute nodes are migrated from RHEL 7 to RHEL 8, the capacity for jobs using each image will vary, impacting queue time and the maximum size of multi-node jobs.
 
 Information on how many nodes are running RHEL 7 or RHEL 8 can be found using the ``ACTIVE_FEATURES`` format option of ``sinfo`` (``%b``):
 
@@ -100,7 +101,7 @@ Information on how many nodes are running RHEL 7 or RHEL 8 can be found using th
 Checking Batch Job Requested Image
 ----------------------------------
 
-``squeue`` can show if jobs were submit from an RHEL 7 or RHEL 8 image, using the ``FEATURES`` format option ``%f``:
+``squeue`` can show which RHEL version a job will execute on, using the ``FEATURES`` format option ``%f``:
 
 .. code-block:: bash
 
@@ -118,3 +119,20 @@ If at any point you wish to check which version of RHEL you are currently using,
 .. code-block:: bash
 
    cat /etc/redhat-release
+
+
+If you would like to use the RHEL version programmatically, it may be simpler to use the contents of ``/etc/os-release`` to access the version number:
+
+.. code-block:: bash
+   
+   #! /usr/bin/env bash
+   
+   case $(source /etc/os-release && echo $VERSION_ID) in
+       8*)
+           # RHEL 8 specific commands  
+           ;;
+       7*)
+           # RHEL 7 specific commands
+           ;;
+   esac
+   
