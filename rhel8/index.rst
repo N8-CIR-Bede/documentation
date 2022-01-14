@@ -82,6 +82,16 @@ There are however a few exceptions:
 * ``slurm/19.05.7`` and ``19.05.7b`` are not available, with ``slurm/dflt`` loaded by default.
 * ``tools/1.0`` and ``tools/1.1`` are not available, with ``tools/1.2`` loaded by default.
 
+Other Notable Changes
+---------------------
+
+In addition to the changes to available software modules, the upgrade from RHEL 7 to RHEL 8 includes several other changes which may impact your use of Bede.
+Including:
+
+* ``glibc`` is ``2.28`` on RHEL 8, compared to ``2.17`` on RHEL 7.
+* The default ``python`` executable is ``python3`` in RHEL 8, compared to ``python2`` in RHEL 7. It is recommended to explicitly use ``python3`` rather than ``python``.
+* The default (native) ``gcc`` is GCC ``8.5.0`` on RHEL 8, compared to GCC ``4.8.5`` on RHEL 7.
+
 Checking Node Availability
 --------------------------
 
