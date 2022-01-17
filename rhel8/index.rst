@@ -81,6 +81,7 @@ There are however a few exceptions:
 * ``spack/central`` is not available as a module. Spack can be installed per-user via ``git``. Please see the :ref:`Spack documentation <software-spack>` for more details.
 * ``slurm/19.05.7`` and ``19.05.7b`` are not available, with ``slurm/dflt`` loaded by default.
 * ``tools/1.0`` and ``tools/1.1`` are not available, with ``tools/1.2`` loaded by default.
+* HECBioSim provided modules such as AMBER, GROMACS and NAMD should use the ``-rhel8`` postfixed modules
 
 Other Notable Changes
 ---------------------
