@@ -19,7 +19,7 @@ uniquely positioned for:
 
 There are:
 
--  2x “login” nodes, each containing:
+-  2x ``login`` nodes, each containing:
 
    -  2x POWER9 CPUs @ 2.4GHz (40 cores total and 4 hardware threads per
       core), with NVLink 2.0
@@ -27,7 +27,7 @@ There are:
    -  4x Tesla V100 32G NVLink 2.0
    -  1x Mellanox EDR (100Gbit/s) InfiniBand port
 
--  32x “gpu” nodes, each containing:
+-  32x ``gpu`` nodes, each containing:
 
    -  2x POWER9 CPUs @ 2.7GHz (32 cores total and 4 hardware threads per
       core), with NVLink 2.0
@@ -35,7 +35,7 @@ There are:
    -  4x Tesla V100 32G NVLink 2.0
    -  2x Mellanox EDR (100Gbit/s) InfiniBand ports
 
--  4x “infer” nodes, each containing:
+-  4x ``infer`` nodes, each containing:
 
    -  2x POWER9 CPUs @ 2.9GHz (40 cores total and 4 hardware threads per
       core)
@@ -44,7 +44,7 @@ There are:
    -  1x Mellanox EDR (100Gbit/s) InfiniBand port
 
 The Mellanox EDR InfiniBand interconnect is organised in a 2:1 block fat
-tree topology. GPUDirect RDMA transfers are supported on the 32 “gpu”
+tree topology. GPUDirect RDMA transfers are supported on the 32 ``gpu``
 nodes only, as this requires an InfiniBand port per POWER9 CPU socket.
 
 Storage is provided by a 2PB Lustre filesystem capable of reaching

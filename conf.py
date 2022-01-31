@@ -11,7 +11,12 @@ import sphinx_bootstrap_theme
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = []
+extensions = [
+    'sphinxcontrib.fulltoc',
+    "sphinxext.rediraffe",
+    'sphinx.ext.mathjax',
+    'sphinx_copybutton'
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -26,7 +31,10 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Bede Documentation'
-copyright = u'2020, N8 CIR'
+# Extract the year from the current time.
+import datetime
+year = datetime.datetime.now().year
+copyright = f'{year}, N8 CIR'
 author = u'N8 CIR'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -48,7 +56,7 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README.rst', "common/*.rst"]
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README.rst', "common/*.rst", '**.inc.rst', 'venv*', '.venv*']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -57,7 +65,6 @@ pygments_style = 'sphinx'
 todo_include_todos = False
 
 ## Added by CA to get MathJax rendering loaded
-extensions = ['sphinx.ext.mathjax']
 mathjax_path='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
 
 
@@ -73,9 +80,9 @@ html_theme_options = {
         ("Usage", "usage/index"),
         ("Hardware", "hardware/index"),
         ("Software", "software/index"),
-        ("Profiling", "profiling/index"),
+        ("Guides", "guides/index"),
         ("Training", "training/index"),
-        ("User Group", "bug/index"),
+        ("User Group", "user-group/index"),
         ("FAQ", "faq/index"),
     ],
 
@@ -86,24 +93,22 @@ html_theme_options = {
     'navbar_pagenav': False,
     'source_link_position': "footer",
     'bootswatch_theme': "flatly",
+    'globaltoc_depth': 2,
+
 }
 html_static_path = ['_static']
 
-# Belt and braces: use both old and new sphinx syntax for custom CSS to make sure it loads
+# add custom css files
 html_css_files = [
     'css/custom.css',
 ]
-html_context = {
-    'css_files': [
-        '_static/css/custom.css'
-    ]
-}
 
+# Add custom js files
 html_js_files = [
     'https://use.fontawesome.com/c79ff27dd1.js',
     'js/rtd-versions.js',
+    'js/custom.js'
 ]
-
 
 # (Optional) Logo. Should be small enough to fit the navbar (ideally 24x24).
 # Path should be relative to the ``_static`` files directory.
@@ -165,11 +170,20 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
-
+# html sidebars issues warnings if multiple wildcard selectors match, so this is more verbsoe than it ideally would be. 
 html_sidebars = {
-    '**': ['localtoc.html', 'relations.html'],
+    '**': ['sidebartoc.html'],
     'index': [],
-    'search': []
+    'search': [],
+    'usage/index': ['localtoc.html'],
+    'hardware/index': [],
+    'training/index': ['localtoc.html'],
+    'guides/index': ['sidebartoc.html'],
+    'faq/index': ['localtoc.html'],
+    'user-group/index': [],
+    'faq/index': ['localtoc.html'],
+    'glossary/index': ['localtoc.html'],
+    'rhel8/index': ['localtoc.html'],
 }
 
 def setup(app):
@@ -177,3 +191,13 @@ def setup(app):
     if on_rtd:
         app.add_javascript('https://use.fontawesome.com/c79ff27dd1.js')
         app.add_javascript('js/rtd-versions.js')
+
+# Control use of the shphinx-rediraffe plugin to generate redirect files for moved documentation.
+# This is only viable for whole-pages, not for any bookmarks within a page unfortunately.
+rediraffe_redirects = {
+    "bug/index.rst": "user-group/index.rst",
+    "profiling/index.rst": "guides/nvidia-profiling-tools.rst",
+    "software/resnet50/bede-README-sbatch.rst": "software/applications/wmlce.rst",
+    "software/wanderings/wanderings-in-CUDALand.rst": "guides/wanderings/wanderings-in-CUDALand.rst",
+    "software/wanderings/Estimating-pi-in-CUDALand.rst": "guides/wanderings/Estimating-pi-in-CUDALand.rst",
+}
