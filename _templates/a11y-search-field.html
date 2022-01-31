@@ -1,0 +1,11 @@
+{# Customised version of pydata_sphinx_theme/search-field.html with a submit button for a11y, using bootstrap form control functionality #}
+{# pydata-sphinx-theme is BSD 3-Clause License: https://github.com/pydata/pydata-sphinx-theme/blob/master/LICENSE #}
+
+<form class="custom-bd-search d-flex align-items-center" action="{{ pathto('search') }}" method="get">
+    <div class="input-group">
+        <input type="search" class="form-control" name="q" id="search-input" placeholder="{{ _(theme_search_bar_text) }}" aria-label="{{ theme_search_bar_text }}" autocomplete="off" >
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-outline-secondary" aria-label="Submit search"><i class="icon fas fa-search" aria-hidden="true"></i></button>
+        </div>
+    </div>
+</form>
