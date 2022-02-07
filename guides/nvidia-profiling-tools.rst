@@ -1,10 +1,5 @@
-:tocdepth: 3
-
-Profiling Tools
-===============
-
 NVIDIA Profiling Tools
-----------------------
+======================
 
 Nvidia provide a suite of profiling tools which can be used to profile applications running on the Volta and Turing architecture Nvidia GPUs within Bede. 
 
@@ -12,7 +7,7 @@ Nvidia provide a suite of profiling tools which can be used to profile applicati
 The `NVIDIA Visual Profiler <https://developer.nvidia.com/nvidia-visual-profiler>`_ is the legacy Nvidia profiling tool. It is recommended to use the newer tools where possible.
 
 Preparing your Application
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------
 
 To improve the effectiveness of the Nvidia profiling tools, several steps can be taken.
 
@@ -25,7 +20,7 @@ The :ref:` NVIDIA Tools Extension` can be used to mark regions of code. This can
 
 
 Nsight Systems
-~~~~~~~~~~~~~~
+--------------
 
 Nsight Systems is a system-wide performance analysis tool designed to visualize an application’s algorithms and identify the largest opportunities to optimize.
 It supports Pascal (SM 60) and newer GPUs.
@@ -55,7 +50,7 @@ Once this file has been downloaded to your local machine, it can be opened in ``
 
 
 Cluster Modules
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 ``nsys`` is available through the following Bede modules:
 
@@ -63,7 +58,7 @@ Cluster Modules
 * ``nvhpc/20.9``
 
 More Information
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 * `Nsight Systems <https://docs.nvidia.com/nsight-systems/>`_
 * `OLCF: Nsight Systems Tutorial <https://vimeo.com/398838139>`_
@@ -71,7 +66,7 @@ More Information
   * Use the following `Nsight report files <https://drive.google.com/open?id=133a90SIupysHfbO3mlyfXfaEivCyV1EP>`_ to follow the tutorial.
 
 Nsight Compute
-~~~~~~~~~~~~~~
+--------------
 
 Nsight Compute is a kernel profiler for CUDA applications, which can also be used for API debugging.
 It supports Volta architecture GPUs and newer (SM 70+).
@@ -100,7 +95,7 @@ Once the ``.ncu-rep`` file has been downloaded locally, it can be imported into 
 
 
 Cluster Modules
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 ``ncu`` is available through the following Bede modules:
 
@@ -109,7 +104,7 @@ Cluster Modules
 
 
 More Information
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 * `Nsight Compute <https://docs.nvidia.com/nsight-compute/>`_
 * `OLCF: Nsight Compute Tutorial <https://vimeo.com/398929189>`_
@@ -118,7 +113,7 @@ More Information
 
 
 Nvidia Visual Profiler (legacy)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------------
 
 The Visual Profiler is NVIDIA's legacy profiler, which fills some of the roles of bother Nsight Systems and Nsight Compute, but is no longer actively developed.
 It is still provided to enable profiling of older GPU architectures not supported by the newer tools.
@@ -151,7 +146,8 @@ Once these files are downloaded to your local machine, Import them into the Visu
 * Add ``analysis.nvprof`` to ``Event/Metric data files``
 
 Cluster Modules
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
+
 ``nvprof`` is available through the following Bede modules:
 
 * ``cuda/10.1.243``
@@ -159,13 +155,13 @@ Cluster Modules
 * ``nvhpc/20.9``
 
 Documentation
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 + `Nvprof Documentation <https://docs.nvidia.com/cuda/profiler-users-guide/index.html>`_
 
 
 NVIDIA Tools Extension
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 `NVIDIA Tools Extension (NVTX) <https://docs.nvidia.com/gameworks/index.html#gameworkslibrary/nvtx/nvidia_tools_extension_library_nvtx.htm>`__ is a C-based API for annotating events and ranges in applications.
 These markers and ranges can be used to increase the usability of the NVIDIA profiling tools.
@@ -184,14 +180,15 @@ The NVIDIA Developer blog contains several posts on using NVTX:
 
 
 CMake support
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
-From CMake 3.17, the ```FindCUDAToolkit <https://cmake.org/cmake/help/git-stage/module/FindCUDAToolkit.html>`_`` can be used to find the tools extension and select the appropriate include directory.
+From CMake 3.17, the `FindCUDAToolkit module <https://cmake.org/cmake/help/git-stage/module/FindCUDAToolkit.html>`_ can be used to find the tools extension and select the appropriate include directory.
+
 If support for older CMake versions is required custom ``find_package`` modules can be used, e.g. `ptheywood/cuda-cmake-NVTX on GitHub <https://github.com/ptheywood/cuda-cmake-nvtx>`_.
 
 
 Documentation
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 * `NVTX Documentation <https://docs.nvidia.com/gameworks/index.html#gameworkslibrary/nvtx/nvidia_tools_extension_library_nvtx.htm>`_
 * `NVTX 3 on GitHub <https://github.com/NVIDIA/NVTX>`_

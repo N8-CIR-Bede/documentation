@@ -1,3 +1,6 @@
-sphinx==1.5.3  # should be same version as currently used by ReadTheDocs
-sphinx-bootstrap-theme>=0.7.1
+sphinx==4.3.1
+sphinx-bootstrap-theme
 sphinx-autobuild
+sphinxext-rediraffe
+sphinxcontrib.fulltoc
+sphinx-copybutton

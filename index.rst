@@ -12,8 +12,8 @@ Please note that the system is still under active development, and so some funct
 
 .. include:: common/rhel8-status.rst
 
-Site Contents
-=============
+
+.. The TOC is required on the root document, but as we have alternate navigation it is not required, so can be hidden?
 
 .. toctree::
    :maxdepth: 2
@@ -21,9 +21,9 @@ Site Contents
    usage/index
    hardware/index
    software/index
-   profiling/index
+   guides/index
    training/index
    faq/index
-   bug/index
+   user-group/index
    glossary/index
    rhel8/index

@@ -1,7 +1,7 @@
 .. _training:
 
-Useful Training Material
-========================
+Training Material
+=================
 
 Information on support available for Bede Users can be found `on this website <https://n8cir.org.uk/supporting-research/facilities/bede/rse-support-bede/>`_ .
 

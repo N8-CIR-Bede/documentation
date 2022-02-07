@@ -1,3 +1,5 @@
+.. _using-bede:
+
 Using Bede
 ==========
 
@@ -11,14 +13,13 @@ Registering
 
 Access to the machine is based around projects:
 
--  For information on how to register a new project, please see https://n8cir.org.uk/supporting-research/facilities/bede/docs/bede_registrations/
+-  For information on how to register a new project, please see `the N8CIR website <https://n8cir.org.uk/supporting-research/facilities/bede/docs/bede_registrations/>`__.
 
 -  To create an account to use the system:
 
    -  Identify an existing project, or register a new one.
-   -  Create an EPCC SAFE account and login to the SAFE system at:
-      https://safe.epcc.ed.ac.uk/
-   -  Once there, select “Project->Request access” from the web
+   -  Create an EPCC SAFE account and login to the SAFE system at `https://safe.epcc.ed.ac.uk/ <safe.epcc.ed.ac.uk>`__
+   -  Once there, select "Project->Request access" from the web
       interface and then register against your project
 
 Login
@@ -37,7 +38,9 @@ acceptable.
 
 Most of the computational power of the system is accessed through the
 batch scheduler, and so demanding applications should be submitted to it
-(see “Running Jobs”).
+(see "Running Jobs").
+
+.. _usage-acknowledging-bede:
 
 Acknowledging Bede
 ------------------
@@ -47,14 +50,16 @@ wherever the work is presented.
 
 We provide the following acknowledgement text, and strongly encourage its use:
 
-*"This work made use of the facilities of the N8 Centre of Excellence in
-Computationally Intensive Research (N8 CIR) provided and funded by the N8
-research partnership and EPSRC (Grant No. EP/T022167/1). The Centre is
-co-ordinated by the Universities of Durham, Manchester and York."*
+   "This work made use of the facilities of the N8 Centre of Excellence in
+   Computationally Intensive Research (N8 CIR) provided and funded by the N8
+   research partnership and EPSRC (Grant No. EP/T022167/1). The Centre is
+   co-ordinated by the Universities of Durham, Manchester and York."
 
 Acknowledgement of Bede provides data that can be used to assess the facility's
 success and influences future funding decisions, so please ensure that you are
 acknowledging where appropriate.
+
+.. _usage-file-storage:
 
 File Storage
 ------------
@@ -66,7 +71,7 @@ Each project has access to the following shared storage:
    -  Intended for project files to be backed up (note: backups not
       currently in place)
    -  Modest performance
-   -  A default quota of 20GB
+   -  A default quota of ``20GB``
 
 -  Project Lustre directory (``/nobackup/projects/<project>``)
 
@@ -83,7 +88,7 @@ In addition, each user has:
 
    -  Intended for per-user configuration files.
    -  Modest performance
-   -  A default quota of 20GB
+   -  A default quota of ``20GB``
 
 Please note that, as access to Bede is driven by project use, no
 personal data should be stored on the system.
@@ -126,7 +131,7 @@ Part of, or an entire node
 Example job script for programs written to take advantage of a GPU or
 multiple GPUs on a single computer:
 
-::
+.. code-block:: bash
 
    #!/bin/bash
 
@@ -156,7 +161,7 @@ Multiple nodes (MPI)
 Example job script for programs using MPI to take advantage of multiple
 CPUs/GPUs across one or more machines:
 
-::
+.. code-block:: bash
 
    #!/bin/bash
 
@@ -196,7 +201,7 @@ process) or ``none`` (set ``OMP_NUM_THREADS=1``)
 
 Examples:
 
-::
+.. code-block:: bash
 
    # - One MPI rank per node:
    bede-mpirun --bede-par 1ppn <mpirun_options> <program>
@@ -216,7 +221,7 @@ Multiple nodes (IBM PowerAI DDL)
 IBM PowerAI DDL (Distributed Deep Learning) is a method of using the
 GPUs in more than one node to perform calculations. Example job script:
 
-::
+.. code-block:: bash
 
    #!/bin/bash
 
@@ -242,6 +247,10 @@ GPUs in more than one node to perform calculations. Example job script:
 
    echo "end of job"
 
+.. warning::
+
+   IBM PowerAI DDL is only supported on RHEL 7
+
 Maximum Job Runtime
 ~~~~~~~~~~~~~~~~~~~
 
@@ -255,14 +264,14 @@ requested:
   * - Partition Name
     - Default Job Time
     - Maximum Job Time
-  * - infer
-    - 01:00:00
-    - 2-00:00:00
-  * - gpu
-    - 01:00:00
-    - 2-00:00:00
+  * - ``infer``
+    - ``01:00:00``
+    - ``2-00:00:00``
+  * - ``gpu``
+    - ``01:00:00``
+    - ``2-00:00:00``
 
-Where, for example, `2-00:00:00` means 'two days, zero hours, zero minutes,
+Where, for example, ``2-00:00:00`` means 'two days, zero hours, zero minutes,
 and zero seconds'. These job time limits affect what will and won't be accepted
-in the `--time` field of your job script: `--time` values above the partition
+in the ``--time`` field of your job script: ``--time`` values above the partition
 maximum will result in your job submission being rejected.

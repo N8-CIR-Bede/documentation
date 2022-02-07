@@ -5,6 +5,9 @@
   --deep-blue-color: #054C91;
   --cool-grey-10-color: #63666A;
   --cool-grey-6-color: #A7A8AA;
+  --cool-grey-5-color: #b1b3b3;
+  --cool-grey-4-color: #bbbcbc;
+  --cool-grey-3-color: #c8c9c7;
   --cool-grey-2-color: #D0D0CE;
   --cool-grey-2-lighter-color: #E1E1E0; /* equivalent of Cool grey 2 with alpha 0.5 */
   --cool-grey-2-lightest-color: #F1F1F0; /* equivalent of Cool grey 2 with alpha 0.3 */
@@ -14,6 +17,10 @@
 body {
     font-family: "Montserrat", "Arial";
     color: var(--cool-grey-10-color);
+}
+
+blockquote {
+  font-size: 17px;
 }
 
 h1, .h1, h2, .h2, h3, .h3 {
@@ -142,6 +149,50 @@ code {
   text-align: right;
 }
 
+/* Custom toctree highlighting.*/
+
+.bs-sidenav {
+  /* Remove padding so link formatting behaves as intended. */
+  padding-top: 0px;
+  padding-bottom: 0px;
+  overflow: hidden;
+}
+
+.bs-sidenav .nav.current li.current {
+  background: var(--cool-grey-2-color);
+  background: var(--cool-grey-2-lighter-color);
+}
+
+.bs-sidenav li.toctree-l1.current > a,
+.bs-sidenav li.toctree-l1.current li.toctree-l2 > a,
+.bs-sidenav li.toctree-l1 .nav-list li.toctree-l2 > a {
+  background: var(--cool-grey-2-lighter-color);
+}
+
+.bs-sidenav li.toctree-l2.current > a,
+.bs-sidenav li.toctree-l2.current li.toctree-l3 > a,
+.bs-sidenav li.toctree-l2 .nav-list li.toctree-l3 > a {
+  background: var(--cool-grey-3-color);
+}
+
+.bs-sidenav li.toctree-l3.current > a,
+.bs-sidenav li.toctree-l3.current li.toctree-l4 > a,
+.bs-sidenav li.toctree-l3 .nav-list li.toctree-l4 > a {
+  background: var(--cool-grey-4-color);
+}
+
+.bs-sidenav .nav > li > a:hover,
+.bs-sidenav .nav > li > a:focus {
+  background-color: var(--cool-grey-2-lighter-color);
+}
+
+.bs-sidenav .nav li.current > a {
+  /* Mark current items in the tree bolder */
+  font-weight: 900;
+}
+
+
+/* Change colours of alert blocks */
 .alert-info {
     background-color: var(--deep-blue-color);
     border-color: var(--deep-blue-color);
@@ -249,7 +300,7 @@ select:-webkit-autofill:focus {
     color: #9e0000;  /* A dark red which provides good contrast against the orange background) */
 }
 
-
+/* Media query for screens <= 1160px */
 @media (max-width: 1160px) {
   .navbar-header {
       float: none;

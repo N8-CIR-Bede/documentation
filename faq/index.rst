@@ -16,7 +16,7 @@ How can I acknowledge Bede in published or presented work?
 ----------------------------------------------------------------
 
 You can acknowledge Bede using the standard text that we provide. You can
-find this `here <https://bede-documentation.readthedocs.io/en/latest/usage/index.html#acknowledging-bede>`__.
+find this :ref:`here <usage-acknowledging-bede>`.
 
 How can I check my home directory quota?
 ----------------------------------------
@@ -34,7 +34,7 @@ You can use the following command:
 
 This tells me that, in this case, I have a limit of :code:`20480M`, and am 
 currently using :code:`79544K` across 1071 files. You can find more information
-about the Bede filesystems `here <https://bede-documentation.readthedocs.io/en/latest/usage/index.html#file-storage>`__.
+about the Bede filesystems :ref:`here <usage-file-storage>`.
 
 Where should I put project data?
 --------------------------------
@@ -53,14 +53,14 @@ How do I get started with Bede?
 -------------------------------
 
 The 'Using Bede' page runs through how to get registered, how to log in to the
-machine and how to run jobs, a link to this page can be found `here
-<https://bede-documentation.readthedocs.io/en/latest/usage/index.html>`__.
+machine and how to run jobs, a link to this page can be found :ref:`here
+<using-bede>`.
 
 How can I add my own software?
 ------------------------------
 
 It is recommended that you use spack to extend the installed software on the
-system, there are instructions on how to do this `here <https://bede-documentation.readthedocs.io/en/latest/software/index.html#environments>`__,
+system, there are instructions on how to do this :ref:`here <software-environments>`,
 along with further information about alternatives.
 
 
