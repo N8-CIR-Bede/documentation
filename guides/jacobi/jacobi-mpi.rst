@@ -13,8 +13,7 @@ https://developer.nvidia.com/blog/benchmarking-cuda-aware-mpi
 The earlier blog mentioned in the above article is also useful as an introduction to some of the issues relating to using MPI on multi-GPU
 nodes. 
 
-There are two gzipped tar files available, depending on whether you are running on the RedHat 7 (:download:`bede-jacobi.tgz <bede-jacobi.tgz>`)
-or RedHat8 (:download:`bedeRH8-jacobi.tgz<bedeRH8-jacobi.tgz>`) installation. 
+A tar file is available for use on RHEL 8 Bede images :download:`bedeRH8-jacobi.tgz<bedeRH8-jacobi.tgz>`.
 
 There are two stages to running this benchmark code:
 
