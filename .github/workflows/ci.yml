@@ -17,6 +17,11 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+    # Define environment variables in the job
+    env:
+      # When building on RTD, conf.py has some conditional logic. Test building with this enabled.
+      READTHEDOCS: "True"
+      
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 

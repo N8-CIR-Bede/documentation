@@ -189,8 +189,8 @@ html_sidebars = {
 def setup(app):
     on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
     if on_rtd:
-        app.add_javascript('https://use.fontawesome.com/c79ff27dd1.js')
-        app.add_javascript('js/rtd-versions.js')
+        app.add_js_file('https://use.fontawesome.com/c79ff27dd1.js')
+        app.add_js_file('js/rtd-versions.js')
 
 # Control use of the shphinx-rediraffe plugin to generate redirect files for moved documentation.
 # This is only viable for whole-pages, not for any bookmarks within a page unfortunately.
