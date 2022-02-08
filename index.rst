@@ -5,8 +5,8 @@ Bede is a supercomputer (otherwise known as an HPC system) run by the N8 group o
 
 The system has a specialist architecture, optimised for large memory problems on GPUs and for multi-node multi-gpu programs. This has a range of applications in Machine Learning and Imaging.
 
-The site encourages user contributions via `GitHub <https://github.com/DurhamARC/bede>`_.
-Feel free to add items of concern to the Github issues section.
+The site encourages user contributions via `GitHub <https://github.com/N8-CIR-Bede/documentation>`__.
+Feel free to add items of concern to the `GitHub Issues <https://github.com/N8-CIR-Bede/documentation/issues>`__.
 
 Please note that the system is still under active development, and so some functionality may temporarily break.
 
