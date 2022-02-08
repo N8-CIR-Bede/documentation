@@ -21,7 +21,7 @@ The Bede User Group meets once per term. Below is a list of issues raised at pre
      - Relion and cryoEM modules need to be recompiled for RHEL8.
      - Action taken to contact IBM, who provided these modules.
    * - 
-     - There a lots of single-node jobs on Bede, which might not be the intended use. However, users find it hard to run there jobs on multiple nodes with certain modules. It would be good if the BSG could do benchmarking work and provide jobscripts with the best configurations/parameters.
+     - There are lots of single-node jobs on Bede, which might not be the intended use. However, users find it hard to run there jobs on multiple nodes with certain modules. It would be good if the BSG could do benchmarking work and provide jobscripts with the best configurations/parameters.
      - Action taken to discuss this in the BSG and consider a Benchmarking task force.
    * - 13.9.2021
      - It is hard to get enough resources on Bede for large scaling jobs (sometimes a week waiting time).
