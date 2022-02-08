@@ -215,6 +215,10 @@ Examples:
 Multiple nodes (IBM PowerAI DDL)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. warning::
+
+   IBM PowerAI DDL is only supported on RHEL 7.
+
 IBM PowerAI DDL (Distributed Deep Learning) is a method of using the
 GPUs in more than one node to perform calculations. Example job script:
 
@@ -243,10 +247,6 @@ GPUs in more than one node to perform calculations. Example job script:
    bede-ddlrun python $CONDA_PREFIX/ddl-tensorflow/examples/keras/mnist-tf-keras-adv.py
 
    echo "end of job"
-
-.. warning::
-
-   IBM PowerAI DDL is only supported on RHEL 7
 
 .. _usage-maximum-job-runtime:
 
