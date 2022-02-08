@@ -2,9 +2,10 @@ FAQ
 =====
 
 This page contains answers to the questions most frequently asked by Bede
-users. The question list will be updated over time as more questions are
+users. 
+The question list will be updated over time as more questions are
 asked - if there is anything that you think should definitely be answered
-here, please let us know at <email.address@dur.ac.uk>.
+here, please let us know by `Opening an Issue on GitHub <https://github.com/N8-CIR-Bede/documentation/issues/new>`__ or by contacting your `local Bede RSE <https://n8cir.org.uk/supporting-research/facilities/bede/rse-support-bede/>`__ .
 
 How long can I run jobs for?
 ----------------------------
