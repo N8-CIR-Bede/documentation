@@ -50,10 +50,7 @@ wherever the work is presented.
 
 We provide the following acknowledgement text, and strongly encourage its use:
 
-   "This work made use of the facilities of the N8 Centre of Excellence in
-   Computationally Intensive Research (N8 CIR) provided and funded by the N8
-   research partnership and EPSRC (Grant No. EP/T022167/1). The Centre is
-   co-ordinated by the Universities of Durham, Manchester and York."
+.. include:: /common/acknowledging-bede.rst
 
 Acknowledgement of Bede provides data that can be used to assess the facility's
 success and influences future funding decisions, so please ensure that you are
@@ -250,6 +247,8 @@ GPUs in more than one node to perform calculations. Example job script:
 .. warning::
 
    IBM PowerAI DDL is only supported on RHEL 7
+
+.. _usage-maximum-job-runtime:
 
 Maximum Job Runtime
 ~~~~~~~~~~~~~~~~~~~
