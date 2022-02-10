@@ -18,7 +18,7 @@ Migration Process
 The migration from RHEL 7 to RHEL 8 has three mains steps:
 
 1. Users to test the RHEL 8 image
-2. Login nodes migrate to RHEL 8 (provisional date: 2022-02-23)
+2. Login nodes migrate to RHEL 8 (provisional date: 2022-03-10)
 3. Compute nodes migrate to RHEL 8 as load permits
 
 
@@ -55,7 +55,7 @@ From this time, when you connect to Bede you will immediately be connected to RH
 
 The ``login7`` command will be usable to connect to an interactive session on a RHEL 7 login node for a limited period of time.
  
-**Login node migration is provisionally scheduled for 2022-02-23**.
+**Login node migration is provisionally scheduled for 2022-03-10, with a contingency date of 2022-03-11**.
 
 Compute Node Migration
 ^^^^^^^^^^^^^^^^^^^^^^
