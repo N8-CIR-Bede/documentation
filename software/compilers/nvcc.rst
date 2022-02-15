@@ -61,7 +61,7 @@ For example, to compile using level 2 host optimisations:
 
    nvcc -O2 -o main main.cu
 
-The optimisation level for Device code must be forwarded to the Ptxas compilation phase via it's ``--opt-level`` / ``-O`` option (`docs <https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html#ptxas-options-opt-level>`__)
+The optimisation level for Device code must be forwarded to the ``ptxas`` compilation phase via it's ``--opt-level`` / ``-O`` option (`docs <https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html#ptxas-options-opt-level>`__)
 , which defaults to a value of ``3``.
 
 For example to compile with level 2 optimisations for host and device code
@@ -146,7 +146,7 @@ To forward specific options to the various compilation tools encapsulated within
 
 * ``--compiler-options`` / ``-Xcompiler`` (`docs <https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html#options-for-passing-specific-phase-options-compiler-options>`__)
 
-  * Forwards options to the comiler / preprocessor
+  * Forwards options to the compiler / preprocessor
 
 * ``--linker-options`` / ``-Xlinker`` (`docs <https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html#options-for-passing-specific-phase-options-linker-options>`__)
 
@@ -158,7 +158,7 @@ To forward specific options to the various compilation tools encapsulated within
 
 * ``--ptxas-options`` / ``-Xptxas`` (`docs <https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html#options-for-passing-specific-phase-options-ptxas-options>`__)
 
-  * Options for the PTX optimizing assempler (``ptxas``)
+  * Options for the PTX optimizing assembler (``ptxas``)
 
 * ``--nvlink-options`` / ``-Xnvlink`` (`docs <https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html#options-for-passing-specific-phase-options-nvlink-options>`__)
 
