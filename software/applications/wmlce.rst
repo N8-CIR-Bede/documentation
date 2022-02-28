@@ -39,7 +39,10 @@ First install anaconda (can be quite large - so using the /nobackup area):
 
    cd /nobackup/projects/<project>
 
+   # Download the latest miniconda installer for ppcle64
    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-ppc64le.sh
+   # Validate the file checksum matches is listed on https://docs.conda.io/en/latest/miniconda_hashes.html.
+   sha256sum Miniconda3-latest-Linux-ppc64le.sh
    sh Miniconda3-latest-Linux-ppc64le.sh
    conda update conda
    conda config --set channel_priority strict

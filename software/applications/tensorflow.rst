@@ -17,7 +17,10 @@ The following should get you set up with a working conda environment (replacing 
     mkdir $DIR
     pushd $DIR
 
+    # Download the latest miniconda installer for ppcle64
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-ppc64le.sh
+    # Validate the file checksum matches is listed on https://docs.conda.io/en/latest/miniconda_hashes.html.
+    sha256sum Miniconda3-latest-Linux-ppc64le.sh
 
     sh Miniconda3-latest-Linux-ppc64le.sh -b -p $DIR/miniconda
     source miniconda/bin/activate
