@@ -17,6 +17,7 @@ This module also provides the `NCCL <https://docs.nvidia.com/deeplearning/nccl/u
    # RHEL 7 only
    module load nvhpc/20.9
    # RHEL 8 only 
+   module load nvhpc/22.1
    module load nvhpc/21.5
 
 For further information please see the `NVIDIA HPC SDK Documentation Archive <https://docs.nvidia.com/hpc-sdk/archive/>`__.

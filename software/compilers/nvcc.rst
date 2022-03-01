@@ -24,6 +24,7 @@ Unlike other compiler modules, the cuda modules do not set ``CC`` or ``CXX`` env
 
 For further information please see the `CUDA Toolkit Archive <https://developer.nvidia.com/cuda-toolkit-archive>`__.
 
+``nvcc`` is also available within the :ref:`NVIDIA HPC SDK<software-compilers-nvhpc>` compiler tool chain.
 
 ``nvcc`` supports a wide range of command options, a full list of which can be found in the `NVCC Documentation <https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html#nvcc-command-options>`__.
 
