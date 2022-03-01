@@ -1,7 +1,9 @@
-Apptainer /Singularity
-----------------------
+.. _software-tools-singularity:
 
-`Apptainer <https://apptainer.org/>`__ (formerly `Singularity <https://sylabs.io/singularity/>`__) is a container platform similar to `Docker <https://www.docker.com/>`__. 
+Singularity
+-----------
+
+`Singularity <https://sylabs.io/singularity/>`__ (and `Apptainer <https://apptainer.org/>`__) is a container platform similar to `Docker <https://www.docker.com/>`__. 
 Singularity is the most widely used container system for HPC.
 It allows you to create and run containers that package up pieces of software in a way that is portable and reproducible.
 
