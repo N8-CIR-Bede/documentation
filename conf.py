@@ -144,8 +144,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'BedeDoc.tex', u'BedeDoc Documentation',
-     u'Mozhgan K. Chimeh', 'manual'),
+    (master_doc, 'bede-documentation.tex', u'Bede Documentation',
+     author, 'manual'),
 ]
 
 
@@ -154,8 +154,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'BedeDoc', u'BedeDoc Documentation',
-     [author], 1)
+    (master_doc, 'bede-documentation', u'Bede Documentation',
+     author, 1)
 ]
 
 
@@ -165,8 +165,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'BedeDoc', u'BedeDoc Documentation',
-     author, 'BedeDoc', 'One line description of project.',
+    (master_doc, 'bede-documentation', u'Bede Documentation',
+     author, 'Bede', 'Documentation for usage of N8 CIR Bede Tier 2 HPC',
      'Miscellaneous'),
 ]
 
