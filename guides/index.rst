@@ -13,6 +13,7 @@ If you notice any omissions, errors or have any suggested changes to the documen
 .. toctree::
     :maxdepth: -1
     :glob:
+    :titlesonly:
 
     nvidia-profiling-tools.rst
     ./*
