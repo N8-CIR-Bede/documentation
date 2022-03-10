@@ -18,7 +18,7 @@ Access to the machine is based around projects:
 -  To create an account to use the system:
 
    -  Identify an existing project, or register a new one.
-   -  Create an EPCC SAFE account and login to the SAFE system at `https://safe.epcc.ed.ac.uk/ <safe.epcc.ed.ac.uk>`__
+   -  Create an EPCC SAFE account and login to the SAFE system at `safe.epcc.ed.ac.uk <https://safe.epcc.ed.ac.uk>`__
    -  Once there, select "Project->Request access" from the web
       interface and then register against your project
 
