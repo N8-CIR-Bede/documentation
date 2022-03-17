@@ -17,9 +17,9 @@ Migration Process
 
 The migration from RHEL 7 to RHEL 8 has three mains steps:
 
-1. Users to test the RHEL 8 image
-2. Login nodes migrate to RHEL 8 (provisional date: 2022-03-10)
-3. Compute nodes migrate to RHEL 8 as load permits
+1. :ref:`Users to test the RHEL 8 image<rhel8-user-testing>` (**Complete**)
+2. :ref:`Login nodes migrate to RHEL 8<rhel8-login-migration>` (**Complete**)
+3. :ref:`Compute nodes migrate to RHEL 8 as load permits<rhel8-compute-migration>` (**In Progress**)
 
 
 Two new commands have been added to Bede for the duration of the OS migration: ``login8`` and ``login7``.
@@ -29,6 +29,8 @@ Two new commands have been added to Bede for the duration of the OS migration: `
 
 The RHEL version used to execute batch jobs will be the version in use at job submission time.
 I.e. Jobs submit from a login node using RHEL 8 will execute on RHEL 8 worker node(s). 
+
+.. _rhel8-user-testing:
 
 User Testing
 ^^^^^^^^^^^^
@@ -46,6 +48,8 @@ You may need to change your module load commands in some cases (see :ref:`rhel8-
 and will likely need to recompile your codes for use on RHEL 8 (particularly MPI codes).
 
 
+.. _rhel8-login-migration:
+
 Login Node Migration
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -55,7 +59,11 @@ From this time, when you connect to Bede you will immediately be connected to RH
 
 The ``login7`` command will be usable to connect to an interactive session on a RHEL 7 login node for a limited period of time.
  
-**Login node migration is provisionally scheduled for 2022-03-10, with a contingency date of 2022-03-11**.
+.. note::
+
+   Login nodes have been migrated to RHEL 8, and Compute nodes are now being migrated as load demands. See :ref:`Compute Node Migration<rhel8-compute-migration>` for more information.
+
+.. _rhel8-compute-migration:
 
 Compute Node Migration
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -69,6 +77,7 @@ Initially, the capacity for RHEL 8 jobs will be low, increasing as more nodes ar
 Conversely, the capacity for RHEL 7 jobs will initially be high but will decrease over time.
 
 This will likely impact queue time for your jobs, and may prevent multi-node jobs from being scheduled if the requested number of nodes is not available for the RHEL version used.
+See :ref:`Checking Node Availability<rhel8-check-node-availability>` for instructions on how to check how many nodes are available for RHEL 8 and RHEL 7. 
 
 Module Changes
 --------------
@@ -94,6 +103,8 @@ Including:
 * ``glibc`` is ``2.28`` on RHEL 8, compared to ``2.17`` on RHEL 7.
 * The default ``python`` executable is ``python3`` in RHEL 8, compared to ``python2`` in RHEL 7. It is recommended to explicitly use ``python3`` rather than ``python``.
 * The default (native) ``gcc`` is GCC ``8.5.0`` on RHEL 8, compared to GCC ``4.8.5`` on RHEL 7.
+
+.. _rhel8-check-node-availability:
 
 Checking Node Availability
 --------------------------
