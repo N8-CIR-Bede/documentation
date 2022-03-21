@@ -17,7 +17,7 @@ the combinations of how a library can be built.
 For example, the following command gives you access to a copy of FFTW
 3.3.8 that has been built against GCC 8.4.0:
 
-::
+.. code-block:: console
 
    $ module load gcc/8.4.0 fftw/3.3.8
    $ which fftw-wisdom
@@ -27,7 +27,7 @@ If you then load an MPI library, your environment will be automatically
 updated to point at a copy of FFTW 3.3.8 that has been built against GCC
 8.4.0 and OpenMPI 4.0.5:
 
-::
+.. code-block:: console
 
    $ module load openmpi/4.0.5
    $ which fftw-wisdom
@@ -36,7 +36,7 @@ updated to point at a copy of FFTW 3.3.8 that has been built against GCC
 Similarly, if you then load CUDA, the MPI library will be replaced by
 one built against it:
 
-::
+.. code-block:: console
 
    $ which mpirun
    /opt/software/builder/developers/libraries/openmpi/4.0.5/1/gcc-8.4.0/bin/mpirun

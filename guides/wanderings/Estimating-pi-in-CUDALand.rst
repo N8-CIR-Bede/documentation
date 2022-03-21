@@ -26,13 +26,15 @@ Care must be taken to ensure we have parallel random seeds and we need a global 
 The standard way of generating pseudorandom numbers in CUDA is to use ``curand_init()`` and ``curand_uniform()`` as device functions, 
 only callable from within kernel functions.
 
-.. literalinclude::   pigreco.cu
+.. literalinclude:: pigreco.cu
+   :language: CUDA
+
 
 Local changes to the code were to fix a compilation error, and to add in timings and an error estimate.
 
 Output from the code on a Quadro P4000 is:
 
-::
+.. code-block:: CUDA
 
  Starting simulation with 1792 blocks, 32 threads, and 1000000 iterations
  Approximated PI using 57344000000 random tests
@@ -49,7 +51,7 @@ that is the number of tightly coupled and synchronised threads in a unit of comp
 the number of blocks for that matter), but it should be possible. If we just increase the number of threads per block from 32 to 64, we get
 an interesting and wrong answer:
 
-::
+.. code-block:: console
 
  ./montebig
  Starting simulation with 1792 blocks, 64 threads, and 1000000 iterations
@@ -62,7 +64,7 @@ The reason for this severe under estimation of the answer is that threads in dif
 each thread group can accumulate the sums. Therefore a ``__syncthreads()`` call is needed before this summation is performed. When that is
 added, we then get:
 
-::
+.. code-block:: console
 
  ./montebig
  Starting simulation with 1792 blocks, 64 threads, and 1000000 iterations
@@ -104,10 +106,12 @@ In order to have code that is reasonably understandable, we work with a single p
 Borrowing heavily from code provided (with a good overiew) in https://sodocumentation.net/cuda/topic/6566/parallel-reduction--e-g--how-to-sum-an-array- we have:
 
 .. literalinclude:: cupi.cu
+   :language: CUDA
+
 
 The results of this code on a system with a Skylake CPU and a Quadro P4000 is:
 
-::
+.. code-block:: console
 
  Pi estimate 3.1415926535898766 error is -0.0000000000000835
  Time to compute mypi is 0.004875 sec.
@@ -123,7 +127,7 @@ On a system with a v100 and Cascade Lake 5218 (2.30GHz) -  Driver Version: 460.3
 
 Monte Carlo approximation
 
-::
+.. code-block:: console
 
  ./montepi
  Starting simulation with 1792 blocks, 32 threads, and 1000000 iterations
@@ -135,7 +139,7 @@ Monte Carlo approximation
 
 Composite Mid-Point
 
-::
+.. code-block:: console
 
  ./pi
  Pi estimate 3.1415926535898766 error is -0.0000000000000835
@@ -148,7 +152,7 @@ On login2 of Bede - AC922 - v100 with Power 9 (3.8GHz) - Driver Version: 440.95.
 
 Monte Carlo approximation
 
-::
+.. code-block:: console
 
  ./montepi
  Starting simulation with 1792 blocks, 32 threads, and 1000000 iterations
@@ -160,7 +164,7 @@ Monte Carlo approximation
 
 Composite Mid-Point
 
-::
+.. code-block:: console
 
  ./pi
  Pi estimate 3.1415926535898766 error is -0.0000000000000835
@@ -172,7 +176,7 @@ Composite Mid-Point
 Notice that the Monte Carlo approximation can  use all of the v100 CUDA cores, but the results show this modest change has little
 influence on accuracy - suggesting that the Monte Carlo simulation is only converging slowly.
 
-::
+.. code-block:: console
 
  ./montepi2
  Starting simulation with 5120 blocks, 32 threads, and 1000000 iterations
@@ -183,7 +187,7 @@ influence on accuracy - suggesting that the Monte Carlo simulation is only conve
 
 Increasing the number of iterations per thread by an order of magnitude yields:
 
-::
+.. code-block:: console
 
  ./montepi2
  Starting simulation with 5120 blocks, 32 threads, and 10000000 iterations
