@@ -260,7 +260,7 @@ preallocate memory on a particular GPU / device.
 
 The relevant modified code to our earlier sgemm code is:
 
-.. code-block:: console
+.. code-block:: CUDA
 
   	int device = -1; // For GPU number
 	// unified memory for a,b,c
