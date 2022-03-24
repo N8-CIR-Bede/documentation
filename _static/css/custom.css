@@ -13,10 +13,10 @@
   --cool-grey-2-lighter-color: #E1E1E0; /* equivalent of Cool grey 2 with alpha 0.5 */
   --cool-grey-2-lightest-color: #F1F1F0; /* equivalent of Cool grey 2 with alpha 0.3 */
   --burnt-orange-lightest-color: #FFF6F5; /* equivalent of burnt orange with alpha 0.05 */
-  --general-background-color: #fcfcfc;
+  --general-background-color: #f5f5f5;
   --general-text-color: #212529;
   /* Override some variable defined in the sphinx-book-theme, as a simpler solution for quick colour changing */
-  --pst-color-link: 5,76,145; /* Equivalent to #054c91 */
+  --pst-color-link: 5,76,145; /* Equivalent to #054c91, deep-blue-color */
   --pst-color-preformatted-background: 248,248,248; /* pygments default pre background */
   --pst-sidebar-font-size: 1.1em; /* Adjust some font sizes */
 }
@@ -41,9 +41,8 @@ body,
   }
 }
 
-.site-navigation .form-control {
+#site-navigation .form-control {
   background: var(--general-background-color);
-  border-bottom-color: var(--cool-grey-3-color);
 }
 
 #site-navigation nav ul.nav li a, 
@@ -109,6 +108,32 @@ code {
   background-color: var(--deep-blue-color);
 }
 
+/* Incrase the maximum width for large displays. Still limited to prevent very long line length */
+@media (min-width:1200px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width:1600px
+  }
+}
+
+/* Hide an element visible on mobile that shouldn't be */
+#site-navigation label.d-block.d-md-none.nav-toggle-button.headerbtn {
+  display: none!important; /* Important required due to use of it in the them :cry: */
+}
+
+/* Overwrite padding left for a strongly styled part of the theme */
+.col.pl-md-3.pl-lg-5.content-container {
+  padding-left: 1.5rem !important;
+}
+
+@media (min-width:768px) {
+  #main-content {
+    max-width:74%
+  }
+}
 
 /* Style versioning info and ads added by RTD */
 .injected {
