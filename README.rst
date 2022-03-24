@@ -8,6 +8,9 @@ This is a collection of useful pieces of documentation for Bede. User contributi
   :target: https://bede-documentation.readthedocs.io/en/latest/?badge=latest
   :alt: Documentation Status
 
+.. image:: https://github.com/N8-CIR-Bede/documentation/actions/workflows/ci.yml/badge.svg
+  :target: https://github.com/N8-CIR-Bede/documentation/actions/workflows/ci.yml
+  :alt: CI
 
 *****************
 How to Contribute
