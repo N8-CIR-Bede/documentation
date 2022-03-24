@@ -34,7 +34,7 @@ Local changes to the code were to fix a compilation error, and to add in timings
 
 Output from the code on a Quadro P4000 is:
 
-.. code-block:: CUDA
+.. code-block:: console
 
  Starting simulation with 1792 blocks, 32 threads, and 1000000 iterations
  Approximated PI using 57344000000 random tests
