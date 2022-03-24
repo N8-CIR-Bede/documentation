@@ -110,3 +110,25 @@ If there are any errors in your changes the build will fail and the documentatio
 
 
 The docs use the `Sphinx Book Theme <https://github.com/executablebooks/sphinx-book-theme>`_ with customisations to match the N8 brand guidelines.
+
+***********************************
+Accessibility Testing via ``pa11y``  
+***********************************
+
+To evaluate webpage accessibility, tools such as `pa11y <https://github.com/pa11y>`_ can be used to evaluate if accessibility guidelines are being met. 
+
+After `installing pa11y-ci <https://github.com/pa11y/pa11y-ci#requirements>`__, and building the documentation locally it can be used to parse individual html files, or lists of html files.
+Sphinx generates some html files which will fail accessibility tests, which are non-trivial to fix manually, so ignoring certain files is worthwhile.
+
+Checking all generted html files can take a number of minutes.
+
+.. code-block:: bash
+
+   # Check the index page for accessibility issues
+   pa11y-ci ./_build/html/index.html
+
+   # Find and parse html files in _build/html excluding certain files which we cannot correct.
+   pa11y-ci $(find _build/html -name "*.html" -and -not -path "*webpack*" -and -not -name "genindex.html" -and -not -name "search.html")
+
+   # Produce Json output for subsequent parsing, i.e. to integrate into CI if desired.
+   pa11y-ci --json $(find _build/html -name "*.html" -and -not -path "*webpack*" -and -not -name "genindex.html" -and -not -name "search.html") > pa11y-ci-report.json
