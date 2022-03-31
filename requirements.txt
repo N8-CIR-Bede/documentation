@@ -1,5 +1,5 @@
 sphinx==4.3.1
-sphinx-book-theme==0.3.0rc2 # >= 0.3.0 for annoucnements, pinned for replicability?
+sphinx-book-theme==0.3.2
 sphinx-autobuild
 sphinxext-rediraffe
 sphinx-copybutton
