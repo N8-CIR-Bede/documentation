@@ -7,7 +7,12 @@ This is a collection of useful pieces of documentation for Bede. User contributi
 .. image:: https://readthedocs.org/projects/bede-documentation/badge/?version=latest
   :target: https://bede-documentation.readthedocs.io/en/latest/?badge=latest
   :alt: Documentation Status
-
+.. image:: https://github.com/N8-CIR-Bede/documentation/actions/workflows/ci.yml/badge.svg
+  :target: https://github.com/N8-CIR-Bede/documentation/actions/workflows/ci.yml
+  :alt: CI
+.. image:: https://img.shields.io/badge/docs-bede--documentation.readthedocs.io-054C91
+  :target: https://bede-documentation.readthedocs.io
+  :alt: CI
 
 *****************
 How to Contribute
@@ -25,7 +30,7 @@ Using feature branches is recommended.
 Installing Dependencies
 ***********************
 
-This documentation requires ``python`` and the python packages ``sphinx``, ``sphinx-autobuild`` and ``sphinx-bootstrap-theme``, as listed in ``requirements.txt``.
+This documentation requires ``python`` and a number of python packages as listed in ``requirements.txt``.
 This would be typically done using a `Python Virtual Environment <https://docs.python.org/3/tutorial/venv.html>`_, or `conda <https://docs.conda.io/en/latest/>`_
 
 
@@ -92,4 +97,4 @@ The documentation consists of a series of `reStructured Text <http://sphinx-doc.
 If there are any errors in your changes the build will fail and the documentation will not update, you can test your build locally by running ``make html``. The easiest way to learn what files should look like is to read the ``rst`` files already in the repository.
 
 
-The docs use the `Sphinx Bootstrap Theme <https://github.com/ryan-roemer/sphinx-bootstrap-theme>`_ with customisations to match the N8 brand guidelines and to play nicely with ReadTheDocs. It should be possible to add new subpages to any of the main sections, but adding any further top-level headings would require changes to the custom CSS to ensure the menu does not break.
+The docs use the `Sphinx Book Theme <https://github.com/executablebooks/sphinx-book-theme>`_ with customisations to match the N8 brand guidelines.

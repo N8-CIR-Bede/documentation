@@ -12,7 +12,6 @@ If you notice any omissions, errors or have any suggested changes to the documen
 
 .. toctree::
     :maxdepth: 3
-    :titlesonly:
     :name: softwaretoc
 
     applications/index

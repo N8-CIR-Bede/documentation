@@ -1,0 +1,11 @@
+{# Overwrite sphinx-book-theme/sections/footer-content #}
+{# This is to remove the "By author" section which is not configurable #}
+<p>
+  &copy; Copyright {{ copyright }}
+  <br/>
+  {%- if theme_extra_footer %}
+    <div class="extra_footer">
+      {{ theme_extra_footer }}
+    </div>
+  {%- endif %}
+</p>

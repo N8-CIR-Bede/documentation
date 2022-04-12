@@ -1,6 +1,5 @@
 sphinx==4.3.1
-sphinx-bootstrap-theme
+sphinx-book-theme==0.3.2
 sphinx-autobuild
 sphinxext-rediraffe
-sphinxcontrib.fulltoc
 sphinx-copybutton
