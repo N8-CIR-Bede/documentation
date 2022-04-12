@@ -74,7 +74,6 @@ html_css_files = [
 # Add custom js files
 html_js_files = [
     'https://use.fontawesome.com/c79ff27dd1.js',
-    'js/rtd-versions.js',
     'js/custom.js',
 ]
 
@@ -107,7 +106,7 @@ html_sidebars = {
         "sidebar-logo.html",
         "a11y-search-field.html",
         "sbt-sidebar-nav.html",
-        "toc-button.html"
+        "ethical-ads.html"
     ]
 }
 
@@ -168,10 +167,14 @@ texinfo_documents = [
 ]
 
 def setup(app):
-    on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
-    if on_rtd:
-        app.add_js_file('https://use.fontawesome.com/c79ff27dd1.js')
-        app.add_js_file('js/rtd-versions.js')
+    # If not building on Read the docs or Github, manually include the RTD JS to enable local testing of RTD specific content (i.e. the version switcher and ethical ads).
+    # Only do this if the environment variable "MOCK_RTD" is defined.
+    if os.environ.get("MOCK_RTD") and not os.environ.get("READTHEDOCS") and not os.environ.get("GITHUB_ACTIONS"):
+        # Based on the same functionality in https://github.com/executablebooks/sphinx-book-theme/blob/master/docs/conf.py
+        app.add_css_file("https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css")
+        app.add_css_file("https://assets.readthedocs.org/static/css/badge_only.css")
+        app.add_js_file("rtd-data.js")
+        app.add_js_file("https://assets.readthedocs.org/static/javascript/readthedocs-doc-embed.js", priority=501)
 
 # Control use of the sphinx-rediraffe plugin to generate redirect files for moved documentation.
 # This is only viable for whole-pages, not for any bookmarks within a page unfortunately.

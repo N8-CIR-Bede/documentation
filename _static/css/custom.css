@@ -135,74 +135,17 @@ code {
   }
 }
 
-/* Style versioning info and ads added by RTD */
-.injected {
-  position: relative;
-  top: -30px;
-  left: 50%;
-  width: 50%;
-  padding-right: calc(50vw - 580px);
-  text-align: right;
-}
-
-.rst-current-version {
-  cursor: pointer;
-}
-
-.rst-other-versions {
-  display: none;
-  position: absolute;
-  background: white;
-  border: 1px solid var(--cool-grey-2-lighter-color);
-  border-radius: 4px;
-  height: 310px;
-  width: 300px;
-  top: -320px;
-  left: 275px;
-  text-align: left;
-  padding: 10px;
-  font-size: small;
-}
-
-.rst-other-versions dl {
-  margin-bottom: 0;
-}
-
-.rst-other-versions dd {
-  display: inline-block;
-  padding: 0 10px;
-}
-
-.rst-other-versions dt::after {
-  content: ":"
-}
-
-.rst-other-versions dd:last-child::after {
-  content: ""
-}
-
-.rst-other-versions hr {
-  margin: 5px 0;
-}
-
+/* Styling tweaks for ethical ads. */
 .ethical-sidebar, .ethical-footer {
-  background-color: var(--cool-grey-2-lightest-color);
-  border: none;
-}
-
-/* Change Autocomplete styles in Chrome*/
-/* input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
   border: 1px solid var(--cool-grey-2-lighter-color);
-  -webkit-text-fill-color: var(--cool-grey-10-color);
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
-  font-family: "Montserrat", "Arial" !important;
-  background-color: #FFFFFF;
-} */
+  margin-bottom: 2.5rem;
+}
+/* Push down the ethical ads to the bottom of the sidebar, but above the version selector */
+#site-navigation .bd-sidebar__top {
+  min-height: calc(100% - 2em);
+  display: flex;
+  flex-direction: column;
+}
+#ethical-ads-container {
+  margin-top:auto;
+}
