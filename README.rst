@@ -87,6 +87,18 @@ Or if you don't have the ``make`` utility installed on your machine then build w
 The application also serves up the site at port ``8000`` by default at http://localhost:8000.
 
 
+Testing Read the Docs extensions 
+================================
+
+When hosted on Read the Docs, additional Javascript is injected into the page(s) to add the version selector and ethical adverts.
+
+To test this locally, define the environment variable ``MOCK_RTD`` locally and build the documentation. You may need to serve the content over a webserver to avoid CORS errors (i.e. use ``livehtml``).
+
+.. code-block:: bash
+
+   MOCK_RTD="True" make clean livehtml
+
+
 ***********************************
 Making Changes to the Documentation
 ***********************************
