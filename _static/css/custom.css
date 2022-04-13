@@ -2,6 +2,7 @@
 /* Define N8 theme colours (and lighter versions) */
 :root {
   --burnt-orange-color: #F95423;
+  --burnt-orange-color-a11y: #D13505;
   --deep-blue-color: #054C91;
   --cool-grey-10-color: #63666A;
   --cool-grey-6-color: #A7A8AA;
@@ -12,332 +13,139 @@
   --cool-grey-2-lighter-color: #E1E1E0; /* equivalent of Cool grey 2 with alpha 0.5 */
   --cool-grey-2-lightest-color: #F1F1F0; /* equivalent of Cool grey 2 with alpha 0.3 */
   --burnt-orange-lightest-color: #FFF6F5; /* equivalent of burnt orange with alpha 0.05 */
+  --general-background-color: #f5f5f5;
+  --general-text-color: #212529;
+  /* Override some variable defined in the sphinx-book-theme, as a simpler solution for quick colour changing */
+  --pst-color-link: 5,76,145; /* Equivalent to #054c91, deep-blue-color */
+  --pst-color-preformatted-background: 248,248,248; /* pygments default pre background */
+  --pst-sidebar-font-size: 1.1em; /* Adjust some font sizes */
 }
 
 body {
-    font-family: "Montserrat", "Arial";
-    color: var(--cool-grey-10-color);
+  font-family: "Montserrat", "Arial";
+  color: var(--general-text-color);
 }
 
-blockquote {
-  font-size: 17px;
+/* Reset the general page background to an off white for reduced brightness */
+body,
+.header-article,
+#site-navigation,
+.headerbtn,
+.bd-toc nav {
+  background: var(--general-background-color);
 }
 
-h1, .h1, h2, .h2, h3, .h3 {
-    color: var(--deep-blue-color);
+@media (max-width: 768px) {
+  .bd-toc {
+    background: var(--general-background-color);
+  }
 }
 
-a, a:hover, a:focus, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus,
-.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus, code {
-    color: var(--burnt-orange-color);
+#site-navigation .form-control {
+  background: var(--general-background-color);
 }
 
-.navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a, .bs-sidenav .nav > li > a {
-    color: var(--deep-blue-color);
+#site-navigation nav ul.nav li a, 
+#site-navigation nav ul.nav ul li a {
+  color: var(--general-text-color);
 }
 
-.navbar-brand {
-  height: 90px;
-  font-size: 18px;
+/* Reduce padding / increase content width from 768px and above when navigation is hidden */
+@media (min-width: 768px) {
+  input#__navigation:checked~.container-xl #main-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
-.navbar-brand img {
-  padding-right: 15px;
+/* Change the colour of headings to the N8 blue */
+.content-container h1,
+.content-container h2,
+.content-container h3,
+.content-container h4
+.content-container h5 {
+  color: var(--deep-blue-color);
 }
 
-.navbar-nav, .navbar-right {
-  padding: 15px 0;
-  font-size: 14px;
-}
-
-.navbar-right .form-control {
-  width: 180px;
-  padding: 5px;
-}
-
-.navbar-nav .globaltoc-container {
-  display: none;
-}
-
-.navbar-default, .navbar-default
-.navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus,
-.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus,
-.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
-  background-color: var(--cool-grey-2-color);
-}
-
-.navbar-default .navbar-toggle {
-    border-color: var(--deep-blue-color);
-    margin: 30px 0;
-}
-
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: var(--deep-blue-color);
-}
-
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-    background-color: var(--deep-blue-color);
-}
-
-.navbar-default .navbar-toggle:hover .icon-bar, .navbar-default .navbar-toggle:focus .icon-bar {
-    background-color: white;
-}
-
-.collapsing {
-  overflow: hidden;
-}
-
-.row {
-  margin-top: 60px;
-}
-
-.bs-sidenav, pre {
-  text-shadow: none;
-  background-color: var(--cool-grey-2-lightest-color);
-}
-
-.bs-sidenav .nav > li > a:hover, .bs-sidenav .nav > li > a:focus {
-    background-color: var(--cool-grey-2-lighter-color);
-}
-
-.form-control, input {
-  border-top-color: var(--cool-grey-2-lighter-color);
-  border-bottom-color: var(--cool-grey-2-lighter-color);
-  border-left-color: var(--cool-grey-2-lighter-color);
-  border-right-color: var(--cool-grey-2-lighter-color);
-  border-radius: 4px;
-  color: var(--cool-grey-10-color);
-}
-
-.form-control:focus {
-  border-color: var(--cool-grey-6-color);
-}
-
-.btn-default {
-    background-color: var(--cool-grey-10-color);
-    border-color: var(--cool-grey-10-color);
-}
-
-.btn-default:hover {
-    background-color: var(--cool-grey-6-color);
-    border-color: var(--cool-grey-6-color);
-}
-
-pre {
-  background-color: var(--cool-grey-2-lightest-color);
-  border-color: var(--cool-grey-2-color);
+.bd-toc nav .toc-h2 { 
+  font-size: 1.0em;
 }
 
 code {
-  background-color: var(--burnt-orange-lightest-color);
+  /* The N8cir orange does not provide enough contrast, so using a darker shade (reduced luminance until > 4.50 contrast ratios */
+  color: var(--burnt-orange-color-a11y);
 }
 
-/* Previous and next links in sidebar are not inside a <ul> for some
-   reason. */
-.bs-sidenav > li {
-  list-style: none;
-  display: inline-block;
-  width: 49%;
-  padding: 10px 10px;
+/* Customise the sphinx-book-theme announcement colour */
+
+.header-item.announcement {
+  background: var(--deep-blue-color);
 }
 
-.bs-sidenav > li a {
-  display: block;
+.header-item.announcement a {
+  color: var(--burnt-orange-color-lightest);
+  font-weight: bold;
+  text-decoration: underline;
 }
 
-.bs-sidenav > li a[title^=Next] {
-  text-align: right;
-}
-
-/* Custom toctree highlighting.*/
-
-.bs-sidenav {
-  /* Remove padding so link formatting behaves as intended. */
-  padding-top: 0px;
-  padding-bottom: 0px;
-  overflow: hidden;
-}
-
-.bs-sidenav .nav.current li.current {
-  background: var(--cool-grey-2-color);
-  background: var(--cool-grey-2-lighter-color);
-}
-
-.bs-sidenav li.toctree-l1.current > a,
-.bs-sidenav li.toctree-l1.current li.toctree-l2 > a,
-.bs-sidenav li.toctree-l1 .nav-list li.toctree-l2 > a {
-  background: var(--cool-grey-2-lighter-color);
-}
-
-.bs-sidenav li.toctree-l2.current > a,
-.bs-sidenav li.toctree-l2.current li.toctree-l3 > a,
-.bs-sidenav li.toctree-l2 .nav-list li.toctree-l3 > a {
-  background: var(--cool-grey-3-color);
-}
-
-.bs-sidenav li.toctree-l3.current > a,
-.bs-sidenav li.toctree-l3.current li.toctree-l4 > a,
-.bs-sidenav li.toctree-l3 .nav-list li.toctree-l4 > a {
-  background: var(--cool-grey-4-color);
-}
-
-.bs-sidenav .nav > li > a:hover,
-.bs-sidenav .nav > li > a:focus {
-  background-color: var(--cool-grey-2-lighter-color);
-}
-
-.bs-sidenav .nav li.current > a {
-  /* Mark current items in the tree bolder */
-  font-weight: 900;
-}
-
-
-/* Change colours of alert blocks */
-.alert-info {
-    background-color: var(--deep-blue-color);
-    border-color: var(--deep-blue-color);
-}
-
-.alert-info code {
-  background-color: var(--cool-grey-10-color);
-  color: white;
-}
-
-/* Style versioning info and ads added by RTD */
-.injected {
-  position: relative;
-  top: -30px;
-  left: 50%;
-  width: 50%;
-  padding-right: calc(50vw - 580px);
-  text-align: right;
-}
-
-.rst-current-version {
-  cursor: pointer;
-}
-
-.rst-other-versions {
+/* Hide the prev/next links from sphinx-book-theme */
+.prev-next-area {
   display: none;
-  position: absolute;
-  background: white;
+}
+
+/* Customised version of the search bar with a submit button for accessibility */
+.custom-bd-search {
+  padding: 1rem 15px 0 15px;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.custom-bd-search input,
+.custom-bd-search .btn {
+  border-radius: 0;
   border: 1px solid var(--cool-grey-2-lighter-color);
-  border-radius: 4px;
-  height: 310px;
-  width: 300px;
-  top: -320px;
-  left: 275px;
-  text-align: left;
-  padding: 10px;
-  font-size: small;
+}
+.custom-bd-search .btn-outline-secondary:hover {
+  background-color: var(--deep-blue-color);
 }
 
-.rst-other-versions dl {
-  margin-bottom: 0;
+/* Incrase the maximum width for large displays. Still limited to prevent very long line length */
+@media (min-width:1200px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width:1600px
+  }
 }
 
-.rst-other-versions dd {
-  display: inline-block;
-  padding: 0 10px;
+/* Hide an element visible on mobile that shouldn't be */
+#site-navigation label.d-block.d-md-none.nav-toggle-button.headerbtn {
+  display: none!important; /* Important required due to use of it in the them :cry: */
 }
 
-.rst-other-versions dt::after {
-  content: ":"
+/* Overwrite padding left for a strongly styled part of the theme */
+.col.pl-md-3.pl-lg-5.content-container {
+  padding-left: 1.5rem !important;
 }
 
-.rst-other-versions dd:last-child::after {
-  content: ""
+@media (min-width:768px) {
+  #main-content {
+    max-width:74%
+  }
 }
 
-.rst-other-versions hr {
-  margin: 5px 0;
-}
-
+/* Styling tweaks for ethical ads. */
 .ethical-sidebar, .ethical-footer {
-  background-color: var(--cool-grey-2-lightest-color);
-  border: none;
-}
-
-/* Change Autocomplete styles in Chrome*/
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
   border: 1px solid var(--cool-grey-2-lighter-color);
-  -webkit-text-fill-color: var(--cool-grey-10-color);
-  -webkit-box-shadow: 0 0 0 30px white inset !important;
-  font-family: "Montserrat", "Arial" !important;
-  background-color: #FFFFFF;
+  margin-bottom: 2.5rem;
 }
-
-/* Change width at which menus collapse */
-@media (max-width: 1240px) {
-  .navbar .container {
-    width: 100%;
-    padding: 0 30px;
-  }
-
-  :not(ul) > li {
-    white-space: normal;
-  }
+/* Push down the ethical ads to the bottom of the sidebar, but above the version selector */
+#site-navigation .bd-sidebar__top {
+  min-height: calc(100% - 2em);
+  display: flex;
+  flex-direction: column;
 }
-
-/* Tone down the alert warning background colour a little. Not trivial to get a separate title/body background colour with the bootstrap theme.*/
-.alert-warning {
-  background: #f4af25;
-  color: #2c3e50;
-}
-
-.alert-warning a, 
-.alert-warning a:hover, 
-.alert-warning a:focus, 
-.alert-warning code {
-    color: #9e0000;  /* A dark red which provides good contrast against the orange background) */
-}
-
-/* Media query for screens <= 1160px */
-@media (max-width: 1160px) {
-  .navbar-header {
-      float: none;
-  }
-.navbar-left, .navbar-right {
-      float: none !important;
-      margin-right: 0;
-  }
-  .navbar-toggle {
-      display: block;
-  }
-  .navbar-collapse {
-      border-top: 1px solid transparent;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-  }
-  .navbar-fixed-top {
-      top: 0;
-      border-width: 0 0 1px;
-  }
-  .navbar-collapse.collapse {
-      display: none!important;
-  }
-  .navbar-nav {
-      float: none!important;
-      margin-top: 7.5px;
-  }
-  .navbar-nav>li {
-      float: none;
-  }
-  .navbar-nav>li>a {
-      padding-top: 10px;
-      padding-bottom: 10px;
-  }
-  .collapse.in{
-      display:block !important;
-  }
-  .form-group, .form-control {
-      width: 100% !important;
-  }
+#ethical-ads-container {
+  margin-top:auto;
 }
