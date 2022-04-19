@@ -1,43 +1,58 @@
-.. _software-python-tensorflow:
+.. _software-applications-tensorflow:
 
 TensorFlow
 ----------
 
 `TensorFlow <https://www.tensorflow.org/>`__ is an end-to-end open source platform for machine learning. It has a comprehensive, flexible ecosystem of tools, libraries and community resources that lets researchers push the state-of-the-art in ML and developers easily build and deploy ML powered applications.
 
-TensorFlow Quickstart
-~~~~~~~~~~~~~~~~~~~~~
+TensorFlow can be installed through a number of python package managers such as :ref:`Conda<software-applications-conda>` or ``pip``.
 
-The following should get you set up with a working conda environment (replacing ``<project>`` with your project code):
+For use on Bede, the simplest method is to install TensorFlow using the :ref:`Open-CE Conda distribution<software-applications-open-ce>`.
+
+
+Installing via Conda (Open-CE)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+With a working Conda installation (see :ref:`Installing Miniconda<software-applications-conda-installing>`) the following instructions can be used to create a Python 3.8 conda environment named ``tf-env`` with the latest Open-CE provided TensorFlow:
+
+.. note:: 
+
+   TensorFlow installations via conda can be relatively large. Consider installing your miniconda (and therfore your conda environments) to the ``/nobackup`` file store.
+
 
 .. code-block:: bash
 
-    export DIR=/nobackup/projects/<project>/$USER
-    # rm -rf ~/.conda ~/.condarc $DIR/miniconda # Uncomment if you want to remove old env
-    mkdir $DIR
-    pushd $DIR
+   # Create a new conda environment named tf-env within your conda installation
+   conda create -y --name tf-env python=3.8
 
-    # Download the latest miniconda installer for ppcle64
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-ppc64le.sh
-    # Validate the file checksum matches is listed on https://docs.conda.io/en/latest/miniconda_hashes.html.
-    sha256sum Miniconda3-latest-Linux-ppc64le.sh
+   # Activate the conda environment
+   conda activate tf-env
 
-    sh Miniconda3-latest-Linux-ppc64le.sh -b -p $DIR/miniconda
-    source miniconda/bin/activate
-    conda update conda -y
+   # Add the OSU Open-CE conda channel to the current environment config
+   conda config --env --prepend channels https://ftp.osuosl.org/pub/open-ce/current/
 
-    conda config --prepend channels \
-            https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda/
+   # Also use strict channel priority
+   conda config --env --set channel_priority strict
 
-    conda config --prepend channels \
-            https://opence.mit.edu
+   # Install the latest available version of Tensorflow
+   conda install -y tensorflow
 
-    conda create --name opence tensorflow -y
-    conda activate opence
+In subsequent interactive sessions, and when submitting batch jobs which use TensorFlow, you will then need to re-activate the conda environment.
+
+For example, to verify that TensorFlow is available and print the version:
+
+.. code-block:: bash
+
+   # Activate the conda environment
+   conda activate tf-env
+
+   # Invoke python
+   python3 -c "import tensorflow;print(tensorflow.__version__)"
 
 .. note::
-  
-   This conflicts with the :ref:`PyTorch <software-applications-pytorch>` instructions as they set the conda channel_priority to be strict which seems to cause issues when installing TensorFlow.
+   
+   The :ref:`Open-CE<software-applications-open-ce>` distribution of TensorFlow does not include IBM technologies such as DDL or LMS, which were previously available via :ref:`WMLCE<software-applications-wmlce>`. 
+   WMLCE is not supported on RHEL 8.
 
 Further Information
 ~~~~~~~~~~~~~~~~~~~

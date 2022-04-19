@@ -5,6 +5,9 @@ Conda
 
 `Conda <https://docs.conda.io/>`__ is an open source package management system and environment management system that runs on Windows, macOS and Linux. Conda quickly installs, runs and updates packages and their dependencies.
 
+
+.. _software-applications-conda-installing:
+
 Installing Miniconda
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -26,7 +29,7 @@ The simplest way to install Conda for use on Bede is through the `miniconda <htt
    sha256sum Miniconda3-latest-Linux-ppc64le.sh
 
    sh Miniconda3-latest-Linux-ppc64le.sh -b -p ./miniconda
-   source miniconda/bin/activate
+   source miniconda/etc/profile.d/conda.sh
    conda update conda -y
 
 On subsequent sessions, or in job scripts you may need to re-source miniconda. Alternatively you could add this to your bash environment. I.e. 
@@ -34,7 +37,7 @@ On subsequent sessions, or in job scripts you may need to re-source miniconda. A
 .. code-block:: bash
 
     export CONDADIR=/nobackup/projects/<project>/$USER # Update this with your <project> code.
-    source $CONDADIR/miniconda/bin/activate
+    source $CONDADIR/miniconda/etc/profile.d/conda.sh
 
 Creating a new Conda Environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -45,13 +48,27 @@ I.e. to create a new conda environment named `example`, with `python 3.9` you ca
 
 .. code-block:: bash
    
-   conda create -y --name example python==3.9
+   conda create -y --name example python=3.9
 
 Once created, the environment can be activated using ``conda activate``.
 
 .. code-block:: bash
 
    conda activate example
+
+Alternatively, Conda environments can be created outside of the conda/miniconda install, using the ``-p`` / ``--prefix`` option of ``conda create``. 
+
+I.e. if you have installed miniconda to your home directory, but wish to create a conda environment within the ``/project/<PROJECT>/$USER/`` directory named ``example`` you can use:
+
+.. code-block:: bash
+
+   conda create -y --prefix /project/<PROJECT>/$USER/example python=3.9
+
+This can subsequently be loaded via:
+
+.. code-block:: bash
+
+   conda activate /project/<PROJECT>/$USER/example
 
 Listing and Activating existing Conda Environments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -63,6 +80,27 @@ Existing conda environments can be listed via:
    conda env list
 
 ``conda activate`` can then be used to activate one of the listed environments.
+
+Adding Conda Channels to an Environment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The default conda channel does not contain all packages or may not contain versions of packages you may wish to use.
+
+In this case, third-party conda channels can be added to conda environments to provide access to these packages, such as the :ref:`Open-CE <software-applications-open-ce>` Conda channel hosted by Oregon State University.
+
+It is recommended to add channels to specific conda environments, rather than your global conda configuration.
+
+I.e. to add the `OSU Open-CE Conda channel <https://osuosl.org/services/powerdev/opence/>`__ to the currently loaded conda environment:
+
+.. code-block:: bash
+
+   conda config --env --prepend channels https://ftp.osuosl.org/pub/open-ce/current/
+
+You may also wish to enable `strict channel priority <https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-channels.html#strict-channel-priority>`__ to speed up conda operations and reduce incompatibility which will be default from Conda 5.0. This may break old environment files.
+
+.. code-block:: bash
+
+   conda config --env --set channel_priority strict
 
 Installing Conda Packages
 ~~~~~~~~~~~~~~~~~~~~~~~~~
