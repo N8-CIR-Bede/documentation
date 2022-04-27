@@ -24,4 +24,3 @@ Please note that the system is still under active development, and so some funct
    faq/index
    user-group/index
    glossary/index
-   rhel8/index

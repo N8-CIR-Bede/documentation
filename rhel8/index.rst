@@ -1,5 +1,7 @@
 .. _RHEL8-migration:
 
+:orphan:
+
 RHEL 8 Migration
 ================
 
