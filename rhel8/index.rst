@@ -21,6 +21,8 @@ The migration from RHEL 7 to RHEL 8 has three mains steps:
 2. :ref:`Login nodes migrate to RHEL 8<rhel8-login-migration>` (**Complete**)
 3. :ref:`Compute nodes migrate to RHEL 8 as load permits<rhel8-compute-migration>` (**In Progress**)
 
+   * Remaining RHEL 7 nodes scheduled for removal at **09:00 BST on 2022-05-03**
+
 
 Two new commands have been added to Bede for the duration of the OS migration: ``login8`` and ``login7``.
 
@@ -78,6 +80,10 @@ Conversely, the capacity for RHEL 7 jobs will initially be high but will decreas
 
 This will likely impact queue time for your jobs, and may prevent multi-node jobs from being scheduled if the requested number of nodes is not available for the RHEL version used.
 See :ref:`Checking Node Availability<rhel8-check-node-availability>` for instructions on how to check how many nodes are available for RHEL 8 and RHEL 7. 
+
+.. attention::
+
+   The opt-in RHEL 7 login environment and few remaining RHEL 7 compute nodes are scheduled for removal at 9am on Tuesday 3rd May.
 
 Module Changes
 --------------
