@@ -3,8 +3,12 @@
 RHEL 8 Migration
 ================
 
-Bede is in the process of an Operating System upgrade from Red Hat Enterprise Linux 7 (RHEL 7) to Red Hat Enterprise Linux 8 (RHEL 8).
-This upgrade will enable the use of newer software versions, such as CUDA 11.
+.. admonition:: Migration Complete
+
+   The RHEL 8 migration process is now complete, with all login and compute nodes using the RHEL 8 environment.
+
+Bede has now completed the Operating System upgrade from Red Hat Enterprise Linux 7 (RHEL 7) to Red Hat Enterprise Linux 8 (RHEL 8).
+This upgrade enables the use of newer software versions, such as CUDA 11.
 
 However, it may impact your use of Bede:
 
@@ -19,10 +23,7 @@ The migration from RHEL 7 to RHEL 8 has three mains steps:
 
 1. :ref:`Users to test the RHEL 8 image<rhel8-user-testing>` (**Complete**)
 2. :ref:`Login nodes migrate to RHEL 8<rhel8-login-migration>` (**Complete**)
-3. :ref:`Compute nodes migrate to RHEL 8 as load permits<rhel8-compute-migration>` (**In Progress**)
-
-   * Remaining RHEL 7 nodes scheduled for removal at **09:00 BST on 2022-05-03**
-
+3. :ref:`Compute nodes migrate to RHEL 8 as load permits<rhel8-compute-migration>` (**Complete**)
 
 Two new commands have been added to Bede for the duration of the OS migration: ``login8`` and ``login7``.
 
@@ -63,7 +64,7 @@ The ``login7`` command will be usable to connect to an interactive session on a 
  
 .. note::
 
-   Login nodes have been migrated to RHEL 8, and Compute nodes are now being migrated as load demands. See :ref:`Compute Node Migration<rhel8-compute-migration>` for more information.
+   Login nodes migration is complete
 
 .. _rhel8-compute-migration:
 
@@ -81,9 +82,11 @@ Conversely, the capacity for RHEL 7 jobs will initially be high but will decreas
 This will likely impact queue time for your jobs, and may prevent multi-node jobs from being scheduled if the requested number of nodes is not available for the RHEL version used.
 See :ref:`Checking Node Availability<rhel8-check-node-availability>` for instructions on how to check how many nodes are available for RHEL 8 and RHEL 7. 
 
-.. attention::
+.. note::
 
-   The opt-in RHEL 7 login environment and few remaining RHEL 7 compute nodes are scheduled for removal at 9am on Tuesday 3rd May.
+   All compute nodes have now been migrated to RHEL 8. 
+
+   The RHEL 7 environment is no longer available
 
 Module Changes
 --------------

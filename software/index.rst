@@ -8,8 +8,6 @@ These pages list software available on bessemer and/or instructions on how to in
 
 If you notice any omissions, errors or have any suggested changes to the documentation please create an `Issue <https://github.com/N8-CIR-Bede/documentation/issues>`__ or open a `Pull Request <https://github.com/N8-CIR-Bede/documentation/pulls>`__ on GitHub. 
 
-.. include:: ../common/rhel8-status.rst
-
 .. toctree::
     :maxdepth: 3
     :name: softwaretoc

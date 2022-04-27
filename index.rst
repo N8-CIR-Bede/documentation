@@ -10,9 +10,6 @@ Feel free to add items of concern to the `GitHub Issues <https://github.com/N8-C
 
 Please note that the system is still under active development, and so some functionality may temporarily break.
 
-.. include:: common/rhel8-status.rst
-
-
 .. The TOC is required on the root document, but as we have alternate navigation it is not required, so can be hidden?
 
 .. toctree::
