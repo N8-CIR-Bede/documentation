@@ -59,6 +59,7 @@ the relevant array is copied back to the CPU to print out.
 
 
 .. literalinclude:: sgemm-basic.cpp
+   :language: CUDA
 
 
 The next code is nearly identical, but this time unified memory is used, so
@@ -78,6 +79,8 @@ arrays are declared once via commands like ``cudaMallocManaged``. Such arrays ca
 can be a significant performance hit if access patterns between the two domains are not managed intelligently.
 
 .. literalinclude:: sgemm-unified.cu
+   :language: CUDA
+
 
 
 Looking more carefully at unified memory
@@ -106,6 +109,8 @@ Specifically, ``threadIdx.x`` contains the index of the current thread within it
 
 
 .. literalinclude:: add_grid_init.cu 
+   :language: CUDA
+
 
 It is worth examining a few parts of this code in more detail.
 
@@ -113,7 +118,7 @@ Notice the invocation of the kernel functions involves passing execution configu
 function as the gridDim) and the size of each block of threads (referenced internally in a kernel
 function as the blockDim). Thread blocks have to have a multiple of 32 threads, with a maximum of 1024 threads in a block.
 
-::
+.. code-block:: CUDA
 
 
       int blockSize = 256;
@@ -128,22 +133,23 @@ extension ``.cu``. This alerts the CUDA nvcc compiler to the need for preprocess
 
 In the kernel functions, there are other predefined identifiers to assist in specifying unique thread ids. 
 
-::
+.. code-block:: CUDA
 
-      int index = blockIdx.x * blockDim.x + threadIdx.x;
-      int stride = blockDim.x * gridDim.x;
-      for (int i = index; i < n; i += stride)
-        y[i] = x[i] + y[i];
+   int index = blockIdx.x * blockDim.x + threadIdx.x;
+   int stride = blockDim.x * gridDim.x;
+   for (int i = index; i < n; i += stride)
+     y[i] = x[i] + y[i];
 	
 Provided the value of ``gridDim.x`` is sufficiently large, that is ``blockDim.x * gridDim.x >= n`` the loop is effectively executed once with ``i == index``. This 
 loop can therefore be considered as defensive programming to ensure that the full range of the array is covered exactly once by the pool of thread blocks. To confirm, in
 this case:
-::
 
- n = 1048576
- blockDim = 256
- gridDim = n / blockDim = 4096
- stride = n
+.. code-block:: CUDA
+
+   n = 1048576
+   blockDim = 256
+   gridDim = n / blockDim = 4096
+   stride = n
 
 There are alternative ways to protect the computations from trying to access past the end of arrays. A common alternative is given in the next example. The critical thing
 to note is that by defining the number of grid blocks as a function of the array dimension and  thread pool size, it is possible to treat the array computation as being
@@ -164,6 +170,7 @@ complicated, but the basic idea scales fairly well. Note that rather than stride
 in range.
 
 .. literalinclude:: matadd.cu
+   :language: CUDA
 
 
 Putting the pieces together
@@ -179,7 +186,7 @@ diagonal. I cannot find a reference to the specific formulas used for these matr
 
 Notice in the kernel function ``initmatrix`` we have  redundant calculation, but the threads would have needed to wait for this computation anyway:
 
-::
+.. code-block:: CUDA
 
 	pi = two*asin(one);
         rkplus1 = one/(float(m) + one);  
@@ -192,12 +199,13 @@ The full code is below:
 
 
 .. literalinclude:: sgemm-unifiedorthogV2a.cu
+   :language: CUDA
 
 The performance on different systems is interesting and it also demonstrates the ease of using nvprof (only an abbreviated output is shown).
 
 On a system with a Quadro P4000 GPU and Skylake 6138 processor (2.0 GHz) -  Driver Version: 460.32.03    CUDA Version: 11.2 
 
-::
+.. code-block:: console
 
  Numblks x 625 Blksize x 32
  Initialise : 0.438705 sec .
@@ -216,7 +224,7 @@ On a system with a Quadro P4000 GPU and Skylake 6138 processor (2.0 GHz) -  Driv
 
 On a system with a v100 and Cascade Lake 5218 (2.30GHz) -  Driver Version: 460.32.03    CUDA Version: 11.2 
 
-::
+.. code-block:: console
 
  Numblks x 625 Blksize x 32
  Initialise : 0.254990 sec .
@@ -231,7 +239,7 @@ On a system with a v100 and Cascade Lake 5218 (2.30GHz) -  Driver Version: 460.3
 		    
 On login2 of Bede - AC922 - v100 with Power 9 (3.8GHz) - Driver Version: 440.95.01    CUDA Version: 10.2
 
-::
+.. code-block:: console
 
  Numblks x 625 Blksize x 32
  Initialise : 0.420643 sec .
@@ -252,7 +260,7 @@ preallocate memory on a particular GPU / device.
 
 The relevant modified code to our earlier sgemm code is:
 
-::
+.. code-block:: CUDA
 
   	int device = -1; // For GPU number
 	// unified memory for a,b,c
@@ -268,7 +276,7 @@ Running the modified version of the code on our test platforms shows the change:
 
 On a system with a Quadro P4000 GPU and Skylake 6138 processor (2.0 GHz) -  Driver Version: 460.32.03    CUDA Version: 11.2 
 
-::
+.. code-block:: console
 
  Numblks x 625 Blksize x 32
  Initialise : 0.049530 sec . 
@@ -282,7 +290,7 @@ On a system with a Quadro P4000 GPU and Skylake 6138 processor (2.0 GHz) -  Driv
 
 On a system with a v100 and Cascade Lake 5218 (2.30GHz) -  Driver Version: 460.32.03    CUDA Version: 11.2 
 
-::
+.. code-block:: console
 
 
  Numblks x 625 Blksize x 32
@@ -299,7 +307,7 @@ On a system with a v100 and Cascade Lake 5218 (2.30GHz) -  Driver Version: 460.3
 
 On login1 of Bede - AC922 - v100 with Power 9 (3.8GHz) - Driver Version: 440.95.01    CUDA Version: 10.2
 
-::
+.. code-block:: console
 
  Numblks x 625 Blksize x 32
  Initialise : 0.073072 sec .
@@ -322,7 +330,7 @@ The results are interesting and do appear to show that there are performance adv
 
 On a system with a Quadro P4000 GPU and Skylake 6138 processor (2.0 GHz) -  Driver Version: 460.32.03    CUDA Version: 11.2 
 
-::
+.. code-block:: console
 
  Initialise : 25.894818 sec .
 
@@ -341,7 +349,7 @@ On a system with a Quadro P4000 GPU and Skylake 6138 processor (2.0 GHz) -  Driv
  
 On a system with a v100 and Cascade Lake 5218 (2.30GHz) -  Driver Version: 460.32.03    CUDA Version: 11.2
 
-::
+.. code-block:: console
 
  Initialise : 23.655406 sec .
  sgemm : 2.265335 sec .
@@ -359,7 +367,7 @@ On a system with a v100 and Cascade Lake 5218 (2.30GHz) -  Driver Version: 460.3
 
 On login1 of Bede - AC922 - v100 with Power 9 (3.8GHz) - Driver Version: 440.95.01    CUDA Version: 10.2
 
-::
+.. code-block:: console
 
  Initialise : 18.209140 sec .
  sgemm : 1.926488 sec .
@@ -377,7 +385,7 @@ On login1 of Bede - AC922 - v100 with Power 9 (3.8GHz) - Driver Version: 440.95.
 
 The sgemm performance is impacted by the time required to fetch the data, but the interesting numbers are the times spent in paging from Host to Device:
 
-::
+.. code-block:: console
 
  Device "Quadro P4000 (0)"
    Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name

@@ -1,19 +1,12 @@
-# This is a basic workflow to help you get started with Actions
-
+# Test that the documentation can be built, saving an archive of the built documentation for a number of days
 name: CI
-
-# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
+  # Triggers the workflow for any push or any pull_request
   push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
+  # Allows you to run this workflow manually from the actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
   build:
@@ -21,23 +14,24 @@ jobs:
     env:
       # When building on RTD, conf.py has some conditional logic. Test building with this enabled.
       READTHEDOCS: "True"
-      
-    # The type of runner that the job will run on
+
+    # Run on the latest ubuntu images
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+
       - uses: "actions/setup-python@v2"
         with:
           python-version: "3.8"
+
       - name: "Install dependencies"
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
+
       - name: "Build docs"
-        run: |
-          sphinx-build -W . ./html
+        run: sphinx-build -W . ./html
+
       - name: Archive built docs
         uses: actions/upload-artifact@v2
         with:

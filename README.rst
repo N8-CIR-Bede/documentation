@@ -37,7 +37,7 @@ This would be typically done using a `Python Virtual Environment <https://docs.p
 Using a python ``venv``
 =======================
 
-::
+.. code-block:: console
 
     mkdir -m 700 -p ~/.venvs
     python3 -m venv ~/.venvs/bede
@@ -50,7 +50,7 @@ Using conda (windows)
 
 From a conda-enabled terminal:
 
-::
+.. code-block:: console
 
     conda create --name bede python=3
     conda activate bede
@@ -61,11 +61,15 @@ From a conda-enabled terminal:
 Building the documentation
 **************************
 
-To build the HTML documentation run the following from a shell with the ``bede`` environment enabled: ::
+To build the HTML documentation run the following from a shell with the ``bede`` environment enabled:
+
+.. code-block:: console
 
     make html
 
-Or if you don't have the ``make`` utility installed on your machine then build with *sphinx* directly: ::
+Or if you don't have the ``make`` utility installed on your machine then build with *sphinx* directly:
+
+.. code-block:: console
 
     sphinx-build -W . ./html
 
@@ -76,11 +80,15 @@ Continuous build and serve
 
 The package `sphinx-autobuild <https://github.com/GaretJax/sphinx-autobuild>`_ provides a watcher that automatically rebuilds the site as files are modified.
 
-To start the autobuild process, from a shell with the ``bede`` environment enabled run: ::
+To start the autobuild process, from a shell with the ``bede`` environment enabled run: 
+
+.. code-block:: console
 
     make livehtml
 
-Or if you don't have the ``make`` utility installed on your machine then build with *sphinx-autobuild* directly: ::
+Or if you don't have the ``make`` utility installed on your machine then build with *sphinx-autobuild* directly:
+
+.. code-block:: console
 
     sphinx-autobuild . ./html
 

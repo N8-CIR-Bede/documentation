@@ -17,6 +17,7 @@ Please note that the system is still under active development, and so some funct
 
 .. toctree::
    :maxdepth: 2
+   :hidden:
 
    usage/index
    hardware/index
