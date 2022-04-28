@@ -373,6 +373,13 @@ and zero seconds'. These job time limits affect what will and won't be accepted
 in the ``--time`` field of your job script: ``--time`` values above the partition
 maximum will result in your job submission being rejected.
 
+Job Allocation Limits
+~~~~~~~~~~~~~~~~~~~~~
+
+There are currently no limits on the total or concurrent number of running jobs per project or per user. 
+
+Jobs are scheduled subject to Slurm's `Multifactor Priority Plugin <https://slurm.schedmd.com/priority_multifactor.html>`__, which considers factors such as age, job size and fair-use when selecting jobs for execution.
+
 
 Grace-Hopper Pilot
 ------------------
