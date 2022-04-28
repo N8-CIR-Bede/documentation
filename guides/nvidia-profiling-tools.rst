@@ -6,6 +6,11 @@ Nvidia provide a suite of profiling tools which can be used to profile applicati
 `Nsight Systems <https://developer.nvidia.com/nsight-systems>`__ and `Nsight Compute <https://developer.nvidia.com/nsight-compute>`__ are the modern profiling tools introduced with CUDA 10.0, and available for use on Bede.
 The `NVIDIA Visual Profiler <https://developer.nvidia.com/nvidia-visual-profiler>`_ is the legacy Nvidia profiling tool. It is recommended to use the newer tools where possible.
 
+.. note::
+
+   The GUI for these tools are not available on bede for use with X forwarding, as they are not available on PPC64LE.
+   Profile data must be generated using the command line interfaces, which can then be explored using a local installation of the appropriate tool, which can be installed locally without requiring a local NVIDIA GPU.
+
 Preparing your Application
 --------------------------
 

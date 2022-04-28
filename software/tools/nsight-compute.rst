@@ -6,7 +6,9 @@ Nsight Compute
 `Nsight Compute <https://developer.nvidia.com/nsight-compute>`__ is a kernel profiler for CUDA applications, which can also be used for API debugging.
 It supports Volta architecture GPUs and newer (SM 70+).
 
-On Bede, Nsight Compute is provided by a number of modules, with differing versions of ``ncu``. 
+On Bede, Nsight Compute is provided by a number of modules, with differing versions of ``ncu``.
+The GUI is not available on Bede, but profile data can be generated on Bede via the CLI.
+
 You should use a versions of ``ncu`` that is at least as new as the CUDA toolkit used to compile your application (if appropriate).
 
 .. code-block:: bash
