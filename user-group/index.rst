@@ -17,6 +17,9 @@ The Bede User Group meets once per term. Below is a list of issues raised at pre
    * - Date
      - Issue raised
      - Actions
+   * - 17.05.2022
+     - Is it any easier to port ML applications on RHEL8 than previously?
+     - Watson ML are no longer available, OpenCE is used instead, which so far works smoothly. `OpenCE use is documented here <https://bede-documentation.readthedocs.io/en/latest/software/applications/open-ce.html>`_ .     
    * - 08.02.2022
      - Relion and cryoEM modules need to be recompiled for RHEL8.
      - Action taken to contact IBM, who provided these modules.
