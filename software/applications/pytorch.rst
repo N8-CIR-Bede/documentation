@@ -22,11 +22,11 @@ With a working Conda installation (see :ref:`Installing Miniconda<software-appli
 
 .. code-block:: bash
 
-   # Create a new conda environment named torch-env within your conda installation
-   conda create -y --name torch-env python=3.8
+   # Create a new conda environment named torch within your conda installation
+   conda create -y --name torch python=3.9
 
    # Activate the conda environment
-   conda activate torch-env
+   conda activate torch
 
    # Add the OSU Open-CE conda channel to the current environment config
    conda config --env --prepend channels https://ftp.osuosl.org/pub/open-ce/current/
@@ -44,7 +44,7 @@ For example, to verify that PyTorch is available and print the version:
 .. code-block:: bash
 
    # Activate the conda environment
-   conda activate torch-env
+   conda activate torch
 
    # Invoke python
    python3 -c "import torch;print(torch.__version__)"
