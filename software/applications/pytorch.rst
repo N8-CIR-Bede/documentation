@@ -22,7 +22,7 @@ With a working Conda installation (see :ref:`Installing Miniconda<software-appli
 
 .. code-block:: bash
 
-   # Create a new conda environment named torch-env within your conda installation
+   # Create a new conda environment named torch within your conda installation
    conda create -y --name torch python=3.9
 
    # Activate the conda environment
