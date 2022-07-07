@@ -38,6 +38,12 @@ MVAPICH2 is provided by the `mvapich2` module(s):
 
 .. note::
 
+   There are a number of issues with OpenMPI 4 and the one-sided MPI communication features added by the MPI-3 standard. These features are typically useful when combined with GPUs, due to the asynchronous nature of the CUDA and OpenCL programming models.
+
+   For codes that require these features, we currently recommend using the ``mvapich2`` module.
+
+.. note::
+
    The ``mvapich2/2.3.5-2`` module should be used rather than ``mvapich2/2.3.5``, which is only provided to support existing projects which depend on it.
 
    Under RHEL 8, the ``mvapich2/2.3.5`` module is removed.
