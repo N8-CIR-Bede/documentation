@@ -35,9 +35,21 @@ MVAPICH2 is provided by the `mvapich2` module(s):
    module load mvapich2/2.3.5
    module load mvapich2/2.3.5-2
 
+.. note::
+
+   There are a number of issues with OpenMPI 4 and the one-sided MPI communication features added by the MPI-3 standard. These features are typically useful when combined with GPUs, due to the asynchronous nature of the CUDA and OpenCL programming models.
+
+   For codes that require these features, we currently recommend using the ``mvapich2`` module.
 
 .. note::
 
    The ``mvapich2/2.3.5-2`` module should be used rather than ``mvapich2/2.3.5``, which is only provided to support existing projects which depend on it.
 
    Under RHEL 8, the ``mvapich2/2.3.5`` module is removed.
+
+
+We also offer the ``mvapich2-gdr/2.3.6`` module. This is a version of MVAPICH2 that is specifically designed for machines like Bede, providing optimised communications directly between GPUs - even when housed in different compute nodes.
+
+Unlike the ``openmpi`` and ``mvapich2`` modules, ``mvapich2-gdr`` does not adapt itself to the currently loaded compiler and CUDA modules. This version of the software was built using GCC 8.4.1 and CUDA 11.3.
+
+Further information can be found on the `MVAPICH2-GDR <http://mvapich.cse.ohio-state.edu/userguide/gdr/>`__ pages.
