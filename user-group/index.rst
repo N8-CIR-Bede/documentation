@@ -17,6 +17,9 @@ The Bede User Group meets once per term. Below is a list of issues raised at pre
    * - Date
      - Issue raised
      - Actions
+   * - 13.09.2022
+     - Users find it hard to set up the environments and configurations for their ML applications, and would like to use containers. Setting up containers on Power architecture requires root privileges.
+     - Apptainer might be a solution. Action taken to raise in BSG, with the intention to create a task force to set up an example solution and provide documentation. Bede RSEs to support the users on this.
    * - 17.05.2022
      - Is it any easier to port ML applications on RHEL8 than previously?
      - Watson ML are no longer available, OpenCE is used instead, which so far works smoothly. `OpenCE use is documented here <https://bede-documentation.readthedocs.io/en/latest/software/applications/open-ce.html>`_ .     
