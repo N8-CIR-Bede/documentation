@@ -63,7 +63,7 @@ to:
 Instead of `Password`, to login after this you will be prompted for:
 
 - ``First Factor`` - this is your password
-- `Second Factor` - this is a one-time password code provided by the token in your app
+- ``Second Factor`` - this is a one-time password code provided by the token in your app
 
 Mobile apps that can be used to import an MFA token include Microsoft Authenticator,
 Google Authenticator, and others. When the token is generated on Bede, it will
