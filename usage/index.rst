@@ -68,7 +68,7 @@ Instead of `Password`, to login after this you will be prompted for:
 Mobile apps that can be used to import an MFA token include Microsoft Authenticator,
 Google Authenticator, and other TOTP authentication clients. When the token is generated on Bede, it will
 display a QR code, which can then be imported into the app (e.g. select ``+`` to add
-an account and then `Scan a QR code` or `Other account` to scan the QR code).
+an account and then *Scan a QR code* or *Other account* to scan the QR code).
 
 If you are unable to use an MFA app, for example if you do not have a mobile
 device, please contact `support <../faq/#faq-helpsupport>`__ for options.
