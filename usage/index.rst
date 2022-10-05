@@ -50,7 +50,7 @@ Multi Factor Authentication
 
 When connecting to the login nodes, the system has to validate your
 identity. In order to help keep accounts secure, Bede employs a
-technique called Multi Factor Authentication, where something you
+technique called Multi Factor Authentication (MFA), where something you
 know (your password), is combined with something you have (an app on
 a mobile device, such as your phone).
 
