@@ -81,6 +81,8 @@ The Bede documentation is maintained on GitHub at
 or to contribute by following the instructions in the README file. 
 
 
+.. _faq-helpsupport:
+
 How can I get further help and support?
 ---------------------------------------
 Each institution has Research Software Engineer support for Bede, and you can

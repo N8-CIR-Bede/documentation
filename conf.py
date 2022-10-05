@@ -92,7 +92,7 @@ html_theme_options = {
     # Reset the navigation bar footer (html)
     "extra_navbar": "",
     # Add an announcement bar, visible at the top of each page.
-    "announcement": "RHEL 8 Migration Complete",
+    "announcement": "MFA Deployment in Progress",
     # Add the traditional footer theme and sphinx acknowledgements
     "extra_footer": f"Built with <a href=\"http://sphinx-doc.org/\">Sphinx</a> {sphinx.__version__} using a theme by the <a href=\"https://ebp.jupyterbook.org/\">Executable Book Project</a>."
 }

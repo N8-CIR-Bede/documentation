@@ -38,6 +38,49 @@ Most of the computational power of the system is accessed through the
 batch scheduler, and so demanding applications should be submitted to it
 (see "Running Jobs").
 
+
+.. _usage-mfa:
+
+Multi Factor Authentication
+---------------------------
+
+.. note::
+
+   We are gradually rolling out MFA, so this may not yet apply to your account.
+
+When connecting to the login nodes, the system has to validate your
+identity. In order to help keep accounts secure, Bede employs a
+technique called Multi Factor Authentication (MFA), where something you
+know (your password), is combined with something you have (an app on
+a mobile device, such as your phone).
+
+When you first login to Bede, or after a password reset, you will be prompted
+to:
+
+1. Change your password
+2. Import an MFA token into an app on your mobile device
+
+Instead of `Password`, to login after this you will be prompted for:
+
+- ``First Factor`` - this is your password
+- ``Second Factor`` - this is a one-time password code provided by the token in your app
+
+Mobile apps that can be used to import an MFA token include Microsoft Authenticator,
+Google Authenticator, and other TOTP authentication clients. When the token is generated on Bede, it will
+display a QR code, which can then be imported into the app (e.g. select ``+`` to add
+an account and then *Scan a QR code* or *Other account* to scan the QR code).
+
+If you are unable to use an MFA app, for example if you do not have a mobile
+device, please contact `support <../faq/#faq-helpsupport>`__ for options.
+
+If you have lost your password or MFA token, please use EPCC's SAFE system to request a password reset for your Bede login account, which we normally aim to process within a working day.
+
+.. warning::
+
+   When MFA is fully deployed, all logins will need to be done this way. Alternative
+   methods, such as SSH user keys, will be disabled.
+
+
 .. _usage-acknowledging-bede:
 
 Acknowledging Bede
