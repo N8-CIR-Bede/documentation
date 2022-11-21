@@ -70,10 +70,15 @@ Google Authenticator, and other TOTP authentication clients. When the token is g
 display a QR code, which can then be imported into the app (e.g. select ``+`` to add
 an account and then *Scan a QR code* or *Other account* to scan the QR code).
 
-If you are unable to use an MFA app, for example if you do not have a mobile
-device, please contact `support <../faq/#faq-helpsupport>`__ for options.
+Please be aware that this MFA token is only for Bede. You may also need
+separate tokens to access SAFE and other services, such as those provided by
+your home institution. Bede's token should be compatible with any MFA app you
+may already be using.
 
-If you have lost your password or MFA token, please use EPCC's SAFE system to request a password reset for your Bede login account, which we normally aim to process within a working day.
+If you are unable to use MFA, for example because of accessibility reasons,
+please contact `support <../faq/#faq-helpsupport>`__ for options.
+
+**If you have lost your password or MFA token, please use EPCC's SAFE system to request a password reset for your Bede login account, which we normally aim to process within a working day.**
 
 .. warning::
 
