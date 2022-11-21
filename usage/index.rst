@@ -70,6 +70,11 @@ Google Authenticator, and other TOTP authentication clients. When the token is g
 display a QR code, which can then be imported into the app (e.g. select ``+`` to add
 an account and then *Scan a QR code* or *Other account* to scan the QR code).
 
+Please be aware that this MFA token is only for Bede. You may also need
+separate tokens to access SAFE and other services, such as those provided by
+your home institution. Bede's token should be compatible with any MFA app you
+may already be using.
+
 If you are unable to use MFA, for example because of accessibility reasons,
 please contact `support <../faq/#faq-helpsupport>`__ for options.
 
