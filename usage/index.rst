@@ -73,7 +73,7 @@ an account and then *Scan a QR code* or *Other account* to scan the QR code).
 If you are unable to use an MFA app, for example if you do not have a mobile
 device, please contact `support <../faq/#faq-helpsupport>`__ for options.
 
-If you have lost your password or MFA token, please use EPCC's SAFE system to request a password reset for your Bede login account, which we normally aim to process within a working day.
+**If you have lost your password or MFA token, please use EPCC's SAFE system to request a password reset for your Bede login account, which we normally aim to process within a working day.**
 
 .. warning::
 
