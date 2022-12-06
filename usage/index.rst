@@ -23,10 +23,10 @@ Access to the machine is based around projects:
 Login
 -----
 
-Bede offers an SSH service running on host ``bede.dur.ac.uk`` (which
+Bede offers SSH and X2GO services running on host ``bede.dur.ac.uk`` (which
 fronts the two login nodes, ``login1.bede.dur.ac.uk`` and
-``login2.bede.dur.ac.uk``). SSH should be used for all interaction with
-the machine (including shell access and file transfer).
+``login2.bede.dur.ac.uk``). SSH or X2GO should be used for all interaction with
+the machine (including shell access, file transfer and graphics).
 
 The login nodes are shared between all users of the service and
 therefore should only be used for light interactive work, for example:
@@ -80,10 +80,50 @@ please contact `support <../faq/#faq-helpsupport>`__ for options.
 
 **If you have lost your password or MFA token, please use EPCC's SAFE system to request a password reset for your Bede login account, which we normally aim to process within a working day.**
 
+If you are finding that you are having to use your password and a MFA token too many times, we have provided some tips on `how to reduce the frequency that MFA is required <../faq/#faq-reducemfa>`__
+
 .. warning::
 
    When MFA is fully deployed, all logins will need to be done this way. Alternative
    methods, such as SSH user keys, will be disabled.
+
+
+.. _usage-x2go:
+
+X2GO
+----
+
+Running graphical applications over the Internet using an ordinary SSH client
+can be quite slow. If you need to run such programs on Bede, you may wish to
+consider X2GO as an alternative.
+
+Instructions for installing the X2GO client on Windows, Mac and Linux are on the `X2GO website <https://wiki.x2go.org/doku.php/doc:installation:x2goclient>`__.
+
+.. warning::
+
+   Please use an SSH client and **not** X2GO the first time you ever log in to
+   Bede, or immediately after a password reset. Your MFA token will be
+   generated, but X2GO will not show it to you.
+
+Once you have installed and launched the X2GO client, provide Bede's connection details by clicking on the *Session -> New session...* menu item to open the *Session preferences - New session* window (this may happen automatically when you first run X2GO). Enter the following details:
+
+* Session name: ``bede.dur.ac.uk``
+* Host: ``bede.dur.ac.uk``
+* Login: *your Bede username*
+* Session type: *select Published applications from the drop down menu*
+
+When you are ready to login, click on the *bede.dur.ac.uk* name in the session selection window, enter your username and click Ok. You will be prompted for your password (or ``First Factor`` and ``Second Factor`` if MFA is enabled) similar to a SSH login.
+
+X2GO should now connect to Bede and show some details such as the *Session Id*. Once you see this, please pay attention to the row of four pale blue icons inside the grey box. These icons are:
+
+* Circular icon - *open published applications window*
+* Folder icon - *configure exporting a local directory to Bede*
+* Pause icon - *disconnect from your X2GO session, leaving programs running, allowing you to reconnect to it later. If you use this feature, you will need to make sure that all your sessions use the same login node. To do this, follow the instructions above to create an X2GO session, but instead of using the address bede.dur.ac.uk, give the address of one of the login nodes explicitly (either login1.bede.dur.ac.uk or login2.bede.dur.ac.uk*)
+* Terminate icon - *close your X2GO session, stopping all running programs*
+
+At this point, Click on the circular icon to open the *Published Applications* window, select *System -> MATE Terminal* and click Start. If there are no applications to select please close the *Published Applications* window, wait for 5 seconds, then open click on the circular icon again.
+
+A terminal window should open, giving you command line access to Bede. Use it to interact with the service and launch applications, including graphical ones, in the usual way.
 
 
 .. _usage-acknowledging-bede:
