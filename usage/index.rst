@@ -80,6 +80,8 @@ please contact `support <../faq/#faq-helpsupport>`__ for options.
 
 **If you have lost your password or MFA token, please use EPCC's SAFE system to request a password reset for your Bede login account, which we normally aim to process within a working day.**
 
+If you are finding that you are having to use your password and a MFA token too many times, we have provided some tips on `how to reduce the frequency that MFA is required <../faq/#faq-reducemfa>`__
+
 .. warning::
 
    When MFA is fully deployed, all logins will need to be done this way. Alternative

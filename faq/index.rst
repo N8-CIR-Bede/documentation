@@ -73,6 +73,52 @@ It is possible to install `Octave <https://www.gnu.org/software/octave/index>`__
 currently no official support for this.
 
 
+.. _faq-reducemfa:
+
+How do I reduce the number of times I'm prompted for my password and a MFA code?
+--------------------------------------------------------------------------------
+
+As SSH User keys are being phased out on Bede, you may find that providing your password and an MFA code for every terminal session or file transfer painful. There are a number of ways to reduce the frequency of password and MFA challenges.
+
+Windows users:
+
+* MobaXterm.
+  This program has a file transfer facility built into it. Once you login, a tree view of your home directory on Bede should be seen on the left hand side. This can be used to drag and drop files between your desktop and Bede.
+* PuTTY.
+  This program is able to run multiple sessions over a single SSH connection. To enable this, go to the PuTTY configuration screen and ensure the *Share SSH connections if possible* box is ticked under *Connection->SSH*.
+* X2GO.
+  In addition to speeding up graphical programs, X2GO allows you to launch multiple terminals within the same login session, or export a local directory so that it can be used on Bede. See :ref:`Using Bede<using-bede>` for details.
+
+Linux/Mac OS X users:
+
+* X2GO.
+  In addition to speeding up graphical programs, X2GO allows you to launch multiple terminals within the same login session, or export a local directory so that it can be used on Bede. See :ref:`Using Bede<using-bede>` for details.
+* SSH multiplexing.
+  The most commonly used SSH client is called OpenSSH, which can be configured to reuse an ssh session by adding the following to your local (**not** Bede's) ``~/.ssh/config`` file:
+
+.. code-block:: console
+
+   Host bede login1.bede login2.bede
+      CanonicalizeHostname yes
+      CanonicalDomains dur.ac.uk
+      ControlPath ~/.ssh/controlpath/%C.sock
+      ControlMaster auto
+      ControlPersist 10m
+
+And then running the following commands:
+
+.. code-block:: bash
+
+   mkdir ~/.ssh/controlpath
+   chmod 700 ~/.ssh/controlpath
+
+Once done, the following command will log into Bede and subequent ssh/scp commands will reuse the connection without prompting for a password or an MFA code:
+
+.. code-block:: bash
+
+   ssh bede
+
+
 How can I suggest improvements or contribute to this documentation?
 -------------------------------------------------------------------
 
