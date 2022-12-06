@@ -99,6 +99,12 @@ consider X2GO as an alternative.
 
 Instructions for installing the X2GO client on Windows, Mac and Linux are on the `X2GO website <https://wiki.x2go.org/doku.php/doc:installation:x2goclient>`__.
 
+.. warning::
+
+   Please use an SSH client and **not** X2GO the first time you ever log in to
+   Bede, or immediately after a password reset. Your MFA token will be
+   generated, but X2GO will not show it to you.
+
 Once you have installed and launched the X2GO client, provide Bede's connection details by clicking on the *Session -> New session...* menu item to open the *Session preferences - New session* window (this may happen automatically when you first run X2GO). Enter the following details:
 
 * Session name: ``bede.dur.ac.uk``
