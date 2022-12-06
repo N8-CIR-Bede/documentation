@@ -106,7 +106,7 @@ Once you have installed and launched the X2GO client, provide Bede's connection 
 * Login: *your Bede username*
 * Session type: *select Published applications from the drop down menu*
 
-When you are ready to login, click on the *bede.dur.ac.uk* name in the session selection window, enter your username and click Ok. You will be prompted for your password (or ``First Factor`` and ``Second factor`` if MFA is enabled) similar to a SSH login.
+When you are ready to login, click on the *bede.dur.ac.uk* name in the session selection window, enter your username and click Ok. You will be prompted for your password (or ``First Factor`` and ``Second Factor`` if MFA is enabled) similar to a SSH login.
 
 X2GO should now connect to Bede and show some details such as the *Session Id*. Once you see this, please pay attention to the row of four pale blue icons inside the grey box. These icons are:
 

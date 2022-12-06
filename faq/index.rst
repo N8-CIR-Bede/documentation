@@ -78,7 +78,7 @@ currently no official support for this.
 How do I reduce the number of times I'm prompted for my password and a MFA code?
 --------------------------------------------------------------------------------
 
-As SSH User keys are being phased out on Bede, you may find that providing your password and an MFA code for every terminal session or file transfer painful. There are a number of ways to reduce the frequency of password and MFA challenges.
+As SSH User keys are being phased out on Bede, you may find that providing your password and an MFA code for every terminal session or file transfer can be painful. There are a number of ways to reduce the frequency of password and MFA challenges.
 
 Windows users:
 
@@ -101,7 +101,7 @@ Linux/Mac OS X users:
    Host bede login1.bede login2.bede
       CanonicalizeHostname yes
       CanonicalDomains dur.ac.uk
-      ControlPath ~/.ssh/controlpath/%C.sock
+      ControlPath ~/.ssh/control/%C.sock
       ControlMaster auto
       ControlPersist 10m
 
@@ -109,10 +109,10 @@ And then running the following commands:
 
 .. code-block:: bash
 
-   mkdir ~/.ssh/controlpath
-   chmod 700 ~/.ssh/controlpath
+   mkdir ~/.ssh/control
+   chmod 700 ~/.ssh/control
 
-Once done, the following command will log into Bede and subequent ssh/scp commands will reuse the connection without prompting for a password or an MFA code:
+Once done, the following command will log into Bede and subsequent ssh/scp commands will reuse the connection without prompting for a password or an MFA code:
 
 .. code-block:: bash
 
