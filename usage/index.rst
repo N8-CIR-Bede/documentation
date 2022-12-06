@@ -151,8 +151,7 @@ Each project has access to the following shared storage:
 
 -  Project home directory (``/projects/<project>``)
 
-   -  Intended for project files to be backed up (note: backups not
-      currently in place)
+   -  Intended for project files to be backed up
    -  Modest performance
    -  A default quota of ``20GB``
 
@@ -169,7 +168,7 @@ In addition, each user has:
 
 -  Home directory (``/users/<user>``)
 
-   -  Intended for per-user configuration files.
+   -  Intended for per-user configuration files to be backed up
    -  Modest performance
    -  A default quota of ``20GB``
 
