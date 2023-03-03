@@ -17,6 +17,9 @@ The Bede User Group meets once per term. Below is a list of issues raised at pre
    * - Date
      - Issue raised
      - Actions
+   * - 03.03.2023
+     - No additional issues raised. 
+     - Actions from Bede Knowledge Exchange Day with be further pursued.   
    * - 13.09.2022
      - Users find it hard to set up the environments and configurations for their ML applications, and would like to use containers. Setting up containers on Power architecture requires root privileges.
      - Apptainer might be a solution. Action taken to raise in BSG, with the intention to create a task force to set up an example solution and provide documentation. Bede RSEs to support the users on this.
