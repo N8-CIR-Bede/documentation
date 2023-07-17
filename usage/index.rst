@@ -28,6 +28,12 @@ fronts the two login nodes, ``login1.bede.dur.ac.uk`` and
 ``login2.bede.dur.ac.uk``). SSH or X2GO should be used for all interaction with
 the machine (including shell access, file transfer and graphics).
 
+.. warning::
+
+   Please use an SSH client and **not** X2GO the first time you ever log in to
+   Bede, or immediately after a password reset. Your MFA token will be
+   generated, but X2GO will not show it to you.
+
 The login nodes are shared between all users of the service and
 therefore should only be used for light interactive work, for example:
 downloading and compiling software, editing files, preparing jobs and
@@ -43,10 +49,6 @@ batch scheduler, and so demanding applications should be submitted to it
 
 Multi Factor Authentication
 ---------------------------
-
-.. note::
-
-   We are gradually rolling out MFA, so this may not yet apply to your account.
 
 When connecting to the login nodes, the system has to validate your
 identity. In order to help keep accounts secure, Bede employs a
@@ -81,12 +83,6 @@ please contact `support <../faq/#faq-helpsupport>`__ for options.
 **If you have lost your password or MFA token, please use EPCC's SAFE system to request a password reset for your Bede login account, which we normally aim to process within a working day.**
 
 If you are finding that you are having to use your password and a MFA token too many times, we have provided some tips on `how to reduce the frequency that MFA is required <../faq/#faq-reducemfa>`__
-
-.. warning::
-
-   When MFA is fully deployed, all logins will need to be done this way. Alternative
-   methods, such as SSH user keys, will be disabled.
-
 
 .. _usage-x2go:
 
