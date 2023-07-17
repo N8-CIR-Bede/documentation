@@ -56,7 +56,7 @@ technique called Multi Factor Authentication (MFA), where something you
 know (your password), is combined with something you have (an app on
 a mobile device, such as your phone).
 
-When you first login to Bede, or after a password reset, you will be prompted
+When you first login to Bede, or after a password reset, you should use SSH to connect to the machine (rather than x2go) and you will be prompted
 to:
 
 1. Change your password
