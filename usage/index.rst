@@ -376,7 +376,8 @@ maximum will result in your job submission being rejected.
 Job Allocation Limits
 ~~~~~~~~~~~~~~~~~~~~~
 
-There are currently no limits on the total or concurrent number of running jobs per project or per user. 
+There are currently no limits on the total or concurrent number of running jobs per project or per user.
+There are also no software-defined limits on the size of jobs (memory, cores, nodes), but jobs must be able to run on the available hardware.
 
 Jobs are scheduled subject to Slurm's `Multifactor Priority Plugin <https://slurm.schedmd.com/priority_multifactor.html>`__, which considers factors such as age, job size and fair-use when selecting jobs for execution.
 
