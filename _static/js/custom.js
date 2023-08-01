@@ -4,7 +4,7 @@ so cannot use sphinx :ref: for output destination URIs relative to the current p
 Instead, find the appropriate link within the current page, to add the anchor to the announcement.
 This does not currently support linking outside of the documentation website.
 */
-console.log("foo")
+/*
 window.onload = function () {
     // Only apply the link if the annoucement content matches (incase the announcement is changed but this file is not.)
     expectedAnnouncementContent = "MFA Deployment in Progress";
@@ -46,3 +46,4 @@ window.onload = function () {
         }
     }
 }
+*/
