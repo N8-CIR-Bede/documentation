@@ -53,6 +53,7 @@ More Information
 ^^^^^^^^^^^^^^^^
 
 * `Nsight Compute <https://docs.nvidia.com/nsight-compute/>`_
+* :ref:`Bede NVIDIA Profiling Tools guide <guides-nvidia-profiling-tools>`
 * `OLCF: Nsight Compute Tutorial <https://vimeo.com/398929189>`_
 
   * Use the following `Nsight report files <https://drive.google.com/open?id=133a90SIupysHfbO3mlyfXfaEivCyV1EP>`_ to follow the tutorial.
