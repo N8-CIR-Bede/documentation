@@ -52,6 +52,7 @@ More Information
 ^^^^^^^^^^^^^^^^
 
 * `Nsight Systems <https://docs.nvidia.com/nsight-systems/>`_
+* :ref:`Bede NVIDIA Profiling Tools guide <guides-nvidia-profiling-tools>`
 * `OLCF: Nsight Systems Tutorial <https://vimeo.com/398838139>`_
   
   * Use the following `Nsight report files <https://drive.google.com/open?id=133a90SIupysHfbO3mlyfXfaEivCyV1EP>`_ to follow the tutorial.

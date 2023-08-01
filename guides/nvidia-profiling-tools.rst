@@ -1,3 +1,5 @@
+.. _guides-nvidia-profiling-tools:
+
 NVIDIA Profiling Tools
 ======================
 
@@ -66,6 +68,7 @@ More Information
 ~~~~~~~~~~~~~~~~
 
 * `Nsight Systems <https://docs.nvidia.com/nsight-systems/>`_
+* :ref:`Bede Nsight Systems Documentation <software-tools-nsight-systems>`
 * `OLCF: Nsight Systems Tutorial <https://vimeo.com/398838139>`_
   
   * Use the following `Nsight report files <https://drive.google.com/open?id=133a90SIupysHfbO3mlyfXfaEivCyV1EP>`_ to follow the tutorial.
@@ -112,6 +115,7 @@ More Information
 ~~~~~~~~~~~~~~~~
 
 * `Nsight Compute <https://docs.nvidia.com/nsight-compute/>`_
+* :ref:`Bede Nsight Compute Documentation <software-tools-nsight-compute>`
 * `OLCF: Nsight Compute Tutorial <https://vimeo.com/398929189>`_
 
   * Use the following `Nsight report files <https://drive.google.com/open?id=133a90SIupysHfbO3mlyfXfaEivCyV1EP>`_ to follow the tutorial.
