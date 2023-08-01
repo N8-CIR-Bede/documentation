@@ -7,7 +7,7 @@ Nsight Compute
 It supports Volta architecture GPUs and newer (SM 70+).
 
 On Bede, Nsight Compute is provided by a number of modules, with differing versions of ``ncu``.
-The GUI is not available on Bede, but profile data can be generated on Bede via the CLI.
+Remote GUI is not available on Bede, but profile data can be generated on Bede via the CLI for local use.
 
 You should use a versions of ``ncu`` that is at least as new as the CUDA toolkit used to compile your application (if appropriate).
 

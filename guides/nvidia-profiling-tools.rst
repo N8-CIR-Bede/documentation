@@ -8,7 +8,7 @@ The `NVIDIA Visual Profiler <https://developer.nvidia.com/nvidia-visual-profiler
 
 .. note::
 
-   The GUI for these tools are not available on bede for use with X forwarding, as they are not available on PPC64LE.
+   Remote GUI support for these tools is not available on bede, as they are not available on PPC64LE.
    Profile data must be generated using the command line interfaces, which can then be explored using a local installation of the appropriate tool, which can be installed locally without requiring a local NVIDIA GPU.
 
 Preparing your Application
