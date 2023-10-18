@@ -298,42 +298,6 @@ Examples:
    # - One MPI rank per hwthread:
    bede-mpirun --bede-par 1ppt <mpirun_options> <program>
 
-Multiple nodes (IBM PowerAI DDL)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. warning::
-
-   IBM PowerAI DDL is only supported on RHEL 7.
-
-IBM PowerAI DDL (Distributed Deep Learning) is a method of using the
-GPUs in more than one node to perform calculations. Example job script:
-
-.. code-block:: bash
-
-   #!/bin/bash
-
-   # Generic options:
-
-   #SBATCH --account=<project>  # Run job under project <project>
-   #SBATCH --time=1:0:0         # Run for a max of 1 hour
-
-   # Node resources:
-
-   #SBATCH --partition=gpu    # Choose either "gpu" or "infer" node type
-   #SBATCH --nodes=2          # Resources from a two nodes
-   #SBATCH --gres=gpu:4       # Four GPUs per node (plus 100% of node CPU and RAM per node)
-
-   # Run commands:
-
-   # (assume IBM Watson Machine Learning Community Edition is installed
-   # in conda environment "wmlce")
-
-   conda activate wmlce
-
-   bede-ddlrun python $CONDA_PREFIX/ddl-tensorflow/examples/keras/mnist-tf-keras-adv.py
-
-   echo "end of job"
-
 .. _usage-maximum-job-runtime:
 
 Maximum Job Runtime
