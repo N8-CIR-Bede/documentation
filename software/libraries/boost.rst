@@ -8,4 +8,5 @@ A centrally-installed version is available via the modules system, which can be 
 .. code-block:: bash
 
     module load boost
+    module load boost/1.81.0
     module load boost/1.74.0

@@ -12,12 +12,11 @@ On Bede, AMBER is made available through the :ref:`HECBioSim Project <software-p
 
    # Load the hecbiosim project
    module load hecbiosim
-   # Load the desired version of amber, for the appropriate OS image
-   # RHEL 8:
-   module load amber/20-rhel8
-   # RHEL 7
+
+   # Load the desired version of amber
+   module load amber/20-large-system-mod
    module load amber/20
-  
+
 
 The HECBioSim project also provide `example bede job submission scripts for AMBER on their website <https://www.hecbiosim.ac.uk/access-hpc/example-submit-scripts/bede-scripts>`__.
 

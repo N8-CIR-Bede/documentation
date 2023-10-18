@@ -17,10 +17,8 @@ On Bede, GROMACS is made available through the :ref:`HECBioSim Project <software
    # Load the hecbiosim project
    module load hecbiosim
    
-   # Load the desired version of gromacs, for the appropriate RHEL image.
-   # RHEL 8
+   # Load the desired version of gromacs
    module load gromacs/2020.4-plumed-2.6.2-rhel8
-   module load gromacs/2021.1
    module load gromacs/2021.1-plumed-2.7.2-rhel8
    module load gromacs/2021.2-plumed-2.7.1-rhel8
    module load gromacs/2021.2-plumed-2.7.2-rhel8
@@ -29,11 +27,6 @@ On Bede, GROMACS is made available through the :ref:`HECBioSim Project <software
    module load gromacs/2022.0-rhel8
    module load gromacs/2022.2
    module load gromacs/2023.1
-
-   # RHEL 7
-   gromacs/2020.3
-   gromacs/2020.4-plumed-2.6.2
-   gromacs/2021.2
 
 
 The HECBioSim project also provide `example bede job submission scripts for GROMACS on their website <https://www.hecbiosim.ac.uk/access-hpc/example-submit-scripts/bede-scripts>`__.

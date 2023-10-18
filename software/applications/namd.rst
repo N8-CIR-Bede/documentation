@@ -13,11 +13,12 @@ On Bede, NAMD is made available through the :ref:`HECBioSim Project <software-pr
 
    # Load the hecbiosim project
    module load hecbiosim
+
    # Load the desired version of namd
    module load namd
    module load namd/2.14-smp
-   module load namd/3.0-alpha7-singlenode
-   module load namd/3.0-alpha9-singlenode-rhel8
+   module load namd/3.0-alpha12-singlenode
+   module load namd/3.0-alpha9-singlenode
 
 
 For more information see the `NAMD User's Guide <https://www.ks.uiuc.edu/Research/namd/2.14/ug/>`__.

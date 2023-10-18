@@ -14,9 +14,8 @@ This module also provides the `NCCL <https://docs.nvidia.com/deeplearning/nccl/u
 .. code-block:: bash
 
    module load nvhpc
-   # RHEL 7 only
-   module load nvhpc/20.9
-   # RHEL 8 only 
+
+   module load nvhpc/23.1
    module load nvhpc/22.1
    module load nvhpc/21.5
 

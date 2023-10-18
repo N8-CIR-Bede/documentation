@@ -12,10 +12,6 @@ Conda is a cross-platform package and environment management system, which can p
 Python 2 is also available, but is no longer an officially supported version of python. 
 If you are still using python 2, upgrade to python 3 as soon as possible.
 
-.. note::
-
-    The ``python`` executable refers to ``python2`` on RHEL 7, but ``python3`` on RHEL 8 images. Consider using the more specific ``python3`` command.
-
 If you wish to use non-conda python, you should use `virtual environments <https://docs.python.org/3/library/venv.html>`__ to isolate your python environment(s) from the system-wide environment.
 This will allow you to install your own python dependencies via pip.
 

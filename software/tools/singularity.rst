@@ -13,13 +13,10 @@ Container platforms allow users to create and use container images, which are se
    As Bede is a Power 9 Architecture (``ppc64le``) machine, containers created on more common ``x86_64`` machines may not be compatible. 
 
 
-Under RHEL 8, Singularity is provided in the default environment, and can be used without loading any modules.
+Under RHEL 8, Singularity-ce is provided by default, and can be used without loading any modules.
 
-Under RHEL 7, singularity is provided by a module:
+.. code-block::bash
 
-.. code-block:: bash
-
-    module load singularity
-    module load singularity/3.6.4
+   singularity --version
 
 For more information on how to use singularity, please see the `Singularity Documentation <https://apptainer.org/docs-legacy/>`__.

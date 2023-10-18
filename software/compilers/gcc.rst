@@ -10,12 +10,15 @@ offload support:
 
 .. code-block:: bash
 
+   module load gcc/12.2
    module load gcc/10.2.0
    module load gcc/8.4.0
 
-The version of GCC which is distributed with RHEL is also packaged as the ``gcc/native`` module. 
-On RHEL 7 nodes, this is GCC ``4.8.5``. 
-On RHEL 8 nodes, this is GCC ``8.5.0``.
+The version of GCC which is distributed with RHEL is also packaged as the ``gcc/native`` module, providing GCC ``8.5.0``
+
+.. code-block:: bash
+
+   module load gcc/native
 
 .. code-block:: bash
 

@@ -20,6 +20,6 @@ Or for OpenBLAS:
 
 .. code-block:: bash
 
-   module load gcc openblas/6.2
+   module load gcc openblas/0.3.10
    $CC -o myprog myprog.c $N8CIR_LINALG_CFLAGS
 
