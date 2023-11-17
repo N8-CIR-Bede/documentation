@@ -198,6 +198,11 @@ Resources are requested in terms of the type of node, the number of GPUs
 per node (for each GPU requested, the job receives 25% of the node’s
 CPUs and RAM) and the number of nodes required.
 
+There is a test partition, providing priority access to jobs requesting
+up to two nodes (8x V100 GPUs) for 15 minutes to allow experimentation,
+especially for jobs trying to make use of Bede's architecture for
+multi-GPU, multi-node use.
+
 There are a number of example job submission scripts below.
 
 Requesting resources
@@ -350,6 +355,9 @@ requested:
   * - ``gpu``
     - ``01:00:00``
     - ``2-00:00:00``
+  * - ``test``
+    - ``00:15:00``
+    - ``00:15:00``
 
 Where, for example, ``2-00:00:00`` means 'two days, zero hours, zero minutes,
 and zero seconds'. These job time limits affect what will and won't be accepted
