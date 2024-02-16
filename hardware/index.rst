@@ -51,7 +51,7 @@ There are:
      - 1x NVIDIA H100 96GB with 900 GB/s NVLink-C2C
 
    - 480 GB LPDDR5X RAM
-   - 1x Mellanox CONNECTX-7 (400Gb/s) InfiniBand port
+   - 1x Mellanox CONNECTX-7 NDR200 (100Gb/s due to existing network) InfiniBand port
 
 -  2x ``gh`` nodes, each containing
 
@@ -61,7 +61,7 @@ There are:
      - 1x NVIDIA H100 96GB with 900 GB/s NVLink-C2C
 
    - 480 GB LPDDR5X RAM
-   - 1x Mellanox CONNECTX-7 (400Gb/s) InfiniBand port
+   - 1x Mellanox CONNECTX-7 NDR200 (100Gb/s due to existing network) InfiniBand port
 
 
 The Mellanox EDR InfiniBand interconnect is organised in a 2:1 block fat
