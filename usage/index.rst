@@ -400,7 +400,7 @@ You must provide your project account.
    # Request a default login session 4 cores, 1GB, 8 hours
    ghlogin -A <project>
    # Request 4 hours with 8 cores and 24GB of memory
-   ghlogin -A <project> --time 4:00:00 -ntasks 8 --mem 24G 
+   ghlogin -A <project> --time 4:00:00 --cpus-per-task 8 --mem 24G 
 
 
 This will provide shell access to the login environment, which is a single Grace Hopper.
