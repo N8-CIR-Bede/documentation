@@ -390,14 +390,14 @@ Connecting to the ``ghlogin`` node
 To get an interactive login-session on a Grace-Hopper node in the ``ghlogin`` partition, you must connect to Bede's regular login nodes as usual via ssh / x2go.
 
 Once connected, the ``ghlogin`` command can be used to request an interactive session on the ``ghlogin`` node.
-The login environment includes shared (unrestricted) access to the Hopper GPU, and by default will provide 4 CPU cores and 1GB of RAM for 8 hours.
+The login environment includes shared (unrestricted) access to the Hopper GPU, and by default will provide 4 CPU cores and 16GB of RAM for 8 hours.
 Use additional srun style flags to request a different duration or resources. 
 You must provide your project account.
 
 
 .. code-block:: bash
 
-   # Request a default login session 4 cores, 1GB, 8 hours
+   # Request a default login session 4 cores, 16GB, 8 hours
    ghlogin -A <project>
    # Request 4 hours with 8 cores and 24GB of memory
    ghlogin -A <project> --time 4:00:00 --cpus-per-task 8 --mem 24G 
