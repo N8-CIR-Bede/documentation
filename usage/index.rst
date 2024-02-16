@@ -357,9 +357,156 @@ requested:
     - ``2-00:00:00``
   * - ``test``
     - ``00:15:00``
+    - ``0-00:30:00``
+  * - ``ghlogin``
+    - ``01:00:00``
+    - ``0-08:00:00``
+  * - ``gh``
+    - ``01:00:00``
+    - ``2-00:00:00``
+  * - ``ghtest``
     - ``00:15:00``
+    - ``0-00:30:00``
 
 Where, for example, ``2-00:00:00`` means 'two days, zero hours, zero minutes,
 and zero seconds'. These job time limits affect what will and won't be accepted
 in the ``--time`` field of your job script: ``--time`` values above the partition
 maximum will result in your job submission being rejected.
+
+
+Grace-Hopper Pilot
+~~~~~~~~~~~~~~~~~~
+
+Bede contains 3 NVIDIA Grace-Hopper nodes, which are currently only accessible to pilot users.
+
+Each Grace-Hopper node contains a single `Grace Hopper Superchip <https://www.nvidia.com/en-gb/data-center/grace-hopper-superchip/>`_, containing one 72-core 64-bit ARM CPU and one 96GB Hopper GPU with NVLink-C2C providing 900GB/s of bidirectional bandwidth between the CPU and GPU. Further details are listed on the :ref:`hardware` page.
+
+If you are interested in being a pilot user for the Grace-Hopper nodes in bede prior to their wider availability, please contact durham-bede-support@n8cir.org.uk.
+
+
+Connecting to the ``ghlogin`` node
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To get an interactive login-session on a Grace-Hopper node in the ``ghlogin`` partition, you must connect to Bede's regular login nodes as usual via ssh / x2go.
+
+Once connected, the ``ghlogin`` command can be used to request an interactive session on the ``ghlogin`` node.
+The login environment includes shared (unrestricted) access to the Hopper GPU, and by default will provide 4 CPU cores and 16GB of RAM for 8 hours.
+Use additional srun style flags to request a different duration or resources. 
+You must provide your project account.
+
+
+.. code-block:: bash
+
+   # Request a default login session 4 cores, 16GB, 8 hours
+   ghlogin -A <project>
+   # Request 4 hours with 8 cores and 24GB of memory
+   ghlogin -A <project> --time 4:00:00 -c 8 --mem 24G
+
+
+This will provide shell access to the login environment, which is a single Grace Hopper.
+Access is mediated by slurm and you'll have a default of 4 cores and 1GB RAM for 8 hours (amend by adding srun style flags to theghlogin command).
+Access to the GPU in the login environment is currently unrestricted.
+
+
+Batch Jobs
+^^^^^^^^^^
+
+To submit a job to a Grace Hopper compute node, you can use ``sbatch`` or ``srun`` as normal from within a ``ghlogin`` session.
+Alternatively, use the ``ghbatch`` or ``ghrun`` commands from a Bede login node.
+
+Your job submission scripts should specify the ``--partition=gh`` or ``--partition=ghtest``. 
+
+As with the power9 nodes in Bede, resources are allocated based on the proportion of the node's GPUs you have requested. As there is only a single GPU per node, the full nodes resources will be available for your job.
+
+As there are only 2 Grace-Hopper nodes for batch jobs, queue times may be significant.
+
+.. code-block:: bash
+
+   #!/bin/bash
+
+   # Generic options:
+
+   #SBATCH --account=<project>  # Run job under project <project>
+   #SBATCH --time=1:0:0         # Run for a max of 1 hour
+
+   # Node resources:
+
+   #SBATCH --partition=gh    # Choose either "gh" or "ghtest" node type for grace-hopper
+   #SBATCH --gres=gpu:1      # Request 1 GPU, and implicitly the full 72 CPUs and 100% of the nodes memory
+
+   # Run commands:
+
+   # Query nvidia-smi
+   nvidia-smi
+
+   # Print the number of CPUS
+   nproc
+
+   # List information about the cpu
+   lscpu
+
+   echo "end of job"
+
+Software availability
+^^^^^^^^^^^^^^^^^^^^^
+
+The Grace-Hopper nodes contain ``aarch64`` architecture CPUs, rather than the ``ppc64le`` architecture CPUs in the other Bede nodes.
+As such, software built for the ``ppc64le`` CPUs will not run on the ``aarch64`` CPUs and vice versa.
+
+The Grace-Hopper nodes are also running a newer operating (Rocky 9) system than the ppc64le nodes (RHEL 8), which can impact software availability.
+
+Use ``module avail`` from the ``ghlogin`` node to list centrally provided software modules for the grace-hopper nodes.
+
+The Bede documentation does not currently contain grace-hopper specific software documentation, this will be added over time.
+However, during pilot use the following has been discovered:
+
+* CUDA
+
+  * CUDA 11.8 is the first CUDA version which can target the Hopper GPU architecture ``SM_90``.
+  * Older CUDA versions (i.e. 11.7) will require embedding PTX for an older architecture (i.e. ``-gencode=arch=compute_80,code=compute_80``)
+
+* Singularity / Apptainer
+  
+  * The Grace-Hopper nodes provide ``apptainer`` rather than ``singularity`` for container support and enables the use of ``--fakeroot`` to build containers on the aarch64 nodes directly.
+  * Usage is broadly the same, however there are some differences as `documented by apptainer <https://apptainer.org/docs/user/latest/singularity_compatibility.html>`_
+    
+    * ``SINGULARITY_`` prefixed environment variables may issues warnings, preferring to be prefixed with ``APPTAINER_``
+    * The ``singularity`` command/binary is still available, but is just a symlink to ``apptainer``
+    * The ``library://`` protocol is not supported by apptainer's default configuration. See `Restoring pre-Apptainer library behaviour <https://apptainer.org/docs/user/latest/endpoint.html#restoring-pre-apptainer-library-behavior>`_ for more information.
+
+  * Container files are large, consider setting ``APPTAINER_CACHEDIR`` to avoid filling your home directory quota
+
+* PyTorch
+  
+  * Current (at least up to ``2.1.0``) builds of pytorch provided via conda or pip for ``aarch64`` do not include cuda support (``torch.cuda.is_available()`` returns ``false``).
+  * NVIDIA provide `NGC Pytorch containers <https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch/tags>`_ which can be used instead, with pytorch installed into the default python environment.
+    
+    * These containers are large, so you will likely want to set your ``APPTAINER_CACHEDIR`` environment variable to avoid filling your home directory quota
+
+      * e.g. ``export APPTAINER_CACHEDIR=/nobackup/projects/<project>/$USER/apptainer-cache``
+
+  * Or follow `PyTorch Building from Source instructions <https://pytorch.org/get-started/locally/#linux-from-source>`_
+  
+* ``gcc`` / ``g++`` psABI warnings
+
+  * ``g++`` >= 10.1 compiling with ``--std=c++17`` mode may emit psABI warnings for parameter passing of certain types. These can be suppressed via ``--Wno-psabi``.
+
+Bash environment
+^^^^^^^^^^^^^^^^
+
+If you have modified your Bede user environment (``.bashrc``, or ``.bash_profile``) to make software available by default (i.e. conda),
+you may need to modify your environment to set environment variables or source scripts based on the CPU architecture.
+
+You can check the CPU architecture in your ``.bashrc`` via:
+
+.. code-block:: bash
+
+   # Get the CPU architecture
+   arch=$(uname -i)
+   if [[ $arch == "aarch64" ]]; then
+      # Set variables and source scripts for aarch64
+       export MYVAR=FOO
+   elif [[ $arch == "ppc64le" ]]; then
+      # Set variables and source scripts for ppc64le
+       export MYVAR=BAR
+   fi
