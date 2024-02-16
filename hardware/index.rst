@@ -43,6 +43,27 @@ There are:
    -  4x Tesla T4 16G PCIe
    -  1x Mellanox EDR (100Gbit/s) InfiniBand port
 
+-  1x ``ghlogin`` node, containing
+
+   - 1x `NVIDIA Grace Hopper Superchip <https://www.nvidia.com/en-gb/data-center/grace-hopper-superchip/>`_ (GH200 480GB)
+
+     - 1x NVIDIA Grace aarch64 CPU @ 3.483 GHz (72 Arm Neoverse V2 cores)
+     - 1x NVIDIA H100 96GB with 900 GB/s NVLink-C2C
+
+   - 480 GB LPDDR5X RAM
+   - 1x Mellanox CONNECTX-7 (400Gb/s) InfiniBand port
+
+-  2x ``gh`` nodes, each containing
+
+   - 1x `NVIDIA Grace Hopper Superchip <https://www.nvidia.com/en-gb/data-center/grace-hopper-superchip/>`_ (GH200 480GB)
+
+     - 1x NVIDIA Grace aarch64 CPU @ 3.483 GHz (72 Arm Neoverse V2 cores)
+     - 1x NVIDIA H100 96GB with 900 GB/s NVLink-C2C
+
+   - 480 GB LPDDR5X RAM
+   - 1x Mellanox CONNECTX-7 (400Gb/s) InfiniBand port
+
+
 The Mellanox EDR InfiniBand interconnect is organised in a 2:1 block fat
 tree topology. GPUDirect RDMA transfers are supported on the 32 ``gpu``
 nodes only, as this requires an InfiniBand port per POWER9 CPU socket.
