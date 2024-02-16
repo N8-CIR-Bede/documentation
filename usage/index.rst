@@ -356,8 +356,8 @@ requested:
     - ``01:00:00``
     - ``2-00:00:00``
   * - ``test``
-    - ``00:15:00``
-    - ``00:15:00``
+    - ``00:30:00``
+    - ``00:30:00``
 
 Where, for example, ``2-00:00:00`` means 'two days, zero hours, zero minutes,
 and zero seconds'. These job time limits affect what will and won't be accepted
