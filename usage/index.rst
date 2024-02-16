@@ -375,7 +375,7 @@ maximum will result in your job submission being rejected.
 
 
 Grace-Hopper Pilot
-~~~~~~~~~~~~~~~~~~
+------------------
 
 Bede contains 3 NVIDIA Grace-Hopper nodes, which are currently only accessible to pilot users.
 
