@@ -1,7 +1,7 @@
 .. _software_ppc64le:
 
-Software on Bede for ppc64le
-============================
+ppc64le
+=======
 
 These pages list software available on bede and/or instructions on how to install and use software which is not centrally installed.
 

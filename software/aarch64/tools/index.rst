@@ -1,16 +1,14 @@
-.. _software_aarch64:
+.. _software-aarch64-tools:
 
-aarch64
-=======
+Tools
+================
 
-These pages list software available on aarch64 nodes in Bede and/or instructions on how to install and use software which is not centrally installed.
-
+These pages list developer tools available on Bede's aarch64 nodes and / or instructions on how to install and use tools which are not centrally installed.
 
 If you notice any omissions, errors or have any suggested changes to the documentation please create an `Issue <https://github.com/N8-CIR-Bede/documentation/issues>`__ or open a `Pull Request <https://github.com/N8-CIR-Bede/documentation/pulls>`__ on GitHub. 
 
 .. toctree::
-    :maxdepth: 3
-    :name: softwaretoc
+    :maxdepth: 1
+    :glob:
 
-    compilers/index
-    tools/index
+    ./*
