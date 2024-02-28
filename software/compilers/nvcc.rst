@@ -7,17 +7,30 @@ CUDA and NVCC
 
 Unlike other compiler modules, the cuda modules do not set ``CC`` or ``CXX`` environment variables. This is because ``nvcc`` can be used to compile device CUDA code in conjunction with a range of host compilers, such as GCC or LLVM clang.
 
-.. code-block:: bash
+.. tabs::
 
-   module load cuda
+   .. code-tab:: bash ppc64le
 
-   module load cuda/12.0.1
-   module load cuda/11.5.1
-   module load cuda/11.4.1
-   module load cuda/11.3.1
-   module load cuda/11.2.2
-   module load cuda/10.2.89
-   module load cuda/10.1.243
+      module load cuda
+
+      module load cuda/12.0.1
+      module load cuda/11.5.1
+      module load cuda/11.4.1
+      module load cuda/11.3.1
+      module load cuda/11.2.2
+      module load cuda/10.2.89
+      module load cuda/10.1.243
+
+   .. code-tab:: bash aarch64
+
+      module load cuda
+
+      module load cuda/12.3.2
+      module load cuda/12.2.2
+      module load cuda/12.1.1
+      module load cuda/11.8.0
+      module load cuda/11.7.0
+      module load cuda/11.7.1
 
 For further information please see the `CUDA Toolkit Archive <https://developer.nvidia.com/cuda-toolkit-archive>`__.
 
@@ -105,9 +118,19 @@ Bede contains NVIDIA Tesla V100 and Tesla T4 GPUs, which are `compute capability
 
 To generate optimised code for both GPU models in Bede, the following ``-gencode`` options can be passed to ``nvcc``:
 
-.. code-block:: bash
+.. tabs::
 
-   nvcc -gencode=arch=compute_70,code=sm_70 -gencode=arch=compute_75,code=sm_75 -o main main.cu
+   .. code-tab:: bash ppc64le
+
+      nvcc -gencode=arch=compute_70,code=sm_70 -gencode=arch=compute_75,code=sm_75 -o main main.cu
+
+   .. code-tab:: bash aarch64
+
+      # for nvcc >= 11.8
+      nvcc -gencode=arch=compute_90,code=sm_90 -o main main.cu
+      # for nvcc <  11.8
+      nvcc -gencode=arch=compute_80,code=compute_80 -o main main.cu
+
 
 Alternatively, to reduce compile time and binary size a single ``-gencode`` option can be passed. 
 
