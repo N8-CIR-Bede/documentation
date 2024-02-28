@@ -111,7 +111,7 @@ On Bede, this command is ``bede-ddlrun``. For example:
 
 .. warning::
 
-   IBM DDL is not supported on RHEL 8 and will likely error on use.
+   IBM DDL is no longer supported and will likely error on use.
    
    Consider migrating away from DDL via  :ref:`Open-CE<software-applications-open-ce>` and regular ``bede-mpirun``
 
