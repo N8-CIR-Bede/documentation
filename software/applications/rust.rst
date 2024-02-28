@@ -6,7 +6,7 @@ Rust
 The `Rust Programming Language <https://www.rust-lang.org/>`__ is a general purpose programming language designed for performance and safety.
 More information on features of the Rust programming language can be found on the `rustlang.org website <https://www.rust-lang.org/learn>`__.
 
-On Bede, Rust is available without the need to load any software modules under RHEL 8. 
+On Bede, Rust is available without the need to load any software modules. 
 
 The central installation includes:
 
@@ -21,12 +21,7 @@ To find the version of rust currently available, run:
 
     rustc --version
 
-.. note::
-
-    Rust is not centrally installed on RHEL 7 images. 
-
-
-If you require a different version of ``rustc`` than provided by the RHEL 8 Bede image, it should be possible to install locally into your ``/users`` directory, the ``/project`` or ``/nobackup`` file stores to avoid filling your users directory.
+If you require a different version of ``rustc`` than provided by default on Bede, it should be possible to install locally into your ``/users`` directory, the ``/project`` or ``/nobackup`` file stores to avoid filling your users directory.
 These methods have not been tested on Bede.
 
 This should be possible via :ref:`Spack<software-spack>` via the `rust spack package <https://spack.readthedocs.io/en/latest/package_list.html#rust>`__ which provides the rust programming language toolchain.

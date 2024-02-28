@@ -6,21 +6,15 @@ IBM WMLCE (End of Life)
 .. warning:: 
 
    WMLCE was archived by IBM on 2020-11-10 and is no longer updated, maintained or supported.
+   It is no longer available on bede due to the migration away from RHEL 7.
 
-   It has been replaced by :ref:`Open Cognitiive Environment (Open-CE) <software-applications-open-ce>`, a community driven software distribution for machine learning.
+   It has been replaced by :ref:`Open Cognitive Environment (Open-CE) <software-applications-open-ce>`, a community driven software distribution for machine learning.
 
    Open-CE does not not support all features of WMLCE.
    
    Please refer to the :ref:`Open-CE <software-applications-open-ce>` documentation for more information.
 
    Alternatively, consider moving to upstream sources for python packages such as :ref:`Tensorflow <software-applications-tensorflow>` or :ref:`PyTorch<software-applications-pytorch>` where available.
-
-.. warning:: 
-
-   WMLCE 1.7 only supported RHEL 7.6 and 7.7.
-   It is unsupported on RHEL 8, and may not behave correctly once the RHEL 8 migration has completed. 
-
-   Consider migrating to :ref:`Open Cognitiive Environment (Open-CE) <software-applications-open-ce>`.
 
 `IBM WMLCE <https://www.ibm.com/support/pages/get-started-ibm-wml-ce>`__ was the *Watson Machine Learning Community Edition* - a software distribution for machine learning which included IBM technology previews such as `Large Model Support for TensorFlow <https://www.ibm.com/support/knowledgecenter/SS5SF7_1.7.0/navigation/wmlce_getstarted_tflms.html?view=kc#wmlce_getstarted_tflms>`__.
 WMLCE is also known as PowerAI.
@@ -117,7 +111,7 @@ On Bede, this command is ``bede-ddlrun``. For example:
 
 .. warning::
 
-   IBM DDL is not supported on RHEL 8 and will likely error on use.
+   IBM DDL is no longer supported and will likely error on use.
    
    Consider migrating away from DDL via  :ref:`Open-CE<software-applications-open-ce>` and regular ``bede-mpirun``
 
