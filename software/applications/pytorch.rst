@@ -56,7 +56,7 @@ Installation via the upstream Conda channel is not currently possible, due to th
 .. note::
    
    The :ref:`Open-CE<software-applications-open-ce>` distribution of PyTorch does not include IBM technologies such as DDL or LMS, which were previously available via :ref:`WMLCE<software-applications-wmlce>`. 
-   WMLCE is not supported on RHEL 8.
+   WMLCE is no longer supported.
 
 
 Further Information

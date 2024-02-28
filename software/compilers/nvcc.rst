@@ -7,18 +7,15 @@ CUDA and NVCC
 
 Unlike other compiler modules, the cuda modules do not set ``CC`` or ``CXX`` environment variables. This is because ``nvcc`` can be used to compile device CUDA code in conjunction with a range of host compilers, such as GCC or LLVM clang.
 
-
 .. code-block:: bash
 
    module load cuda
 
-   # RHEL 8 only
+   module load cuda/12.0.1
    module load cuda/11.5.1
    module load cuda/11.4.1
    module load cuda/11.3.1
    module load cuda/11.2.2
-
-   # RHEL 7 or RHEL 8
    module load cuda/10.2.89
    module load cuda/10.1.243
 
@@ -44,6 +41,10 @@ The C++ dialect used for host and device code can be controlled using the ``--st
 CUDA ``>= 11.0`` also accepts
 
 * ``c++17``
+
+CUDA ``>= 12.0`` also accepts
+
+* ``c++20``
 
 The default C++ dialect depends on the host compiler, with ``nvcc`` matching the default dialect by the host c++ compiler.
 
@@ -198,7 +199,7 @@ e.g. to use ``xlc++`` as the host compiler for the default CUDA module:
 
 .. code-block:: bash
 
-   module load xl # RHEL 8 only
+   module load xl
    module load cuda
 
    nvcc -ccbin $(which xlc++) --std=c++11 -o main main.cu

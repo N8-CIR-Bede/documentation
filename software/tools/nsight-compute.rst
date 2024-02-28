@@ -6,24 +6,26 @@ Nsight Compute
 `Nsight Compute <https://developer.nvidia.com/nsight-compute>`__ is a kernel profiler for CUDA applications, which can also be used for API debugging.
 It supports Volta architecture GPUs and newer (SM 70+).
 
-On Bede, Nsight Compute is provided by a number of modules, with differing versions of ``ncu``. 
+On Bede, Nsight Compute is provided by a number of modules, with differing versions of ``ncu``.
+Remote GUI is not available on Bede, but profile data can be generated on Bede via the CLI for local use.
+
 You should use a versions of ``ncu`` that is at least as new as the CUDA toolkit used to compile your application (if appropriate).
 
 .. code-block:: bash
 
-   module load nsight-compute/2022.1.0 # provides nsys 2022.1.0
-   module load nsight-compute/2020.2.1 # provides nsys 2020.2.1
+   module load nsight-compute/2022.4.1 # provides ncu 2022.4.1
+   module load nsight-compute/2022.1.0 # provides ncu 2022.1.0
+   module load nsight-compute/2020.2.1 # provides ncu 2020.2.1
 
-   # RHEL 7 only
-   module load nvhpc/20.9  # provides nsys 2020.1.0
+   module load cuda/12.0.1 # provides ncu 2022.4.1
+   module load cuda/11.5.1 # provides ncu 2021.3.1
+   module load cuda/11.4.1 # provides ncu 2021.2.1
+   module load cuda/11.3.1 # provides ncu 2021.1.1
+   module load cuda/11.2.2 # provides ncu 2020.3.1
 
-   # RHEL 8 only
-   module load cuda/11.5.1 # provides nsys 2021.3.1
-   module load cuda/11.4.1 # provides nsys 2021.2.1
-   module load cuda/11.3.1 # provides nsys 2021.1.1
-   module load cuda/11.2.2 # provides nsys 2020.3.1
-   module load nvhpc/22.1  # provides nsys 2021.3.0
-   module load nvhpc/21.5  # provides nsys 2021.1.0
+   module load nvhpc/23.1  # provides ncu 2022.4.0
+   module load nvhpc/22.1  # provides ncu 2021.3.0
+   module load nvhpc/21.5  # provides ncu 2021.1.0
 
 
 Consider compiling your CUDA application using ``nvcc`` with ``-lineinfo`` or ``--generate-line-info`` to generate line-level profile information.
@@ -53,6 +55,7 @@ More Information
 ^^^^^^^^^^^^^^^^
 
 * `Nsight Compute <https://docs.nvidia.com/nsight-compute/>`_
+* :ref:`Bede NVIDIA Profiling Tools guide <guides-nvidia-profiling-tools>`
 * `OLCF: Nsight Compute Tutorial <https://vimeo.com/398929189>`_
 
   * Use the following `Nsight report files <https://drive.google.com/open?id=133a90SIupysHfbO3mlyfXfaEivCyV1EP>`_ to follow the tutorial.

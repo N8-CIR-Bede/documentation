@@ -1,3 +1,5 @@
+.. _guides-nvidia-profiling-tools:
+
 NVIDIA Profiling Tools
 ======================
 
@@ -5,6 +7,11 @@ Nvidia provide a suite of profiling tools which can be used to profile applicati
 
 `Nsight Systems <https://developer.nvidia.com/nsight-systems>`__ and `Nsight Compute <https://developer.nvidia.com/nsight-compute>`__ are the modern profiling tools introduced with CUDA 10.0, and available for use on Bede.
 The `NVIDIA Visual Profiler <https://developer.nvidia.com/nvidia-visual-profiler>`_ is the legacy Nvidia profiling tool. It is recommended to use the newer tools where possible.
+
+.. note::
+
+   Remote GUI support for these tools is not available on bede, as they are not available on PPC64LE.
+   Profile data must be generated using the command line interfaces, which can then be explored using a local installation of the appropriate tool, which can be installed locally without requiring a local NVIDIA GPU.
 
 Preparing your Application
 --------------------------
@@ -61,6 +68,7 @@ More Information
 ~~~~~~~~~~~~~~~~
 
 * `Nsight Systems <https://docs.nvidia.com/nsight-systems/>`_
+* :ref:`Bede Nsight Systems Documentation <software-tools-nsight-systems>`
 * `OLCF: Nsight Systems Tutorial <https://vimeo.com/398838139>`_
   
   * Use the following `Nsight report files <https://drive.google.com/open?id=133a90SIupysHfbO3mlyfXfaEivCyV1EP>`_ to follow the tutorial.
@@ -107,6 +115,7 @@ More Information
 ~~~~~~~~~~~~~~~~
 
 * `Nsight Compute <https://docs.nvidia.com/nsight-compute/>`_
+* :ref:`Bede Nsight Compute Documentation <software-tools-nsight-compute>`
 * `OLCF: Nsight Compute Tutorial <https://vimeo.com/398929189>`_
 
   * Use the following `Nsight report files <https://drive.google.com/open?id=133a90SIupysHfbO3mlyfXfaEivCyV1EP>`_ to follow the tutorial.

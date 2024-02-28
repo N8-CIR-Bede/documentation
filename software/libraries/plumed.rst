@@ -19,11 +19,13 @@ On Bede, PLUMED is made available through the :ref:`HECBioSim Project <software-
 
    # Load the hecbiosim project
    module load hecbiosim
+   
    # Load the desired version of PLUMED
-   module load plumed
-   module load plumed/2.7.2-rhel8
    module load plumed/2.6.2-rhel8
-   module load plumed/2.6.2
+   module load plumed/2.7.1-rhel8
+   module load plumed/2.7.2-rhel8
+   module load plumed/2.7.3-rhel8
+   module load plumed/2.8.0-rhel8
 
 
 For more information see the `PLUMED Documentation <https://www.plumed.org/doc>`__.
