@@ -82,7 +82,7 @@ html_theme_options = {
     "use_repository_button": True,
     "use_download_button": False,
     "use_fullscreen_button": False,
-    "home_page_in_toc": True,
+    "home_page_in_toc": False,
     "show_navbar_depth": 1,  # Sets the depth for expanded content
     # Control the right hand in-page toc
     "toc_title": "Contents",
