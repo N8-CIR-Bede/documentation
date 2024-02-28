@@ -12,5 +12,5 @@ If you notice any omissions, errors or have any suggested changes to the documen
     :maxdepth: 3
     :name: softwaretoc
 
-    aarch64
-    ppc64le
+    aarch64/index
+    ppc64le/index

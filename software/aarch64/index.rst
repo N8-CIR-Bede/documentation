@@ -1,7 +1,7 @@
-.. _software:
+.. _software_aarch64:
 
-Software on Bede
-================
+Software on Bede for aarch64
+============================
 
 These pages list software available on aarch64 nodes in Bede and/or instructions on how to install and use software which is not centrally installed.
 
