@@ -1,6 +1,10 @@
 IBM XL
 ------
 
+.. note:: 
+
+   The IBM XML compiler tool chain is only available on ppc64le nodes and partitions.
+
 The `IBM XL C and C++ compiler family <https://www.ibm.com/products/c-and-c-plus-plus-compiler-family>`__ and `IBM XL Fortran compiler family <https://www.ibm.com/products/fortran-compiler-family>`__ are available on Bede, provided by the ``xl`` module family:
 
 .. code-block:: bash
