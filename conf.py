@@ -76,30 +76,26 @@ html_js_files = [
 html_logo = '_static/images/logo-cmyk.png'
 
 html_theme_options = {
-    "single_page": False,
     "repository_url": "https://github.com/N8-CIR-Bede/documentation",
     "use_edit_page_button": False,
     "use_issues_button": True,
     "use_repository_button": True,
     "use_download_button": False,
-    "logo_only": True,
     "use_fullscreen_button": False,
     "home_page_in_toc": True,
     "show_navbar_depth": 1,  # Sets the depth for expanded content
     # Control the right hand in-page toc
     "toc_title": "Contents",
     "show_toc_level": 2,
-    # Reset the navigation bar footer (html)
-    "extra_navbar": "",
     # Add an announcement bar, visible at the top of each page.
     # "announcement": "",
     # Add the traditional footer theme and sphinx acknowledgements
-    "extra_footer": f"Built with <a href=\"http://sphinx-doc.org/\">Sphinx</a> {sphinx.__version__} using a theme by the <a href=\"https://ebp.jupyterbook.org/\">Executable Book Project</a>."
+    "extra_footer": f"<p>Built with <a href=\"http://sphinx-doc.org/\">Sphinx</a> {sphinx.__version__} using a theme by the <a href=\"https://ebp.jupyterbook.org/\">Executable Book Project</a>.</p>"
 }
 
 html_sidebars = {
     "**": [
-        "sidebar-logo.html",
+        "navbar-logo.html",
         "a11y-search-field.html",
         "sbt-sidebar-nav.html",
         "ethical-ads.html"
