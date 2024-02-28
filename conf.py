@@ -11,7 +11,8 @@ import sphinx
 extensions = [
     "sphinxext.rediraffe",
     'sphinx.ext.mathjax',
-    'sphinx_copybutton'
+    'sphinx_copybutton',
+    'sphinx_tabs.tabs',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
