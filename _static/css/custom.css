@@ -1,53 +1,41 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 /* Define N8 theme colours (and lighter versions) */
 :root {
-  --burnt-orange-color: #F95423;
-  --burnt-orange-color-a11y: #D13505;
-  --deep-blue-color: #054C91;
-  --cool-grey-10-color: #63666A;
-  --cool-grey-6-color: #A7A8AA;
-  --cool-grey-5-color: #b1b3b3;
-  --cool-grey-4-color: #bbbcbc;
-  --cool-grey-3-color: #c8c9c7;
-  --cool-grey-2-color: #D0D0CE;
-  --cool-grey-2-lighter-color: #E1E1E0; /* equivalent of Cool grey 2 with alpha 0.5 */
-  --cool-grey-2-lightest-color: #F1F1F0; /* equivalent of Cool grey 2 with alpha 0.3 */
-  --burnt-orange-lightest-color: #FFF6F5; /* equivalent of burnt orange with alpha 0.05 */
-  --general-background-color: #f5f5f5;
-  --general-text-color: #212529;
-  /* Override some variable defined in the sphinx-book-theme, as a simpler solution for quick colour changing */
-  --pst-color-link: 5,76,145; /* Equivalent to #054c91, deep-blue-color */
-  --pst-color-preformatted-background: 248,248,248; /* pygments default pre background */
-  --pst-sidebar-font-size: 1.1em; /* Adjust some font sizes */
+  --n8-deep-blue-color: #054C91;
+  --n8-burnt-orange-color: #F95423;
+  --n8-burnt-orange-color-a11y: #D13505;
+  --n8-burnt-orange-lightest-color: #FFF6F5; /* equivalent of burnt orange with alpha 0.05 */
+  --n8-cool-grey-10-color: #63666A;
+  --n8-cool-grey-6-color: #A7A8AA;
+  --n8-cool-grey-5-color: #b1b3b3;
+  --n8-cool-grey-4-color: #bbbcbc;
+  --n8-cool-grey-3-color: #c8c9c7;
+  --n8-cool-grey-2-color: #D0D0CE;
+  --n8-cool-grey-2-lighter-color: #E1E1E0; /* equivalent of Cool grey 2 with alpha 0.5 */
+  --n8-cool-grey-2-lightest-color: #F1F1F0; /* equivalent of Cool grey 2 with alpha 0.3 */
+  --n8-light-theme-background-color: #f5f5f5;
+  --n8-light-theme-text-color: #212529;
+  --n8-light-theme-text-color-muted: #212529;
+  --pygments-default-background-color: #f8f8f8;
 }
 
+/* -----------------------------------------
+  Non-theme specific / universal css changes
+  ------------------------------------------*/
+
+html {
+  --pst-sidebar-font-size: 1.0rem;
+}
+
+/* Change the font family to match the N8 CIR website */
 body {
-  font-family: "Montserrat", "Arial";
-  color: var(--general-text-color);
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
 
-/* Reset the general page background to an off white for reduced brightness */
-body,
-.header-article,
-#site-navigation,
-.headerbtn,
-.bd-toc nav {
-  background: var(--general-background-color);
-}
-
-@media (max-width: 768px) {
-  .bd-toc {
-    background: var(--general-background-color);
-  }
-}
-
-#site-navigation .form-control {
-  background: var(--general-background-color);
-}
-
-#site-navigation nav ul.nav li a, 
-#site-navigation nav ul.nav ul li a {
-  color: var(--general-text-color);
+/* Ensure announcement links are distinguishable from regular text */
+.bd-header-announcement a {
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 /* Reduce padding / increase content width from 768px and above when navigation is hidden */
@@ -58,42 +46,7 @@ body,
   }
 }
 
-/* Change the colour of headings to the N8 blue */
-.content-container h1,
-.content-container h2,
-.content-container h3,
-.content-container h4
-.content-container h5 {
-  color: var(--deep-blue-color);
-}
-
-.bd-toc nav .toc-h2 { 
-  font-size: 1.0em;
-}
-
-code {
-  /* The N8cir orange does not provide enough contrast, so using a darker shade (reduced luminance until > 4.50 contrast ratios */
-  color: var(--burnt-orange-color-a11y);
-}
-
-/* Customise the sphinx-book-theme announcement colour */
-
-.header-item.announcement {
-  background: var(--deep-blue-color);
-}
-
-.header-item.announcement a {
-  color: var(--burnt-orange-color-lightest);
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-/* Hide the prev/next links from sphinx-book-theme */
-.prev-next-area {
-  display: none;
-}
-
-/* Customised version of the search bar with a submit button for accessibility */
+/* Theming for customised Customise version of the search bar which includes a submission button for a11y*/
 .custom-bd-search {
   padding: 1rem 15px 0 15px;
   margin-right: -15px;
@@ -102,13 +55,12 @@ code {
 .custom-bd-search input,
 .custom-bd-search .btn {
   border-radius: 0;
-  border: 1px solid var(--cool-grey-2-lighter-color);
 }
 .custom-bd-search .btn-outline-secondary:hover {
-  background-color: var(--deep-blue-color);
+  background-color: var(--pst-color-primary);
 }
 
-/* Incrase the maximum width for large displays. Still limited to prevent very long line length */
+/* Increase the maximum width for large displays. Still limited to prevent very long line length */
 @media (min-width:1200px) {
   .container,
   .container-lg,
@@ -119,25 +71,9 @@ code {
   }
 }
 
-/* Hide an element visible on mobile that shouldn't be */
-#site-navigation label.d-block.d-md-none.nav-toggle-button.headerbtn {
-  display: none!important; /* Important required due to use of it in the them :cry: */
-}
-
-/* Overwrite padding left for a strongly styled part of the theme */
-.col.pl-md-3.pl-lg-5.content-container {
-  padding-left: 1.5rem !important;
-}
-
-@media (min-width:768px) {
-  #main-content {
-    max-width:74%
-  }
-}
-
 /* Styling tweaks for ethical ads. */
 .ethical-sidebar, .ethical-footer {
-  border: 1px solid var(--cool-grey-2-lighter-color);
+  border: 1px solid var(--n8-cool-grey-2-lighter-color);
   margin-bottom: 2.5rem;
 }
 /* Push down the ethical ads to the bottom of the sidebar, but above the version selector */
@@ -149,3 +85,46 @@ code {
 #ethical-ads-container {
   margin-top:auto;
 }
+
+/* --------------------------------------
+  Light theme specific formatting changes
+  --------------------------------------- */
+html[data-theme="light"] {
+  --pst-color-background: var(--n8-light-background-color);
+  --pst-color-text-base: var(--n8-light-theme-text-color);
+  --pst-color-text-muted: var(--n8-light-theme-text-color-muted);
+  --pst-color-primary: var(--n8-deep-blue-color);
+  --pst-color-secondary: var(--n8-burnt-orange-color-a11y);
+  --pst-color-accent: var(--n8-burnt-orange-color-a11y);
+  --pst-color-inline-code: var(--n8-burnt-orange-color-a11y);
+  --pst-color-link: var(--n8-deep-blue-color);
+  --pst-color-preformatted-background: var(--pygments-default-background-color);
+  --sbt-color-announcement: var(--n8-deep-blue-color);
+}
+/* Override the default sphinx book theme announcement colour */
+html[data-theme="light"] .bd-header-announcement a {
+  color: var(--n8-burnt-orange-color-lightest);
+}
+/* Set light theme colours for custom search form elements */
+html[data-theme="light"] #site-navigation .form-control {
+  background: var(--n8-light-background-color);
+}
+html[data-theme="light"] .custom-bd-search input,
+html[data-theme="light"] .custom-bd-search .btn {
+  border: 1px solid var(--n8-cool-grey-2-lighter-color);
+}
+/* Change the colour of headings to the N8 blue */
+html[data-theme="light"] .bd-article-container h1,
+html[data-theme="light"] .bd-article-container h2,
+html[data-theme="light"] .bd-article-container h3,
+html[data-theme="light"] .bd-article-container h4
+html[data-theme="light"] .bd-article-container h5 {
+  color: var(--n8-deep-blue-color);
+}
+
+/* -------------------------------------
+  Dark theme specific formatting changes
+  -------------------------------------- */
+/* html[data-theme="dark"] {
+
+} */

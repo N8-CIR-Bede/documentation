@@ -87,10 +87,11 @@ html_theme_options = {
     # Control the right hand in-page toc
     "toc_title": "Contents",
     "show_toc_level": 2,
+    "show_prev_next": False,
     # Add an announcement bar, visible at the top of each page.
     # "announcement": "",
     # Add the traditional footer theme and sphinx acknowledgements
-    "extra_footer": f"<p>Built with <a href=\"http://sphinx-doc.org/\">Sphinx</a> {sphinx.__version__} using a theme by the <a href=\"https://ebp.jupyterbook.org/\">Executable Book Project</a>.</p>"
+    "extra_footer": f"<p>&nbsp;Built with <a href=\"http://sphinx-doc.org/\">Sphinx</a> {sphinx.__version__} using a theme by the <a href=\"https://ebp.jupyterbook.org/\">Executable Book Project</a>.</p>"
 }
 
 html_sidebars = {
