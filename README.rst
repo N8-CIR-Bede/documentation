@@ -30,7 +30,7 @@ Using feature branches is recommended.
 Installing Dependencies
 ***********************
 
-This documentation requires ``python`` and a number of python packages as listed in ``requirements.txt``.
+This documentation requires ``python >= 3.9`` and a number of python packages as listed in ``requirements.txt``.
 This would be typically done using a `Python Virtual Environment <https://docs.python.org/3/tutorial/venv.html>`_, or `conda <https://docs.conda.io/en/latest/>`_
 
 
@@ -52,7 +52,7 @@ From a conda-enabled terminal:
 
 .. code-block:: console
 
-    conda create --name bede python=3
+    conda create --name bede python=3.9
     conda activate bede
     pip install -r requirements.txt
 
