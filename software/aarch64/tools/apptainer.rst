@@ -1,7 +1,7 @@
 .. _software-aarch64-tools-apptainer:
 
-Singularity
------------
+Apptainer
+---------
 
 `Apptainer <https://apptainer.org/>`__ (formerly `Singularity <https://sylabs.io/singularity/>`__) is a container platform similar to `Docker <https://www.docker.com/>`__. 
 Singularity/Apptainer is the most widely used container system for HPC.
