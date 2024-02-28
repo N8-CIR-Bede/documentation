@@ -373,9 +373,17 @@ and zero seconds'. These job time limits affect what will and won't be accepted
 in the ``--time`` field of your job script: ``--time`` values above the partition
 maximum will result in your job submission being rejected.
 
+Job Allocation Limits
+~~~~~~~~~~~~~~~~~~~~~
+
+There are currently no limits on the total or concurrent number of running jobs per project or per user.
+There are also no software-defined limits on the size of jobs (memory, cores, nodes), but jobs must be able to run on the available hardware.
+
+Jobs are scheduled subject to Slurm's `Multifactor Priority Plugin <https://slurm.schedmd.com/priority_multifactor.html>`__, which considers factors such as age, job size and fair-use when selecting jobs for execution.
+
 
 Grace-Hopper Pilot
-~~~~~~~~~~~~~~~~~~
+------------------
 
 Bede contains 3 NVIDIA Grace-Hopper nodes, which are currently only accessible to pilot users.
 
@@ -385,7 +393,7 @@ If you are interested in being a pilot user for the Grace-Hopper nodes in bede p
 
 
 Connecting to the ``ghlogin`` node
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To get an interactive login-session on a Grace-Hopper node in the ``ghlogin`` partition, you must connect to Bede's regular login nodes as usual via ssh / x2go.
 
@@ -409,7 +417,7 @@ Access to the GPU in the login environment is currently unrestricted.
 
 
 Batch Jobs
-^^^^^^^^^^
+~~~~~~~~~~
 
 To submit a job to a Grace Hopper compute node, you can use ``sbatch`` or ``srun`` as normal from within a ``ghlogin`` session.
 Alternatively, use the ``ghbatch`` or ``ghrun`` commands from a Bede login node.
@@ -448,7 +456,7 @@ As there are only 2 Grace-Hopper nodes for batch jobs, queue times may be signif
    echo "end of job"
 
 Software availability
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 The Grace-Hopper nodes contain ``aarch64`` architecture CPUs, rather than the ``ppc64le`` architecture CPUs in the other Bede nodes.
 As such, software built for the ``ppc64le`` CPUs will not run on the ``aarch64`` CPUs and vice versa.
@@ -492,7 +500,7 @@ However, during pilot use the following has been discovered:
   * ``g++`` >= 10.1 compiling with ``--std=c++17`` mode may emit psABI warnings for parameter passing of certain types. These can be suppressed via ``--Wno-psabi``.
 
 Bash environment
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 If you have modified your Bede user environment (``.bashrc``, or ``.bash_profile``) to make software available by default (i.e. conda),
 you may need to modify your environment to set environment variables or source scripts based on the CPU architecture.

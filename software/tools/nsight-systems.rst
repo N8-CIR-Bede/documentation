@@ -7,6 +7,7 @@ Nsight Systems
 It supports Pascal (SM 60) and newer GPUs.
 
 A common use-case for Nsight Systems is to generate application timelines via the command line, which can later be visualised on a local computer using the GUI component.
+The GUI is not available on Bede.
 
 On Bede, Nsight Systems is provided by a number of modules, with differing versions of ``nsys``. 
 You should use a versions of ``nsys`` that is at least as new as the CUDA toolkit used to compile your application (if appropriate).
@@ -51,6 +52,7 @@ More Information
 ^^^^^^^^^^^^^^^^
 
 * `Nsight Systems <https://docs.nvidia.com/nsight-systems/>`_
+* :ref:`Bede NVIDIA Profiling Tools guide <guides-nvidia-profiling-tools>`
 * `OLCF: Nsight Systems Tutorial <https://vimeo.com/398838139>`_
   
   * Use the following `Nsight report files <https://drive.google.com/open?id=133a90SIupysHfbO3mlyfXfaEivCyV1EP>`_ to follow the tutorial.
