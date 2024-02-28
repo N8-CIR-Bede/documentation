@@ -8,7 +8,7 @@ IBM WMLCE (End of Life)
    WMLCE was archived by IBM on 2020-11-10 and is no longer updated, maintained or supported.
    It is no longer available on bede due to the migration away from RHEL 7.
 
-   It has been replaced by :ref:`Open Cognitiive Environment (Open-CE) <software-applications-open-ce>`, a community driven software distribution for machine learning.
+   It has been replaced by :ref:`Open Cognitive Environment (Open-CE) <software-applications-open-ce>`, a community driven software distribution for machine learning.
 
    Open-CE does not not support all features of WMLCE.
    
