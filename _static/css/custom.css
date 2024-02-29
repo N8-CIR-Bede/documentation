@@ -65,6 +65,7 @@ body {
   background-color: var(--pst-color-primary);
 }
 
+
 /* Increase the maximum width for large displays. Still limited to prevent very long line length */
 @media (min-width:1200px) {
   .container,
@@ -89,6 +90,12 @@ body {
 }
 #ethical-ads-container {
   margin-top:auto;
+}
+
+/* Override theme rule which was causing a scrollbar within the nav bar when not needed on local builds.
+May need adjusting on rtd for ethical ads*/
+.bd-sidebar-primary .sidebar-primary-items__end {
+  margin-top: inherit;
 }
 
 /* --------------------------------------
