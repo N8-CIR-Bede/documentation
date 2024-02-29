@@ -2,9 +2,9 @@
 /* Define N8 theme colours (and lighter versions) */
 :root {
   --n8-deep-blue-color: #054C91;
-  --n8-deep-blue-color-a11y: #0E7CE6; /*n8 deep blue, but scaled to have 4.5 contrast ratio with 111111 */
+  --n8-deep-blue-color-high-contrast-dark: #0E7CE6; /*n8 deep blue, but scaled to have 4.5 contrast ratio with 111111 */
   --n8-burnt-orange-color: #F95423;
-  --n8-burnt-orange-color-a11y: #D13505;
+  --n8-burnt-orange-color-high-contrast-light: #D13505;
   --n8-burnt-orange-lightest-color: #FFF6F5; /* equivalent of burnt orange with alpha 0.05 */
   --n8-cool-grey-10-color: #63666A;
   --n8-cool-grey-6-color: #A7A8AA;
@@ -18,7 +18,6 @@
   --n8-light-theme-text-color: #212529;
   --n8-light-theme-text-color-muted: #212529;
   --pygments-default-background-color: #f8f8f8;
-
   --n8-dark-theme-background-color: #111111;
   --n8-dark-theme-text-color: #F0F6FC;
   --n8-dark-theme-text-color-muted: #9ca4af;
@@ -100,9 +99,9 @@ html[data-theme="light"] {
   --pst-color-text-base: var(--n8-light-theme-text-color);
   --pst-color-text-muted: var(--n8-light-theme-text-color-muted);
   --pst-color-primary: var(--n8-deep-blue-color);
-  --pst-color-secondary: var(--n8-burnt-orange-color-a11y);
-  --pst-color-accent: var(--n8-burnt-orange-color-a11y);
-  --pst-color-inline-code: var(--n8-burnt-orange-color-a11y);
+  --pst-color-secondary: var(--n8-burnt-orange-color-high-contrast-light);
+  --pst-color-accent: var(--n8-burnt-orange-color-high-contrast-light);
+  --pst-color-inline-code: var(--n8-burnt-orange-color-high-contrast-light);
   --pst-color-link: var(--n8-deep-blue-color);
   --pst-color-preformatted-background: var(--pygments-default-background-color);
   --sbt-color-announcement: var(--n8-deep-blue-color);
@@ -135,12 +134,12 @@ html[data-theme="dark"] {
   --pst-color-background: var(--n8-dark-theme-background-color);
   --pst-color-text-base: var(--n8-dark-theme-text-color);
   --pst-color-text-muted: var(--n8-dark-theme-text-color-muted);
-  --pst-color-primary: var(--n8-deep-blue-color-a11y);
+  --pst-color-primary: var(--n8-deep-blue-color-high-contrast-dark);
   --pst-color-secondary: var(--n8-burnt-orange-color);
   --pst-color-accent: var(--n8-burnt-orange-color);
   --pst-color-surface: var(--n8-dark-theme-inline-code-background-color); /* inline code block background colour */
   --pst-color-inline-code: var(--n8-burnt-orange-color);
-  --pst-color-link: var(--n8-deep-blue-color-a11y);
+  --pst-color-link: var(--n8-deep-blue-color-high-contrast-dark);
    /* var(--n8-deep-blue-color); */
   /* --pst-color-preformatted-background: var(--pygments-default-background-color); */
   --sbt-color-announcement: var(--n8-deep-blue-color);
@@ -166,5 +165,5 @@ html[data-theme="dark"] .bd-article-container h2,
 html[data-theme="dark"] .bd-article-container h3,
 html[data-theme="dark"] .bd-article-container h4
 html[data-theme="dark"] .bd-article-container h5 {
-  color: var(--n8-deep-blue-color-a11y);
+  color: var(--n8-deep-blue-color-high-contrast-dark);
 }
