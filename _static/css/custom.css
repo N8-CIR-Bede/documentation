@@ -90,7 +90,7 @@ body {
   Light theme specific formatting changes
   --------------------------------------- */
 html[data-theme="light"] {
-  --pst-color-background: var(--n8-light-background-color);
+  --pst-color-background: var(--n8-light-theme-background-color);
   --pst-color-text-base: var(--n8-light-theme-text-color);
   --pst-color-text-muted: var(--n8-light-theme-text-color-muted);
   --pst-color-primary: var(--n8-deep-blue-color);
@@ -107,7 +107,7 @@ html[data-theme="light"] .bd-header-announcement a {
 }
 /* Set light theme colours for custom search form elements */
 html[data-theme="light"] #site-navigation .form-control {
-  background: var(--n8-light-background-color);
+  background: var(--n8-light-theme-background-color);
 }
 html[data-theme="light"] .custom-bd-search input,
 html[data-theme="light"] .custom-bd-search .btn {
