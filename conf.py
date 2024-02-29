@@ -94,6 +94,11 @@ html_theme_options = {
     "extra_footer": f"<p>&nbsp;Built with <a href=\"http://sphinx-doc.org/\">Sphinx</a> {sphinx.__version__} using a theme by the <a href=\"https://ebp.jupyterbook.org/\">Executable Book Project</a>.</p>"
 }
 
+# Select the default theme automatically. options light/dark/auto
+html_context = {
+    "default_mode": "auto",
+}
+
 html_sidebars = {
     "**": [
         "navbar-logo.html",
