@@ -46,10 +46,6 @@ language="en"
 # This patterns also effect to html_static_path and html_extra_path
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README.rst', "common/*.rst", '**.inc.rst', 'venv*', '.venv*']
 
-# The name of the Pygments (syntax highlighting) style to use.
-# The default is one of the few pygments themes with sufficient contrast
-pygments_style = 'default'
-
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
 
@@ -88,6 +84,10 @@ html_theme_options = {
     "toc_title": "Contents",
     "show_toc_level": 2,
     "show_prev_next": False,
+    # Code highlighting theme for light mode
+    "pygment_light_style": "github-light-high-contrast",
+    # Code highlighting theme for dark mode
+    "pygment_dark_style": "github-dark-high-contrast",
     # Add an announcement bar, visible at the top of each page.
     # "announcement": "",
     # Add the traditional footer theme and sphinx acknowledgements
