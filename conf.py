@@ -46,10 +46,6 @@ language="en"
 # This patterns also effect to html_static_path and html_extra_path
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README.rst', "common/*.rst", '**.inc.rst', 'venv*', '.venv*']
 
-# The name of the Pygments (syntax highlighting) style to use.
-# The default is one of the few pygments themes with sufficient contrast
-pygments_style = 'default'
-
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
 
@@ -76,30 +72,36 @@ html_js_files = [
 html_logo = '_static/images/logo-cmyk.png'
 
 html_theme_options = {
-    "single_page": False,
     "repository_url": "https://github.com/N8-CIR-Bede/documentation",
     "use_edit_page_button": False,
     "use_issues_button": True,
     "use_repository_button": True,
     "use_download_button": False,
-    "logo_only": True,
     "use_fullscreen_button": False,
-    "home_page_in_toc": True,
+    "home_page_in_toc": False,
     "show_navbar_depth": 1,  # Sets the depth for expanded content
     # Control the right hand in-page toc
     "toc_title": "Contents",
     "show_toc_level": 2,
-    # Reset the navigation bar footer (html)
-    "extra_navbar": "",
+    "show_prev_next": False,
+    # Code highlighting theme for light mode
+    "pygment_light_style": "github-light-high-contrast",
+    # Code highlighting theme for dark mode
+    "pygment_dark_style": "github-dark-high-contrast",
     # Add an announcement bar, visible at the top of each page.
     # "announcement": "",
     # Add the traditional footer theme and sphinx acknowledgements
-    "extra_footer": f"Built with <a href=\"http://sphinx-doc.org/\">Sphinx</a> {sphinx.__version__} using a theme by the <a href=\"https://ebp.jupyterbook.org/\">Executable Book Project</a>."
+    "extra_footer": f"<p>&nbsp;Built with <a href=\"http://sphinx-doc.org/\">Sphinx</a> {sphinx.__version__} using a theme by the <a href=\"https://ebp.jupyterbook.org/\">Executable Book Project</a>.</p>"
+}
+
+# Select the default theme automatically. options light/dark/auto
+html_context = {
+    "default_mode": "auto",
 }
 
 html_sidebars = {
     "**": [
-        "sidebar-logo.html",
+        "navbar-logo.html",
         "a11y-search-field.html",
         "sbt-sidebar-nav.html",
         "ethical-ads.html"
