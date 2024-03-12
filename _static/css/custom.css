@@ -65,6 +65,20 @@ body {
   background-color: var(--pst-color-primary);
 }
 
+/* Remove paragraph bottom margin from footer content */
+.bd-footer-content p {
+  margin-bottom: 0;
+}
+
+/* Prevent unnecessary scrollbar on rtd  */
+.bd-sidebar-primary div#rtd-footer-container:empty {
+  margin: 0;
+}
+
+/* Remove rtd version selector horizontal rule-like border which doesn't line up with the book theme footer */
+.bd-sidebar-primary div#rtd-footer-container .rst-versions.rst-badge .rst-current-version {
+  border-top: 0;
+}
 
 /* Increase the maximum width for large displays. Still limited to prevent very long line length */
 @media (min-width:1200px) {
@@ -75,27 +89,6 @@ body {
   .container-xl {
     max-width:1600px
   }
-}
-
-/* Styling tweaks for ethical ads. */
-.ethical-sidebar, .ethical-footer {
-  border: 1px solid var(--n8-cool-grey-2-lighter-color);
-  margin-bottom: 2.5rem;
-}
-/* Push down the ethical ads to the bottom of the sidebar, but above the version selector */
-#site-navigation .bd-sidebar__top {
-  min-height: calc(100% - 2em);
-  display: flex;
-  flex-direction: column;
-}
-#ethical-ads-container {
-  margin-top:auto;
-}
-
-/* Override theme rule which was causing a scrollbar within the nav bar when not needed on local builds.
-May need adjusting on rtd for ethical ads*/
-.bd-sidebar-primary .sidebar-primary-items__end {
-  margin-top: inherit;
 }
 
 /* --------------------------------------
