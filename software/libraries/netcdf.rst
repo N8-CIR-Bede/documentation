@@ -3,6 +3,9 @@
 NetCDF
 ======
 
+.. |arch_availabilty_name| replace:: NetCDF
+.. include:: /common/ppc64le-only.rst
+
 `Network Common Data Form (NetCDF) <https://www.unidata.ucar.edu/software/netcdf/>`__ is a set of software libraries and machine independent data formats for array-orientated scientific data.
 
 A centrally installed version of NetCDF is provided on Bede by the ``netcdf`` module(s).

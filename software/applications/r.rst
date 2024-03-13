@@ -1,5 +1,8 @@
 .. _software-applications-R:
 
+.. |arch_availabilty_name| replace:: R
+.. include:: /common/ppc64le-only.rst
+
 R
 -
 

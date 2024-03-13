@@ -120,6 +120,7 @@ html[data-theme="light"] {
   --pst-color-text-muted: var(--n8-light-theme-text-color-muted);
   --pst-color-primary: var(--n8-deep-blue-color);
   --pst-color-secondary: var(--n8-burnt-orange-color-high-contrast-light);
+  --pst-color-warning: var(--n8-burnt-orange-color-high-contrast-light);
   --pst-color-accent: var(--n8-burnt-orange-color-high-contrast-light);
   --pst-color-inline-code: var(--n8-burnt-orange-color-high-contrast-light);
   --pst-color-link: var(--n8-deep-blue-color);
@@ -170,6 +171,7 @@ html[data-theme="dark"] {
   --pst-color-text-muted: var(--n8-dark-theme-text-color-muted);
   --pst-color-primary: var(--n8-deep-blue-color-high-contrast-dark);
   --pst-color-secondary: var(--n8-burnt-orange-color);
+  --pst-color-warning: var(--n8-burnt-orange-color);
   --pst-color-accent: var(--n8-burnt-orange-color);
   --pst-color-surface: var(--n8-dark-theme-inline-code-background-color); /* inline code block background colour */
   --pst-color-inline-code: var(--n8-burnt-orange-color);

@@ -3,6 +3,9 @@
 Cryo-EM Software Environment
 ============================
 
+.. |arch_availabilty_name| replace:: The Cryo-EM Software Environment
+.. include:: /common/ppc64le-only.rst
+
 Documentation on the the Cryo-EM Software Environment for Life Sciences is available :download:`here <Cryo-EM_Bede.pdf>`. 
 Note that this document is mainly based on the installation on `Satori <https://mit-satori.github.io>`_ and might have some inconsistencies with the Bede installation.
 

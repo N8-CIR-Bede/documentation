@@ -3,6 +3,9 @@
 HECBioSim
 =========
 
+.. |arch_availabilty_name| replace:: The HECBioSim Software environment
+.. include:: /common/ppc64le-only.rst
+
 The `HEC BioSim consortium <http://www.hecbiosim.ac.uk/>`__ focusses on molecular simulations, at a variety of time and length scales but based on well-defined physics to complement experiment.
 The unique insight they can provide gives molecular level understanding of how biological macromolecules function.
 Simulations are crucial in analysing protein folding, mechanisms of biological catalysis, and how membrane proteins interact with lipid bilayers.

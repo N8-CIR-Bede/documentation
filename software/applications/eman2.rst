@@ -3,6 +3,9 @@
 EMAN2
 =====
 
+.. |arch_availabilty_name| replace:: EMAN2
+.. include:: /common/ppc64le-only.rst
+
 `EMAN2 <https://blake.bcm.edu/emanwiki/EMAN2>`__ is a broadly based greyscale scientific image processing suite with a primary focus on processing data from transmission electron microscopes.
 
 On Bede, EMAN2 is provided by the :ref:`IBM Collaboration project <software-projects-ibm-collaboration>`.
