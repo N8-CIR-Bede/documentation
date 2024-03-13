@@ -3,6 +3,9 @@
 Grace
 -----
 
+.. |arch_availabilty_name| replace:: Grace
+.. include:: /common/ppc64le-only.rst
+
 `Grace <https://plasma-gate.weizmann.ac.il/Grace/>`__ Grace is a WYSIWYG 2D plotting tool for the X Window System.
 
 On Bede, the batch-printing component of Grace, ``gracebat`` is provided via an environment module:
