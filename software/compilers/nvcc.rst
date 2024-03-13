@@ -1,7 +1,7 @@
 .. _software-compilers-nvcc:
 
-CUDA and NVCC
-=============
+NVCC (CUDA)
+===========
 
 `CUDA <https://developer.nvidia.com/cuda-zone>`__ and the ``nvcc`` CUDA/C++ compiler are provided for use on the system by the `cuda` modules.
 
