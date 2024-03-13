@@ -1,6 +1,9 @@
 LLVM
 ----
 
+.. |arch_availabilty_name| replace:: The LLVM compiler toolchain
+.. include:: /common/ppc64le-only.rst
+
 LLVM has been provided for use on the system by the ``llvm`` module.
 It has been built with CUDA GPU offloading support, allowing OpenMP
 regions to run on a GPU using the ``target`` directive.

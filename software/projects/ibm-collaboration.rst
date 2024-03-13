@@ -3,6 +3,10 @@
 IBM Collaboration
 =================
 
+.. |arch_availabilty_name| replace:: The "IBM Collaboration" Software environment
+.. include:: /common/ppc64le-only.rst
+
+
 On Bede, the ``ibm-collaboration`` project provides several software packages which were produced in collaboration with the system vendor `IBM <https://www.ibm.com/>`__.
 
 * :ref:`Cryo-EM <software-environments-cryoem>` - a collection of software packages for life sciences including:

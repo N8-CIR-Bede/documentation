@@ -27,6 +27,9 @@ OpenMPI is provided by the ``openmpi`` module(s):
    module load openmpi/4.0.5
 
 
+.. |arch_availabilty_name| replace:: MVAPICH2
+.. include:: /common/ppc64le-only.rst
+
 MVAPICH2 is provided by the `mvapich2` module(s):
 
 .. code-block:: bash

@@ -3,6 +3,9 @@
 Open-CE
 =======
 
+.. |arch_availabilty_name| replace:: Open-CE
+.. include:: /common/ppc64le-only.rst
+
 The `Open Cognitive Environment (Open-CE) <https://osuosl.org/services/powerdev/opence/>`__ is a community driven software distribution for machine learning and deep learning frameworks.
 
 Open-CE software is distributed via :ref:`Conda<software-applications-conda>`, with all included packages for a given Open-CE release being installable in to the same conda environment.
