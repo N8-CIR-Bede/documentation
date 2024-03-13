@@ -211,32 +211,67 @@ Requesting resources
 Part of, or an entire node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Example job script for programs written to take advantage of a GPU or
-multiple GPUs on a single computer:
+.. tabs::
 
-.. code-block:: bash
+   .. tab:: ppc64le
 
-   #!/bin/bash
+      Example job script for programs written to take advantage of a GPU or
+      multiple GPUs on a single ppc64le node:
 
-   # Generic options:
+      .. code-block:: bash
 
-   #SBATCH --account=<project>  # Run job under project <project>
-   #SBATCH --time=1:0:0         # Run for a max of 1 hour
+         #!/bin/bash
 
-   # Node resources:
-   # (choose between 1-4 gpus per node)
+         # Generic options:
 
-   #SBATCH --partition=gpu    # Choose either "gpu" or "infer" node type
-   #SBATCH --nodes=1          # Resources from a single node
-   #SBATCH --gres=gpu:1       # One GPU per node (plus 25% of node CPU and RAM per GPU)
+         #SBATCH --account=<project> # Run job under project <project>
+         #SBATCH --time=1:0:0        # Run for a max of 1 hour
 
-   # Run commands:
+         # Node resources:
+         # (choose between 1-4 gpus per node)
 
-   nvidia-smi  # Display available gpu resources
+         #SBATCH --partition=test    # Choose either "gpu", "test" or "infer" partition type
+         #SBATCH --nodes=1           # Resources from a single node
+         #SBATCH --gres=gpu:1        # One GPU per node (plus 25% of node CPU and RAM per GPU)
 
-   # Place other commands here
+         # Run commands:
 
-   echo "end of job"
+         nvidia-smi  # Display available gpu resources
+         nproc       # Display available CPU cores
+
+         # Place other commands here
+
+         echo "end of job"
+
+
+   .. tab:: aarch64
+
+      Example job script for programs written to take advantage of single GPU on a single aarch64 node (1 GPU per node):
+
+      .. code-block:: bash
+
+         #!/bin/bash
+
+         # Generic options:
+
+         #SBATCH --account=<project> # Run job under project <project>
+         #SBATCH --time=0:15:0       # Run for a max of 15 minutes
+
+         # Node resources:
+         # 1 gpu per node
+
+         #SBATCH --partition=ghtest  # Choose either "gh" or "ghtest"
+         #SBATCH --nodes=1           # Resources from a single node
+         #SBATCH --gres=gpu:1        # One GPU per node (plus 100% of node CPU and RAM per GPU)
+
+         # Run commands:
+
+         nvidia-smi  # Display available gpu resources
+         nproc       # Display available CPU cores
+
+         # Place other commands here
+
+         echo "end of job"
 
 Multiple nodes (MPI)
 ^^^^^^^^^^^^^^^^^^^^
@@ -244,26 +279,53 @@ Multiple nodes (MPI)
 Example job script for programs using MPI to take advantage of multiple
 CPUs/GPUs across one or more machines:
 
-.. code-block:: bash
+.. tabs::
 
-   #!/bin/bash
+   .. tab:: ppc64le
 
-   # Generic options:
+      .. code-block:: bash
 
-   #SBATCH --account=<project>  # Run job under project <project>
-   #SBATCH --time=1:0:0         # Run for a max of 1 hour
+         #!/bin/bash
 
-   # Node resources:
+         # Generic options:
 
-   #SBATCH --partition=gpu    # Choose either "gpu" or "infer" node type
-   #SBATCH --nodes=2          # Resources from a two nodes
-   #SBATCH --gres=gpu:4       # Four GPUs per node (plus 100% of node CPU and RAM per node)
+         #SBATCH --account=<project>  # Run job under project <project>
+         #SBATCH --time=1:0:0         # Run for a max of 1 hour
 
-   # Run commands:
+         # Node resources:
 
-   bede-mpirun --bede-par 1ppc <mpi_program>
+         #SBATCH --partition=gpu    # Choose either "gpu", "test" or "infer" partition type
+         #SBATCH --nodes=2          # Resources from two nodes
+         #SBATCH --gres=gpu:4       # Four GPUs per node (plus 100% of node CPU and RAM per node)
 
-   echo "end of job"
+         # Run commands:
+
+         bede-mpirun --bede-par 1ppc <mpi_program>
+
+         echo "end of job"
+
+   .. tab:: aarch64
+
+      .. code-block:: bash
+
+         #!/bin/bash
+
+         # Generic options:
+
+         #SBATCH --account=<project>  # Run job under project <project>
+         #SBATCH --time=1:0:0         # Run for a max of 1 hour
+
+         # Node resources:
+
+         #SBATCH --partition=gh    # Choose either "gh" or"ghtest" partition type
+         #SBATCH --nodes=2          # Resources from two nodes
+         #SBATCH --gres=gpu:1       # 1 GPU per node (plus 100% of node CPU and RAM per node)
+
+         # Run commands:
+
+         bede-mpirun --bede-par 1ppc <mpi_program>
+
+         echo "end of job"
 
 The ``bede-mpirun`` command takes both ordinary ``mpirun`` arguments and
 the special ``--bede-par <distrib>`` option, allowing control over how
