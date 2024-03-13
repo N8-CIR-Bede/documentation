@@ -53,6 +53,9 @@ todo_include_todos = False
 ## Added by CA to get MathJax rendering loaded
 mathjax_path='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
 
+# Disable sphinx-tabs closing
+sphinx_tabs_disable_tab_closing = True
+
 # -- Options for HTML output ----------------------------------------------
 
 html_theme = 'sphinx_book_theme'
@@ -82,6 +85,7 @@ html_theme_options = {
     "home_page_in_toc": False,
     "show_navbar_depth": 1,  # Sets the depth for expanded content
     # Control the right hand in-page toc
+    "navigation_with_keys": False,
     "toc_title": "Contents",
     "show_toc_level": 2,
     "show_prev_next": False,
