@@ -22,6 +22,9 @@
   --n8-dark-theme-text-color: #F0F6FC;
   --n8-dark-theme-text-color-muted: #9ca4af;
   --n8-dark-theme-inline-code-background-color: #1f2733;
+  --sphinx-tabs-tab-color: var(--pst-color-primary);
+  --sphinx-tabs-background-color: var(--pst-color-surface);
+  --sphinx-tabs-border-color: var(--pst-color-primary);
 }
 
 /* -----------------------------------------
@@ -90,6 +93,23 @@ body {
     max-width:1600px
   }
 }
+/* Sphinx tabs theming via variables for easier light/dark theming */
+html .sphinx-tabs-tab {
+  color: var(--sphinx-tabs-tab-color);
+  background-color: var(--sphinx-tabs-background-color);
+}
+html .sphinx-tabs-tab[aria-selected="true"] {
+  border-color: var(--sphinx-tabs-border-color);
+  border-bottom-color: var(--sphinx-tabs-background-color);
+  background: var(--sphinx-tabs-background-color);
+}
+html .sphinx-tabs-panel {
+  background: var(--sphinx-tabs-background-color);
+  border-color: var(--sphinx-tabs-border-color);
+}
+html [role="tablist"] {
+  border-bottom-color: var(--sphinx-tabs-border-color);
+}
 
 /* --------------------------------------
   Light theme specific formatting changes
@@ -126,6 +146,20 @@ html[data-theme="light"] .bd-article-container h4
 html[data-theme="light"] .bd-article-container h5 {
   color: var(--n8-deep-blue-color);
 }
+/* Sphinx-tabs light/dark themed styling tweaks */ 
+/* html[data-theme="light"] .sphinx-tabs-tab {
+  color: var(--pst-color-primary);
+  background-color: #0f0;
+}
+html[data-theme="light"] .sphinx-tabs-tab[aria-selected="true"] {
+  border-color: #ff0;
+  border-bottom-color: #00F;
+  background: #00f;
+}
+html[data-theme="light"] .sphinx-tabs-panel {
+  background: #00cccc;
+} */
+
 
 /* -------------------------------------
   Dark theme specific formatting changes
@@ -142,7 +176,10 @@ html[data-theme="dark"] {
   --pst-color-link: var(--n8-deep-blue-color-high-contrast-dark);
    /* var(--n8-deep-blue-color); */
   /* --pst-color-preformatted-background: var(--pygments-default-background-color); */
-  --sbt-color-announcement: var(--n8-deep-blue-color);
+  /* --sbt-color-announcement: var(--n8-deep-blue-color);
+  --sphinx-tabs-tab-color: #f00;
+  --sphinx-tabs-background-color: #ff0;
+  --sphinx-tabs-border-color: #00f; */
 }
 /* Override the default sphinx book theme announcement colour */
 html[data-theme="dark"] .bd-header-announcement a {
