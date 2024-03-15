@@ -463,6 +463,11 @@ However, during pilot use the following has been discovered:
 
   * ``g++`` >= 10.1 compiling with ``--std=c++17`` mode may emit psABI warnings for parameter passing of certain types. These can be suppressed via ``--Wno-psabi``.
 
+* MPI
+
+  * The ``openmpi`` module is available, and CUDA support is enabled if you additionally load a CUDA module. The ``mpirun`` command should be used to launch programs, and not the ``bede-mpirun`` command.
+  * The ``ppc64le`` equipment has an MPI with optimised multi-node GPU communications provided by the ``mvapich2-gdr`` module. This is not available for the Grace Hopper equipment; however, we plan to provide a ``mvapich-plus`` module in future to provide this functionality. In the meantime, if this is of interest, please contact us.
+
 Bash environment
 ~~~~~~~~~~~~~~~~
 
