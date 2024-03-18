@@ -11,7 +11,7 @@ These markers and ranges can be used to increase the usability of the NVIDIA pro
 
 The location of the headers and shared libraries may vary between Operating Systems, and CUDA installation (i.e. CUDA toolkit, PGI compilers or HPC SDK).
 
-On Bede, nvToolsExt is provided by the :ref:`CUDA <software-compilers-nvcc>` and :ref:`NVHPC <software-compilers-nvhpc>` modules:
+On Bede, ``nvToolsExt`` is provided by the :ref:`CUDA <software-compilers-nvcc>` and :ref:`NVHPC <software-compilers-nvhpc>` modules:
 
 .. code-block:: bash
     
