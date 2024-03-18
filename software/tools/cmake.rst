@@ -10,11 +10,17 @@ The suite of CMake tools were created by `Kitware <https://www.kitware.com/>`__ 
 CMake is part of Kitware’s collection of commercially supported `open-source platforms <https://www.kitware.com/platforms/>`__ for software development.
 
 
-.. code-block:: bash
+.. tabs::
 
-    module load cmake
-    module load cmake/3.18.4
+    .. code-tab:: bash ppc64le
 
-Once loaded, the ``cmake``, ``ccmake``, ``cpack`` and ``ctest`` binaries are available for use, to configure, build and test software which uses CMake as the build system. 
+        module load cmake
+        module load cmake/3.18.4
+
+    .. tab:: aarch64
+
+        On ``aarch64`` nodes, CMake ``3.20.2`` is provided by default.
+
+This provides the ``cmake``, ``ccmake``, ``cpack`` and ``ctest`` binaries are available for use, to configure, build and test software which uses CMake as the build system. 
 
 For more information, see the `online documentation <https://cmake.org/cmake/help/v3.18/>`__.
