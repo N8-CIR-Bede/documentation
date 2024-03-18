@@ -57,7 +57,11 @@ MVAPICH2 is provided by the `mvapich2` module(s):
 
    .. tab:: aarch64
 
-      .. include:: /common/ppc64le-only.rst
+      .. admonition:: ppc64le partitions only
+         :class: warning
+
+         mvapich2-gdr is only provided on ``ppc64le`` partitions/nodes (``gpu``, ``infer``, ``test``).
+         However, we plan to provide a ``mvapich-plus`` Smodule in future to provide this functionality. In the meantime, if this is of interest, please contact us.
 
 .. note::
 
