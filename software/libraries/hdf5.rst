@@ -7,10 +7,19 @@ When loaded in conjunction with an MPI module such as ``openmpi``, the
 ``hdf5`` module provides both the serial and parallel versions of the
 library. 
 
-.. code-block:: bash
+.. tabs::
+      
+   .. code-tab:: bash ppc64le
 
-   module load hdf5
-   module load hdf5/1.10.7
+      module load hdf5
+
+      module load hdf5/1.10.7
+
+   .. code-tab:: bash aarch64
+
+      module load hdf5
+      
+      module load hdf5/1.10.11
 
 .. _software-libraries-hdf5-known-issues:
 
