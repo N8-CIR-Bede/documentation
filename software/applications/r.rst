@@ -4,7 +4,7 @@ R
 -
 
 .. |arch_availabilty_name| replace:: R
-.. include:: /common/ppc64le-only.rst
+.. include:: /common/ppc64le-only-sidebar.rst
 
 `R <https://www.r-project.org/>`__ is a free software environment for statistical computing and graphics.
 It is provided on the system by the ``r`` module(s), which make ``R`` and ``Rscript`` available for use.

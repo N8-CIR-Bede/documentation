@@ -4,7 +4,7 @@ NAMD
 ----
 
 .. |arch_availabilty_name| replace:: NAMD
-.. include:: /common/ppc64le-only.rst
+.. include:: /common/ppc64le-only-sidebar.rst
 
 `NAMD <https://www.ks.uiuc.edu/Research/namd/>`__ is a parallel molecular dynamics code designed for high-performance simulation of large biomolecular systems.
 Based on Charm++ parallel objects, NAMD scales to hundreds of cores for typical simulations and beyond 500,000 cores for the largest simulations.

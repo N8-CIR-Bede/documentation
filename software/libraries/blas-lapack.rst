@@ -20,11 +20,8 @@ The modules for each of these libraries provide some convenience environment var
 
    .. tab:: aarch64
 
-      .. admonition:: ppc64le partitions only
-         :class: warning
-
-         ESSL is only provided on ``ppc64le`` partitions/nodes (``gpu``, ``infer``, ``test``).
-
+      .. |arch_availabilty_name| replace:: ESSL
+      .. include:: /common/ppc64le-only.rst
 
 
 Or for OpenBLAS:

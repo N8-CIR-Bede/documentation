@@ -4,7 +4,7 @@ AMBER
 -----
 
 .. |arch_availabilty_name| replace:: AMBER
-.. include:: /common/ppc64le-only.rst
+.. include:: /common/ppc64le-only-sidebar.rst
 
 `AMBER <https://ambermd.org/>`__ is a suite of biomolecular simulation programs. It began in the late 1970's, and is maintained by an active development community.
 
