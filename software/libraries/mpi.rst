@@ -43,11 +43,8 @@ OpenMPI is provided by the ``openmpi`` module(s):
       module load openmpi/4.1.6
 
 .. |arch_availabilty_name| replace:: MVAPICH2
-.. admonition:: ppc64le partitions only
-         :class: warning
+.. include:: /common/ppc64le-only.rst
 
-         MVAPICH2 is only provided on ``ppc64le`` partitions/nodes (``gpu``, ``infer``, ``test``).
-         
 MVAPICH2 is provided by the `mvapich2` module(s):
 
 .. tabs::
@@ -60,10 +57,7 @@ MVAPICH2 is provided by the `mvapich2` module(s):
 
    .. tab:: aarch64
 
-      .. admonition:: ppc64le partitions only
-         :class: warning
-
-         MVAPICH2 is only provided on ``ppc64le`` partitions/nodes (``gpu``, ``infer``, ``test``).
+      .. include:: /common/ppc64le-only.rst
 
 .. note::
 
@@ -83,9 +77,6 @@ Unlike the ``openmpi`` and ``mvapich2`` modules, ``mvapich2-gdr`` does not adapt
 
    .. tab:: aarch64
 
-      .. admonition:: ppc64le partitions only
-         :class: warning
-
-         ``mvapich2-gdr`` is only provided on ``ppc64le`` partitions/nodes (``gpu``, ``infer``, ``test``).
+      .. include:: /common/ppc64le-only.rst
 
 Further information can be found on the `MVAPICH2-GDR <http://mvapich.cse.ohio-state.edu/userguide/gdr/>`__ pages.

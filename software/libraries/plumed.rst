@@ -4,7 +4,7 @@ PLUMED
 ------
 
 .. |arch_availabilty_name| replace:: PLUMED
-.. include:: /common/ppc64le-only.rst
+.. include:: /common/ppc64le-only-sidebar.rst
 
 `PLUMED <https://www.plumed.org/>`__, the community-developed PLUgin for MolEcular Dynamics, is a an open-source, community-developed library that provides a wide range of different methods, which include:
 

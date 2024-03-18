@@ -4,7 +4,7 @@ IBM Collaboration
 =================
 
 .. |arch_availabilty_name| replace:: The "IBM Collaboration" Software environment
-.. include:: /common/ppc64le-only.rst
+.. include:: /common/ppc64le-only-sidebar.rst
 
 
 On Bede, the ``ibm-collaboration`` project provides several software packages which were produced in collaboration with the system vendor `IBM <https://www.ibm.com/>`__.

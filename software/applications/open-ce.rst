@@ -4,7 +4,7 @@ Open-CE
 =======
 
 .. |arch_availabilty_name| replace:: Open-CE
-.. include:: /common/ppc64le-only.rst
+.. include:: /common/ppc64le-only-sidebar.rst
 
 The `Open Cognitive Environment (Open-CE) <https://osuosl.org/services/powerdev/opence/>`__ is a community driven software distribution for machine learning and deep learning frameworks.
 
