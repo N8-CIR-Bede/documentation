@@ -4,7 +4,7 @@ OpenMM
 ------
 
 .. |arch_availabilty_name| replace:: OpenMM
-.. include:: /common/ppc64le-only.rst
+.. include:: /common/ppc64le-only-sidebar.rst
 
 `OpenMM <https://openmm.org/>`__ is a high-performance toolkit for molecular simulation. 
 It can be used as an application, a library, or a flexible programming environment

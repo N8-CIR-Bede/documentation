@@ -4,7 +4,7 @@ GROMACS
 -------
 
 .. |arch_availabilty_name| replace:: GROMACS
-.. include:: /common/ppc64le-only.rst
+.. include:: /common/ppc64le-only-sidebar.rst
 
 `GROMACS <http://www.gromacs.org/About_Gromacs>`__ is a versatile package for molecular dynamics simulation.
 It is primarily designed for biochemical molecules like proteins, lipids and nucleic acids that have a lot of complicated bonded interactions, but since GROMACS is extremely fast at calculating the nonbonded interactions (that usually dominate simulations) many groups are also using it for research on non-biological systems, e.g. polymers.
