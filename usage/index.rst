@@ -304,6 +304,42 @@ CPUs/GPUs across one or more machines:
 
          echo "end of job"
 
+
+      The ``bede-mpirun`` command takes both ordinary ``mpirun`` arguments and
+      the special ``--bede-par <distrib>`` option, allowing control over how
+      MPI jobs launch, e.g. one MPI rank per CPU core or GPU.
+
+      The formal specification of the option is:
+      ``--bede-par <rank_distrib>[:<thread_distrib>]`` and it defaults to
+      ``1ppc:1tpt``
+
+      Where ``<rank_distrib>`` can take ``1ppn`` (one process per node),
+      ``1ppg`` (one process per GPU), ``1ppc`` (one process per CPU core) or
+      ``1ppt`` (one process per CPU thread).
+
+      And ``<thread_distrib>`` can take ``1tpc`` (set ``OMP_NUM_THREADS`` to
+      the number of cores available to each process), ``1tpt`` (set
+      ``OMP_NUM_THREADS`` to the number of hardware threads available to each
+      process) or ``none`` (set ``OMP_NUM_THREADS=1``)
+
+      Examples:
+
+      .. code-block:: bash
+
+         # - One MPI rank per node:
+         bede-mpirun --bede-par 1ppn <mpirun_options> <program>
+
+         # - One MPI rank per gpu:
+         bede-mpirun --bede-par 1ppg <mpirun_options> <program>
+
+         # - One MPI rank per core:
+         bede-mpirun --bede-par 1ppc <mpirun_options> <program>
+
+         # - One MPI rank per hwthread:
+         bede-mpirun --bede-par 1ppt <mpirun_options> <program>
+
+      .. _usage-maximum-job-runtime:
+
    .. tab:: aarch64
 
       .. code-block:: bash
@@ -323,44 +359,14 @@ CPUs/GPUs across one or more machines:
 
          # Run commands:
 
-         bede-mpirun --bede-par 1ppc <mpi_program>
+         mpirun --bede-par 1ppc <mpi_program>
 
          echo "end of job"
 
-The ``bede-mpirun`` command takes both ordinary ``mpirun`` arguments and
-the special ``--bede-par <distrib>`` option, allowing control over how
-MPI jobs launch, e.g. one MPI rank per CPU core or GPU.
+      .. note:: 
 
-The formal specification of the option is:
-``--bede-par <rank_distrib>[:<thread_distrib>]`` and it defaults to
-``1ppc:1tpt``
+         Use on ``aarch64`` use ``mpirun`` rather than ``bede-mpirun`` when launching MPI applications
 
-Where ``<rank_distrib>`` can take ``1ppn`` (one process per node),
-``1ppg`` (one process per GPU), ``1ppc`` (one process per CPU core) or
-``1ppt`` (one process per CPU thread).
-
-And ``<thread_distrib>`` can take ``1tpc`` (set ``OMP_NUM_THREADS`` to
-the number of cores available to each process), ``1tpt`` (set
-``OMP_NUM_THREADS`` to the number of hardware threads available to each
-process) or ``none`` (set ``OMP_NUM_THREADS=1``)
-
-Examples:
-
-.. code-block:: bash
-
-   # - One MPI rank per node:
-   bede-mpirun --bede-par 1ppn <mpirun_options> <program>
-
-   # - One MPI rank per gpu:
-   bede-mpirun --bede-par 1ppg <mpirun_options> <program>
-
-   # - One MPI rank per core:
-   bede-mpirun --bede-par 1ppc <mpirun_options> <program>
-
-   # - One MPI rank per hwthread:
-   bede-mpirun --bede-par 1ppt <mpirun_options> <program>
-
-.. _usage-maximum-job-runtime:
 
 Maximum Job Runtime
 ~~~~~~~~~~~~~~~~~~~
