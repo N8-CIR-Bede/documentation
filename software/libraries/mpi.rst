@@ -15,39 +15,77 @@ We commit to the following convention for all MPIs we provide as modules:
 
 CUDA-enabled MPI is available through OpenMPI, when a cuda module is loaded alongside ``openmpi``, I.e.
 
-.. code-block:: bash
+.. tabs::
 
-   module load gcc cuda openmpi
+   .. code-tab:: bash ppc64le
+
+      module load gcc cuda openmpi
+
+   .. code-tab:: bash aarch64
+
+      module load gcc cuda openmpi
 
 OpenMPI is provided by the ``openmpi`` module(s):
 
-.. code-block:: bash
 
-   module load openmpi
-   module load openmpi/4.0.5
+.. tabs::
 
+   .. code-tab:: bash ppc64le
+
+      module load openmpi
+      
+      module load openmpi/4.0.5
+
+   .. code-tab:: bash ppc64le
+
+      module load openmpi
+      
+      module load openmpi/4.1.6
 
 .. |arch_availabilty_name| replace:: MVAPICH2
-.. include:: /common/ppc64le-only.rst
+.. admonition:: ppc64le partitions only
+         :class: warning
 
+         MVAPICH2 is only provided on ``ppc64le`` partitions/nodes (``gpu``, ``infer``, ``test``).
+         
 MVAPICH2 is provided by the `mvapich2` module(s):
 
-.. code-block:: bash
+.. tabs::
 
-   module load mvapich2/2.3.5-2
+   .. code-tab:: bash ppc64le
+
+      module load mvapich2
+
+      module load mvapich2/2.3.5-2
+
+   .. tab:: aarch64
+
+      .. admonition:: ppc64le partitions only
+         :class: warning
+
+         MVAPICH2 is only provided on ``ppc64le`` partitions/nodes (``gpu``, ``infer``, ``test``).
 
 .. note::
 
    There are a number of issues with OpenMPI 4 and the one-sided MPI communication features added by the MPI-3 standard. These features are typically useful when combined with GPUs, due to the asynchronous nature of the CUDA and OpenCL programming models.
 
-   For codes that require these features, we currently recommend using the ``mvapich2`` module.
+   For codes that require these features, we currently recommend using the ``mvapich2`` module on ``ppc64le`` nodes/partitions.
 
-We also offer the ``mvapich2-gdr/2.3.6`` module. This is a version of MVAPICH2 that is specifically designed for machines like Bede, providing optimised communications directly between GPUs - even when housed in different compute nodes.
+We also offer the ``mvapich2-gdr/2.3.6`` module on ``ppc64le`` nodes/partitions. This is a version of MVAPICH2 that is specifically designed for machines like Bede, providing optimised communications directly between GPUs - even when housed in different compute nodes.
 
 Unlike the ``openmpi`` and ``mvapich2`` modules, ``mvapich2-gdr`` does not adapt itself to the currently loaded compiler and CUDA modules. This version of the software was built using GCC 8.4.1 and CUDA 11.3.
 
-.. code-block:: bash
-   
-   module load mvapich2-gdr/2.3.6 gcc/8.4.0 cuda/11.3.1
+.. tabs::
+
+   .. code-tab:: bash ppc64le
+
+      module load mvapich2-gdr/2.3.6 gcc/8.4.0 cuda/11.3.1
+
+   .. tab:: aarch64
+
+      .. admonition:: ppc64le partitions only
+         :class: warning
+
+         ``mvapich2-gdr`` is only provided on ``ppc64le`` partitions/nodes (``gpu``, ``infer``, ``test``).
 
 Further information can be found on the `MVAPICH2-GDR <http://mvapich.cse.ohio-state.edu/userguide/gdr/>`__ pages.
