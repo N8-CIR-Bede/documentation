@@ -349,11 +349,9 @@ Jobs are scheduled subject to Slurm's `Multifactor Priority Plugin <https://slur
 Grace-Hopper Pilot
 ------------------
 
-Bede contains 3 NVIDIA Grace-Hopper nodes, which are currently only accessible to pilot users.
+Bede contains 3 NVIDIA Grace-Hopper nodes.
 
 Each Grace-Hopper node contains a single `Grace Hopper Superchip <https://www.nvidia.com/en-gb/data-center/grace-hopper-superchip/>`_, containing one 72-core 64-bit ARM CPU and one 96GB Hopper GPU with NVLink-C2C providing 900GB/s of bidirectional bandwidth between the CPU and GPU. Further details are listed on the :ref:`hardware` page.
-
-If you are interested in being a pilot user for the Grace-Hopper nodes in bede prior to their wider availability, please contact durham-bede-support@n8cir.org.uk.
 
 
 Connecting to the ``ghlogin`` node
