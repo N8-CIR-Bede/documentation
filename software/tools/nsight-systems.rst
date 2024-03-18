@@ -12,21 +12,36 @@ The GUI is not available on Bede.
 On Bede, Nsight Systems is provided by a number of modules, with differing versions of ``nsys``. 
 You should use a versions of ``nsys`` that is at least as new as the CUDA toolkit used to compile your application (if appropriate).
 
-.. code-block:: bash
+.. tabs:: 
 
-   module load nsight-systems/2023.1.1 # provides nsys 2023.1.1
-   module load nsight-systems/2022.1.1 # provides nsys 2022.1.1
-   module load nsight-systems/2020.3.1 # provides nsys 2020.3.1
+   .. code-tab:: bash ppc64le
 
-   module load cuda/12.0.1 # provides nsys 2022.4.2
-   module load cuda/11.5.1 # provides nsys 2021.3.3
-   module load cuda/11.4.1 # provides nsys 2021.2.4
-   module load cuda/11.3.1 # provides nsys 2021.1.3
-   module load cuda/11.2.2 # provides nsys 2020.4.3
+      module load nsight-systems/2023.1.1
+      module load nsight-systems/2022.1.1
+      module load nsight-systems/2020.3.1
 
-   module load nvhpc/23.1  # provides nsys 2022.5.1
-   module load nvhpc/22.1  # provides nsys 2021.5.1
-   module load nvhpc/21.5  # provides nsys 2021.2.1
+      module load cuda/12.0.1 # provides nsys 2022.4.2
+      module load cuda/11.5.1 # provides nsys 2021.3.3
+      module load cuda/11.4.1 # provides nsys 2021.2.4
+      module load cuda/11.3.1 # provides nsys 2021.1.3
+      module load cuda/11.2.2 # provides nsys 2020.4.3
+
+      module load nvhpc/23.1  # provides nsys 2022.5.1
+      module load nvhpc/22.1  # provides nsys 2021.5.1
+      module load nvhpc/21.5  # provides nsys 2021.2.1
+
+   .. code-tab:: bash aarch64
+
+      module load nsight-systems/2023.4.1
+
+      module load cuda/12.3.2 # provides nsys 2023.3.3
+      module load cuda/12.2.2 # provides nsys 2023.2.3
+      module load cuda/12.1.1 # provides nsys 2023.1.2
+      module load cuda/11.8.0 # provides nsys 2022.4.2
+      module load cuda/11.7.1 # provides nsys 2022.1.3
+      module load cuda/11.7.0 # provides nsys 2022.1.3
+
+      module load nvhpc/24.1  # provides nsys 2023.4.1
 
 To generate an application timeline with Nsight Systems CLI (``nsys``):
 
