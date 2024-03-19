@@ -24,7 +24,7 @@ Login
 -----
 
 Bede offers SSH and X2GO services running on host ``bede.dur.ac.uk`` (which
-fronts the two login nodes, ``login1.bede.dur.ac.uk`` and
+fronts the two ``ppc64le`` login nodes, ``login1.bede.dur.ac.uk`` and
 ``login2.bede.dur.ac.uk``). SSH or X2GO should be used for all interaction with
 the machine (including shell access, file transfer and graphics).
 
@@ -183,10 +183,45 @@ the service and provide this information in a more responsive format in
 the future.
 
 
+Node Architectures and Partitions
+---------------------------------
+
+As described on the :ref:`hardware` page, Bede contains a mix of nodes using 2 CPU architectures and 3 models of NVIDIA GPU. Software must be compiled for each CPU architecture, and not all software is available, provided or compatible with each architecture. 
+
+Bede's original nodes contain Power 9 CPUs (``ppc64le``), with Nvidia Volta and Turing architecture GPUs(``SM_70`` & ``sm_75``).
+Jobs in the ``gpu``, ``test`` and ``infer`` partitions will run on ``ppc64le`` architecture nodes.
+
+The newer Grace Hopper open pilot include `NVIDIA Grace Hopper Superchips <https://www.nvidia.com/en-gb/data-center/grace-hopper-superchip/>`_ which are composed of an ARM CPU (``aarch64``) and an NVIDIA Hopper GPU (``sm_90``).
+Jobs in the ``ghlogin``, ``gh`` and ``ghtest`` partitions will run on the ``aarch64`` architecture nodes.
+
+Connecting to the ``ghlogin`` node
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To get an interactive login-session on a Grace-Hopper node in the ``ghlogin`` partition, you must connect to Bede's regular login nodes as usual via ssh / x2go.
+
+Once connected, the ``ghlogin`` command can be used to request an interactive session on the ``ghlogin`` node.
+The login environment includes shared (unrestricted) access to the Hopper GPU, and by default will provide 4 CPU cores and 16GB of RAM for 8 hours.
+Use additional srun style flags to request a different duration or resources. 
+You must provide your project account.
+
+
+.. code-block:: bash
+
+   # Request a default login session 4 cores, 16GB, 8 hours
+   ghlogin -A <project>
+   # Request 4 hours with 8 cores and 24GB of memory
+   ghlogin -A <project> --time 4:00:00 -c 8 --mem 24G
+
+
+This will provide shell access to the login environment, which is a single Grace Hopper superchip.
+Access is mediated by slurm and you'll have a default of 4 cores and 1GB RAM for 8 hours (amend by adding srun style flags to the ``ghlogin`` command).
+Access to the GPU in the login environment is currently unrestricted.
+
+
 Running Jobs
 ------------
 
-Access beyond the two login node systems should only be done through the
+Access beyond the login nodes should only be done through the
 Slurm batch scheduler, by packaging your work into units called jobs.
 
 A job consists of a shell script, called a job submission script,
@@ -195,18 +230,27 @@ some specially formatted comment lines are added to the file, describing
 how much time and resources the job needs.
 
 Resources are requested in terms of the type of node, the number of GPUs
-per node (for each GPU requested, the job receives 25% of the node’s
-CPUs and RAM) and the number of nodes required.
+per node and the number of nodes required.
+The job will then recieve the corrsponding fraction of the node. 
 
-There is a test partition, providing priority access to jobs requesting
-up to two nodes (8x V100 GPUs) for 15 minutes to allow experimentation,
-especially for jobs trying to make use of Bede's architecture for
-multi-GPU, multi-node use.
+For example:
+
+* a job requesting ``2`` GPUs on a ``gpu`` node (containing 4 V100 GPUs) will recieve ``2/4`` of the CPU cores (20/40 cores) and memory (256/512GB). 
+* a job requesting ``1`` GPU on a ``gh`` node (containing 1 GH200) will recieve the full ``72`` cores and 480GB of memory. 
+
+Higher Priority access for short test jobs requesting up to 2 nodes (8x V100 GPUs or 2x GH200 GPUS) for up to 30 minutes, to allow experimentationespecially for jobs trying to make use of Bede's architecture for multi-GPU, multi-node use.
 
 There are a number of example job submission scripts below.
 
 Requesting resources
 ~~~~~~~~~~~~~~~~~~~~
+
+Batch jobs for the ``gpu``, ``infer`` and ``test`` partitions should be submit from the ``ppc64le`` login nodes via ``sbatch`` or ``srun``.
+
+
+To submit a job to the ``gh`` and ``ghtest`` partitions, you can use ``sbatch`` or ``srun`` as normal from within a ``ghlogin`` session.
+Alternatively, use the ``ghbatch`` or ``ghrun`` commands from a Bede login node.
+
 
 Part of, or an entire node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -366,6 +410,10 @@ CPUs/GPUs across one or more machines:
       .. note:: 
 
          Use on ``aarch64`` use ``mpirun`` rather than ``bede-mpirun`` when launching MPI applications
+
+      .. note::
+
+         There are only ``2`` ``gh`` nodes currently available for batch jobs in Bede. As a result multi-node Grace-Hopper jobs may queue for a significant time. 
 
 
 Maximum Job Runtime
