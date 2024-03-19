@@ -137,3 +137,26 @@ find the support email address for your institution `on the N8CIR website
 There is also a `slack workspace <https://n8cirbede.slack.com>`__ that you can join to get further support and
 contact the Bede user community. To request access, please e-mail: marion.weinzierl@durham.ac.uk.
 
+.. _faq-architecture-specific-eng:
+
+How do I specialise my bash environment for Power 9 and Grace-Hopper systems?
+-----------------------------------------------------------------------------
+
+If you have modified your Bede user environment (``.bashrc``, or ``.bash_profile``) to make software available by default (i.e. conda),
+you may need to modify your environment to set environment variables or source scripts based on the CPU architecture.
+
+You can check the CPU architecture in bash using the ``uname`` command.
+
+This allows you to set different environment variables on the ``aarch64`` Grace-Hopper nodes than on the ``ppc64le`` Power 9 nodes:
+
+.. code-block:: bash
+
+   # Get the CPU architecture
+   arch=$(uname -i)
+   if [[ $arch == "aarch64" ]]; then
+      # Set variables and source scripts for aarch64
+       export MYVAR=FOO
+   elif [[ $arch == "ppc64le" ]]; then
+      # Set variables and source scripts for ppc64le
+       export MYVAR=BAR
+   fi
