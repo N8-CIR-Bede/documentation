@@ -188,11 +188,14 @@ Node Architectures and Partitions
 
 As described on the :ref:`hardware` page, Bede contains a mix of nodes using 2 CPU architectures and 3 models of NVIDIA GPU. Software must be compiled for each CPU architecture, and not all software is available, provided or compatible with each architecture. 
 
-Bede's original nodes contain Power 9 CPUs (``ppc64le``), with Nvidia Volta and Turing architecture GPUs(``SM_70`` & ``sm_75``).
+Bede's original nodes contain Power 9 CPUs (``ppc64le``), with Nvidia Volta and Turing architecture GPUs (``SM_70`` & ``sm_75``).
 Jobs in the ``gpu``, ``test`` and ``infer`` partitions will run on ``ppc64le`` architecture nodes.
 
 The newer Grace Hopper open pilot include `NVIDIA Grace Hopper Superchips <https://www.nvidia.com/en-gb/data-center/grace-hopper-superchip/>`_ which are composed of an ARM CPU (``aarch64``) and an NVIDIA Hopper GPU (``sm_90``).
 Jobs in the ``ghlogin``, ``gh`` and ``ghtest`` partitions will run on the ``aarch64`` architecture nodes.
+
+
+.. _usage_connecting_ghlogin:
 
 Connecting to the ``ghlogin`` node
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -235,12 +238,14 @@ The job will then recieve the corrsponding fraction of the node.
 
 For example:
 
-* a job requesting ``2`` GPUs on a ``gpu`` node (containing 4 V100 GPUs) will recieve ``2/4`` of the CPU cores (20/40 cores) and memory (256/512GB). 
-* a job requesting ``1`` GPU on a ``gh`` node (containing 1 GH200) will recieve the full ``72`` cores and 480GB of memory. 
+* a job requesting ``2`` GPUs on a ``gpu`` node (containing 4 V100 GPUs) will recieve ``2/4`` of the CPU cores (``20`` / ``40`` cores) and memory (``256`` / ``512GB``). 
+* a job requesting ``1`` GPU on a ``gh`` node (containing ``1`` GH200) will recieve the full ``72`` cores and ``480GB`` of memory. 
 
-Higher Priority access for short test jobs requesting up to 2 nodes (8x V100 GPUs or 2x GH200 GPUS) for up to 30 minutes, to allow experimentationespecially for jobs trying to make use of Bede's architecture for multi-GPU, multi-node use.
+Higher Priority access for short test jobs requesting up to ``2`` nodes (8x V100 GPUs or 2x GH200 GPUS) for up to ``30`` minutes, to allow experimentationespecially for jobs trying to make use of Bede's architecture for multi-GPU, multi-node use.
 
 There are a number of example job submission scripts below.
+
+.. _usage_requesting_resources:
 
 Requesting resources
 ~~~~~~~~~~~~~~~~~~~~
@@ -476,23 +481,8 @@ Connecting to the ``ghlogin`` node
 To get an interactive login-session on a Grace-Hopper node in the ``ghlogin`` partition, you must connect to Bede's regular login nodes as usual via ssh / x2go.
 
 Once connected, the ``ghlogin`` command can be used to request an interactive session on the ``ghlogin`` node.
-The login environment includes shared (unrestricted) access to the Hopper GPU, and by default will provide 4 CPU cores and 16GB of RAM for 8 hours.
-Use additional srun style flags to request a different duration or resources. 
-You must provide your project account.
 
-
-.. code-block:: bash
-
-   # Request a default login session 4 cores, 16GB, 8 hours
-   ghlogin -A <project>
-   # Request 4 hours with 8 cores and 24GB of memory
-   ghlogin -A <project> --time 4:00:00 -c 8 --mem 24G
-
-
-This will provide shell access to the login environment, which is a single Grace Hopper.
-Access is mediated by slurm and you'll have a default of 4 cores and 1GB RAM for 8 hours (amend by adding srun style flags to theghlogin command).
-Access to the GPU in the login environment is currently unrestricted.
-
+Please see :ref:`usage_connecting_ghlogin` for more information.
 
 Batch Jobs
 ~~~~~~~~~~
@@ -502,36 +492,7 @@ Alternatively, use the ``ghbatch`` or ``ghrun`` commands from a Bede login node.
 
 Your job submission scripts should specify the ``--partition=gh`` or ``--partition=ghtest``. 
 
-As with the power9 nodes in Bede, resources are allocated based on the proportion of the node's GPUs you have requested. As there is only a single GPU per node, the full nodes resources will be available for your job.
-
-As there are only 2 Grace-Hopper nodes for batch jobs, queue times may be significant.
-
-.. code-block:: bash
-
-   #!/bin/bash
-
-   # Generic options:
-
-   #SBATCH --account=<project>  # Run job under project <project>
-   #SBATCH --time=1:0:0         # Run for a max of 1 hour
-
-   # Node resources:
-
-   #SBATCH --partition=gh    # Choose either "gh" or "ghtest" node type for grace-hopper
-   #SBATCH --gres=gpu:1      # Request 1 GPU, and implicitly the full 72 CPUs and 100% of the nodes memory
-
-   # Run commands:
-
-   # Query nvidia-smi
-   nvidia-smi
-
-   # Print the number of CPUS
-   nproc
-
-   # List information about the cpu
-   lscpu
-
-   echo "end of job"
+Further details and example batch job submission scripts are provided in the :ref:`usage_requesting_resources` section above.
 
 Software availability
 ~~~~~~~~~~~~~~~~~~~~~
@@ -543,26 +504,22 @@ The Grace-Hopper nodes are also running a newer operating (Rocky 9) system than 
 
 Use ``module avail`` from the ``ghlogin`` node to list centrally provided software modules for the grace-hopper nodes.
 
-The Bede documentation does not currently contain grace-hopper specific software documentation, this will be added over time.
-However, during pilot use the following has been discovered:
+Documentation for :ref:`software provided centrally on Bede<software>` now includes grace-hopper specific information.
 
-* CUDA
+Key differences to be aware of include:
 
-  * CUDA 11.8 is the first CUDA version which can target the Hopper GPU architecture ``SM_90``.
-  * Older CUDA versions (i.e. 11.7) will require embedding PTX for an older architecture (i.e. ``-gencode=arch=compute_80,code=compute_80``)
+* :ref:`CUDA<software-compilers-nvcc>`
 
-* Singularity / Apptainer
+  * Code should be compiled for Compuate Capability ``90`` using CUDA 11.8+.
+  * CUDA 11.7 available on ``aarch64`` nodes should embed PTX for Compute Capability ``80`` (i.e. ``-gencode=arch=compute_80,code=compute_80``)
+
+* :ref:`Singularity<software-tools-singularity>` / :ref:`Apptainer<software-tools-apptainer>` 
   
-  * The Grace-Hopper nodes provide ``apptainer`` rather than ``singularity`` for container support and enables the use of ``--fakeroot`` to build containers on the aarch64 nodes directly.
-  * Usage is broadly the same, however there are some differences as `documented by apptainer <https://apptainer.org/docs/user/latest/singularity_compatibility.html>`_
-    
-    * ``SINGULARITY_`` prefixed environment variables may issues warnings, preferring to be prefixed with ``APPTAINER_``
-    * The ``singularity`` command/binary is still available, but is just a symlink to ``apptainer``
-    * The ``library://`` protocol is not supported by apptainer's default configuration. See `Restoring pre-Apptainer library behaviour <https://apptainer.org/docs/user/latest/endpoint.html#restoring-pre-apptainer-library-behavior>`_ for more information.
-
+  * The Grace-Hopper nodes provide :ref:`software-tools-apptainer` rather than :ref:`software-tools-singularity` for container support and enables the use of ``--fakeroot`` to build containers on the aarch64 nodes directly.
+  * Usage is broadly the same, however there are some differences as `documented by apptainer <https://apptainer.org/docs/user/latest/singularity_compatibility.html>`_ and on the :ref:`Apptainer page<software-tools-apptainer>`
   * Container files are large, consider setting ``APPTAINER_CACHEDIR`` to avoid filling your home directory quota
 
-* PyTorch
+* :ref:`PyTorch<software-applications-pytorch>`
   
   * Current (at least up to ``2.1.0``) builds of pytorch provided via conda or pip for ``aarch64`` do not include cuda support (``torch.cuda.is_available()`` returns ``false``).
   * NVIDIA provide `NGC Pytorch containers <https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch/tags>`_ which can be used instead, with pytorch installed into the default python environment.
@@ -573,11 +530,8 @@ However, during pilot use the following has been discovered:
 
   * Or follow `PyTorch Building from Source instructions <https://pytorch.org/get-started/locally/#linux-from-source>`_
   
-* ``gcc`` / ``g++`` psABI warnings
-
-  * ``g++`` >= 10.1 compiling with ``--std=c++17`` mode may emit psABI warnings for parameter passing of certain types. These can be suppressed via ``--Wno-psabi``.
-
-* MPI
+* :ref:`software-compilers-gcc` compiling with ``--std=c++17`` may emit psABI warnings. These can be suppressed via ``--Wno-psabi``.
+* :ref:`MPI<software-libraries-MPI>`
 
   * The ``openmpi`` module is available, and CUDA support is enabled if you additionally load a CUDA module. The ``mpirun`` command should be used to launch programs, and not the ``bede-mpirun`` command.
   * The ``ppc64le`` equipment has an MPI with optimised multi-node GPU communications provided by the ``mvapich2-gdr`` module. This is not available for the Grace Hopper equipment; however, we plan to provide a ``mvapich-plus`` module in future to provide this functionality. In the meantime, if this is of interest, please contact us.
