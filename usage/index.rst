@@ -24,7 +24,7 @@ Login
 -----
 
 Bede offers SSH and X2GO services running on host ``bede.dur.ac.uk`` (which
-fronts the two login nodes, ``login1.bede.dur.ac.uk`` and
+fronts the two ``ppc64le`` login nodes, ``login1.bede.dur.ac.uk`` and
 ``login2.bede.dur.ac.uk``). SSH or X2GO should be used for all interaction with
 the machine (including shell access, file transfer and graphics).
 
@@ -183,10 +183,48 @@ the service and provide this information in a more responsive format in
 the future.
 
 
+Node Architectures and Partitions
+---------------------------------
+
+As described on the :ref:`hardware` page, Bede contains a mix of nodes using 2 CPU architectures and 3 models of NVIDIA GPU. Software must be compiled for each CPU architecture, and not all software is available, provided or compatible with each architecture. 
+
+Bede's original nodes contain Power 9 CPUs (``ppc64le``), with Nvidia Volta and Turing architecture GPUs (``SM_70`` & ``sm_75``).
+Jobs in the ``gpu``, ``test`` and ``infer`` partitions will run on ``ppc64le`` architecture nodes.
+
+The newer Grace Hopper open pilot include `NVIDIA Grace Hopper Superchips <https://www.nvidia.com/en-gb/data-center/grace-hopper-superchip/>`_ which are composed of an ARM CPU (``aarch64``) and an NVIDIA Hopper GPU (``sm_90``).
+Jobs in the ``ghlogin``, ``gh`` and ``ghtest`` partitions will run on the ``aarch64`` architecture nodes.
+
+
+.. _usage_connecting_ghlogin:
+
+Connecting to the ``ghlogin`` node
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To get an interactive login-session on a Grace-Hopper node in the ``ghlogin`` partition, you must connect to Bede's regular login nodes as usual via ssh / x2go.
+
+Once connected, the ``ghlogin`` command can be used to request an interactive session on the ``ghlogin`` node.
+The login environment includes shared (unrestricted) access to the Hopper GPU, and by default will provide 4 CPU cores and 16GB of RAM for 8 hours.
+Use additional srun style flags to request a different duration or resources. 
+You must provide your project account.
+
+
+.. code-block:: bash
+
+   # Request a default login session 4 cores, 16GB, 8 hours
+   ghlogin -A <project>
+   # Request 4 hours with 8 cores and 24GB of memory
+   ghlogin -A <project> --time 4:00:00 -c 8 --mem 24G
+
+
+This will provide shell access to the login environment, which is a single Grace Hopper superchip.
+Access is mediated by slurm and you'll have a default of 4 cores and 1GB RAM for 8 hours (amend by adding srun style flags to the ``ghlogin`` command).
+Access to the GPU in the login environment is currently unrestricted.
+
+
 Running Jobs
 ------------
 
-Access beyond the two login node systems should only be done through the
+Access beyond the login nodes should only be done through the
 Slurm batch scheduler, by packaging your work into units called jobs.
 
 A job consists of a shell script, called a job submission script,
@@ -195,48 +233,94 @@ some specially formatted comment lines are added to the file, describing
 how much time and resources the job needs.
 
 Resources are requested in terms of the type of node, the number of GPUs
-per node (for each GPU requested, the job receives 25% of the node’s
-CPUs and RAM) and the number of nodes required.
+per node and the number of nodes required.
+The job will then recieve the corrsponding fraction of the node. 
 
-There is a test partition, providing priority access to jobs requesting
-up to two nodes (8x V100 GPUs) for 15 minutes to allow experimentation,
-especially for jobs trying to make use of Bede's architecture for
-multi-GPU, multi-node use.
+For example:
+
+* a job requesting ``2`` GPUs on a ``gpu`` node (containing 4 V100 GPUs) will recieve ``2/4`` of the CPU cores (``20`` / ``40`` cores) and memory (``256`` / ``512GB``). 
+* a job requesting ``1`` GPU on a ``gh`` node (containing ``1`` GH200) will recieve the full ``72`` cores and ``480GB`` of memory. 
+
+Higher Priority access for short test jobs requesting up to ``2`` nodes (8x V100 GPUs or 2x GH200 GPUS) for up to ``30`` minutes, to allow experimentationespecially for jobs trying to make use of Bede's architecture for multi-GPU, multi-node use.
 
 There are a number of example job submission scripts below.
+
+.. _usage_requesting_resources:
 
 Requesting resources
 ~~~~~~~~~~~~~~~~~~~~
 
+Batch jobs for the ``gpu``, ``infer`` and ``test`` partitions should be submit from the ``ppc64le`` login nodes via ``sbatch`` or ``srun``.
+
+
+To submit a job to the ``gh`` and ``ghtest`` partitions, you can use ``sbatch`` or ``srun`` as normal from within a ``ghlogin`` session.
+Alternatively, use the ``ghbatch`` or ``ghrun`` commands from a Bede login node.
+
+
 Part of, or an entire node
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Example job script for programs written to take advantage of a GPU or
-multiple GPUs on a single computer:
+.. tabs::
 
-.. code-block:: bash
+   .. tab:: ppc64le
 
-   #!/bin/bash
+      Example job script for programs written to take advantage of a GPU or
+      multiple GPUs on a single ppc64le node:
 
-   # Generic options:
+      .. code-block:: bash
 
-   #SBATCH --account=<project>  # Run job under project <project>
-   #SBATCH --time=1:0:0         # Run for a max of 1 hour
+         #!/bin/bash
 
-   # Node resources:
-   # (choose between 1-4 gpus per node)
+         # Generic options:
 
-   #SBATCH --partition=gpu    # Choose either "gpu" or "infer" node type
-   #SBATCH --nodes=1          # Resources from a single node
-   #SBATCH --gres=gpu:1       # One GPU per node (plus 25% of node CPU and RAM per GPU)
+         #SBATCH --account=<project> # Run job under project <project>
+         #SBATCH --time=1:0:0        # Run for a max of 1 hour
 
-   # Run commands:
+         # Node resources:
+         # (choose between 1-4 gpus per node)
 
-   nvidia-smi  # Display available gpu resources
+         #SBATCH --partition=test    # Choose either "gpu", "test" or "infer" partition type
+         #SBATCH --nodes=1           # Resources from a single node
+         #SBATCH --gres=gpu:1        # One GPU per node (plus 25% of node CPU and RAM per GPU)
 
-   # Place other commands here
+         # Run commands:
 
-   echo "end of job"
+         nvidia-smi  # Display available gpu resources
+         nproc       # Display available CPU cores
+
+         # Place other commands here
+
+         echo "end of job"
+
+
+   .. tab:: aarch64
+
+      Example job script for programs written to take advantage of single GPU on a single aarch64 node (1 GPU per node):
+
+      .. code-block:: bash
+
+         #!/bin/bash
+
+         # Generic options:
+
+         #SBATCH --account=<project> # Run job under project <project>
+         #SBATCH --time=0:15:0       # Run for a max of 15 minutes
+
+         # Node resources:
+         # 1 gpu per node
+
+         #SBATCH --partition=ghtest  # Choose either "gh" or "ghtest"
+         #SBATCH --nodes=1           # Resources from a single node
+         #SBATCH --gres=gpu:1        # One GPU per node (plus 100% of node CPU and RAM per GPU)
+
+         # Run commands:
+
+         nvidia-smi  # Display available gpu resources
+         nproc       # Display available CPU cores
+
+         # Place other commands here
+
+         echo "end of job"
 
 Multiple nodes (MPI)
 ^^^^^^^^^^^^^^^^^^^^
@@ -244,61 +328,98 @@ Multiple nodes (MPI)
 Example job script for programs using MPI to take advantage of multiple
 CPUs/GPUs across one or more machines:
 
-.. code-block:: bash
+.. tabs::
 
-   #!/bin/bash
+   .. tab:: ppc64le
 
-   # Generic options:
+      .. code-block:: bash
 
-   #SBATCH --account=<project>  # Run job under project <project>
-   #SBATCH --time=1:0:0         # Run for a max of 1 hour
+         #!/bin/bash
 
-   # Node resources:
+         # Generic options:
 
-   #SBATCH --partition=gpu    # Choose either "gpu" or "infer" node type
-   #SBATCH --nodes=2          # Resources from a two nodes
-   #SBATCH --gres=gpu:4       # Four GPUs per node (plus 100% of node CPU and RAM per node)
+         #SBATCH --account=<project>  # Run job under project <project>
+         #SBATCH --time=1:0:0         # Run for a max of 1 hour
 
-   # Run commands:
+         # Node resources:
 
-   bede-mpirun --bede-par 1ppc <mpi_program>
+         #SBATCH --partition=gpu    # Choose either "gpu", "test" or "infer" partition type
+         #SBATCH --nodes=2          # Resources from two nodes
+         #SBATCH --gres=gpu:4       # Four GPUs per node (plus 100% of node CPU and RAM per node)
 
-   echo "end of job"
+         # Run commands:
 
-The ``bede-mpirun`` command takes both ordinary ``mpirun`` arguments and
-the special ``--bede-par <distrib>`` option, allowing control over how
-MPI jobs launch, e.g. one MPI rank per CPU core or GPU.
+         bede-mpirun --bede-par 1ppc <mpi_program>
 
-The formal specification of the option is:
-``--bede-par <rank_distrib>[:<thread_distrib>]`` and it defaults to
-``1ppc:1tpt``
+         echo "end of job"
 
-Where ``<rank_distrib>`` can take ``1ppn`` (one process per node),
-``1ppg`` (one process per GPU), ``1ppc`` (one process per CPU core) or
-``1ppt`` (one process per CPU thread).
 
-And ``<thread_distrib>`` can take ``1tpc`` (set ``OMP_NUM_THREADS`` to
-the number of cores available to each process), ``1tpt`` (set
-``OMP_NUM_THREADS`` to the number of hardware threads available to each
-process) or ``none`` (set ``OMP_NUM_THREADS=1``)
+      The ``bede-mpirun`` command takes both ordinary ``mpirun`` arguments and
+      the special ``--bede-par <distrib>`` option, allowing control over how
+      MPI jobs launch, e.g. one MPI rank per CPU core or GPU.
 
-Examples:
+      The formal specification of the option is:
+      ``--bede-par <rank_distrib>[:<thread_distrib>]`` and it defaults to
+      ``1ppc:1tpt``
 
-.. code-block:: bash
+      Where ``<rank_distrib>`` can take ``1ppn`` (one process per node),
+      ``1ppg`` (one process per GPU), ``1ppc`` (one process per CPU core) or
+      ``1ppt`` (one process per CPU thread).
 
-   # - One MPI rank per node:
-   bede-mpirun --bede-par 1ppn <mpirun_options> <program>
+      And ``<thread_distrib>`` can take ``1tpc`` (set ``OMP_NUM_THREADS`` to
+      the number of cores available to each process), ``1tpt`` (set
+      ``OMP_NUM_THREADS`` to the number of hardware threads available to each
+      process) or ``none`` (set ``OMP_NUM_THREADS=1``)
 
-   # - One MPI rank per gpu:
-   bede-mpirun --bede-par 1ppg <mpirun_options> <program>
+      Examples:
 
-   # - One MPI rank per core:
-   bede-mpirun --bede-par 1ppc <mpirun_options> <program>
+      .. code-block:: bash
 
-   # - One MPI rank per hwthread:
-   bede-mpirun --bede-par 1ppt <mpirun_options> <program>
+         # - One MPI rank per node:
+         bede-mpirun --bede-par 1ppn <mpirun_options> <program>
 
-.. _usage-maximum-job-runtime:
+         # - One MPI rank per gpu:
+         bede-mpirun --bede-par 1ppg <mpirun_options> <program>
+
+         # - One MPI rank per core:
+         bede-mpirun --bede-par 1ppc <mpirun_options> <program>
+
+         # - One MPI rank per hwthread:
+         bede-mpirun --bede-par 1ppt <mpirun_options> <program>
+
+      .. _usage-maximum-job-runtime:
+
+   .. tab:: aarch64
+
+      .. code-block:: bash
+
+         #!/bin/bash
+
+         # Generic options:
+
+         #SBATCH --account=<project>  # Run job under project <project>
+         #SBATCH --time=1:0:0         # Run for a max of 1 hour
+
+         # Node resources:
+
+         #SBATCH --partition=gh    # Choose either "gh" or"ghtest" partition type
+         #SBATCH --nodes=2          # Resources from two nodes
+         #SBATCH --gres=gpu:1       # 1 GPU per node (plus 100% of node CPU and RAM per node)
+
+         # Run commands:
+
+         mpirun --bede-par 1ppc <mpi_program>
+
+         echo "end of job"
+
+      .. note:: 
+
+         Use on ``aarch64`` use ``mpirun`` rather than ``bede-mpirun`` when launching MPI applications
+
+      .. note::
+
+         There are only ``2`` ``gh`` nodes currently available for batch jobs in Bede. As a result multi-node Grace-Hopper jobs may queue for a significant time. 
+
 
 Maximum Job Runtime
 ~~~~~~~~~~~~~~~~~~~
@@ -360,23 +481,8 @@ Connecting to the ``ghlogin`` node
 To get an interactive login-session on a Grace-Hopper node in the ``ghlogin`` partition, you must connect to Bede's regular login nodes as usual via ssh / x2go.
 
 Once connected, the ``ghlogin`` command can be used to request an interactive session on the ``ghlogin`` node.
-The login environment includes shared (unrestricted) access to the Hopper GPU, and by default will provide 4 CPU cores and 16GB of RAM for 8 hours.
-Use additional srun style flags to request a different duration or resources. 
-You must provide your project account.
 
-
-.. code-block:: bash
-
-   # Request a default login session 4 cores, 16GB, 8 hours
-   ghlogin -A <project>
-   # Request 4 hours with 8 cores and 24GB of memory
-   ghlogin -A <project> --time 4:00:00 -c 8 --mem 24G
-
-
-This will provide shell access to the login environment, which is a single Grace Hopper.
-Access is mediated by slurm and you'll have a default of 4 cores and 1GB RAM for 8 hours (amend by adding srun style flags to theghlogin command).
-Access to the GPU in the login environment is currently unrestricted.
-
+Please see :ref:`usage_connecting_ghlogin` for more information.
 
 Batch Jobs
 ~~~~~~~~~~
@@ -386,36 +492,7 @@ Alternatively, use the ``ghbatch`` or ``ghrun`` commands from a Bede login node.
 
 Your job submission scripts should specify the ``--partition=gh`` or ``--partition=ghtest``. 
 
-As with the power9 nodes in Bede, resources are allocated based on the proportion of the node's GPUs you have requested. As there is only a single GPU per node, the full nodes resources will be available for your job.
-
-As there are only 2 Grace-Hopper nodes for batch jobs, queue times may be significant.
-
-.. code-block:: bash
-
-   #!/bin/bash
-
-   # Generic options:
-
-   #SBATCH --account=<project>  # Run job under project <project>
-   #SBATCH --time=1:0:0         # Run for a max of 1 hour
-
-   # Node resources:
-
-   #SBATCH --partition=gh    # Choose either "gh" or "ghtest" node type for grace-hopper
-   #SBATCH --gres=gpu:1      # Request 1 GPU, and implicitly the full 72 CPUs and 100% of the nodes memory
-
-   # Run commands:
-
-   # Query nvidia-smi
-   nvidia-smi
-
-   # Print the number of CPUS
-   nproc
-
-   # List information about the cpu
-   lscpu
-
-   echo "end of job"
+Further details and example batch job submission scripts are provided in the :ref:`usage_requesting_resources` section above.
 
 Software availability
 ~~~~~~~~~~~~~~~~~~~~~
@@ -427,26 +504,22 @@ The Grace-Hopper nodes are also running a newer operating (Rocky 9) system than 
 
 Use ``module avail`` from the ``ghlogin`` node to list centrally provided software modules for the grace-hopper nodes.
 
-The Bede documentation does not currently contain grace-hopper specific software documentation, this will be added over time.
-However, during pilot use the following has been discovered:
+Documentation for :ref:`software provided centrally on Bede<software>` now includes grace-hopper specific information.
 
-* CUDA
+Key differences to be aware of include:
 
-  * CUDA 11.8 is the first CUDA version which can target the Hopper GPU architecture ``SM_90``.
-  * Older CUDA versions (i.e. 11.7) will require embedding PTX for an older architecture (i.e. ``-gencode=arch=compute_80,code=compute_80``)
+* :ref:`CUDA<software-compilers-nvcc>`
 
-* Singularity / Apptainer
+  * Code should be compiled for Compuate Capability ``90`` using CUDA 11.8+.
+  * CUDA 11.7 available on ``aarch64`` nodes should embed PTX for Compute Capability ``80`` (i.e. ``-gencode=arch=compute_80,code=compute_80``)
+
+* :ref:`Singularity<software-tools-singularity>` / :ref:`Apptainer<software-tools-apptainer>` 
   
-  * The Grace-Hopper nodes provide ``apptainer`` rather than ``singularity`` for container support and enables the use of ``--fakeroot`` to build containers on the aarch64 nodes directly.
-  * Usage is broadly the same, however there are some differences as `documented by apptainer <https://apptainer.org/docs/user/latest/singularity_compatibility.html>`_
-    
-    * ``SINGULARITY_`` prefixed environment variables may issues warnings, preferring to be prefixed with ``APPTAINER_``
-    * The ``singularity`` command/binary is still available, but is just a symlink to ``apptainer``
-    * The ``library://`` protocol is not supported by apptainer's default configuration. See `Restoring pre-Apptainer library behaviour <https://apptainer.org/docs/user/latest/endpoint.html#restoring-pre-apptainer-library-behavior>`_ for more information.
-
+  * The Grace-Hopper nodes provide :ref:`software-tools-apptainer` rather than :ref:`software-tools-singularity` for container support and enables the use of ``--fakeroot`` to build containers on the aarch64 nodes directly.
+  * Usage is broadly the same, however there are some differences as `documented by apptainer <https://apptainer.org/docs/user/latest/singularity_compatibility.html>`_ and on the :ref:`Apptainer page<software-tools-apptainer>`
   * Container files are large, consider setting ``APPTAINER_CACHEDIR`` to avoid filling your home directory quota
 
-* PyTorch
+* :ref:`PyTorch<software-applications-pytorch>`
   
   * Current (at least up to ``2.1.0``) builds of pytorch provided via conda or pip for ``aarch64`` do not include cuda support (``torch.cuda.is_available()`` returns ``false``).
   * NVIDIA provide `NGC Pytorch containers <https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch/tags>`_ which can be used instead, with pytorch installed into the default python environment.
@@ -457,11 +530,8 @@ However, during pilot use the following has been discovered:
 
   * Or follow `PyTorch Building from Source instructions <https://pytorch.org/get-started/locally/#linux-from-source>`_
   
-* ``gcc`` / ``g++`` psABI warnings
-
-  * ``g++`` >= 10.1 compiling with ``--std=c++17`` mode may emit psABI warnings for parameter passing of certain types. These can be suppressed via ``--Wno-psabi``.
-
-* MPI
+* :ref:`software-compilers-gcc` compiling with ``--std=c++17`` may emit psABI warnings. These can be suppressed via ``--Wno-psabi``.
+* :ref:`MPI<software-libraries-MPI>`
 
   * The ``openmpi`` module is available, and CUDA support is enabled if you additionally load a CUDA module. The ``mpirun`` command should be used to launch programs, and not the ``bede-mpirun`` command.
   * The ``ppc64le`` equipment has an MPI with optimised multi-node GPU communications provided by the ``mvapich2-gdr`` module. This is not available for the Grace Hopper equipment; however, we plan to provide a ``mvapich-plus`` module in future to provide this functionality. In the meantime, if this is of interest, please contact us.

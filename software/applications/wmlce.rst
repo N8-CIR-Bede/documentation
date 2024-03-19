@@ -1,9 +1,12 @@
 .. _software-applications-wmlce:
 
+:orphan:
+
 IBM WMLCE (End of Life)
 =======================
 
-.. warning:: 
+.. admonition:: End of Life
+   :class: danger
 
    WMLCE was archived by IBM on 2020-11-10 and is no longer updated, maintained or supported.
    It is no longer available on bede due to the migration away from RHEL 7.

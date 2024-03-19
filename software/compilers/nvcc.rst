@@ -1,23 +1,36 @@
 .. _software-compilers-nvcc:
 
-CUDA and NVCC
-=============
+NVCC (CUDA)
+===========
 
 `CUDA <https://developer.nvidia.com/cuda-zone>`__ and the ``nvcc`` CUDA/C++ compiler are provided for use on the system by the `cuda` modules.
 
 Unlike other compiler modules, the cuda modules do not set ``CC`` or ``CXX`` environment variables. This is because ``nvcc`` can be used to compile device CUDA code in conjunction with a range of host compilers, such as GCC or LLVM clang.
 
-.. code-block:: bash
+.. tabs::
 
-   module load cuda
+   .. code-tab:: bash ppc64le
 
-   module load cuda/12.0.1
-   module load cuda/11.5.1
-   module load cuda/11.4.1
-   module load cuda/11.3.1
-   module load cuda/11.2.2
-   module load cuda/10.2.89
-   module load cuda/10.1.243
+      module load cuda
+
+      module load cuda/12.0.1
+      module load cuda/11.5.1
+      module load cuda/11.4.1
+      module load cuda/11.3.1
+      module load cuda/11.2.2
+      module load cuda/10.2.89
+      module load cuda/10.1.243
+
+   .. code-tab:: bash aarch64
+
+      module load cuda
+
+      module load cuda/12.3.2
+      module load cuda/12.2.2
+      module load cuda/12.1.1
+      module load cuda/11.8.0
+      module load cuda/11.7.0
+      module load cuda/11.7.1
 
 For further information please see the `CUDA Toolkit Archive <https://developer.nvidia.com/cuda-toolkit-archive>`__.
 
@@ -37,14 +50,8 @@ The C++ dialect used for host and device code can be controlled using the ``--st
 * ``c++03``
 * ``c++11``
 * ``c++14``
-
-CUDA ``>= 11.0`` also accepts
-
-* ``c++17``
-
-CUDA ``>= 12.0`` also accepts
-
-* ``c++20``
+* ``c++17`` (CUDA 11+)
+* ``c++20`` (CUDA 12+)
 
 The default C++ dialect depends on the host compiler, with ``nvcc`` matching the default dialect by the host c++ compiler.
 
@@ -105,22 +112,47 @@ Bede contains NVIDIA Tesla V100 and Tesla T4 GPUs, which are `compute capability
 
 To generate optimised code for both GPU models in Bede, the following ``-gencode`` options can be passed to ``nvcc``:
 
-.. code-block:: bash
+.. tabs::
 
-   nvcc -gencode=arch=compute_70,code=sm_70 -gencode=arch=compute_75,code=sm_75 -o main main.cu
+   .. code-tab:: bash ppc64le
+
+      nvcc -gencode=arch=compute_70,code=sm_70 -gencode=arch=compute_75,code=sm_75 -o main main.cu
+
+   .. code-tab:: bash aarch64
+
+      # nvcc >= 11.8
+      nvcc -gencode=arch=compute_90,code=sm_90 -o main main.cu
+      # nvcc <  11.8
+      nvcc -gencode=arch=compute_80,code=compute_80 -o main main.cu
+
 
 Alternatively, to reduce compile time and binary size a single ``-gencode`` option can be passed. 
 
-If only compute capability ``70`` is selected, code will be optimised for Volta GPUs, but will execute on Volta and Turing GPUs.
+.. tabs:: 
 
-If only compute capability ``75`` is selected, code will be optimised for Turing GPUs, but it will not be executable on Volta GPUs.
+   .. tab:: ppc64le
 
-.. code-block:: bash
+      If only compute capability ``70`` is selected, code will be optimised for Volta GPUs, but will execute on Volta and Turing GPUs.
 
-   # Optimise for V100 GPUs, executable on T4 GPUs
-   nvcc -gencode=arch=compute_70,code=sm_70 -o main main.cu
-   # Optimise for T4 GPUs, not executable on V100 GPUs
-   nvcc -gencode=arch=compute_75,code=sm_75 -o main main.cu
+      If only compute capability ``75`` is selected, code will be optimised for Turing GPUs, but it will not be executable on Volta GPUs.
+
+      .. code-block:: bash
+
+         # Optimise for V100 GPUs, executable on T4 GPUs
+         nvcc -gencode=arch=compute_70,code=sm_70 -o main main.cu
+         # Optimise for T4 GPUs, not executable on V100 GPUs
+         nvcc -gencode=arch=compute_75,code=sm_75 -o main main.cu
+
+   .. tab:: aarch64
+
+      ``aarch64`` nodes in Bede only contain Hopper GPUs, so there is only need to provide a single compute capability (``90``, or embedding PTX for compute capability ``80``)
+
+      .. code-block:: bash
+
+         # nvcc >= 11.8
+         nvcc -gencode=arch=compute_90,code=sm_90 -o main main.cu
+         # nvcc <  11.8
+         nvcc -gencode=arch=compute_80,code=compute_80 -o main main.cu
 
 For more information on the use of ``-gencode``, ``-arch`` and ``-code`` please  see the `NVCC Documentation <https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html>`__.
 
@@ -195,7 +227,7 @@ The automatic use of ``gcc`` / ``g++`` from the path may be overridden using the
 
 This option can be used to specify the directory in which the host compiler resides, and optionally may include the binary name itself, if for instance you wish to use ``clang++`` or ``xl`` as your host C++ compiler. 
 
-e.g. to use ``xlc++`` as the host compiler for the default CUDA module:
+e.g. to use ``xlc++`` as the host compiler for the default CUDA module (on ``ppc64le`` nodes):
 
 .. code-block:: bash
 
@@ -208,4 +240,4 @@ e.g. to use ``xlc++`` as the host compiler for the default CUDA module:
 This behaviour can be prevented using the ``--allow-unsupported-compiler`` / ``-allow-unsupported-compiler`` option (`docs <https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html#file-and-path-specifications-allow-unsupported-compiler>`__), however, this may result in incorrect binaries. Use at your own risk.
 
 A list of officially supported host compilers can be found in the `CUDA Installation Guide for Linux <https://docs.nvidia.com/cuda/archive/11.5.2/cuda-installation-guide-linux/index.html>`__, for the appropriate CUDA version.
-For Bede, refer to the Power 9 section of the table with RHEL for the operating system.
+For Bede, refer to the Power 9 and aarch64 sections of the table with RHEL for the operating system.

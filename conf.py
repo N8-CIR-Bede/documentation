@@ -11,7 +11,8 @@ import sphinx
 extensions = [
     "sphinxext.rediraffe",
     'sphinx.ext.mathjax',
-    'sphinx_copybutton'
+    'sphinx_copybutton',
+    'sphinx_tabs.tabs',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -52,6 +53,9 @@ todo_include_todos = False
 ## Added by CA to get MathJax rendering loaded
 mathjax_path='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
 
+# Disable sphinx-tabs closing
+sphinx_tabs_disable_tab_closing = True
+
 # -- Options for HTML output ----------------------------------------------
 
 html_theme = 'sphinx_book_theme'
@@ -81,6 +85,7 @@ html_theme_options = {
     "home_page_in_toc": False,
     "show_navbar_depth": 1,  # Sets the depth for expanded content
     # Control the right hand in-page toc
+    "navigation_with_keys": False,
     "toc_title": "Contents",
     "show_toc_level": 2,
     "show_prev_next": False,
@@ -89,7 +94,7 @@ html_theme_options = {
     # Code highlighting theme for dark mode
     "pygment_dark_style": "github-dark-high-contrast",
     # Add an announcement bar, visible at the top of each page.
-    # "announcement": "",
+    "announcement": "3 NVIDIA Grace-Hopper nodes (GH200 480) are now available",
     # Add the traditional footer theme and sphinx acknowledgements
     "extra_footer": f"<p>&nbsp;Built with <a href=\"http://sphinx-doc.org/\">Sphinx</a> {sphinx.__version__} using a theme by the <a href=\"https://ebp.jupyterbook.org/\">Executable Book Project</a>.</p>"
 }

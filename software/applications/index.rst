@@ -9,6 +9,18 @@ If you notice any omissions, errors or have any suggested changes to the documen
 
 .. toctree::
     :maxdepth: 1
-    :glob:
 
-    *
+    amber.rst
+    conda.rst
+    eman2.rst
+    grace.rst
+    gromacs.rst
+    namd.rst
+    open-ce.rst
+    openmm.rst
+    python.rst
+    pytorch.rst
+    r.rst
+    rust.rst
+    tensorflow.rst
+    

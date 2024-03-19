@@ -7,7 +7,16 @@ FFTW
 
 A centrally-installed version of FFTW can be loaded via ``module``: 
 
-.. code-block:: bash
+.. tabs::
 
-    module load fftw
-    module load fftw/3.3.8
+   .. code-tab:: bash ppc64le
+
+      module load fftw
+
+      module load fftw/3.3.8
+
+   .. code-tab:: bash aarch64
+
+      module load fftw
+      
+      module load fftw/3.3.10

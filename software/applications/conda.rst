@@ -15,29 +15,61 @@ The simplest way to install Conda for use on Bede is through the `miniconda <htt
 
 .. note::
 
-    You may wish to install conda into the ``/nobackup/projects/<project>/$USER`` (where ``project`` is the project code for your project) directory rather than your ``home`` directory as it may consume considerable disk space
+    You may wish to install conda into the ``/nobackup/projects/<project>/$USER/<architecture>`` (where ``<project>`` is the project code for your project, and ``<architecture>>`` is CPU architecture) directory rather than your ``home`` directory as it may consume considerable disk space
 
-.. code-block:: bash
+.. tabs::
 
-   export CONDADIR=/nobackup/projects/<project>/$USER # Update this with your <project> code.
-   mkdir -p $CONDADIR
-   pushd $CONDADIR
+   .. code-tab:: bash ppc64le
 
-   # Download the latest miniconda installer for ppcle64
-   wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-ppc64le.sh
-   # Validate the file checksum matches is listed on https://docs.conda.io/en/latest/miniconda_hashes.html.
-   sha256sum Miniconda3-latest-Linux-ppc64le.sh
+      export CONDADIR=/nobackup/projects/<project>/$USER/ppc64le # Update this with your <project> code.
+      mkdir -p $CONDADIR
+      pushd $CONDADIR
 
-   sh Miniconda3-latest-Linux-ppc64le.sh -b -p ./miniconda
-   source miniconda/etc/profile.d/conda.sh
-   conda update conda -y
+      # Download the latest miniconda installer for ppc64le
+      wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-ppc64le.sh
+      # Validate the file checksum matches is listed on https://docs.conda.io/en/latest/miniconda_hashes.html.
+      sha256sum Miniconda3-latest-Linux-ppc64le.sh
+
+      sh Miniconda3-latest-Linux-ppc64le.sh -b -p ./miniconda
+      source miniconda/etc/profile.d/conda.sh
+      conda update conda -y
+   
+   .. code-tab:: bash aarch64
+
+      export CONDADIR=/nobackup/projects/<project>/$USER/aarch64 # Update this with your <project> code.
+      mkdir -p $CONDADIR
+      pushd $CONDADIR
+
+      # Download the latest miniconda installer for aarch64
+      wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
+      # Validate the file checksum matches is listed on https://docs.conda.io/en/latest/miniconda_hashes.html.
+      sha256sum Miniconda3-latest-Linux-aarch64.sh
+
+      sh Miniconda3-latest-Linux-aarch64.sh -b -p ./miniconda
+      source miniconda/etc/profile.d/conda.sh
+      conda update conda -y
 
 On subsequent sessions, or in job scripts you may need to re-source miniconda. Alternatively you could add this to your bash environment. I.e. 
 
-.. code-block:: bash
+.. tabs::
 
-    export CONDADIR=/nobackup/projects/<project>/$USER # Update this with your <project> code.
-    source $CONDADIR/miniconda/etc/profile.d/conda.sh
+   .. code-tab:: bash ppc64le
+
+      arch=$(uname -i) # Get the CPU architecture
+      if [[ $arch == "ppc64le" ]]; then
+         # Set variables and source scripts for ppc64le
+         export CONDADIR=/nobackup/projects/<project>/$USER/ppc64le # Update this with your <project> code.
+         source $CONDADIR/miniconda/etc/profile.d/conda.sh
+      fi
+
+   .. code-tab:: bash aarch64
+      
+      arch=$(uname -i) # Get the CPU architecture
+      if [[ $arch == "aarch64" ]]; then
+         # Set variables and source scripts for aarch64
+         export CONDADIR=/nobackup/projects/<project>/$USER/aarch64 # Update this with your <project> code.
+         source $CONDADIR/miniconda/etc/profile.d/conda.sh
+      fi
 
 Creating a new Conda Environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -58,17 +90,17 @@ Once created, the environment can be activated using ``conda activate``.
 
 Alternatively, Conda environments can be created outside of the conda/miniconda install, using the ``-p`` / ``--prefix`` option of ``conda create``. 
 
-I.e. if you have installed miniconda to your home directory, but wish to create a conda environment within the ``/project/<PROJECT>/$USER/`` directory named ``example`` you can use:
+I.e. if you have installed miniconda to your home directory, but wish to create a conda environment within the ``/project/<PROJECT>/$USER/<architecture>/`` directory named ``example`` you can use:
 
 .. code-block:: bash
 
-   conda create -y --prefix /project/<PROJECT>/$USER/example python=3.9
+   conda create -y --prefix /project/<PROJECT>/$USER/<architecture>/example python=3.9
 
 This can subsequently be loaded via:
 
 .. code-block:: bash
 
-   conda activate /project/<PROJECT>/$USER/example
+   conda activate /project/<PROJECT>/$USER/<architecture>/example
 
 Listing and Activating existing Conda Environments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
