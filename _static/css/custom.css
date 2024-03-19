@@ -30,7 +30,6 @@
 /* -----------------------------------------
   Non-theme specific / universal css changes
   ------------------------------------------*/
-
 html {
   --pst-sidebar-font-size: 1.0rem;
 }
@@ -110,6 +109,13 @@ html .sphinx-tabs-panel {
 html [role="tablist"] {
   border-bottom-color: var(--sphinx-tabs-border-color);
 }
+html .sphinx-tabs-panel pre {
+  background-color: var(--color-surface-tabs);
+}
+/* Fix right border of selected tab from being hidden */
+.sphinx-tabs-tab[aria-selected="true"] {
+  z-index: 2;
+}
 
 /* --------------------------------------
   Light theme specific formatting changes
@@ -126,6 +132,7 @@ html[data-theme="light"] {
   --pst-color-link: var(--n8-deep-blue-color);
   --pst-color-preformatted-background: var(--pygments-default-background-color);
   --sbt-color-announcement: var(--n8-deep-blue-color);
+  --color-surface-tabs: #fcfcfc;
 }
 /* Override the default sphinx book theme announcement colour */
 html[data-theme="light"] .bd-header-announcement a {
@@ -176,12 +183,7 @@ html[data-theme="dark"] {
   --pst-color-surface: var(--n8-dark-theme-inline-code-background-color); /* inline code block background colour */
   --pst-color-inline-code: var(--n8-burnt-orange-color);
   --pst-color-link: var(--n8-deep-blue-color-high-contrast-dark);
-   /* var(--n8-deep-blue-color); */
-  /* --pst-color-preformatted-background: var(--pygments-default-background-color); */
-  /* --sbt-color-announcement: var(--n8-deep-blue-color);
-  --sphinx-tabs-tab-color: #f00;
-  --sphinx-tabs-background-color: #ff0;
-  --sphinx-tabs-border-color: #00f; */
+  --color-surface-tabs: #181e27;
 }
 /* Override the default sphinx book theme announcement colour */
 html[data-theme="dark"] .bd-header-announcement a {
