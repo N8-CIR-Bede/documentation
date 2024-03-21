@@ -89,7 +89,7 @@ html_theme_options = {
     # Code highlighting theme for dark mode
     "pygment_dark_style": "github-dark-high-contrast",
     # Add an announcement bar, visible at the top of each page.
-    # "announcement": "",
+    "announcement": "Bede will be unavailable from 9am Thursday 28th March to the end of Monday 8th April (provisional dates) due to electrical works.",
     # Add the traditional footer theme and sphinx acknowledgements
     "extra_footer": f"<p>&nbsp;Built with <a href=\"http://sphinx-doc.org/\">Sphinx</a> {sphinx.__version__} using a theme by the <a href=\"https://ebp.jupyterbook.org/\">Executable Book Project</a>.</p>"
 }
