@@ -19,6 +19,7 @@ Access to the machine is based around projects:
    -  Create an EPCC SAFE account and login to the SAFE system at `safe.epcc.ed.ac.uk <https://safe.epcc.ed.ac.uk>`__
    -  Once there, select "Project->Request access" from the web
       interface and then register against your project
+   -  An account will then be created for you on the Bede. This is a manual process so will not be immediate. You should be notified once your account has been created and is ready to be used.
 
 Login
 -----
