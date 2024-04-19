@@ -9,7 +9,7 @@ These pages list software available on Bede and/or instructions on how to instal
 If you notice any omissions, errors or have any suggested changes to the documentation please create an `Issue <https://github.com/N8-CIR-Bede/documentation/issues>`__ or open a `Pull Request <https://github.com/N8-CIR-Bede/documentation/pulls>`__ on GitHub. 
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 2
     :name: softwaretoc
 
     applications/index
