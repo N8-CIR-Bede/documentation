@@ -18,7 +18,7 @@ The modules for each of these libraries provide some convenience environment var
       module load gcc essl/6.2
       $CC -o myprog myprog.c $N8CIR_LINALG_CFLAGS
 
-   .. tab:: aarch64
+   .. group-tab:: aarch64
 
       .. |arch_availabilty_name| replace:: ESSL
       .. include:: /common/ppc64le-only.rst

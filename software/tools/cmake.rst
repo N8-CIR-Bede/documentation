@@ -17,7 +17,7 @@ CMake is part of Kitware’s collection of commercially supported `open-source p
         module load cmake
         module load cmake/3.18.4
 
-    .. tab:: aarch64
+    .. group-tab:: aarch64
 
         On ``aarch64`` nodes, CMake ``3.20.2`` is provided by default.
 

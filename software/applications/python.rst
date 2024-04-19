@@ -7,7 +7,7 @@ Python
 
 .. tabs::
 
-   .. tab:: ppc64le 
+   .. group-tab:: ppc64le 
 
          Python ``3.6`` is available by default, as ``python3``, however, consider using :ref:`Conda <software-applications-conda>` for your python dependency management.
 
@@ -16,7 +16,7 @@ Python
          On the ``ppc64le`` nodes/partitions  Python 2 is also available, but is no longer an officially supported version of python. 
          If you are still using python 2, upgrade to python 3 as soon as possible.
 
-   .. tab:: aarch64
+   .. group-tab:: aarch64
 
       Python ``3.9`` is available by default on ``aarch64`` nodes, as ``python3`` and ``python``.
       Alternate versions of Python can be installed via :ref:`Conda <software-applications-conda>` 

@@ -55,7 +55,7 @@ MVAPICH2 is provided by the `mvapich2` module(s):
 
       module load mvapich2/2.3.5-2
 
-   .. tab:: aarch64
+   .. group-tab:: aarch64
 
       .. admonition:: ppc64le partitions only
          :class: warning
@@ -79,7 +79,7 @@ Unlike the ``openmpi`` and ``mvapich2`` modules, ``mvapich2-gdr`` does not adapt
 
       module load mvapich2-gdr/2.3.6 gcc/8.4.0 cuda/11.3.1
 
-   .. tab:: aarch64
+   .. group-tab:: aarch64
 
       .. include:: /common/ppc64le-only.rst
 

@@ -130,7 +130,7 @@ Alternatively, to reduce compile time and binary size a single ``-gencode`` opti
 
 .. tabs:: 
 
-   .. tab:: ppc64le
+   .. group-tab:: ppc64le
 
       If only compute capability ``70`` is selected, code will be optimised for Volta GPUs, but will execute on Volta and Turing GPUs.
 
@@ -143,7 +143,7 @@ Alternatively, to reduce compile time and binary size a single ``-gencode`` opti
          # Optimise for T4 GPUs, not executable on V100 GPUs
          nvcc -gencode=arch=compute_75,code=sm_75 -o main main.cu
 
-   .. tab:: aarch64
+   .. group-tab:: aarch64
 
       ``aarch64`` nodes in Bede only contain Hopper GPUs, so there is only need to provide a single compute capability (``90``, or embedding PTX for compute capability ``80``)
 

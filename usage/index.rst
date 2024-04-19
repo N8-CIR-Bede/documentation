@@ -262,7 +262,7 @@ Part of, or an entire node
 
 .. tabs::
 
-   .. tab:: ppc64le
+   .. group-tab:: ppc64le
 
       Example job script for programs written to take advantage of a GPU or
       multiple GPUs on a single ppc64le node:
@@ -293,7 +293,7 @@ Part of, or an entire node
          echo "end of job"
 
 
-   .. tab:: aarch64
+   .. group-tab:: aarch64
 
       Example job script for programs written to take advantage of single GPU on a single aarch64 node (1 GPU per node):
 
@@ -330,7 +330,7 @@ CPUs/GPUs across one or more machines:
 
 .. tabs::
 
-   .. tab:: ppc64le
+   .. group-tab:: ppc64le
 
       .. code-block:: bash
 
@@ -389,7 +389,7 @@ CPUs/GPUs across one or more machines:
 
       .. _usage-maximum-job-runtime:
 
-   .. tab:: aarch64
+   .. group-tab:: aarch64
 
       .. code-block:: bash
 
