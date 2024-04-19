@@ -36,6 +36,7 @@ Although Apptainer and Singularity share a common history, there are a number of
 * The ``singularity`` command/binary is still available, but is just a symlink to ``apptainer``
 * The ``library://`` protocol is not supported by apptainer's default configuration. See `Restoring pre-Apptainer library behaviour <https://apptainer.org/docs/user/latest/endpoint.html#restoring-pre-apptainer-library-behavior>`_ for more information.
 
+.. _software-tools-apptainer-rootless:
 
 Rootless Container Builds
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -43,6 +44,8 @@ Rootless Container Builds
 The apptainer installation on Bede's ``aarch64`` nodes supports the creation of container images from apptainer definition files or docker containers without the need for root.
 
 I.e. it is possible to build your ``aarch64`` containers on the ``ghlogin`` interactive sessions rather than having to create containers on ``aarch64`` machines elsewhere and copying them into bede.
+
+.. _software-tools-apptainer-cachedir:
 
 ``APPTAINER_CACHEDIR``
 ^^^^^^^^^^^^^^^^^^^^^^
