@@ -4,10 +4,12 @@ so cannot use sphinx :ref: for output destination URIs relative to the current p
 Instead, find the appropriate link within the current page, to add the anchor to the announcement.
 This does not currently support linking outside of the documentation website.
 */
-/* window.onload = function () {
-    expectedAnnouncementContent = "";
-    expectedAnchorContent = "";
-    var elements = document.getElementsByClassName("announcement");
+ window.onload = function () {
+    expectedAnnouncementContent = "Using Bede";
+    expectedAnchorContent = "Using Bede";
+    optionalTargetID = "grace-hopper-pilot"; // null if linking to page
+    fullAnnouncementAnchor = false;
+    var elements = document.getElementsByClassName("bd-header-announcement");
     for (var i = 0; i < elements.length; i++) {
         var element = elements.item(i);
         originalContent = element.innerHTML;
@@ -28,10 +30,16 @@ This does not currently support linking outside of the documentation website.
                         // then append the optionalTargetID, which should no longer begin with a hash.
                         targetDestination += optionalTargetID;
                     }
-                    newAnnouncementContent = '<a href="' + targetDestination + '">' + originalContent + '</a>'
-                    element.innerHTML = newAnnouncementContent;
+                    // Either wrap the full announcement body in the anchor, or just the expected anchor content
+                    if (fullAnnouncementAnchor) {
+                        newAnnouncementContent = '<a href="' + targetDestination + '">' + originalContent + '</a>'
+                        element.innerHTML = newAnnouncementContent;
+                    } else {
+                        newAnnouncementContent = originalContent.replace(expectedAnchorContent, '<a href="' + targetDestination + '">' + expectedAnchorContent + '</a>')
+                        element.innerHTML = newAnnouncementContent;
+                    }
                 }
             }
         }
     }
-} */
+}
