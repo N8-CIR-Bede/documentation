@@ -10,7 +10,7 @@ Make gets its knowledge of how to build your program from a file called the make
 
 .. tabs::
 
-   .. tab:: ppc64le
+   .. group-tab:: ppc64le
 
       On Bede's ``ppc64le`` nodes, ``make 4.2`` is provided by default, and 
       A more recent version of ``make``, is provided by the ``make`` family of modules. 
@@ -20,7 +20,7 @@ Make gets its knowledge of how to build your program from a file called the make
          module load make
          module load make/4.3
 
-   .. tab:: aarch64
+   .. group-tab:: aarch64
 
       On the ``aarch64`` nodes, ``make 4.3`` is provided by default without the need for a ``module load``
 
