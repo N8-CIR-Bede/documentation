@@ -326,7 +326,7 @@ Multiple nodes (MPI)
 ^^^^^^^^^^^^^^^^^^^^
 
 Example job script for programs using MPI to take advantage of multiple
-CPUs/GPUs across one or more machines:
+CPUs/GPUs across one or more machines, via ``bede-mpirun``:
 
 .. tabs::
 
@@ -354,41 +354,6 @@ CPUs/GPUs across one or more machines:
          echo "end of job"
 
 
-      The ``bede-mpirun`` command takes both ordinary ``mpirun`` arguments and
-      the special ``--bede-par <distrib>`` option, allowing control over how
-      MPI jobs launch, e.g. one MPI rank per CPU core or GPU.
-
-      The formal specification of the option is:
-      ``--bede-par <rank_distrib>[:<thread_distrib>]`` and it defaults to
-      ``1ppc:1tpt``
-
-      Where ``<rank_distrib>`` can take ``1ppn`` (one process per node),
-      ``1ppg`` (one process per GPU), ``1ppc`` (one process per CPU core) or
-      ``1ppt`` (one process per CPU thread).
-
-      And ``<thread_distrib>`` can take ``1tpc`` (set ``OMP_NUM_THREADS`` to
-      the number of cores available to each process), ``1tpt`` (set
-      ``OMP_NUM_THREADS`` to the number of hardware threads available to each
-      process) or ``none`` (set ``OMP_NUM_THREADS=1``)
-
-      Examples:
-
-      .. code-block:: bash
-
-         # - One MPI rank per node:
-         bede-mpirun --bede-par 1ppn <mpirun_options> <program>
-
-         # - One MPI rank per gpu:
-         bede-mpirun --bede-par 1ppg <mpirun_options> <program>
-
-         # - One MPI rank per core:
-         bede-mpirun --bede-par 1ppc <mpirun_options> <program>
-
-         # - One MPI rank per hwthread:
-         bede-mpirun --bede-par 1ppt <mpirun_options> <program>
-
-      .. _usage-maximum-job-runtime:
-
    .. group-tab:: aarch64
 
       .. code-block:: bash
@@ -402,24 +367,58 @@ CPUs/GPUs across one or more machines:
 
          # Node resources:
 
-         #SBATCH --partition=gh    # Choose either "gh" or"ghtest" partition type
+         #SBATCH --partition=gh     # Choose either "gh" or"ghtest" partition type
          #SBATCH --nodes=2          # Resources from two nodes
          #SBATCH --gres=gpu:1       # 1 GPU per node (plus 100% of node CPU and RAM per node)
 
          # Run commands:
 
-         mpirun --bede-par 1ppc <mpi_program>
+         bede-mpirun --bede-par 1ppc <mpi_program>
 
          echo "end of job"
-
-      .. note:: 
-
-         Use on ``aarch64`` use ``mpirun`` rather than ``bede-mpirun`` when launching MPI applications
 
       .. note::
 
          There are only ``2`` ``gh`` nodes currently available for batch jobs in Bede. As a result multi-node Grace-Hopper jobs may queue for a significant time. 
 
+The ``bede-mpirun`` command takes both ordinary ``mpirun`` arguments and
+the special ``--bede-par <distrib>`` option, allowing control over how
+MPI jobs launch, e.g. one MPI rank per CPU core or GPU.
+
+The formal specification of the option is:
+``--bede-par <rank_distrib>[:<thread_distrib>]`` and it defaults to
+``1ppc:1tpt``
+
+Where ``<rank_distrib>`` can take ``1ppn`` (one process per node),
+``1ppg`` (one process per GPU), ``1ppc`` (one process per CPU core) or
+``1ppt`` (one process per CPU thread).
+
+And ``<thread_distrib>`` can take ``1tpc`` (set ``OMP_NUM_THREADS`` to
+the number of cores available to each process), ``1tpt`` (set
+``OMP_NUM_THREADS`` to the number of hardware threads available to each
+process) or ``none`` (set ``OMP_NUM_THREADS=1``)
+
+Examples:
+
+.. code-block:: bash
+
+   # - One MPI rank per node:
+   bede-mpirun --bede-par 1ppn <mpirun_options> <program>
+
+   # - One MPI rank per gpu:
+   bede-mpirun --bede-par 1ppg <mpirun_options> <program>
+
+   # - One MPI rank per core:
+   bede-mpirun --bede-par 1ppc <mpirun_options> <program>
+
+   # - One MPI rank per hwthread:
+   bede-mpirun --bede-par 1ppt <mpirun_options> <program>
+
+.. note:: 
+
+   On ``aarch64``, the ``--1ppt`` option is synonymous with ``--1ppc`` due to the absence of hardware SMT.
+
+.. _usage-maximum-job-runtime:
 
 Maximum Job Runtime
 ~~~~~~~~~~~~~~~~~~~
@@ -533,7 +532,7 @@ Key differences to be aware of include:
 * :ref:`software-compilers-gcc` compiling with ``--std=c++17`` may emit psABI warnings. These can be suppressed via ``--Wno-psabi``.
 * :ref:`MPI<software-libraries-MPI>`
 
-  * The ``openmpi`` module is available, and CUDA support is enabled if you additionally load a CUDA module. The ``mpirun`` command should be used to launch programs, and not the ``bede-mpirun`` command.
+  * The ``openmpi`` module is available, and CUDA support is enabled if you additionally load a CUDA module. The ``bede-mpirun`` command should be used to launch programs.
   * The ``ppc64le`` equipment has an MPI with optimised multi-node GPU communications provided by the ``mvapich2-gdr`` module. This is not available for the Grace Hopper equipment; however, we plan to provide a ``mvapich-plus`` module in future to provide this functionality. In the meantime, if this is of interest, please contact us.
 
 Bash environment
