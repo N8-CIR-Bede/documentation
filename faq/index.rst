@@ -21,6 +21,19 @@ You can acknowledge Bede using the standard text that we provide in :ref:`Acknow
 
 .. include:: /common/acknowledging-bede.rst
 
+.. _faq-ssh-fingerprints:
+
+Login node SSH RSE/ECDSA/ED25519 host key fingerprints
+------------------------------------------------------
+
+The RSE, ECDSA and ED25519 fingerprints for Bede's login nodes are:
+
+.. code-block::
+
+   SHA256:w2z1RA8kRH+XFOaoHo4N610aNnItzPlKpKYLwJ5WbnY (RSA)
+   SHA256:FBznAa7eKh7QdNl6P5gCiW9uy2UQ8tSGXaKJStVAU5c (ECDSA)
+   SHA256:HbIkgn8V+nCLr3R99+C5uwnAWLxKTUD954qRGnzMRUM (ED25519)
+
 How can I check my home directory quota?
 ----------------------------------------
 
