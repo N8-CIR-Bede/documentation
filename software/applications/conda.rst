@@ -49,6 +49,9 @@ The simplest way to install Conda for use on Bede is through the `miniconda <htt
       source miniconda/etc/profile.d/conda.sh
       conda update conda -y
 
+Using Miniconda
+~~~~~~~~~~~~~~~
+
 On subsequent sessions, or in job scripts you may need to re-source miniconda. Alternatively you could add this to your bash environment. I.e. 
 
 .. tabs::
