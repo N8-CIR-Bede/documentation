@@ -69,14 +69,13 @@ Installing via Conda
 
       .. warning::
 
-         Conda builds of PyTorch for ``aarch64`` do not include CUDA support as of June 2024. This may change with the upcoming PyTorch ``2.4`` release `scheduled for July 2024 <https://github.com/pytorch/pytorch/blob/main/RELEASE.md#release-cadence>`__.
+         Conda builds of PyTorch for ``aarch64`` do not include CUDA support as of July 2024.
          
          For now, consider:
          
-         * Install a ``2.4.0`` or ``2.5.0`` pre-release build using the CUDA 12.4 PyTorch nightly channel via pip (see :ref:`software-applications-pytorch-pip`)
-         * `Build PyTorch from source <https://pytorch.org/get-started/locally/#linux-from-source>`__ into a conda environment.
+         * Install a ``2.4.0`` build using the CUDA 12.4 PyTorch channel via pip (see :ref:`software-applications-pytorch-pip`)
          * Use containers provided by Nvidia for a pip-based environment (see :ref:`software-applications-pytorch-ngc`)
-         
+         * `Build PyTorch from source <https://pytorch.org/get-started/locally/#linux-from-source>`__ into a conda environment.
 
 .. _software-applications-pytorch-pip:
 
@@ -95,27 +94,24 @@ Installing via pip
 
       PyTorch pip packages for ``aarch64`` prior to PyTorch ``2.4`` do not include CUDA support.
 
-      This should change with the upcoming PyTorch ``2.4`` release `scheduled for July 2024 <https://github.com/pytorch/pytorch/blob/main/RELEASE.md#release-cadence>`__.
-
-      Currently (June 2024), nightly pre-release ``aarch64`` builds of PyTorch ``2.4`` and ``2.5`` with CUDA 12.4 support can be installed via pip.
+      CUDA support is only included in the PyTorch ``2.4.0`` wheels for ``aarch64`` using CUDA ``12.4``.
      
       .. warning::
 
-         * These are nightly pre-release builds, which are not fully tested or supported by PyTorch.
-         * CUDA 11.8 and CUDA 12.1 nightly ``aarch64`` builds do not include CUDA support. You must use the CUDA 12.4 repository.
-         * Nightly CUDA 12.4 wheels are currently large (over 2GB). Consider creating your ``venv`` / conda env in ``/nobackup`` to avoid filling your home directory quota.
+         * CUDA 11.8 and CUDA 12.1 ``aarch64`` builds do not include CUDA support (as of PyTorch ``2.4.0``). You must use the CUDA 12.4 repository.
+         * CUDA enabled ``aarch64`` wheels are large (over 2GB). Consider creating your ``venv`` / conda env in ``/nobackup`` to avoid filling your home directory quota.
          * As with other PyTorch ``2.x`` builds, you may see a warning if you do not also install ``numpy`` into your python environment.
       
       .. code-block:: bash
 
          # Create a python venv in /nobackup, replacing your project name and following path as appropriate
-         python3 -m venv /nobackup/projects/bdXXXXX/pytorch-nightly-venv
+         python3 -m venv /nobackup/projects/bdXXXXX/pytorch-venv
 
          # Activate the venv, replacing the path as appropriate
-         source /nobackup/projects/bdXXXXX/pytorch-nightly-venv/bin/activate
+         source /nobackup/projects/bdXXXXX/pytorch-venv/bin/activate
 
-         # Install the latest nightly pre release using the CUDA 12.4 nightly repository
-         python3 -m pip install --pre torch --index-url https://download.pytorch.org/whl/nightly/cu124
+         # Install the latest release using the CUDA 12.4 repository
+         python3 -m pip install torch --index-url https://download.pytorch.org/whl/cu124
 
          # Ensure that CUDA support is enabled
          python3 -c "import torch; print(torch.__version__); print(torch.cuda.is_available());)"
