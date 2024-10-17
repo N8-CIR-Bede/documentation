@@ -35,6 +35,9 @@ You should use a versions of ``nsys`` that is at least as new as the CUDA toolki
 
       module load nsight-systems/2023.4.1
 
+      module load cuda/12.6.1 # provides nsys 2024.5.1
+      module load cuda/12.5.1 # provides nsys 2024.2.3
+      module load cuda/12.4.1 # provides nsys 2023.4.4
       module load cuda/12.3.2 # provides nsys 2023.3.3
       module load cuda/12.2.2 # provides nsys 2023.2.3
       module load cuda/12.1.1 # provides nsys 2023.1.2
