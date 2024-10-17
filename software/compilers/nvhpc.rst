@@ -7,7 +7,7 @@ The `NVIDIA HPC SDK <https://developer.nvidia.com/hpc-sdk>`__, otherwise referre
 It provides C, C++ and Fortran compilers, which include features enabling GPU acceleration through standard C++ and Fortran, OpenACC directives and CUDA.
 
 It is provided for use on the system by the ``nvhpc`` module(s).
-It provides the ``nvc``, ``nvc++`` and ``nvfortran`` compilers.
+It provides the ``nvc``, ``nvc++`` and ``nvfortran`` compilers, and includes atleast one copy of the CUDA toolkit (including ``nvcc``).
 
 This module also provides the `NCCL <https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/index.html>`__ and `NVSHMEM <https://docs.nvidia.com/hpc-sdk/nvshmem/index.html>`__ libraries, as well as the suite of math libraries typically included with the CUDA Toolkit, such as ``cublas``, ``cufft`` and ``nvblas``.
 
@@ -25,6 +25,7 @@ This module also provides the `NCCL <https://docs.nvidia.com/deeplearning/nccl/u
 
       module load nvhpc
 
+      module load nvhpc/24.9
       module load nvhpc/24.1
 
 For further information please see the `NVIDIA HPC SDK Documentation Archive <https://docs.nvidia.com/hpc-sdk/archive/>`__.

@@ -44,6 +44,7 @@ You should use a versions of ``ncu`` that is at least as new as the CUDA toolkit
       module load cuda/11.7.1 # provides ncu 2022.1.0
       module load cuda/11.7.0 # provides ncu 2022.2.0
 
+      module load nvhpc/24.9  # provides ncu 2024.3.0
       module load nvhpc/24.1  # provides ncu 2023.3.1
 
 

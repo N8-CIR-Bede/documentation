@@ -45,6 +45,7 @@ You should use a versions of ``nsys`` that is at least as new as the CUDA toolki
       module load cuda/11.7.1 # provides nsys 2022.1.3
       module load cuda/11.7.0 # provides nsys 2022.1.3
 
+      module load nvhpc/24.9  # provides nsys 2024.5.1
       module load nvhpc/24.1  # provides nsys 2023.4.1
 
 To generate an application timeline with Nsight Systems CLI (``nsys``):
