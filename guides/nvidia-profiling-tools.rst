@@ -59,10 +59,7 @@ Once this file has been downloaded to your local machine, it can be opened in ``
 Cluster Modules
 ~~~~~~~~~~~~~~~
 
-``nsys`` is available through the following Bede modules:
-
-* ``nsight-systems/2020.3.1``
-* ``nvhpc/20.9``
+Bede modules which provide ``nsys`` and which version can be found on :ref:`the Nsight Systems page<software-tools-nsight-systems>`.
 
 More Information
 ~~~~~~~~~~~~~~~~
@@ -105,10 +102,7 @@ Once the ``.ncu-rep`` file has been downloaded locally, it can be imported into 
 Cluster Modules
 ~~~~~~~~~~~~~~~
 
-``ncu`` is available through the following Bede modules:
-
-* ``nsight-compute/2020.2.1``
-* ``nvhpc/20.9``
+Bede modules which provide ``ncu`` and which version can be found on :ref:`the Nsight Compute page <software-tools-nsight-compute>`.
 
 
 More Information
