@@ -521,7 +521,7 @@ Key differences to be aware of include:
 
 * :ref:`PyTorch<software-applications-pytorch>`
   
-  * Current (at least up to ``2.1.0``) builds of pytorch provided via conda or pip for ``aarch64`` do not include cuda support (``torch.cuda.is_available()`` returns ``false``).
+  * Installation options for pre-built pytorch for ``aarch64`` platforms with CUDA support enabled is limited. As of July 2024, only ``pip`` installs of pytorch ``2.4.0`` or newer for ``CUDA 12.4`` are suitable. See :ref:`software-applications-pytorch` for more information.
   * NVIDIA provide `NGC Pytorch containers <https://catalog.ngc.nvidia.com/orgs/nvidia/containers/pytorch/tags>`_ which can be used instead, with pytorch installed into the default python environment.
     
     * These containers are large, so you will likely want to set your ``APPTAINER_CACHEDIR`` environment variable to avoid filling your home directory quota
