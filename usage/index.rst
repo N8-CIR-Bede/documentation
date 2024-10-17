@@ -470,7 +470,7 @@ Jobs are scheduled subject to Slurm's `Multifactor Priority Plugin <https://slur
 Grace-Hopper Pilot
 ------------------
 
-Bede contains 3 NVIDIA Grace-Hopper nodes.
+Bede contains 6 NVIDIA Grace-Hopper nodes.
 
 Each Grace-Hopper node contains a single `Grace Hopper Superchip <https://www.nvidia.com/en-gb/data-center/grace-hopper-superchip/>`_, containing one 72-core 64-bit ARM CPU and one 96GB Hopper GPU with NVLink-C2C providing 900GB/s of bidirectional bandwidth between the CPU and GPU. Further details are listed on the :ref:`hardware` page.
 
