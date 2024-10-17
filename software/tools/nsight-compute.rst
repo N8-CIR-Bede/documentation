@@ -34,6 +34,9 @@ You should use a versions of ``ncu`` that is at least as new as the CUDA toolkit
 
       module load nsight-systems/2023.4.1
 
+      module load cuda/12.6.1 # provides ncu 2024.3.2
+      module load cuda/12.5.1 # provides ncu 2024.2.1
+      module load cuda/12.4.1 # provides ncu 2024.1.1
       module load cuda/12.3.2 # provides ncu 2023.3.1
       module load cuda/12.2.2 # provides ncu 2023.2.2
       module load cuda/12.1.1 # provides ncu 2023.1.1
