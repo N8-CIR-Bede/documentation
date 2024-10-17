@@ -19,6 +19,7 @@ You should use a versions of ``ncu`` that is at least as new as the CUDA toolkit
       module load nsight-compute/2022.1.0
       module load nsight-compute/2020.2.1
 
+      module load cuda/12.4.1 # provides ncu 2024.1.1
       module load cuda/12.0.1 # provides ncu 2022.4.1
       module load cuda/11.5.1 # provides ncu 2021.3.1
       module load cuda/11.4.1 # provides ncu 2021.2.1
