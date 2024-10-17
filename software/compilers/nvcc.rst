@@ -13,6 +13,7 @@ Unlike other compiler modules, the cuda modules do not set ``CC`` or ``CXX`` env
 
       module load cuda
 
+      module load cuda/12.4.1
       module load cuda/12.0.1
       module load cuda/11.5.1
       module load cuda/11.4.1
