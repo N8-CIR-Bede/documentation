@@ -18,6 +18,7 @@ offload support:
 
    .. code-tab:: bash aarch64
 
+      module load gcc/14.2
       module load gcc/13.2
       module load gcc/12.2
 

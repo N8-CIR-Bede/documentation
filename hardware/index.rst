@@ -53,7 +53,7 @@ There are:
    - 480 GB LPDDR5X RAM
    - 1x Mellanox CONNECTX-7 NDR200 (100Gb/s due to existing network) InfiniBand port
 
--  2x ``gh`` nodes, each containing
+-  5x ``gh`` nodes, each containing
 
    - 1x `NVIDIA Grace Hopper Superchip <https://www.nvidia.com/en-gb/data-center/grace-hopper-superchip/>`_ (GH200 480GB)
 
