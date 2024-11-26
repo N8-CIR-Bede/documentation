@@ -94,7 +94,8 @@ html_theme_options = {
     # Code highlighting theme for dark mode
     "pygment_dark_style": "github-dark-high-contrast",
     # Add an announcement bar, visible at the top of each page.
-    "announcement": "3 additional (6 total) NVIDIA Grace-Hopper nodes (GH200 480) are now available. See Using Bede",
+    "announcement": "The GH200 nodes are unavailable for general use from 26th-28th November, as they are in use for a DiRAC Hackathon",
+    # "announcement": "3 additional (6 total) NVIDIA Grace-Hopper nodes (GH200 480) are now available. See Using Bede",
     # Add the traditional footer theme and sphinx acknowledgements
     "extra_footer": f"<p>&nbsp;Built with <a href=\"http://sphinx-doc.org/\">Sphinx</a> {sphinx.__version__} using a theme by the <a href=\"https://ebp.jupyterbook.org/\">Executable Book Project</a>.</p>"
 }
