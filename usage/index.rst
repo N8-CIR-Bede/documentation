@@ -29,11 +29,15 @@ fronts the two ``ppc64le`` login nodes, ``login1.bede.dur.ac.uk`` and
 ``login2.bede.dur.ac.uk``). SSH or X2GO should be used for all interaction with
 the machine (including shell access, file transfer and graphics).
 
-.. warning::
+.. important::
 
    Please use an SSH client and **not** X2GO the first time you ever log in to
    Bede, or immediately after a password reset. Your MFA token will be
    generated, but X2GO will not show it to you.
+
+.. warning::
+
+   Login nodes are subject to a weekly "at risk" period every Tuesday from 08:00 to 10:00 (from 2025-02-25). See :ref:`usage-weekly-at-risk` for more details.
 
 The login nodes are shared between all users of the service and
 therefore should only be used for light interactive work, for example:
@@ -84,6 +88,27 @@ please contact `support <../faq/#faq-helpsupport>`__ for options.
 **If you have lost your password or MFA token, please use EPCC's SAFE system to request a password reset for your Bede login account, which we normally aim to process within a working day.**
 
 If you are finding that you are having to use your password and a MFA token too many times, we have provided some tips on `how to reduce the frequency that MFA is required <../faq/#faq-reducemfa>`__.
+
+.. _usage-weekly-at-risk:
+
+Weekly "at risk" period for login nodes
+---------------------------------------
+
+A weekly "at risk" period has been introduced for Bede's login nodes, every Tuesday morning from 8am to 10am (from 2025-02-25) for regular maintenance tasks.
+
+This will sometimes involve interruptions, such as a reboot, in which case logged-in users will be warned on their terminal screen shortly before they are disconnected.
+
+During this time:
+
+* *Login sessions* and so *interactive jobs* may be ended.
+* *File transfers* to (or from) Bede may be ended.
+* Batch jobs and compute nodes will continue to run as normal.
+
+Why we are doing this:
+
+* The timely application of security updates is increasingly important. The new "at risk" period will help us keep Bede and your work secure.
+* The login nodes fill up with mislaid user processes over time, increasing load and slowing down your work. The new "at risk" policy will help improve Bede's interactive performance.
+* The new "at risk" period will reduce the number of routine emails we send, which will help your Inbox.
 
 .. _usage-x2go:
 
