@@ -7,7 +7,7 @@ This does not currently support linking outside of the documentation website.
  window.onload = function () {
     expectedAnnouncementContent = "Using Bede";
     expectedAnchorContent = "Using Bede";
-    optionalTargetID = "grace-hopper-pilot"; // null if linking to page
+    optionalTargetID = "usage-weekly-at-risk"; // null if linking to page
     fullAnnouncementAnchor = false;
     var elements = document.getElementsByClassName("bd-header-announcement");
     for (var i = 0; i < elements.length; i++) {
