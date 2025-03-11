@@ -148,7 +148,7 @@ Each institution has Research Software Engineer support for Bede, and you can
 find the support email address for your institution `on the N8CIR website
 <https://n8cir.org.uk/supporting-research/facilities/bede/rse-support-bede/>`__.
 There is also a `slack workspace <https://n8cirbede.slack.com>`__ that you can join to get further support and
-contact the Bede user community. To request access, please e-mail: marion.weinzierl@durham.ac.uk.
+contact the Bede user community. To request access, please e-mail: enquiries@n8cir.org.uk.
 
 .. _faq-architecture-specific-eng:
 
