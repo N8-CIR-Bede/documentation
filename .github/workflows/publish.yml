@@ -1,0 +1,38 @@
+name: Publish
+
+on:
+  # Only pushes to main should result in a publication.
+  push:
+    branches: [ main ]
+  # Or manual invocation from the Actions tab
+  workflow_dispatch:
+
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      # Install Python
+      - uses: "actions/setup-python@v2"
+        with:
+          python-version: "3.8"
+      # Install Python dependencies via pip
+      - name: "Install dependencies"
+        run: |
+          pip install -r requirements.txt
+      # Build the documentation 
+      - name: "Build docs"
+        run: |
+          sphinx-build -W . ./html
+      # Deploy the documentation to the gh-pages branch of this repository.
+      # If using a custom domain, the cname option should be specified
+      # note that the gh-pages branch may need to exist prior to the first run of this action (with no parent commit)
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: html
+          force_orphan: true
+          # cname: 
