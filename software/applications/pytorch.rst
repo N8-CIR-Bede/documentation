@@ -114,7 +114,7 @@ Installing via pip
          python3 -m pip install torch --index-url https://download.pytorch.org/whl/cu124
 
          # Ensure that CUDA support is enabled
-         python3 -c "import torch; print(torch.__version__); print(torch.cuda.is_available());)"
+         python3 -c "import torch; print(torch.__version__); print(torch.cuda.is_available());"
 
       In subsequent interactive sessions, and when submitting batch jobs which use PyTorch, you will then need to re-source the python venv.
 
