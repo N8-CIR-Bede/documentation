@@ -15,7 +15,7 @@ The simplest way to install Conda for use on Bede is through the `miniconda <htt
 
 .. note::
 
-    You may wish to install conda into the ``/nobackup/projects/<project>/$USER/<architecture>`` (where ``<project>`` is the project code for your project, and ``<architecture>>`` is CPU architecture) directory rather than your ``home`` directory as it may consume considerable disk space
+    You may wish to install conda into the ``/nobackup/projects/<project>/$USER/<architecture>`` (where ``<project>`` is the project code for your project, and ``<architecture>`` is CPU architecture) directory rather than your ``home`` directory as it may consume considerable disk space
 
 .. tabs::
 
@@ -148,9 +148,9 @@ I.e. to install the conda package ``pylint`` into the active conda environment:
     
    conda install -y pylint
 
-.. note::
+.. warning::
 
-    Only Conda packages with support for ``ppc64le`` will be installable.
+    Only Conda packages with support for ``ppc64le`` or ``aarch64`` will be installable (depending on the node architecture in use).
 
 Deleting Conda Environments
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
