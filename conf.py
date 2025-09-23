@@ -94,7 +94,7 @@ html_theme_options = {
     # Code highlighting theme for dark mode
     "pygment_dark_style": "github-dark-high-contrast",
     # Add an announcement bar, visible at the top of each page.
-    "announcement": "The Grace Hopper login node (accessed via the \"ghlogin\" command) will be replaced at 9am on Tue 23rd September.<br />If you need access to a GPU in the Grace Hopper environment for testing after this time, please submit to the priority \"ghtest\" queue.",
+    "announcement": "The Grace Hopper login node (accessed via the <code class=\"docutils literal notranslate\"><span class=\"pre\">ghlogin</span></code> command) was changed to a CPU-only node on 2025-09-23.<br />If you need access to a GPU in the Grace Hopper environment for testing, please submit to the priority <code class=\"docutils literal notranslate\"><span class=\"pre\">ghtest</span></code> queue.",
     # Add the traditional footer theme and sphinx acknowledgements
     "extra_footer": f"<p>&nbsp;Built with <a href=\"http://sphinx-doc.org/\">Sphinx</a> {sphinx.__version__} using a theme by the <a href=\"https://ebp.jupyterbook.org/\">Executable Book Project</a>.</p>"
 }
