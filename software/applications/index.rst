@@ -23,4 +23,5 @@ If you notice any omissions, errors or have any suggested changes to the documen
     r.rst
     rust.rst
     tensorflow.rst
+    whisper_cpp.rst
     

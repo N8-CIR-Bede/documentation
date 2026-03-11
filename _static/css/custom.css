@@ -208,3 +208,11 @@ html[data-theme="dark"] .bd-article-container h4
 html[data-theme="dark"] .bd-article-container h5 {
   color: var(--n8-deep-blue-color-high-contrast-dark);
 }
+
+/* Highlight code blocks that must be run locally (class: local) */
+html[data-theme="light"] .local pre {
+  background-color: #eaf4e8;
+}
+html[data-theme="dark"] .local pre {
+  background-color: #1a2e1a;
+}
