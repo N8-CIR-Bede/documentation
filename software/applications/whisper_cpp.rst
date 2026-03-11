@@ -348,8 +348,8 @@ Converting to compatible format with FFmpeg
 ===========================================
 
 Whisper.cpp relies on FFmpeg to read audio files. If your files are in an unusual format, you may need to convert them first. You can either do that
-on your local computer or use the following SLURM script
-converts all files in a folder to MP3 files, which are compatible with Whisper. Adjust the ``INPUT_EXT`` and ``OUTPUT_EXT`` variables as needed.
+on your local computer or use the following SLURM script. It converts all files in a folder to MP3 files, which are compatible with Whisper.
+Adjust the ``INPUT_EXT`` and ``OUTPUT_EXT`` variables as needed.
 
 .. code-block:: bash
 
