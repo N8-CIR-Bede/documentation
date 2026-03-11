@@ -344,10 +344,61 @@ This should enable you to produce transcripts. If you encounter any issues or wa
 read on for more details about the configuration options.
 
 
-Transpiling with FFmpeg
-=======================
+Converting to compatible format with FFmpeg
+===========================================
 
-To be added
+Whisper.cpp relies on FFmpeg to read audio files. If your files are in an unusual format, you may need to convert them first. You can either do that
+on your local computer or use the following SLURM script
+converts all files in a folder to MP3 files, which are compatible with Whisper. Adjust the ``INPUT_EXT`` and ``OUTPUT_EXT`` variables as needed.
+
+.. code-block:: bash
+
+  #!/bin/bash
+  ################################################################################
+  # Audio Format Conversion with FFmpeg — SLURM Submit Script
+  ################################################################################
+  # ── SLURM directives ──────────────────────────────────────────────────────────
+  #SBATCH --account=<project>
+  #SBATCH --time=1:00:0
+  #SBATCH --job-name=ffmpeg_convert
+
+  # GPU node
+  #SBATCH --partition=gpu
+  #SBATCH --nodes=1
+  #SBATCH --gres=gpu:1
+
+  # Log files (%j = job ID)
+  #SBATCH --output=logs/%j/ffmpeg.out
+  #SBATCH --error=logs/%j/ffmpeg.err
+
+  # ── USER CONFIGURATION ────────────────────────────────────────────────────────
+  PROJECT=<project> # Your BEDE project name (e.g. myproject)
+
+  # Folder containing your original audio files
+  INPUT_DIR=/nobackup/projects/$PROJECT/$USER/original_audio
+
+  # Folder where converted files will be saved
+  OUTPUT_DIR=/nobackup/projects/$PROJECT/$USER/converted_audio
+
+  # Original and target audio formats (e.g. wav, flac, m4a, mp3)
+  INPUT_EXT=wav
+  OUTPUT_EXT=mp3
+
+  # ── END USER CONFIGURATION ────────────────────────────────────────────────────
+
+  # Load Whisper module that also provides FFmpeg (adjust if needed)
+  export MODULEPATH=$MODULEPATH:/nobackup/projects/bddur53/pnruth/modules/ppc64le
+  module load whisper.cpp
+
+  # Create output directory if it doesn't exist
+  mkdir -p "$OUTPUT_DIR"
+
+  # Convert each file using FFmpeg
+  for file in "$INPUT_DIR"/*."$INPUT_EXT"; do
+      filename=$(basename "$file" ."$INPUT_EXT")
+      ffmpeg -i "$file" "$OUTPUT_DIR/${filename}.${OUTPUT_EXT}"
+  done
+
 
 
 
