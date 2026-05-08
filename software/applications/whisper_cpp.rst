@@ -148,7 +148,7 @@ The ``ENV_FILE`` line is optional and is explained in the next section.
 
 BEDE currently has two different sets of computers called nodes available. Which of the two you use can be chosen with the ``#SBATCH --partition=gpu``
 line. The current setting (``gpu``) chooses nodes using V100 GPUs, which are available in higher numbers. 
-For running the job on a GraceHopper node, you can change the partition to ``gh`` (TODO: Support this).
+For running the job on a GraceHopper node, you can change the partition to ``gh``.
 These nodes are more powerful than needed for most transcription jobs, and as they are less widely available, 
 jobs often wait longer in the queue before starting.
 
@@ -199,11 +199,8 @@ jobs often wait longer in the queue before starting.
          # ── END USER CONFIGURATION ────────────────────────────────────────────────────
 
          # Load whisper.cpp module
-
-         # TODO Replace this with the final module load command.
-         export MODULEPATH=$MODULEPATH:/nobackup/projects/bddur53/pnruth/modules/ppc64le
+         module load ai4science
          module load whisper.cpp
-         # ENDTODO
 
          # Load whisper parameters from config file
          if [ -f "$ENV_FILE" ]; then
@@ -275,10 +272,9 @@ jobs often wait longer in the queue before starting.
 
          # ── END USER CONFIGURATION ────────────────────────────────────────────────────
 
-         # TODO Replace this with the final module load command.
-         export MODULEPATH=$MODULEPATH:/nobackup/projects/bddur53/pnruth/modules/ppc64le
+         # Load whisper.cpp module
+         module load ai4science
          module load whisper.cpp
-         # ENDTODO
 
          # Load whisper parameters from config file
          if [ -f "$ENV_FILE" ]; then
@@ -386,8 +382,8 @@ Adjust the ``INPUT_EXT`` and ``OUTPUT_EXT`` variables as needed.
 
   # ── END USER CONFIGURATION ────────────────────────────────────────────────────
 
-  # Load Whisper module that also provides FFmpeg (adjust if needed)
-  export MODULEPATH=$MODULEPATH:/nobackup/projects/bddur53/pnruth/modules/ppc64le
+  # Load whisper.cpp module
+  module load ai4science
   module load whisper.cpp
 
   # Create output directory if it doesn't exist
